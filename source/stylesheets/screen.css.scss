@@ -584,13 +584,18 @@ html, body {
   }
 
   blockquote {
+    padding-bottom: 0;
     &>p {
-      background-color: $code-annotation-bg;
-      border-radius: 5px;
-      padding: $code-annotation-padding;
-      color: #ccc;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #404040;
+      // background-color: $code-annotation-bg;
+      // border-radius: 5px;
+      // padding: $code-annotation-padding;
+      // color: #ccc;
+      // border-top: 1px solid #000;
+      // border-bottom: 1px solid #404040;
+      background-color: $code-bg;
+      color: #fff;
+      padding: 0;
+      font-weight: bold;
     }
   }
 }
