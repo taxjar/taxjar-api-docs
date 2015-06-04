@@ -75,6 +75,7 @@ header {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
+  padding: 20px 0;
   font-size: 14px;
   font-weight: bold;
 
@@ -381,9 +382,9 @@ header {
   h1 {
     @extend %header-font;
     font-size: 24px;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid #f5f5f5;
+    padding-top: 2em;
+    // padding-bottom: 0.5em;
+    border-top: 1px solid #f5f5f5;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
   }
@@ -391,6 +392,7 @@ header {
   h1:first-child, div:first-child + h1 {
     border-top-width: 0;
     margin-top: 0;
+    padding-top: 0.5em;
   }
 
   h2 {
@@ -479,7 +481,7 @@ header {
 
   code {
     background-color: rgba(0,0,0,0.05);
-    padding: 3px;
+    padding: 3px 6px;
     border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
@@ -491,12 +493,14 @@ header {
   }
 
   aside {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    padding: 1em;
+    margin-top: 2em;
+    margin-left: 2em;
+    margin-right: calc(50% + 2em);
+    color: #fff;
     background: $aside-notice-bg;
     line-height: 1.6;
+    border-radius: $border-radius;
 
     &.warning {
       background-color: $aside-warning-bg;
@@ -541,7 +545,7 @@ header {
 
 .content {
   pre, blockquote {
-    background-color: $code-bg;
+    // background-color: $code-bg;
     color: #fff;
 
     padding: 2em $main-padding;
@@ -569,7 +573,7 @@ header {
   }
 
   blockquote {
-    padding-bottom: 0;
+    padding-bottom: 1em;
     &>p {
       // background-color: $code-annotation-bg;
       // border-radius: 5px;
@@ -577,11 +581,21 @@ header {
       // color: #ccc;
       // border-top: 1px solid #000;
       // border-bottom: 1px solid #404040;
-      background-color: $code-bg;
+      // background-color: $code-bg;
       color: #fff;
       padding: 0;
-      font-weight: bold;
+      // font-weight: bold;
     }
+  }
+
+  h1 + blockquote {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  h3 + blockquote {
+    margin-top: -2em;
+    padding-top: 0;
   }
 }
 
