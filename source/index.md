@@ -26,13 +26,12 @@ We have language bindings in Shell, Ruby, and Python! You can view code examples
 ```shell
 # Authorization headers must be passed for every request
 curl "api_endpoint_here"
-  -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214c041""
+  -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214c041"
 
 or 
 
 curl "api_endpoint_here"
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041"
-  
 ```
 
 > Make sure to replace `9e0cd62a22f451701f29c3bde214c041` with your API key.
@@ -134,9 +133,8 @@ GET https://api.taxjar.com/v2/standard/rates/90002
 
 ```
 {
-  "country":"US"
+  "country": "US"
 }
-
 ```
 
 > Response Body
@@ -185,14 +183,14 @@ POST https://api.taxjar.com/v2/standard/taxes
 
 ```
 {
-  "from_country":"US",
-  "from_zip":"90002",
-  "from_state":"CA",
-  "to_country":"US",
-  "to_zip":"90002",
-  "to_state":"CA",  
-  "amount":14.45,
-  "shipping":1.5
+  "from_country": "US",
+  "from_zip": "90002",
+  "from_state": "CA",
+  "to_country": "US",
+  "to_zip": "90002",
+  "to_state": "CA",  
+  "amount": 14.45,
+  "shipping": 1.5
 }
 ```
 
@@ -324,7 +322,7 @@ GET https://api.taxjar.com/v2/enhanced/rates/90002
 
 ```
 {
-  "country":"US"
+  "country": "US"
 }
 
 ```
@@ -375,29 +373,29 @@ POST https://api.taxjar.com/v2/enhanced/receipts/orders
 
 ```
 {
-  "transaction_date":"2015/05/14",
-  "transaction_id":"123",
-  "from_country":"US",
-  "from_zip":"90002",
-  "from_state":"CA",
-  "from_city":"Watts",
-  "from_street":"987 Industrial Park Road",
-  "to_country":"US",
-  "to_zip":"90002",
-  "to_state":"CA",
-  "to_city":"Los Angeles",
-  "to_street":"123 Palm Grove Ln",
-  "amount":14.45,
-  "shipping":1.5,
-  "sales_tax":0.95,
+  "transaction_date": "2015/05/14",
+  "transaction_id": "123",
+  "from_country": "US",
+  "from_zip": "90002",
+  "from_state": "CA",
+  "from_city": "Watts",
+  "from_street": "987 Industrial Park Road",
+  "to_country": "US",
+  "to_zip": "90002",
+  "to_state": "CA",
+  "to_city": "Los Angeles",
+  "to_street": "123 Palm Grove Ln",
+  "amount": 14.45,
+  "shipping": 1.5,
+  "sales_tax": 0.95,
   "line_items": [
     {
-      "quantity":1,
-      "product_identifier":"12-34243-9",
-      "description":"Fuzzy Widget",
-      "unit_price":12.0,
-      "product_tax_code":"AB-123",
-      "sales_tax":0.95
+      "quantity": 1,
+      "product_identifier": "12-34243-9",
+      "description": "Fuzzy Widget",
+      "unit_price": 12.0,
+      "product_tax_code": "AB-123",
+      "sales_tax": 0.95
     }
   ]
 }
@@ -425,8 +423,8 @@ POST https://api.taxjar.com/v2/enhanced/receipts/orders
         "product_identifier": "12-34243-9",
         "description": "Fuzzy Widget",
         "unit_price": "12.0",
-        "product_tax_code":"AB-123",
-        "sales_tax":0.95
+        "product_tax_code": "AB-123",
+        "sales_tax": 0.95
       }
     ]
   }
@@ -479,32 +477,31 @@ PUT https://api.taxjar.com/v2/enhanced/receipts/orders/321
 
 ```
 {
-  "transaction_date":"2015/05/14",
-  "from_country":"US",
-  "from_zip":"90002",
-  "from_state":"CA",
-  "from_city":"Watts",
-  "from_street":"987 Industrial Park Road",
-  "to_country":"US",
-  "to_zip":"90002",
-  "to_state":"CA",
-  "to_city":"Los Angeles",
-  "to_street":"123 Palm Grove Ln",
-  "amount":14.45,
-  "shipping":1.5,
-  "sales_tax":0.95,
+  "transaction_date": "2015/05/14",
+  "from_country": "US",
+  "from_zip": "90002",
+  "from_state": "CA",
+  "from_city": "Watts",
+  "from_street": "987 Industrial Park Road",
+  "to_country": "US",
+  "to_zip": "90002",
+  "to_state": "CA",
+  "to_city": "Los Angeles",
+  "to_street": "123 Palm Grove Ln",
+  "amount": 14.45,
+  "shipping": 1.5,
+  "sales_tax": 0.95,
   "line_items": [
     {
-      "quantity":1,
-      "product_identifier":"12-34243-9",
-      "description":"Fuzzy Widget",
-      "unit_price":12.0,
-      "product_tax_code":"AB-123",
-      "sales_tax":0.95
+      "quantity": 1,
+      "product_identifier": "12-34243-9",
+      "description": "Fuzzy Widget",
+      "unit_price": 12.0,
+      "product_tax_code": "AB-123",
+      "sales_tax": 0.95
     }
   ]
 }
-
 ```
 
 > Response Body
@@ -529,8 +526,8 @@ PUT https://api.taxjar.com/v2/enhanced/receipts/orders/321
         "product_identifier": "12-34243-9",
         "description": "Fuzzy Widget",
         "unit_price": "12.0",
-        "product_tax_code":"AB-123",
-        "sales_tax":0.95
+        "product_tax_code": "AB-123",
+        "sales_tax": 0.95
       }
     ]
   }
@@ -584,33 +581,32 @@ POST https://api.taxjar.com/v2/enhanced/receipts/refunds
 
 ```
 {
-  "transaction_date":"2015/05/14",
-  "transaction_id":"123",
-  "from_country":"US",
-  "from_zip":"90002",
-  "from_state":"CA",
-  "from_city":"Watts",
-  "from_street":"987 Industrial Park Road",
-  "to_country":"US",
-  "to_zip":"90002",
-  "to_state":"CA",
-  "to_city":"Los Angeles",
-  "to_street":"123 Palm Grove Ln",
-  "amount":14.45,
-  "shipping":1.5,
-  "sales_tax":0.95,
+  "transaction_date": "2015/05/14",
+  "transaction_id": "123",
+  "from_country": "US",
+  "from_zip": "90002",
+  "from_state": "CA",
+  "from_city": "Watts",
+  "from_street": "987 Industrial Park Road",
+  "to_country": "US",
+  "to_zip": "90002",
+  "to_state": "CA",
+  "to_city": "Los Angeles",
+  "to_street": "123 Palm Grove Ln",
+  "amount": 14.45,
+  "shipping": 1.5,
+  "sales_tax": 0.95,
   "line_items": [
     {
-      "quantity":1,
-      "product_identifier":"12-34243-9",
-      "description":"Fuzzy Widget",
-      "unit_price":12.0,
-      "product_tax_code":"AB-123",
-      "sales_tax":0.95
+      "quantity": 1,
+      "product_identifier": "12-34243-9",
+      "description": "Fuzzy Widget",
+      "unit_price": 12.0,
+      "product_tax_code": "AB-123",
+      "sales_tax": 0.95
     }
   ]
 }
-
 ```
 
 > Response Body
@@ -635,8 +631,8 @@ POST https://api.taxjar.com/v2/enhanced/receipts/refunds
         "product_identifier": "12-34243-9",
         "description": "Fuzzy Widget",
         "unit_price": "12.0",
-        "product_tax_code":"AB-123",
-        "sales_tax":0.95
+        "product_tax_code": "AB-123",
+        "sales_tax": 0.95
       }
     ]
   }
@@ -690,33 +686,32 @@ PUT https://api.taxjar.com/v2/enhanced/receipts/refunds/321
 
 ```
 {
-  "transaction_date":"2015/05/14",
+  "transaction_date": "2015/05/14",
 
-  "from_country":"US",
-  "from_zip":"90002",
-  "from_state":"CA",
-  "from_city":"Watts",
-  "from_street":"987 Industrial Park Road",
-  "to_country":"US",
-  "to_zip":"90002",
-  "to_state":"CA",
-  "to_city":"Los Angeles",
-  "to_street":"123 Palm Grove Ln",
-  "amount":14.45,
-  "shipping":1.5,
-  "sales_tax":0.95,
+  "from_country": "US",
+  "from_zip": "90002",
+  "from_state": "CA",
+  "from_city": "Watts",
+  "from_street": "987 Industrial Park Road",
+  "to_country": "US",
+  "to_zip": "90002",
+  "to_state": "CA",
+  "to_city": "Los Angeles",
+  "to_street": "123 Palm Grove Ln",
+  "amount": 14.45,
+  "shipping": 1.5,
+  "sales_tax": 0.95,
   "line_items": [
     {
-      "quantity":1,
-      "product_identifier":"12-34243-9",
-      "description":"Fuzzy Widget",
-      "unit_price":12.0,
-      "product_tax_code":"AB-123",
-      "sales_tax":0.95
+      "quantity": 1,
+      "product_identifier": "12-34243-9",
+      "description": "Fuzzy Widget",
+      "unit_price": 12.0,
+      "product_tax_code": "AB-123",
+      "sales_tax": 0.95
     }
   ]
 }
-
 ```
 
 > Response Body
@@ -741,8 +736,8 @@ PUT https://api.taxjar.com/v2/enhanced/receipts/refunds/321
         "product_identifier": "12-34243-9",
         "description": "Fuzzy Widget",
         "unit_price": "12.0",
-        "product_tax_code":"AB-123",
-        "sales_tax":0.95
+        "product_tax_code": "AB-123",
+        "sales_tax": 0.95
       }
     ]
   }
@@ -798,14 +793,14 @@ POST https://api.taxjar.com/v2/enhanced/taxes
 
 ```
 {
-  "from_country":"US",
-  "from_zip":"90002",
-  "from_state":"CA",
-  "to_country":"US",
-  "to_zip":"90002",
-  "to_state":"CA",  
-  "amount":14.45,
-  "shipping":1.5
+  "from_country": "US",
+  "from_zip": "90002",
+  "from_state": "CA",
+  "to_country": "US",
+  "to_zip": "90002",
+  "to_state": "CA",  
+  "amount": 14.45,
+  "shipping": 1.5
 }
 ```
 
