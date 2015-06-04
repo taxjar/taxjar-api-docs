@@ -16,7 +16,7 @@ search: true
 
 Welcome to the TaxJar API! You can use our API to access TaxJar API endpoints, which can get information on sales tax rates, categories or upload receipts.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+You can view API request/response examples in the dark area to the right.
 
 
 # Authentication
@@ -132,7 +132,7 @@ GET https://api.taxjar.com/v2/standard/rates/90002
 
 > Request Body
 
-```
+```json
 {
   "country":"US"
 }
@@ -183,13 +183,13 @@ POST https://api.taxjar.com/v2/standard/taxes
 
 > Request Body
 
-```
+```json
 {
   "from_country":"US",
   "from_zip":"90002",
   "from_state":"CA",
   "to_country":"US",
-  "to_zip":"90002",
+  "to_zip":"90001",
   "to_state":"CA",  
   "amount":14.45,
   "shipping":1.5
@@ -322,7 +322,7 @@ GET https://api.taxjar.com/v2/enhanced/rates/90002
 
 > Request Body
 
-```
+```json
 {
   "country":"US"
 }
@@ -373,31 +373,25 @@ POST https://api.taxjar.com/v2/enhanced/receipts/orders
 
 > Request Body
 
-```
+```json
 {
-  "transaction_date":"2015/05/14",
-  "transaction_id":"123",
-  "from_country":"US",
-  "from_zip":"90002",
-  "from_state":"CA",
-  "from_city":"Watts",
-  "from_street":"987 Industrial Park Road",
-  "to_country":"US",
-  "to_zip":"90002",
-  "to_state":"CA",
-  "to_city":"Los Angeles",
-  "to_street":"123 Palm Grove Ln",
-  "amount":14.45,
-  "shipping":1.5,
-  "sales_tax":0.95,
+  "transaction_date": "2015/05/14",
+  "transaction_id": "123",
+  "to_country": "US",
+  "to_zip": "90002",
+  "to_state": "CA",
+  "to_city": "Los Angeles",
+  "to_street": "123 Palm Grove Ln",
+  "amount": 17.45,
+  "shipping": 1.5,
+  "sales_tax": 0.95,
   "line_items": [
     {
-      "quantity":1,
-      "product_identifier":"12-34243-9",
-      "description":"Fuzzy Widget",
-      "unit_price":12.0,
-      "product_tax_code":"AB-123",
-      "sales_tax":0.95
+      "quantity": 1,
+      "product_identifier": "12-34243-9",
+      "description": "Fuzzy Widget",
+      "unit_price": 15.0,
+      "sales_tax": 0.95
     }
   ]
 }
@@ -408,7 +402,7 @@ POST https://api.taxjar.com/v2/enhanced/receipts/orders
 ```json
 {
   "order": {
-    "transaction_id": "321",
+    "transaction_id": "123",
     "user_id": 10649,
     "transaction_date": "2015-05-14T00:00:00Z",
     "to_country": "US",
@@ -416,17 +410,18 @@ POST https://api.taxjar.com/v2/enhanced/receipts/orders
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "14.45",
+    "amount": "17.45",
     "shipping": "1.5",
     "sales_tax": "0.95",
     "line_items": [
       {
+        "id": 1,
         "quantity": 1,
         "product_identifier": "12-34243-9",
         "description": "Fuzzy Widget",
-        "unit_price": "12.0",
-        "product_tax_code":"AB-123",
-        "sales_tax":0.95
+        "unit_price": "15.0",
+        "discount": "0.0",
+        "sales_tax": "0.95"
       }
     ]
   }
@@ -445,11 +440,6 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | The unique identifier of the given order transaction.
 transaction_date | date | required | The date the transaction was originally recorded.
-from_country | string | optional | The ISO two country code of the country where the order shipped from.
-from_zip | string | optional | The postal code where the order shipped from.
-from_state | string | optional | The state where the order shipped from.
-from_city | string | optional | The city where the order shipped from.
-from_street | string | optional | The street address where the order shipped from.
 to_country | string | optional | The ISO two country code of the country where the order shipped to.
 to_zip | string | optional | The postal code where the order shipped to.
 to_state | string | optional | The state where the order shipped to.
@@ -464,7 +454,6 @@ line_items[][product_identifier] | string | optional | The product identifier fo
 line_items[][description] | string | optional | The description of the line item.
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
-line_items[][product_tax_code] | string | optional | The product tax code for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
 ### Update an order receipt
@@ -472,39 +461,26 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 > Request Path
 
 ```
-PUT https://api.taxjar.com/v2/enhanced/receipts/orders/321
+PUT https://api.taxjar.com/v2/enhanced/receipts/orders/123
 ```
 
 > Request Body
 
-```
+```json
 {
-  "transaction_date":"2015/05/14",
-  "from_country":"US",
-  "from_zip":"90002",
-  "from_state":"CA",
-  "from_city":"Watts",
-  "from_street":"987 Industrial Park Road",
-  "to_country":"US",
-  "to_zip":"90002",
-  "to_state":"CA",
-  "to_city":"Los Angeles",
-  "to_street":"123 Palm Grove Ln",
-  "amount":14.45,
-  "shipping":1.5,
-  "sales_tax":0.95,
+  "amount":17.95,
+  "shipping":2.0,
   "line_items": [
     {
-      "quantity":1,
-      "product_identifier":"12-34243-9",
-      "description":"Fuzzy Widget",
-      "unit_price":12.0,
-      "product_tax_code":"AB-123",
-      "sales_tax":0.95
+      "quantity": 1,
+      "product_identifier": "12-34243-0",
+      "description": "Heavy Widget",
+      "unit_price": "15.0",
+      "discount": "0.0",
+      "sales_tax": "0.95"
     }
   ]
 }
-
 ```
 
 > Response Body
@@ -512,7 +488,7 @@ PUT https://api.taxjar.com/v2/enhanced/receipts/orders/321
 ```json
 {
   "order": {
-    "transaction_id": "321",
+    "transaction_id": "123",
     "user_id": 10649,
     "transaction_date": "2015-05-14T00:00:00Z",
     "to_country": "US",
@@ -520,17 +496,18 @@ PUT https://api.taxjar.com/v2/enhanced/receipts/orders/321
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "14.45",
-    "shipping": "1.5",
+    "amount": "17.95",
+    "shipping": "2.0",
     "sales_tax": "0.95",
     "line_items": [
       {
+        "id": 1,
         "quantity": 1,
-        "product_identifier": "12-34243-9",
-        "description": "Fuzzy Widget",
-        "unit_price": "12.0",
-        "product_tax_code":"AB-123",
-        "sales_tax":0.95
+        "product_identifier": "12-34243-0",
+        "description": "Heavy Widget",
+        "unit_price": "15.0",
+        "discount": "0.0",
+        "sales_tax": "0.95"
       }
     ]
   }
@@ -549,11 +526,6 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | The unique identifier of the given order transaction.
 transaction_date | date | optional | The date the transaction was originally recorded.
-from_country | string | optional | The ISO two country code of the country where the order shipped from.
-from_zip | string | optional | The postal code where the order shipped from.
-from_state | string | optional | The state where the order shipped from.
-from_city | string | optional | The city where the order shipped from.
-from_street | string | optional | The street address where the order shipped from.
 to_country | string | optional | The ISO two country code of the country where the order shipped to.
 to_zip | string | optional | The postal code where the order shipped to.
 to_state | string | optional | The state where the order shipped to.
@@ -568,10 +540,8 @@ line_items[][product_identifier] | string | optional | The product identifier fo
 line_items[][description] | string | optional | The description of the line item.
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
-line_items[][product_tax_code] | string | optional | The product tax code for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
-@@@@@@@@@
 ### Create an refund receipt
 
 > Request Path
@@ -582,31 +552,26 @@ POST https://api.taxjar.com/v2/enhanced/receipts/refunds
 
 > Request Body
 
-```
+```json
 {
-  "transaction_date":"2015/05/14",
-  "transaction_id":"123",
-  "from_country":"US",
-  "from_zip":"90002",
-  "from_state":"CA",
-  "from_city":"Watts",
-  "from_street":"987 Industrial Park Road",
-  "to_country":"US",
-  "to_zip":"90002",
-  "to_state":"CA",
-  "to_city":"Los Angeles",
-  "to_street":"123 Palm Grove Ln",
-  "amount":14.45,
-  "shipping":1.5,
-  "sales_tax":0.95,
+  "transaction_date": "2015/05/14",
+  "transaction_id": "321",
+  "transaction_reference_id": "123",
+  "to_country": "US",
+  "to_zip": "90002",
+  "to_state": "CA",
+  "to_city": "Los Angeles",
+  "to_street": "123 Palm Grove Ln",
+  "amount": 17.45,
+  "shipping": 1.5,
+  "sales_tax": 0.95,
   "line_items": [
     {
-      "quantity":1,
-      "product_identifier":"12-34243-9",
-      "description":"Fuzzy Widget",
-      "unit_price":12.0,
-      "product_tax_code":"AB-123",
-      "sales_tax":0.95
+      "quantity": 1,
+      "product_identifier": "12-34243-9",
+      "description": "Fuzzy Widget",
+      "unit_price": 15.0,
+      "sales_tax": 0.95
     }
   ]
 }
@@ -621,22 +586,24 @@ POST https://api.taxjar.com/v2/enhanced/receipts/refunds
     "transaction_id": "321",
     "user_id": 10649,
     "transaction_date": "2015-05-14T00:00:00Z",
+    "transaction_reference_id": "123",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "14.45",
+    "amount": "17.45",
     "shipping": "1.5",
     "sales_tax": "0.95",
     "line_items": [
       {
+        "id": 1,
         "quantity": 1,
         "product_identifier": "12-34243-9",
         "description": "Fuzzy Widget",
-        "unit_price": "12.0",
-        "product_tax_code":"AB-123",
-        "sales_tax":0.95
+        "unit_price": "15.0",
+        "discount": "0.0",
+        "sales_tax": "0.95"
       }
     ]
   }
@@ -656,11 +623,6 @@ Parameter | Type | Required | Description
 transaction_id | string | required | The unique identifier of the given refund transaction.
 transaction_reference_id | string | required | The unique identifier of the corresponding order transaction for the refund.
 transaction_date | date | required | The date the transaction was originally recorded.
-from_country | string | optional | The ISO two country code of the country where the refunded order shipped from.
-from_zip | string | optional | The postal code where the refunded order shipped from.
-from_state | string | optional | The state where the refunded order shipped from.
-from_city | string | optional | The city where the refunded order shipped from.
-from_street | string | optional | The street address where the refunded order shipped from.
 to_country | string | optional | The ISO two country code of the country where the refunded order shipped to.
 to_zip | string | optional | The postal code where the refunded order shipped to.
 to_state | string | optional | The state where the refunded order shipped to.
@@ -675,7 +637,6 @@ line_items[][product_identifier] | string | optional | The product identifier fo
 line_items[][description] | string | optional | The description of the line item.
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
-line_items[][product_tax_code] | string | optional | The product tax code for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
 ### Update an refund receipt
@@ -688,30 +649,16 @@ PUT https://api.taxjar.com/v2/enhanced/receipts/refunds/321
 
 > Request Body
 
-```
+```json
 {
-  "transaction_date":"2015/05/14",
-
-  "from_country":"US",
-  "from_zip":"90002",
-  "from_state":"CA",
-  "from_city":"Watts",
-  "from_street":"987 Industrial Park Road",
-  "to_country":"US",
-  "to_zip":"90002",
-  "to_state":"CA",
-  "to_city":"Los Angeles",
-  "to_street":"123 Palm Grove Ln",
-  "amount":14.45,
-  "shipping":1.5,
-  "sales_tax":0.95,
+  "amount":17.95,
+  "shipping":2.0,
   "line_items": [
     {
       "quantity":1,
-      "product_identifier":"12-34243-9",
-      "description":"Fuzzy Widget",
-      "unit_price":12.0,
-      "product_tax_code":"AB-123",
+      "product_identifier":"12-34243-0",
+      "description":"Heavy Widget",
+      "unit_price":15.0,
       "sales_tax":0.95
     }
   ]
@@ -727,22 +674,24 @@ PUT https://api.taxjar.com/v2/enhanced/receipts/refunds/321
     "transaction_id": "321",
     "user_id": 10649,
     "transaction_date": "2015-05-14T00:00:00Z",
+    "transaction_reference_id": "123",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "14.45",
-    "shipping": "1.5",
+    "amount": "17.95",
+    "shipping": "2.0",
     "sales_tax": "0.95",
     "line_items": [
       {
+        "id": 1,
         "quantity": 1,
-        "product_identifier": "12-34243-9",
-        "description": "Fuzzy Widget",
-        "unit_price": "12.0",
-        "product_tax_code":"AB-123",
-        "sales_tax":0.95
+        "product_identifier": "12-34243-0",
+        "description": "Heavy Widget",
+        "unit_price": "15.0",
+        "discount": "0.0",
+        "sales_tax": "0.95"
       }
     ]
   }
@@ -762,11 +711,6 @@ Parameter | Type | Required | Description
 transaction_id | string | required | The unique identifier of the given transaction.
 transaction_reference_id | string | required | The unique identifier of the corresponding order transaction for the refund.
 transaction_date | date | optional | The date the transaction was originally recorded.
-from_country | string | optional | The ISO two country code of the country where the refunded order shipped from.
-from_zip | string | optional | The postal code where the refunded order shipped from.
-from_state | string | optional | The state where the refunded order shipped from.
-from_city | string | optional | The city where the refunded order shipped from.
-from_street | string | optional | The street address where the refunded order shipped from.
 to_country | string | optional | The ISO two country code of the country where the refunded order shipped to.
 to_zip | string | optional | The postal code where the refunded order shipped to.
 to_state | string | optional | The state where the refunded order shipped to.
@@ -781,7 +725,6 @@ line_items[][product_identifier] | string | optional | The product identifier fo
 line_items[][description] | string | optional | The description of the line item.
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
-line_items[][product_tax_code] | string | optional | The product tax code for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
 ## Taxes
@@ -796,38 +739,67 @@ POST https://api.taxjar.com/v2/enhanced/taxes
 
 > Request Body
 
-```
+```json
 {
-  "from_country":"US",
-  "from_zip":"90002",
-  "from_state":"CA",
-  "to_country":"US",
-  "to_zip":"90002",
-  "to_state":"CA",  
-  "amount":14.45,
-  "shipping":1.5
-}
+  "from_country": "US",
+  "from_zip": "07001",
+  "from_state": "NJ",
+  "to_country": "US",
+  "to_zip": "07446",
+  "to_state": "NJ",  
+  "amount": 16.50,
+  "shipping": 1.5,
+  "line_items": [
+    {
+      "line_item": {
+        "quantity": "1",
+        "unit_price": "15.0",
+        "product_tax_code": 99999
+      }
+    }
+  ]}
 ```
 
 > Response Body
 
 ```json
 {
-  "taxable_amount": "14.45",
-  "amount_to_collect": 1.3,
-  "rate": 0.09,
+  "order_total_amount": 16.5,
+  "amount_to_collect": 0.11,
   "has_nexus": true,
-  "freight_taxable": false,
+  "freight_taxable": true,
   "tax_source": "destination",
   "breakdown": {
-    "state_amount": 0.94,
-    "state_sales_tax_rate": 0.065,
-    "county_amount": 0.14,
-    "county_rate": 0.01,
-    "city_amount": 0,
-    "city_tax_rate": 0,
-    "special_district_amount": 0.22,
-    "special_tax_rate": 0.015
+    "shipping": {
+      "state_amount": 0.11,
+      "state_sales_tax_rate": 0.07,
+      "county_amount": 0,
+      "county_tax_rate": 0,
+      "city_amount": 0,
+      "city_tax_rate": 0,
+      "special_district_amount": 0,
+      "special_tax_rate": 0
+    },
+    "items": {
+      "1": {
+        "state_taxable_amount": 0,
+        "state_sales_tax_rate": 0.07,
+        "county_taxable_amount": 0,
+        "county_tax_rate": 0,
+        "city_taxable_amount": 0,
+        "city_tax_rate": 0,
+        "special_district_taxable_amount": 0,
+        "special_tax_rate": 0
+      }
+    },
+    "state_taxable_amount": 1.5,
+    "state_tax_collectable": 0.11,
+    "county_taxable_amount": 0,
+    "county_tax_collectable": 0,
+    "city_taxable_amount": 0,
+    "city_tax_collectable": 0,
+    "special_district_taxable_amount": 0,
+    "special_district_tax_collectable": 0
   }
 }
 ```
