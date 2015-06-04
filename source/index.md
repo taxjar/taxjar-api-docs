@@ -25,7 +25,7 @@ You can view API request/response examples in the dark area to the right.
 ```shell
 # Authorization headers must be passed for every request
 curl "api_endpoint_here"
-  -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214c041"
+  -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214c041""
 
 or 
 
@@ -132,7 +132,7 @@ GET https://api.taxjar.com/v2/standard/rates/90002
 
 ```json
 {
-  "country":"US"
+  "country": "US"
 }
 ```
 
@@ -182,14 +182,14 @@ POST https://api.taxjar.com/v2/standard/taxes
 
 ```json
 {
-  "from_country":"US",
-  "from_zip":"90002",
-  "from_state":"CA",
-  "to_country":"US",
-  "to_zip":"90001",
-  "to_state":"CA",  
-  "amount":14.45,
-  "shipping":1.5
+  "from_country": "US",
+  "from_zip": "90002",
+  "from_state": "CA",
+  "to_country": "US",
+  "to_zip": "90001",
+  "to_state": "CA",  
+  "amount": 14.45,
+  "shipping": 1.5
 }
 ```
 
@@ -320,7 +320,7 @@ GET https://api.taxjar.com/v2/enhanced/rates/90002
 
 ```json
 {
-  "country":"US"
+  "country": "US"
 }
 ```
 
@@ -463,8 +463,8 @@ PUT https://api.taxjar.com/v2/enhanced/receipts/orders/123
 
 ```json
 {
-  "amount":17.95,
-  "shipping":2.0,
+  "amount": 17.95,
+  "shipping": 2.0,
   "line_items": [
     {
       "quantity": 1,
@@ -646,15 +646,15 @@ PUT https://api.taxjar.com/v2/enhanced/receipts/refunds/321
 
 ```json
 {
-  "amount":17.95,
-  "shipping":2.0,
+  "amount": 17.95,
+  "shipping": 2.0,
   "line_items": [
     {
-      "quantity":1,
-      "product_identifier":"12-34243-0",
-      "description":"Heavy Widget",
-      "unit_price":15.0,
-      "sales_tax":0.95
+      "quantity": 1,
+      "product_identifier": "12-34243-0",
+      "description": "Heavy Widget",
+      "unit_price": 15.0,
+      "sales_tax": 0.95
     }
   ]
 }
