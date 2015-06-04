@@ -316,14 +316,12 @@ GET https://api.taxjar.com/v2/enhanced/categories
 GET https://api.taxjar.com/v2/enhanced/rates/90002
 ```
 
-
 > Request Body
 
 ```
 {
   "country": "US"
 }
-
 ```
 
 > Response Body
