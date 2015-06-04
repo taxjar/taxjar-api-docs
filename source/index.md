@@ -4,12 +4,11 @@ title: TaxJar API Reference
 language_tabs:
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
 
 includes:
   - errors
 
-search: true
+search: false
 ---
 
 # Introduction
@@ -26,13 +25,12 @@ You can view API request/response examples in the dark area to the right.
 ```shell
 # Authorization headers must be passed for every request
 curl "api_endpoint_here"
-  -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214c041""
+  -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214c041"
 
 or 
 
 curl "api_endpoint_here"
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041"
-  
 ```
 
 > Make sure to replace `9e0cd62a22f451701f29c3bde214c041` with your API key.
@@ -136,7 +134,6 @@ GET https://api.taxjar.com/v2/standard/rates/90002
 {
   "country":"US"
 }
-
 ```
 
 > Response Body
@@ -661,7 +658,6 @@ PUT https://api.taxjar.com/v2/enhanced/receipts/refunds/321
     }
   ]
 }
-
 ```
 
 > Response Body
