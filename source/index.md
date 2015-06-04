@@ -4,12 +4,11 @@ title: TaxJar API Reference
 language_tabs:
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
 
 includes:
   - errors
 
-search: true
+search: false
 ---
 
 # Introduction
