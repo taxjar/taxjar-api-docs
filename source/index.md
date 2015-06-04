@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: TaxJar API Reference
 
 language_tabs:
 
