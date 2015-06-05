@@ -39,7 +39,7 @@ TaxJar uses API keys to allow access to the API. You can register a new TaxJar A
 
 TaxJar expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: Token="9e0cd62a22f451701f29c3bde214c041"`
+`Authorization: Token token="9e0cd62a22f451701f29c3bde214c041"`
 
 or
 
