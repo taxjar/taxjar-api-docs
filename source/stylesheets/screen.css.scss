@@ -50,7 +50,41 @@ header {
 }
 
 .logo {
+  float: left;
   padding: 17px 20px;
+}
+
+.menu {
+  float: right;
+  margin: 4px 20px 0 0;
+}
+
+.menu nav li {
+  display: inline-block;
+  padding: 0 10px 0 0;
+  list-style: none;
+}
+
+.menu nav li:last-child {
+  padding-right: 0;
+}
+
+.menu nav li a {
+  display: block;
+  padding: 6px 15px;
+  color: #333;
+  border: 1px solid #d9d9d9;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: -0.25px;
+  border-radius: 5px;
+}
+
+.menu nav li .cta {
+  color: #fff;
+  background: linear-gradient(#f39c12, darken(#f39c12, 3%));
+  border: 1px solid transparent;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -151,6 +185,10 @@ header {
     }
   }
 
+  .tocify-item {
+    margin: 0 10px;
+    border-radius: 3px;
+  }
 
   .tocify-item>a, .toc-footer li {
     padding: 0 $nav-padding 0 $nav-padding;
@@ -158,6 +196,10 @@ header {
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+
+  .tocify-item a:hover {
+    color: #000;
   }
 
   // The Table of Contents is composed of multiple nested
@@ -180,8 +222,12 @@ header {
   // This is the currently selected ToC entry
   .tocify-focus {
     // @include box-shadow(0px 1px 0px $nav-active-shadow);
-    background: linear-gradient($nav-bg, $nav-active-bg);
+    font-weight: bold;
+    background: $nav-active-bg;
     color: $nav-active-text;
+    a:hover {
+      color: $nav-active-text;
+    }
   }
 
   // Subheaders are the submenus that slide open
@@ -414,14 +460,21 @@ header {
 
   h3, h4, h5, h6 {
     @extend %header-font;
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
     text-transform: uppercase;
   }
 
+  h3 {
+    font-size: 16px;
+    text-transform: none;
+  }
+
   h4, h5, h6 {
-    font-size: 10px;
+    color: #999;
+    font-size: 12px;
+    letter-spacing: 0.5px;
   }
 
   hr {
@@ -431,6 +484,7 @@ header {
   }
 
   table {
+    margin-top: 1em;
     margin-bottom: 1em;
     overflow: auto;
     th,td {
@@ -440,25 +494,24 @@ header {
     }
 
     th {
+      font-size: 12px;
       padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
+      // border-bottom: 1px solid #e8e8e8;
       vertical-align: bottom;
+      background: #f5f5f5;
     }
 
     td {
+      font-size: 12px;
       padding: 10px;
     }
 
     tr:last-child {
-      border-bottom: 1px solid #ccc;
+      // border-bottom: 1px solid #e8e8e8;
     }
 
-    tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
-    }
-
-    tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+    tr td {
+      border-bottom: 1px solid #e8e8e8;
     }
   }
 
@@ -582,7 +635,7 @@ header {
       // border-top: 1px solid #000;
       // border-bottom: 1px solid #404040;
       // background-color: $code-bg;
-      color: #fff;
+      color: #d9d9d9;
       padding: 0;
       // font-weight: bold;
     }
@@ -594,7 +647,7 @@ header {
   }
 
   h3 + blockquote {
-    margin-top: -2em;
+    margin-top: 0;
     padding-top: 0;
   }
 }

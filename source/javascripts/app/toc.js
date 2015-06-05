@@ -15,8 +15,8 @@
       showEffectSpeed: 0,
       hideEffectSpeed: 180,
       ignoreSelector: '.toc-ignore',
-      highlightOffset: 60,
-      scrollTo: -1,
+      highlightOffset: 200,
+      scrollTo: 90,
       scrollHistory: true,
       hashGenerator: function (text, element) {
         return element.prop('id');

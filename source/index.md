@@ -4,12 +4,11 @@ title: TaxJar API Reference
 language_tabs:
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
 
 includes:
   - errors
 
-search: true
+search: false
 ---
 
 # Introduction
@@ -32,7 +31,6 @@ or
 
 curl "api_endpoint_here"
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041"
-  
 ```
 
 > Make sure to replace `9e0cd62a22f451701f29c3bde214c041` with your API key.
@@ -73,9 +71,8 @@ GET https://api.taxjar.com/v2/standard/rates/90002
 
 ```json
 {
-  "country":"US"
+  "country": "US"
 }
-
 ```
 
 > Response Body
@@ -124,14 +121,14 @@ POST https://api.taxjar.com/v2/standard/taxes
 
 ```json
 {
-  "from_country":"US",
-  "from_zip":"90002",
-  "from_state":"CA",
-  "to_country":"US",
-  "to_zip":"90001",
-  "to_state":"CA",  
-  "amount":14.45,
-  "shipping":1.5
+  "from_country": "US",
+  "from_zip": "90002",
+  "from_state": "CA",
+  "to_country": "US",
+  "to_zip": "90001",
+  "to_state": "CA",  
+  "amount": 14.45,
+  "shipping": 1.5
 }
 ```
 
@@ -258,14 +255,12 @@ GET https://api.taxjar.com/v2/enhanced/categories
 GET https://api.taxjar.com/v2/enhanced/rates/90002
 ```
 
-
 > Request Body
 
 ```json
 {
-  "country":"US"
+  "country": "US"
 }
-
 ```
 
 > Response Body
@@ -407,8 +402,8 @@ PUT https://api.taxjar.com/v2/enhanced/receipts/orders/123
 
 ```json
 {
-  "amount":17.95,
-  "shipping":2.0,
+  "amount": 17.95,
+  "shipping": 2.0,
   "line_items": [
     {
       "quantity": 1,
@@ -590,19 +585,18 @@ PUT https://api.taxjar.com/v2/enhanced/receipts/refunds/321
 
 ```json
 {
-  "amount":17.95,
-  "shipping":2.0,
+  "amount": 17.95,
+  "shipping": 2.0,
   "line_items": [
     {
-      "quantity":1,
-      "product_identifier":"12-34243-0",
-      "description":"Heavy Widget",
-      "unit_price":15.0,
-      "sales_tax":0.95
+      "quantity": 1,
+      "product_identifier": "12-34243-0",
+      "description": "Heavy Widget",
+      "unit_price": 15.0,
+      "sales_tax": 0.95
     }
   ]
 }
-
 ```
 
 > Response Body

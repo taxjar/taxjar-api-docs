@@ -16,10 +16,18 @@ under the License.
 
 @import 'variables';
 
-<%= Rouge::Themes::Base16::Monokai.render(:scope => '.highlight') %>
+<%= Rouge::Themes::Molokai.render(:scope => '.highlight') %>
 
-.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
+.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs, .highlight .p {
   color: #909090;
+}
+
+.highlight .s2 {
+  color: #7ff079;
+}
+
+.highlight .mf {
+  color: #c0a1ff;
 }
 
 .highlight, .highlight .w {
