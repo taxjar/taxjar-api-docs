@@ -414,14 +414,20 @@ header {
 
   h3, h4, h5, h6 {
     @extend %header-font;
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
     text-transform: uppercase;
   }
 
+  h3 {
+    font-size: 16px;
+    text-transform: none;
+  }
+
   h4, h5, h6 {
-    font-size: 10px;
+    color: #999;
+    font-size: 12px;
   }
 
   hr {
@@ -431,6 +437,7 @@ header {
   }
 
   table {
+    margin-top: 1em;
     margin-bottom: 1em;
     overflow: auto;
     th,td {
@@ -440,25 +447,34 @@ header {
     }
 
     th {
+      font-size: 12px;
       padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
+      // border-bottom: 1px solid #e8e8e8;
       vertical-align: bottom;
+      background: #f5f5f5;
+    }
+
+    th:nth-child(2),
+    th:nth-child(3) {
+      text-align: center;
     }
 
     td {
+      font-size: 12px;
       padding: 10px;
     }
 
     tr:last-child {
-      border-bottom: 1px solid #ccc;
+      // border-bottom: 1px solid #e8e8e8;
     }
 
-    tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
+    tr td {
+      border-bottom: 1px solid #e8e8e8;
     }
 
-    tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+    tr td:nth-child(2),
+    tr td:nth-child(3) {
+      text-align: center;
     }
   }
 
@@ -594,7 +610,7 @@ header {
   }
 
   h3 + blockquote {
-    margin-top: -2em;
+    margin-top: 0;
     padding-top: 0;
   }
 }
