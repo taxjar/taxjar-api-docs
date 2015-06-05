@@ -58,67 +58,6 @@ The standard API endpoints provide for concise, easy to use sales tax rates and 
 
 The details of all enhanced API endpoints follow:
 
-## Categories
-
-### List tax categories
-
-> Request Path
-
-```
-GET https://api.taxjar.com/v2/standard/categories
-```
-
-
-> Response Body
-
-```json
-{
-  "categories": [
-    {
-      "name": "Other Exempt",
-      "product_tax_code": "99999",
-      "description": "item is exempt"
-    },
-    {
-      "name": "Clothing",
-      "product_tax_code": "20010",
-      "description": "normal clothing"
-    },
-    {
-      "name": "Food & Groceries",
-      "product_tax_code": "40030",
-      "description": "food for humans not cooked"
-    },
-    {
-      "name": "Non-Prescription",
-      "product_tax_code": "51010",
-      "description": "non prescription drugs"
-    },
-    {
-      "name": "Prescription",
-      "product_tax_code": "51020",
-      "description": "prescription drugs"
-    },
-    {
-      "name": "Digital Goods",
-      "product_tax_code": "31000",
-      "description": "digital goods"
-    },
-    {
-      "name": "Special Digital Products",
-      "product_tax_code": "32000",
-      "description": "special digital products"
-    }
-  ]
-}
-```
-
-This endpoint lists all tax categories.
-
-#### Request
-
-GET https://api.taxjar.com/v2/standard/categories
-
 ## Rates
 
 ### Show tax rates for a location
@@ -828,7 +767,7 @@ amount | long | required | The total amount of the order.
 shipping | long | required | The total amount of shipping for the order.
 nexus_addresses[][address_id] | long | optional | The unique identifier of the given nexus address.
 nexus_addresses[][country] | integer | optional | The ISO two country code of the country for the nexus address.
+nexus_addresses[][zip] | long | optional | The postal code for the nexus address.
 nexus_addresses[][state] | string | optional | The state for the nexus address.
 nexus_addresses[][city] | string | optional | The city for the nexus address.
-nexus_addresses[][zip] | long | optional | The postal code for the nexus address.
 nexus_addresses[][street] | long | optional | The street address for the nexus address.
