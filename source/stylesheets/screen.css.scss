@@ -75,7 +75,7 @@ header {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  padding: 20px 0;
+  padding: 34px 0;
   font-size: 14px;
   font-weight: bold;
 
@@ -151,6 +151,10 @@ header {
     }
   }
 
+  .tocify-item {
+    margin: 0 10px;
+    border-radius: 3px;
+  }
 
   .tocify-item>a, .toc-footer li {
     padding: 0 $nav-padding 0 $nav-padding;
@@ -158,6 +162,10 @@ header {
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+
+  .tocify-item a:hover {
+    color: #000;
   }
 
   // The Table of Contents is composed of multiple nested
@@ -180,8 +188,12 @@ header {
   // This is the currently selected ToC entry
   .tocify-focus {
     // @include box-shadow(0px 1px 0px $nav-active-shadow);
-    background: linear-gradient($nav-bg, $nav-active-bg);
+    font-weight: bold;
+    background: $nav-active-bg;
     color: $nav-active-text;
+    a:hover {
+      color: $nav-active-text;
+    }
   }
 
   // Subheaders are the submenus that slide open
@@ -428,6 +440,7 @@ header {
   h4, h5, h6 {
     color: #999;
     font-size: 12px;
+    letter-spacing: 0.5px;
   }
 
   hr {
@@ -454,11 +467,6 @@ header {
       background: #f5f5f5;
     }
 
-    th:nth-child(2),
-    th:nth-child(3) {
-      text-align: center;
-    }
-
     td {
       font-size: 12px;
       padding: 10px;
@@ -470,11 +478,6 @@ header {
 
     tr td {
       border-bottom: 1px solid #e8e8e8;
-    }
-
-    tr td:nth-child(2),
-    tr td:nth-child(3) {
-      text-align: center;
     }
   }
 
