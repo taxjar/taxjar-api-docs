@@ -298,16 +298,7 @@ header {
 
 // button to show navigation on mobile devices
 #nav-button {
-  span {
-    display: block;
-    $side-pad: $main-padding / 2 - 8px;
-    padding: $side-pad $side-pad $side-pad;
-    background-color: rgba($main-bg, 0.7);
-    @include transform-origin(0, 0);
-    @include transform(rotate(-90deg) translate(-100%, 0));
-    border-radius: 0 0 0 5px;
-  }
-  padding: 0 1.5em 5em 0; // increase touch size area
+  padding: 1.9em 2em; // increase touch size area
   display: none;
   position: fixed;
   top: 0;
@@ -316,17 +307,7 @@ header {
   color: #000;
   text-decoration: none;
   font-weight: bold;
-  opacity: 0.7;
   line-height: 16px;
-  img {
-    height: 16px;
-    vertical-align: bottom;
-  }
-
-  @include transition(left ease-in-out 0.3s);
-
-  &:hover { opacity: 1; }
-  &.open {left: $nav-width}
 }
 
 
@@ -599,6 +580,10 @@ header {
     border: 1px solid #F7E633;
     @include background(linear-gradient(bottom right, #F7E633 0%, #F1D32F 100%));
   }
+
+  #request + p {
+    word-wrap: break-word;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -669,6 +654,22 @@ header {
 // There are also a couple styles disperesed
 
 @media (max-width: $tablet-width) {
+  .logo {
+    float: none;
+    padding: 17px 0;
+    text-align: center;
+  }
+
+  .logo span {
+    display: none;
+  }
+
+  .menu {
+    position: absolute;
+    top: 0;
+    right: 10px;
+  }
+
   .tocify-wrapper {
     left: -$nav-width;
 
@@ -692,6 +693,10 @@ header {
 }
 
 @media (max-width: $phone-width) {
+  .menu nav {
+    display: none;
+  }
+
   .dark-box {
     display: none;
   }
@@ -715,5 +720,17 @@ header {
 
   %right-col + %left-col {
     margin-top: $main-padding;
+  }
+
+  .content > aside {
+    margin-right: 2em;
+  }
+
+  .content h1 + blockquote,
+  .content h2 + blockquote,
+  .content h3 + blockquote,
+  .content blockquote {
+    padding-top: 2em;
+    background-color: $code-bg;
   }
 }

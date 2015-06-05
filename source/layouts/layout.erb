@@ -29,12 +29,6 @@ under the License.
   </head>
 
   <body class="<%= page_classes %>">
-    <a href="#" id="nav-button">
-      <span>
-        NAV
-        <%= image_tag('navbar.png') %>
-      </span>
-    </a>
     <header>
       <div class="logo">
         <%= image_tag "logo.png", :width => 126 %>
@@ -47,6 +41,9 @@ under the License.
             <li><a href="#" class="cta">Get API Token</a></li>
           </ul>
         </nav>
+        <a href="#" id="nav-button">
+          <%= image_tag "menu.svg", :width => 22 %>
+        </a>
       </div>
     </header>
     <div class="tocify-wrapper">
