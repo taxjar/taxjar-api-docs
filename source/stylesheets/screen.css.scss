@@ -50,7 +50,41 @@ header {
 }
 
 .logo {
+  float: left;
   padding: 17px 20px;
+}
+
+.menu {
+  float: right;
+  margin: 4px 20px 0 0;
+}
+
+.menu nav li {
+  display: inline-block;
+  padding: 0 10px 0 0;
+  list-style: none;
+}
+
+.menu nav li:last-child {
+  padding-right: 0;
+}
+
+.menu nav li a {
+  display: block;
+  padding: 6px 15px;
+  color: #333;
+  border: 1px solid #d9d9d9;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: -0.25px;
+  border-radius: 5px;
+}
+
+.menu nav li .cta {
+  color: #fff;
+  background: linear-gradient(#f39c12, darken(#f39c12, 3%));
+  border: 1px solid transparent;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -75,7 +109,7 @@ header {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  padding: 34px 0;
+  padding: 20px 0;
   font-size: 14px;
   font-weight: bold;
 
