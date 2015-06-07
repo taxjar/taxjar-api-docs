@@ -33,3 +33,50 @@ under the License.
 .highlight, .highlight .w {
   background-color: $code-bg;
 }
+
+.highlight[contenteditable] {
+  outline: none;
+}
+
+.content > .CodeMirror-block {
+  padding: 0;
+}
+
+.CodeMirror-scroll {
+  padding: 22px 0 28px 24px;
+  overflow: auto;
+}
+
+.CodeMirror.cm-s-default {
+  @extend %code-font;
+  height: auto;
+  background: #2D2D2D;
+}
+
+.CodeMirror .CodeMirror-selected {
+  background: #202020 !important;
+}
+
+.CodeMirror .CodeMirror-code pre span {
+  color: #909090;
+}
+
+.CodeMirror .CodeMirror-cursors .CodeMirror-cursor {
+  border-left-color: #909090;
+}
+
+.CodeMirror .CodeMirror-code .cm-string.cm-property {
+
+}
+
+.CodeMirror .CodeMirror-code .cm-string {
+  color: #7ff079;
+}
+
+.CodeMirror .CodeMirror-code .cm-number {
+  color: #c0a1ff;
+}
+
+.CodeMirror .CodeMirror-code .cm-atom {
+  color: #66d9ef;
+}
