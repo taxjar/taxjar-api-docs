@@ -19,9 +19,14 @@
     },
     handleDemo: function(e) {
       var button = $(e.target);
+      var buttonAnchor = button.parent().prevAll('[data-unique]').first();
       var apiToken = $('#api-token').val();
-      var requestBodyTitle = button.parent().nextAll('blockquote').find('p:contains("Request Body")').first();
-      var responseBodyTitle = button.parent().nextAll('blockquote').find('p:contains("Response Body")').first();
+      var requestBodyTitle = button.parent().next().next(':contains("Request Body")');
+      var responseBodyTitle = (requestBodyTitle && requestBodyTitle.length) ? requestBodyTitle.next().next(':contains("Response Body")') : button.parent().next().next(':contains("Response Body")');
+      var actionButtons = '<blockquote class="sandbox__actions">'
+          + '<button class="sandbox__button sandbox__button--send">Send Request</button>'
+          + '<button class="sandbox__button sandbox__button--cancel">Cancel</button>'
+          + '</blockquote>';
 
       if (!apiToken.length) {
         alert('Please enter your API token.');
@@ -29,39 +34,47 @@
       }
 
       if (this.requestPath) {
+        var oldEndpoint = this.requestPath.text();
         this.resetRequest(this.requestPath, this.editor);
-        if (button.parent().next('pre').text() == this.requestPath.text()) {
-          return; 
-        }
+        if (button.parent().next('pre').text() == oldEndpoint) return;
       }
 
+      $('.tocify-item[data-unique="' + buttonAnchor.attr('data-unique') + '"]').trigger('click');
+
       this.requestPath = button.parent().next('pre');
-      this.requestBody = requestBodyTitle.parent().next();
-      this.responseBody = responseBodyTitle.parent().next();
+      this.requestBody = requestBodyTitle.next();
+      this.responseBody = responseBodyTitle.next();
 
-      this.requestPath.attr('contenteditable', true);
+      this.requestPath.clone().insertAfter(this.requestPath).attr('contenteditable', true);
 
-      this.requestBody.after('<blockquote class="sandbox__actions">'
-        + '<button class="sandbox__button sandbox__button--send">Send Request</button>'
-        + '<button class="sandbox__button sandbox__button--cancel">Cancel</button>'
-        + '</blockquote>');
-      this.requestBody.after('<blockquote class="CodeMirror-block"><textarea>' + this.requestBody.text() + '</textarea></blockquote>');
+      if (this.requestBody.length) {
+        this.requestBody.after(actionButtons);
+        this.requestBody.after('<blockquote class="CodeMirror-block"><textarea>' + this.requestBody.text() + '</textarea></blockquote>');
+      } else {
+        this.requestPath.next().after(actionButtons);
+      }
+
       this.responseBody.after('<pre class="highlight json sandbox__response">Awaiting your data...</pre>');
 
+      this.requestPath.hide();
       this.requestBody.hide();
       this.responseBody.hide();
 
-      this.editor = CodeMirror.fromTextArea(this.requestBody.next('blockquote').find('textarea')[0], {
-        value: this.requestBody.text(),
-        mode: {
-          name: 'javascript',
-          json: true
-        }
-      });
+      if (this.requestBody.length) {
+        this.editor = CodeMirror.fromTextArea(this.requestBody.next('blockquote').find('textarea')[0], {
+          value: this.requestBody.text(),
+          mode: {
+            name: 'javascript',
+            json: true
+          }
+        });
+      }
 
       $('.sandbox__button--send').on('click', function(e) {
         var request = this.requestPath.text().split(' ');
-        this.sendRequest(apiToken, request, this.editor.getValue());
+        var requestVal = '';
+        if (this.editor) requestVal = this.editor.getValue();
+        this.sendRequest(apiToken, request, requestVal);
         e.preventDefault();
       }.bind(this));
 
@@ -72,17 +85,16 @@
     },
     resetRequest: function() {
       // Remove CodeMirror, textarea, sandbox actions
-      this.editor.toTextArea();
-      this.requestBody.next('.CodeMirror-block').remove();
-      this.requestBody.next('.sandbox__actions').remove();
+      if (this.editor) this.editor.toTextArea();
+      $('.CodeMirror-block').remove();
+      $('.sandbox__actions').remove();
 
-      // Remove contenteditable
-      this.requestPath.removeAttr('contenteditable');
-
-      // Remove response message
+      // Remove request path and response message
+      this.requestPath.next('pre').remove();
       this.responseBody.next('pre').remove();
 
       // Show original request and response
+      this.requestPath.show();
       this.requestBody.show();
       this.responseBody.show();
 

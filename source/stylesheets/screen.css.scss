@@ -656,6 +656,10 @@ header {
     border-left: 5px solid #3EB049;
   }
 
+  .CodeMirror-block {
+    border-bottom: 3px solid $code-bg;
+  }
+
   h1 + blockquote {
     margin-top: 0;
     padding-top: 0;
@@ -676,6 +680,10 @@ header {
     border: 0;
     border-radius: 3px;
     text-transform: uppercase;
+  }
+
+  .sandbox__button:focus {
+    outline: none;
   }
 
   .sandbox__button--demo {
