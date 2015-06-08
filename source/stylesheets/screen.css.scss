@@ -741,6 +741,14 @@ header {
     padding-top: 0.3em;
     padding-bottom: 0.3em;
   }
+
+  #api-token {
+    display: none;
+  }
+
+  .sandbox__button {
+    display: none;
+  }
 }
 
 @media (max-width: $phone-width) {
