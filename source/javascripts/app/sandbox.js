@@ -54,7 +54,7 @@
         this.requestPath.next().after(actionButtons);
       }
 
-      this.responseBody.after('<pre class="highlight json sandbox__response">Awaiting your data...</pre>');
+      this.responseBody.after('<pre class="sandbox__response highlight json language-javascript">Awaiting your data...</pre>');
 
       this.requestPath.hide();
       this.requestBody.hide();
@@ -123,6 +123,7 @@
         success: function(data) {
           var res = JSON.stringify(data, null, 2);
           that.responseBody.next('.sandbox__response').html(res);
+          Prism.highlightElement(that.responseBody.next('.sandbox__response')[0], false);
         }
       });
     }
