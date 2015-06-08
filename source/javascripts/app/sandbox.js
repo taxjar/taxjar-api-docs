@@ -103,8 +103,12 @@
     sendRequest: function(apiToken, request, requestVal) {
       var requestType = request[0];
       var requestUrl = request[1];
-      var requestData = JSON.parse(requestVal);
+      var requestData = {};
       var that = this;
+
+      if (requestVal.length) {
+        requestData = JSON.parse(requestVal);
+      }
 
       requestUrl = requestUrl.replace('https://api.taxjar.com', 'http://tjapi-test.herokuapp.com');
 
