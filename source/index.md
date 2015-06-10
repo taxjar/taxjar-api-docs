@@ -48,7 +48,6 @@ or
 You must replace <code>9e0cd62a22f451701f29c3bde214c041</code> with your personal API key.
 </aside>
 
-
 # Standard
 
 The standard API endpoints provide for concise, easy to use sales tax rates and calculations.
