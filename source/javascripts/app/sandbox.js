@@ -3,6 +3,8 @@
 
   var sandbox = {
     init: function() {
+      return;
+
       $('blockquote > p:contains("Request Path")').each(function() {
         var requestContainer = $(this).parent().next('pre');
         var request = requestContainer.text().split(' ');
