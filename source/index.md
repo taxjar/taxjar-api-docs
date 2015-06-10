@@ -17,7 +17,6 @@ Welcome to the TaxJar API! You can use our API to access TaxJar API endpoints, w
 
 You can view API request/response examples in the dark area to the right.
 
-
 # Authentication
 
 > Example Request With Authentication Headers
