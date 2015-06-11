@@ -4,6 +4,7 @@ title: TaxJar API Reference
 language_tabs:
 
 toc_footers:
+  - <a href='http://www.taxjar.com/api/docs/'>v1 Documentation</a>
 
 includes:
   - errors
