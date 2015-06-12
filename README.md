@@ -24,8 +24,4 @@ This will watch for changes and compile them on the fly.
 
 ## Deployment
 
-Deployment is still in flux, but in order to push a Middleman site you need to build it first:
-
-```
-middleman build
-```
+Commits to the `master` branch are compiled on the fly and deployed to our MediaTemple server via Codeship. If you don't want your changes to appear on production immediately, create a branch and submit a pull request for review.
