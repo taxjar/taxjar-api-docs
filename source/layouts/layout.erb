@@ -32,17 +32,28 @@ under the License.
   <body class="<%= page_classes %>">
     <header>
       <div class="logo">
-        <a href="http://www.taxjar.com"><%= image_tag "logo.png", :width => 126 %></a>
+        <a href="http://developers.taxjar.com"><%= image_tag "logo.png", :width => 126 %></a>
         <span>Developers</span>
       </div>
-      <div class="menu">
+      <div class="menu menu--main">
+        <nav>
+          <ul>
+            <li><a href="http://taxjar.com/api#features">Features</a></li>
+            <li><a href="http://taxjar.com/api#pricing">Pricing</a></li>
+            <li><a href="/api" class="active">API Reference</a></li>
+            <!-- <li><a href="/community">Community</a></li> -->
+            <!-- <li><a href="/blog">Blog</a></li> -->
+          </ul>
+        </nav>
+      </div>
+      <div class="menu menu--actions">
         <nav>
           <ul>
             <!--<li>
               <input type="text" id="api-token" name="api-token" placeholder="Your API Token">
             </li>-->
-            <li><a href="https://app.taxjar.com/sign_in/">Log In</a></li>
-            <li><a href="https://app.taxjar.com/api_sign_up/plus/" class="cta">Get API Token</a></li>
+            <li><a href="https://app.taxjar.com/sign_in/" class="btn">Log In</a></li>
+            <li><a href="https://app.taxjar.com/api_sign_up/plus/" class="btn cta">Get API Token</a></li>
           </ul>
         </nav>
         <a href="#" id="nav-button">

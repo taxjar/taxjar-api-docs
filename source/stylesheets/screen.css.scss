@@ -64,9 +64,20 @@ header {
   color: #999;
 }
 
-.menu {
+.menu--main {
+  float: left;
+  margin: 5px 0 0 110px;
+  padding: 0 0 0 10px;
+  border-left: 1px solid #f7f7f7;
+}
+
+.menu--actions {
   float: right;
-  margin: 4px 20px 0 0;
+  margin: 5px 20px 0 0;
+}
+
+.menu nav ul {
+  padding-left: 0;
 }
 
 .menu nav li {
@@ -83,15 +94,31 @@ header {
   display: block;
   padding: 6px 15px;
   color: #333;
-  border: 1px solid #d9d9d9;
   text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
   letter-spacing: -0.25px;
-  border-radius: 5px;
 }
 
-.menu nav li .cta {
+.menu nav li .active {
+  font-weight: bold;
+}
+
+.menu nav li a:hover {
+  color: #000;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 15px;
+  color: #333;
+  text-decoration: none;
+  letter-spacing: -0.25px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.btn.cta {
   color: #fff;
   background: linear-gradient(#f39c12, darken(#f39c12, 3%));
   border: 1px solid transparent;
@@ -717,7 +744,11 @@ header {
     display: none;
   }
 
-  .menu {
+  .menu--main {
+    display: none;
+  }
+
+  .menu--actions {
     position: absolute;
     top: 0;
     right: 10px;
