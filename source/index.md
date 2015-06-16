@@ -187,6 +187,10 @@ The details of all enhanced API endpoints follow:
 
 ## Categories
 
+The enhanced API provides product-level tax rules for a subset of product categories. These categories are to be used for products that are either exempt from sales tax in some jurisdictions or are taxed at reduced rates. You need not pass in a product tax code for sales tax calculations on product that is fully taxable. Simply leave that parameter out.
+
+We will be expanding support for additional, less common categories over time. If you would like to request the addition of a new product category, please email us at [support@taxjar.com](mailto:support@taxjar.com).
+
 ### List tax categories
 
 > Request Path
