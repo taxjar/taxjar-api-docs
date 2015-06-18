@@ -124,6 +124,10 @@ header {
   border: 1px solid transparent;
 }
 
+.btn.cta:hover {
+  color: #fff;
+}
+
 .menu input {
   width: 300px;
   font-size: 14px;
@@ -543,6 +547,15 @@ header {
 
     tr td {
       border-bottom: 1px solid #e8e8e8;
+    }
+
+    td.required {
+      color: #f39c12;
+      font-weight: bold;
+    }
+
+    td.optional {
+      color: #999;
     }
 
     tr:last-child td {
