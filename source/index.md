@@ -49,145 +49,15 @@ or
 You must replace <code>9e0cd62a22f451701f29c3bde214c041</code> with your personal API key.
 </aside>
 
-# Standard
+# Sales Tax API
 
-The standard API endpoints provide for concise, easy to use sales tax rates and calculations.
+The TaxJar API endpoints provide for detailed sales tax rates and calculations. It also supports extended reporting and filing capabilities for TaxJar users.
 
-The details of all enhanced API endpoints follow:
-
-## Rates
-
-### Show tax rates for a location
-
-> Request Path
-
-```
-GET https://api.taxjar.com/v2/standard/rates/90002
-```
-
-
-> Request Body
-
-```json
-{
-  "country": "US"
-}
-```
-
-> Response Body
-
-```json
-{
-  "rate": {
-    "zip": "90002",
-    "state": "CA",
-    "state_rate": "0.065",
-    "county": "LOS ANGELES",
-    "county_rate": "0.01",
-    "city": "WATTS",
-    "city_rate": "0.0",
-    "combined_district_rate": "0.015",
-    "combined_rate": "0.09"
-  }
-}
-```
-
-This endpoint shows the sales tax rates for a given location.
-
-#### Request
-
-GET https://api.taxjar.com/v2/standard/rates/:zip
-
-#### Parameters
-
-Parameter | Type | Required | Description
---------- | ------- | ------- | -----------
-zip | string | required | The postal code for given location.
-city | string | optional | The city for given location.
-country | string | optional | The ISO two country code of the country for given location.
-
-## Taxes
-
-### Show sales tax for an order
-
-> Request Path
-
-```
-POST https://api.taxjar.com/v2/standard/taxes
-```
-
-> Request Body
-
-```json
-{
-  "from_country": "US",
-  "from_zip": "90002",
-  "from_state": "CA",
-  "to_country": "US",
-  "to_zip": "90001",
-  "to_state": "CA",  
-  "amount": 14.45,
-  "shipping": 1.5
-}
-```
-
-> Response Body
-
-```json
-{
-  "tax": {
-    "taxable_amount": "14.45",
-    "amount_to_collect": 1.3,
-    "rate": 0.09,
-    "has_nexus": true,
-    "freight_taxable": false,
-    "tax_source": "destination",
-    "breakdown": {
-      "state_amount": 0.94,
-      "state_sales_tax_rate": 0.065,
-      "county_amount": 0.14,
-      "county_rate": 0.01,
-      "city_amount": 0,
-      "city_tax_rate": 0,
-      "special_district_amount": 0.22,
-      "special_tax_rate": 0.015
-    }
-  }
-}
-```
-
-This endpoint shows the sales tax that should be collected for a given order.
-
-#### Request
-
-POST https://api.taxjar.com/v2/standard/taxes
-
-#### Parameters
-
-Parameter | Type | Required | Description
---------- | ------- | ------- | -----------
-from_country | string | optional | The ISO two country code of the country where the order shipped from.
-from_zip | string | optional | The postal code where the order shipped from.
-from_state | string | optional | The state where the order shipped from.
-from_city | string | optional | The city where the order shipped from.
-from_street | string | optional | The street address where the order shipped from.
-to_country | string | required | The ISO two country code of the country where the order shipped to.
-to_zip | string | required | The postal code where the order shipped to.
-to_state | string | required | The state where the order shipped to.
-to_city | string | optional | The city where the order shipped to.
-to_street | string | optional | The street address where the order shipped to.
-amount | long | required | The total amount of the order.
-shipping | long | required | The total amount of shipping for the order.
-
-# Enhanced
-
-The enhanced API endpoints provide for more detailed sales tax rates and calculations. It also supports extended reporting and filing capabilities for TaxJar users.
-
-The details of all enhanced API endpoints follow:
+The details of all API endpoints follow:
 
 ## Categories
 
-The enhanced API provides product-level tax rules for a subset of product categories. These categories are to be used for products that are either exempt from sales tax in some jurisdictions or are taxed at reduced rates. You need not pass in a product tax code for sales tax calculations on product that is fully taxable. Simply leave that parameter out.
+The TaxJar API provides product-level tax rules for a subset of product categories. These categories are to be used for products that are either exempt from sales tax in some jurisdictions or are taxed at reduced rates. You need not pass in a product tax code for sales tax calculations on product that is fully taxable. Simply leave that parameter out.
 
 We will be expanding support for additional, less common categories over time. If you would like to request the addition of a new product category, please email us at [support@taxjar.com](mailto:support@taxjar.com).
 
@@ -196,7 +66,7 @@ We will be expanding support for additional, less common categories over time. I
 > Request Path
 
 ```
-GET https://api.taxjar.com/v2/enhanced/categories
+GET https://api.taxjar.com/v2/categories
 ```
 
 
@@ -248,7 +118,7 @@ This endpoint lists all tax categories.
 
 #### Request
 
-GET https://api.taxjar.com/v2/enhanced/categories
+GET https://api.taxjar.com/v2/categories
 
 ## Rates
 
@@ -257,7 +127,7 @@ GET https://api.taxjar.com/v2/enhanced/categories
 > Request Path
 
 ```
-GET https://api.taxjar.com/v2/enhanced/rates/90002
+GET https://api.taxjar.com/v2/rates/90002
 ```
 
 > Request Body
@@ -290,7 +160,7 @@ This endpoint shows the sales tax rates for a given location.
 
 #### Request
 
-GET https://api.taxjar.com/v2/enhanced/rates/:zip
+GET https://api.taxjar.com/v2/rates/:zip
 
 #### Parameters
 
@@ -307,7 +177,7 @@ city | string | optional | The city for given location.
 > Request Path
 
 ```
-POST https://api.taxjar.com/v2/enhanced/taxes
+POST https://api.taxjar.com/v2/taxes
 ```
 
 > Request Body
@@ -385,7 +255,7 @@ This endpoint shows the sales tax that should be collected for a given order.
 
 #### Request
 
-POST https://api.taxjar.com/v2/enhanced/taxes
+POST https://api.taxjar.com/v2/taxes
 
 #### Parameters
 
@@ -417,7 +287,7 @@ nexus_addresses[][street] | long | optional | The street address for the nexus a
 > Request Path
 
 ```
-POST https://api.taxjar.com/v2/enhanced/transactions/orders
+POST https://api.taxjar.com/v2/transactions/orders
 ```
 
 > Request Body
@@ -481,7 +351,7 @@ This endpoint creates a new order transaction.
 
 #### Request
 
-POST https://api.taxjar.com/v2/enhanced/transactions/orders
+POST https://api.taxjar.com/v2/transactions/orders
 
 #### Parameters
 
@@ -515,7 +385,7 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 > Request Path
 
 ```
-PUT https://api.taxjar.com/v2/enhanced/transactions/orders/123
+PUT https://api.taxjar.com/v2/transactions/orders/123
 ```
 
 > Request Body
@@ -572,7 +442,7 @@ This endpoint updates an existing order transaction.
 
 #### Request
 
-PUT https://api.taxjar.com/v2/enhanced/transactions/orders/:transaction_id
+PUT https://api.taxjar.com/v2/transactions/orders/:transaction_id
 
 #### Parameters
 
@@ -606,7 +476,7 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 > Request Path
 
 ```
-POST https://api.taxjar.com/v2/enhanced/transactions/refunds
+POST https://api.taxjar.com/v2/transactions/refunds
 ```
 
 > Request Body
@@ -673,7 +543,7 @@ This endpoint creates a new refund transaction.
 
 #### Request
 
-POST https://api.taxjar.com/v2/enhanced/transactions/refunds
+POST https://api.taxjar.com/v2/transactions/refunds
 
 #### Parameters
 
@@ -708,7 +578,7 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 > Request Path
 
 ```
-PUT https://api.taxjar.com/v2/enhanced/transactions/refunds/321
+PUT https://api.taxjar.com/v2/transactions/refunds/321
 ```
 
 > Request Body
@@ -765,7 +635,7 @@ This endpoint updates an existing refund transaction.
 
 #### Request
 
-PUT https://api.taxjar.com/v2/enhanced/transactions/refunds/:transaction_id
+PUT https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 
 #### Parameters
 
