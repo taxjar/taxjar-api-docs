@@ -172,7 +172,7 @@ city | string | optional | The city for given location.
 
 ## Taxes
 
-### Show sales tax for an order
+### Calculate sales tax for an order
 
 > Request Path
 
