@@ -289,6 +289,100 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 ## Transactions
 
+### List order transactions
+
+> Request Path
+
+```
+GET https://api.taxjar.com/v2/transactions/orders
+```
+
+> Request Body
+
+```json
+```
+
+> Response Body
+
+```json
+{
+  "orders": [
+    "123",
+    "456"
+  ]
+}
+```
+
+This endpoint lists existing order transactions.
+
+#### Request
+
+GET https://api.taxjar.com/v2/transactions/orders
+
+#### Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+transaction_date | date | optional | The date the transactions were originally recorded.
+from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
+to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
+
+### Show an order transaction
+
+> Request Path
+
+```
+GET https://api.taxjar.com/v2/transactions/orders/123
+```
+
+> Request Body
+
+```json
+```
+
+> Response Body
+
+```json
+{
+  "order": {
+    "transaction_id": "123",
+    "user_id": 10649,
+    "transaction_date": "2015-05-14T00:00:00Z",
+    "to_country": "US",
+    "to_zip": "90002",
+    "to_state": "CA",
+    "to_city": "LOS ANGELES",
+    "to_street": "123 Palm Grove Ln",
+    "amount": "17.95",
+    "shipping": "2.0",
+    "sales_tax": "0.95",
+    "line_items": [
+      {
+        "id": 1,
+        "quantity": 1,
+        "product_identifier": "12-34243-0",
+        "description": "Heavy Widget",
+        "unit_price": "15.0",
+        "discount": "0.0",
+        "sales_tax": "0.95"
+      }
+    ]
+  }
+}
+```
+
+This endpoint shows an existing order transaction.
+
+#### Request
+
+GET https://api.taxjar.com/v2/transactions/orders/:transaction_id
+
+#### Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+transaction_id | string | required | The unique identifier of the given order transaction.
+
 ### Create an order transaction
 
 > Request Path
@@ -477,6 +571,157 @@ line_items[][description] | string | optional | The description of the line item
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
+
+### Delete an order transaction
+
+> Request Path
+
+```
+DELETE https://api.taxjar.com/v2/transactions/orders/123
+```
+
+> Request Body
+
+```json
+```
+
+> Response Body
+
+```json
+{
+  "order": {
+    "transaction_id": "123",
+    "user_id": 10649,
+    "transaction_date": "2015-05-14T00:00:00Z",
+    "to_country": "US",
+    "to_zip": "90002",
+    "to_state": "CA",
+    "to_city": "LOS ANGELES",
+    "to_street": "123 Palm Grove Ln",
+    "amount": "17.95",
+    "shipping": "2.0",
+    "sales_tax": "0.95",
+    "line_items": [
+      {
+        "id": 1,
+        "quantity": 1,
+        "product_identifier": "12-34243-0",
+        "description": "Heavy Widget",
+        "unit_price": "15.0",
+        "discount": "0.0",
+        "sales_tax": "0.95"
+      }
+    ]
+  }
+}
+```
+
+This endpoint shows an existing order transaction.
+
+#### Request
+
+DELETE https://api.taxjar.com/v2/transactions/orders/:transaction_id
+
+#### Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+transaction_id | string | required | The unique identifier of the given order transaction.
+
+### List refund transactions
+
+> Request Path
+
+```
+GET https://api.taxjar.com/v2/transactions/refunds
+```
+
+> Request Body
+
+```json
+```
+
+> Response Body
+
+```json
+{
+  "refunds": [
+    "321",
+    "654"
+  ]
+}
+```
+
+This endpoint lists existing refund transactions.
+
+#### Request
+
+GET https://api.taxjar.com/v2/transactions/refunds
+
+#### Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+transaction_date | date | optional | The date the transactions were originally recorded.
+from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
+to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
+
+### Show an refund transaction
+
+> Request Path
+
+```
+GET https://api.taxjar.com/v2/transactions/refunds/321
+```
+
+> Request Body
+
+```json
+```
+
+> Response Body
+
+```json
+{
+  "refund": {
+    "transaction_id": "321",
+    "user_id": 10649,
+    "transaction_date": "2015-05-14T00:00:00Z",
+    "transaction_reference_id": "123",
+    "to_country": "US",
+    "to_zip": "90002",
+    "to_state": "CA",
+    "to_city": "LOS ANGELES",
+    "to_street": "123 Palm Grove Ln",
+    "amount": "17.95",
+    "shipping": "2.0",
+    "sales_tax": "0.95",
+    "line_items": [
+      {
+        "id": 1,
+        "quantity": 1,
+        "product_identifier": "12-34243-0",
+        "description": "Heavy Widget",
+        "unit_price": "15.0",
+        "discount": "0.0",
+        "sales_tax": "0.95"
+      }
+    ]
+  }
+}
+```
+
+This endpoint shows an existing refund transaction.
+
+#### Request
+
+GET https://api.taxjar.com/v2/transactions/refunds/:transaction_id
+
+#### Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+transaction_id | string | required | The unique identifier of the given refund transaction.
 
 ### Create an refund transaction
 
@@ -671,3 +916,60 @@ line_items[][description] | string | optional | The description of the line item
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
+
+### Delete an refund transaction
+
+> Request Path
+
+```
+DELETE https://api.taxjar.com/v2/transactions/refunds/321
+```
+
+> Request Body
+
+```json
+```
+
+> Response Body
+
+```json
+{
+  "refund": {
+    "transaction_id": "321",
+    "user_id": 10649,
+    "transaction_date": "2015-05-14T00:00:00Z",
+    "transaction_reference_id": "123",
+    "to_country": "US",
+    "to_zip": "90002",
+    "to_state": "CA",
+    "to_city": "LOS ANGELES",
+    "to_street": "123 Palm Grove Ln",
+    "amount": "17.95",
+    "shipping": "2.0",
+    "sales_tax": "0.95",
+    "line_items": [
+      {
+        "id": 1,
+        "quantity": 1,
+        "product_identifier": "12-34243-0",
+        "description": "Heavy Widget",
+        "unit_price": "15.0",
+        "discount": "0.0",
+        "sales_tax": "0.95"
+      }
+    ]
+  }
+}
+```
+
+This endpoint shows an existing refund transaction.
+
+#### Request
+
+DELETE https://api.taxjar.com/v2/transactions/refunds/:transaction_id
+
+#### Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+transaction_id | string | required | The unique identifier of the given refund transaction.
