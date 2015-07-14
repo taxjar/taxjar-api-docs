@@ -2,6 +2,8 @@
 title: TaxJar API Reference
 
 language_tabs:
+  - shell
+  - ruby
 
 toc_footers:
   - <a href='http://www.taxjar.com/api/docs/'>v1 Documentation</a>
@@ -22,14 +24,19 @@ You can view API request/response examples in the dark area to the right.
 
 > Example Request With Authentication Headers
 
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+```
+
 ```shell
 # Authorization headers must be passed for every request
-curl "api_endpoint_here"
+curl "API_ENDPOINT" \
   -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214c041""
 
 or 
 
-curl "api_endpoint_here"
+curl "API_ENDPOINT" \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041"
 ```
 
@@ -69,6 +76,19 @@ We will be expanding support for additional, less common categories over time. I
 GET https://api.taxjar.com/v2/categories
 ```
 
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+
+categories = client.categories
+```
+
+```shell
+curl https://api.taxjar.com/v2/categories \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041"
+```
 
 > Response Body
 
@@ -138,6 +158,20 @@ GET https://api.taxjar.com/v2/rates/90002
 }
 ```
 
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+
+rates = client.rates_for_location('90002')
+```
+
+```shell
+curl https://api.taxjar.com/v2/rates/90002 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041"
+```
+
 > Response Body
 
 ```json
@@ -202,6 +236,43 @@ POST https://api.taxjar.com/v2/taxes
     }
   ]
 }
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+
+order = client.tax_for_order({
+  :to_country => 'US',
+  :to_zip => '90002',
+  :to_city => 'Los Angeles',
+  :from_country => 'US',
+  :from_zip => '92093',
+  :from_city => 'San Diego',                
+  :amount => 16.50,
+  :shipping => 1.5,
+  :line_items => [{:quantity => 1,
+                   :product_identifier => '12-34243-9',
+                   :unit_price => 15.0,
+                   :product_tax_code => 31000}]
+})
+```
+
+```shell
+curl https://api.taxjar.com/v2/taxes \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041" \
+  -d to_country="US" \
+  -d to_zip="90002" \
+  -d from_country="US" \
+  -d from_zip="San Diego" \
+  -d amount=16.50 \
+  -d shipping=1.5 \
+  -d "line_items[0][quantity]=1 \
+  &line_items[0][product_identifier]='12-34234-9' \
+  &line_items[0][unit_price]=15.0 \
+  &line_items[0][product_tax_code]=31000"
 ```
 
 > Response Body
@@ -323,6 +394,49 @@ POST https://api.taxjar.com/v2/transactions/orders
 }
 ```
 
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+
+order = client.create_order({
+  :transaction_id => '123',
+  :transaction_date => '2015/05/14',
+  :to_country => 'US',
+  :to_zip => '90002',
+  :to_city => 'Los Angeles',
+  :to_street => '123 Palm Grove Ln',
+  :amount => 17.45,
+  :shipping => 1.5,
+  :sales_tax => 0.95,
+  :line_items => [{:quantity => 1,
+                   :product_identifier => '12-34243-9',
+                   :description => 'Fuzzy Widget',
+                   :unit_price => 15.0,
+                   :sales_tax => 0.95}]
+})
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/orders \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041" \
+  -d transaction_id="123" \
+  -d transaction_date="2015/05/14" \
+  -d to_country="US" \
+  -d to_zip="90002" \
+  -d to_city="Los Angeles" \
+  -d to_street="123 Palm Grove Ln" \
+  -d amount=17.45 \
+  -d shipping=1.5 \
+  -d sales_tax=0.95 \
+  -d "line_items[0][quantity]=1 \
+  &line_items[0][product_identifier]='12-34234-9' \
+  &line_items[0][description]='Fuzzy Widget' \
+  &line_items[0][unit_price]=15.0 \
+  &line_items[0][sales_tax]=0.95"
+```
+
 > Response Body
 
 ```json
@@ -412,6 +526,40 @@ PUT https://api.taxjar.com/v2/transactions/orders/123
     }
   ]
 }
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+
+order = client.update_order({
+  :transaction_id => '123',
+  :amount => 17.45,
+  :shipping => 1.5,
+  :line_items => [{:quantity => 1,
+                   :product_identifier => '12-34243-0',
+                   :description => 'Heavy Widget',
+                   :unit_price => 15.0,
+                   :discount => 0.0,
+                   :sales_tax => 0.95}]
+})
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/orders/123 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041" \
+  -d transaction_id="123" \
+  -d amount=17.45 \
+  -d shipping=1.5 \
+  -d "line_items[0][quantity]=1 \
+  &line_items[0][product_identifier]='12-34234-0' \
+  &line_items[0][description]='Heavy Widget' \
+  &line_items[0][unit_price]=15.0 \
+  &line_items[0][discount]=0.0 \
+  &line_items[0][sales_tax]=0.95" \
+  -X PUT
 ```
 
 > Response Body
@@ -511,7 +659,51 @@ POST https://api.taxjar.com/v2/transactions/refunds
     }
   ]
 }
+```
 
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+
+order = client.create_refund({
+  :transaction_id => '123',
+  :transaction_date => '2015/05/14',
+  :transaction_reference_id => '123',
+  :to_country => 'US',
+  :to_zip => '90002',
+  :to_city => 'Los Angeles',
+  :to_street => '123 Palm Grove Ln',
+  :amount => 17.45,
+  :shipping => 1.5,
+  :sales_tax => 0.95,
+  :line_items => [{:quantity => 1,
+                   :product_identifier => '12-34243-9',
+                   :description => 'Fuzzy Widget',
+                   :unit_price => 15.0,
+                   :sales_tax => 0.95}]
+})
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/refunds \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041" \
+  -d transaction_id="123" \
+  -d transaction_date="2015/05/14" \
+  -d transaction_reference_id="123" \
+  -d to_country="US" \
+  -d to_zip="90002" \
+  -d to_city="Los Angeles" \
+  -d to_street="123 Palm Grove Ln" \
+  -d amount=17.45 \
+  -d shipping=1.5 \
+  -d sales_tax=0.95 \
+  -d "line_items[0][quantity]=1 \
+  &line_items[0][product_identifier]='12-34234-9' \
+  &line_items[0][description]='Fuzzy Widget' \
+  &line_items[0][unit_price]=15.0 \
+  &line_items[0][sales_tax]=0.95"
 ```
 
 > Response Body
@@ -604,6 +796,40 @@ PUT https://api.taxjar.com/v2/transactions/refunds/321
     }
   ]
 }
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+
+order = client.update_refund({
+  :transaction_id => '321',
+  :amount => 17.95,
+  :shipping => 2.0,
+  :sales_tax => 0.95,
+  :line_items => [{:quantity => 1,
+                   :product_identifier => '12-34243-0',
+                   :description => 'Heavy Widget',
+                   :unit_price => 15.0,
+                   :sales_tax => 0.95}]
+})
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/refunds/321 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041" \
+  -d transaction_id="321" \
+  -d amount=17.95 \
+  -d shipping=2.0 \
+  -d sales_tax=0.95 \
+  -d "line_items[0][quantity]=1 \
+  &line_items[0][product_identifier]='12-34234-0' \
+  &line_items[0][description]='Heavy Widget' \
+  &line_items[0][unit_price]=15.0 \
+  &line_items[0][sales_tax]=0.95" \
+  -X PUT
 ```
 
 > Response Body
