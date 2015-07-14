@@ -4,6 +4,7 @@ title: TaxJar API Reference
 language_tabs:
   - shell
   - ruby
+  - php
 
 toc_footers:
   - <a href='http://www.taxjar.com/api/docs/'>v1 Documentation</a>
@@ -32,6 +33,10 @@ Before getting started, you'll need to [sign up for TaxJar](https://app.taxjar.c
 ```ruby
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 ```
 
 ```shell
@@ -86,6 +91,12 @@ require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 categories = client.categories
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$categories = $taxjar->categories();
 ```
 
 ```shell
@@ -168,6 +179,15 @@ require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 rates = client.rates_for_location('90002')
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$rates = $taxjar->ratesForLocation(90002, [
+  'city' => 'LOS ANGELES',
+  'country' => 'US'
+]);
 ```
 
 ```shell
@@ -261,6 +281,21 @@ order = client.tax_for_order({
                    :unit_price => 15.0,
                    :product_tax_code => 31000}]
 })
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order_taxes = $taxjar->taxForOrder([
+  'from_country' => 'US',
+  'from_zip' => '07001',
+  'from_state' => 'NJ',
+  'to_country' => 'US',
+  'to_zip' => '07446',
+  'to_state' => 'NJ',
+  'amount' => 16.50,
+  'shipping' => 1.5
+]);
 ```
 
 ```shell
@@ -421,6 +456,32 @@ order = client.create_order({
 })
 ```
 
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order = $taxjar->createOrder([
+  'transaction_id' => '123',
+  'transaction_date' => '2015/05/14',
+  'to_country' => 'US',
+  'to_zip' => '90002',
+  'to_state' => 'CA',
+  'to_city' => 'Los Angeles',
+  'to_street' => '123 Palm Grove Ln',
+  'amount' => 17.45,
+  'shipping' => 1.5,
+  'sales_tax' => 0.95,
+  'line_items' => [
+    [
+      'quantity' => 1,
+      'product_identifier' => '12-34243-9',
+      'description' => 'Fuzzy Widget',
+      'unit_price' => 15.0,
+      'sales_tax' => 0.95
+    ]
+  ]
+]);
+```
+
 ```shell
 curl https://api.taxjar.com/v2/transactions/orders \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -548,6 +609,26 @@ order = client.update_order({
                    :discount => 0.0,
                    :sales_tax => 0.95}]
 })
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order = $taxjar->updateOrder([
+  'transaction_id' => '123',
+  'amount' => 17.95,
+  'shipping' => 2.0,
+  'line_items' => [
+    [
+      'quantity' => 1,
+      'product_identifier' => '12-34243-0',
+      'description' => 'Heavy Widget',
+      'unit_price' => 15.0,
+      'discount' => 0.0,
+      'sales_tax' => 0.95
+    ]
+  ]
+]);
 ```
 
 ```shell
@@ -689,6 +770,33 @@ order = client.create_refund({
 })
 ```
 
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$refund = $taxjar->createRefund([
+  'transaction_id' => '321',
+  'transaction_date' => '2015/05/14',
+  'transaction_reference_id' => '123',
+  'to_country' => 'US',
+  'to_zip' => '90002',
+  'to_state' => 'CA',
+  'to_city' => 'Los Angeles',
+  'to_street' => '123 Palm Grove Ln',
+  'amount' => 17.45,
+  'shipping' => 1.5,
+  'sales_tax' => 0.95,
+  'line_items' => [
+    [
+      'quantity' => 1,
+      'product_identifier' => '12-34243-9',
+      'description' => 'Fuzzy Widget',
+      'unit_price' => 15.0,
+      'sales_tax' => 0.95
+    ]
+  ]
+]);
+```
+
 ```shell
 curl https://api.taxjar.com/v2/transactions/refunds \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -818,6 +926,25 @@ order = client.update_refund({
                    :unit_price => 15.0,
                    :sales_tax => 0.95}]
 })
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$refund = $taxjar->updateRefund([
+  'transaction_id' => '321',
+  'amount' => 17.95,
+  'shipping' => 2.0,
+  'line_items' => [
+    [
+      'quantity' => 1,
+      'product_identifier' => '12-34243-0',
+      'description' => 'Heavy Widget',
+      'unit_price' => 15.0,
+      'sales_tax' => 0.95
+    ]
+  ]
+]);
 ```
 
 ```shell
