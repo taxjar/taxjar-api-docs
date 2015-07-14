@@ -16,9 +16,14 @@ search: false
 
 # Introduction
 
-Welcome to the TaxJar API! You can use our API to access TaxJar API endpoints, which can get information on sales tax rates, categories or upload transactions.
+Welcome to the TaxJar Sales Tax API! You can use our API to get information on sales tax rates, categories or upload transactions.
 
-You can view API request/response examples in the dark area to the right.
+We currently provide API clients for the following languages:
+
+- [Ruby Sales Tax API](https://github.com/taxjar/taxjar-ruby) *via RubyGems as `taxjar-ruby`*
+- [PHP Sales Tax API](https://github.com/taxjar/taxjar-php) *via Composer as `taxjar/taxjar-php`*
+
+Before getting started, you'll need to [sign up for TaxJar](https://app.taxjar.com/api_sign_up/plus/) and get an API key. If you have any questions or would like to request support for a new client language, feel free to [contact us](mailto:support@taxjar.com).
 
 # Authentication
 
