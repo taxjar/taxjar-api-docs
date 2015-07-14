@@ -31,41 +31,39 @@ Before getting started, you'll need to [sign up for TaxJar](https://app.taxjar.c
 
 ```ruby
 require "taxjar"
-client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 ```
 
 ```shell
 # Authorization headers must be passed for every request
 curl "API_ENDPOINT" \
-  -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214c041""
+  -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214""
 
 or 
 
 curl "API_ENDPOINT" \
-  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041"
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
-> Make sure to replace `9e0cd62a22f451701f29c3bde214c041` with your API key.
+> Make sure to replace `9e0cd62a22f451701f29c3bde214` with your API key.
 
-TaxJar uses API keys to allow access to the API. You can register a new TaxJar API key at our [developer portal](http://taxjar.com/developers).
+TaxJar uses API keys to allow access to the API. If you're new to TaxJar, you'll need to [sign up for an account](https://app.taxjar.com/api_sign_up/plus/) to get your API key. Otherwise, [log in](https://app.taxjar.com) and go to *Account > API Access* to generate a new API token.
 
-TaxJar expects for the API key to be included in all API requests to the server in a header that looks like the following:
+TaxJar expects the API key to be included in all API requests to the server using a header like the following:
 
-`Authorization: Token token="9e0cd62a22f451701f29c3bde214c041"`
+`Authorization: Token token="9e0cd62a22f451701f29c3bde214"`
 
 or
 
-`Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041`
+`Authorization: Bearer 9e0cd62a22f451701f29c3bde214`
 
 <aside class="notice">
-You must replace <code>9e0cd62a22f451701f29c3bde214c041</code> with your personal API key.
+You must replace <code>9e0cd62a22f451701f29c3bde214</code> with your personal API key.
 </aside>
 
 # Sales Tax API
 
-The TaxJar API endpoints provide for detailed sales tax rates and calculations. It also supports extended reporting and filing capabilities for TaxJar users.
-
-The details of all API endpoints follow:
+TaxJar API endpoints provide detailed sales tax rates and calculations. They also support extended reporting and filing capabilities for TaxJar users.
 
 ## Categories
 
@@ -85,14 +83,14 @@ GET https://api.taxjar.com/v2/categories
 
 ```ruby
 require "taxjar"
-client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 categories = client.categories
 ```
 
 ```shell
 curl https://api.taxjar.com/v2/categories \
-  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041"
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
 > Response Body
@@ -167,14 +165,14 @@ GET https://api.taxjar.com/v2/rates/90002
 
 ```ruby
 require "taxjar"
-client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 rates = client.rates_for_location('90002')
 ```
 
 ```shell
 curl https://api.taxjar.com/v2/rates/90002 \
-  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041"
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
 > Response Body
@@ -247,7 +245,7 @@ POST https://api.taxjar.com/v2/taxes
 
 ```ruby
 require "taxjar"
-client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 order = client.tax_for_order({
   :to_country => 'US',
@@ -267,7 +265,7 @@ order = client.tax_for_order({
 
 ```shell
 curl https://api.taxjar.com/v2/taxes \
-  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041" \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d to_country="US" \
   -d to_zip="90002" \
   -d from_country="US" \
@@ -403,7 +401,7 @@ POST https://api.taxjar.com/v2/transactions/orders
 
 ```ruby
 require "taxjar"
-client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 order = client.create_order({
   :transaction_id => '123',
@@ -425,7 +423,7 @@ order = client.create_order({
 
 ```shell
 curl https://api.taxjar.com/v2/transactions/orders \
-  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041" \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d transaction_id="123" \
   -d transaction_date="2015/05/14" \
   -d to_country="US" \
@@ -537,7 +535,7 @@ PUT https://api.taxjar.com/v2/transactions/orders/123
 
 ```ruby
 require "taxjar"
-client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 order = client.update_order({
   :transaction_id => '123',
@@ -554,7 +552,7 @@ order = client.update_order({
 
 ```shell
 curl https://api.taxjar.com/v2/transactions/orders/123 \
-  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041" \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d transaction_id="123" \
   -d amount=17.45 \
   -d shipping=1.5 \
@@ -670,7 +668,7 @@ POST https://api.taxjar.com/v2/transactions/refunds
 
 ```ruby
 require "taxjar"
-client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 order = client.create_refund({
   :transaction_id => '123',
@@ -693,7 +691,7 @@ order = client.create_refund({
 
 ```shell
 curl https://api.taxjar.com/v2/transactions/refunds \
-  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041" \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d transaction_id="123" \
   -d transaction_date="2015/05/14" \
   -d transaction_reference_id="123" \
@@ -807,7 +805,7 @@ PUT https://api.taxjar.com/v2/transactions/refunds/321
 
 ```ruby
 require "taxjar"
-client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214c041")
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 order = client.update_refund({
   :transaction_id => '321',
@@ -824,7 +822,7 @@ order = client.update_refund({
 
 ```shell
 curl https://api.taxjar.com/v2/transactions/refunds/321 \
-  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041" \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d transaction_id="321" \
   -d amount=17.95 \
   -d shipping=2.0 \
