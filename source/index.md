@@ -271,6 +271,7 @@ order = client.tax_for_order({
   :to_country => 'US',
   :to_zip => '90002',
   :to_city => 'Los Angeles',
+  :to_state => 'CA',
   :from_country => 'US',
   :from_zip => '92093',
   :from_city => 'San Diego',                
