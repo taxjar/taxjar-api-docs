@@ -303,14 +303,15 @@ curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d to_country="US" \
   -d to_zip="90002" \
+  -d to_state="CA" \
   -d from_country="US" \
   -d from_zip="San Diego" \
   -d amount=16.50 \
   -d shipping=1.5 \
-  -d "line_items[0][quantity]=1 \
-  &line_items[0][product_identifier]='12-34234-9' \
-  &line_items[0][unit_price]=15.0 \
-  &line_items[0][product_tax_code]=31000"
+  -d "line_items[][quantity]=1 \
+  &line_items[][product_identifier]='12-34234-9' \
+  &line_items[][unit_price]=15.0 \
+  &line_items[][product_tax_code]=31000"
 ```
 
 > Response Body
@@ -443,6 +444,7 @@ order = client.create_order({
   :transaction_date => '2015/05/14',
   :to_country => 'US',
   :to_zip => '90002',
+  :to_state => 'CA',
   :to_city => 'Los Angeles',
   :to_street => '123 Palm Grove Ln',
   :amount => 17.45,
@@ -489,16 +491,17 @@ curl https://api.taxjar.com/v2/transactions/orders \
   -d transaction_date="2015/05/14" \
   -d to_country="US" \
   -d to_zip="90002" \
+  -d to_state="CA" \
   -d to_city="Los Angeles" \
   -d to_street="123 Palm Grove Ln" \
   -d amount=17.45 \
   -d shipping=1.5 \
   -d sales_tax=0.95 \
-  -d "line_items[0][quantity]=1 \
-  &line_items[0][product_identifier]='12-34234-9' \
-  &line_items[0][description]='Fuzzy Widget' \
-  &line_items[0][unit_price]=15.0 \
-  &line_items[0][sales_tax]=0.95"
+  -d "line_items[][quantity]=1 \
+  &line_items[][product_identifier]='12-34234-9' \
+  &line_items[][description]='Fuzzy Widget' \
+  &line_items[][unit_price]=15.0 \
+  &line_items[][sales_tax]=0.95"
 ```
 
 > Response Body
@@ -637,12 +640,12 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   -d transaction_id="123" \
   -d amount=17.45 \
   -d shipping=1.5 \
-  -d "line_items[0][quantity]=1 \
-  &line_items[0][product_identifier]='12-34234-0' \
-  &line_items[0][description]='Heavy Widget' \
-  &line_items[0][unit_price]=15.0 \
-  &line_items[0][discount]=0.0 \
-  &line_items[0][sales_tax]=0.95" \
+  -d "line_items[][quantity]=1 \
+  &line_items[][product_identifier]='12-34234-0' \
+  &line_items[][description]='Heavy Widget' \
+  &line_items[][unit_price]=15.0 \
+  &line_items[][discount]=0.0 \
+  &line_items[][sales_tax]=0.95" \
   -X PUT
 ```
 
@@ -757,6 +760,7 @@ order = client.create_refund({
   :transaction_reference_id => '123',
   :to_country => 'US',
   :to_zip => '90002',
+  :to_state => 'CA',
   :to_city => 'Los Angeles',
   :to_street => '123 Palm Grove Ln',
   :amount => 17.45,
@@ -805,16 +809,17 @@ curl https://api.taxjar.com/v2/transactions/refunds \
   -d transaction_reference_id="123" \
   -d to_country="US" \
   -d to_zip="90002" \
+  -d to_state="CA" \
   -d to_city="Los Angeles" \
   -d to_street="123 Palm Grove Ln" \
   -d amount=17.45 \
   -d shipping=1.5 \
   -d sales_tax=0.95 \
-  -d "line_items[0][quantity]=1 \
-  &line_items[0][product_identifier]='12-34234-9' \
-  &line_items[0][description]='Fuzzy Widget' \
-  &line_items[0][unit_price]=15.0 \
-  &line_items[0][sales_tax]=0.95"
+  -d "line_items[][quantity]=1 \
+  &line_items[][product_identifier]='12-34234-9' \
+  &line_items[][description]='Fuzzy Widget' \
+  &line_items[][unit_price]=15.0 \
+  &line_items[][sales_tax]=0.95"
 ```
 
 > Response Body
@@ -954,11 +959,11 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -d amount=17.95 \
   -d shipping=2.0 \
   -d sales_tax=0.95 \
-  -d "line_items[0][quantity]=1 \
-  &line_items[0][product_identifier]='12-34234-0' \
-  &line_items[0][description]='Heavy Widget' \
-  &line_items[0][unit_price]=15.0 \
-  &line_items[0][sales_tax]=0.95" \
+  -d "line_items[][quantity]=1 \
+  &line_items[][product_identifier]='12-34234-0' \
+  &line_items[][description]='Heavy Widget' \
+  &line_items[][unit_price]=15.0 \
+  &line_items[][sales_tax]=0.95" \
   -X PUT
 ```
 
