@@ -2,6 +2,10 @@
 title: TaxJar API Reference
 
 language_tabs:
+  - shell
+  - ruby
+  - php
+  - javascript
 
 toc_footers:
   - <a href='http://www.taxjar.com/api/docs/'>v1 Documentation</a>
@@ -14,46 +18,63 @@ search: false
 
 # Introduction
 
-Welcome to the TaxJar API! You can use our API to access TaxJar API endpoints, which can get information on sales tax rates, categories or upload transactions.
+Welcome to the TaxJar Sales Tax API! You can use our API to get information on sales tax rates, categories or upload transactions.
 
-You can view API request/response examples in the dark area to the right.
+We currently provide API clients for the following languages:
+
+- [Ruby Sales Tax API](https://github.com/taxjar/taxjar-ruby) *via RubyGems as `taxjar-ruby`*
+- [PHP Sales Tax API](https://github.com/taxjar/taxjar-php) *via Composer as `taxjar/taxjar-php`*
+- [Node Sales Tax API](https://github.com/taxjar/taxjar-node) *via NPM as `taxjar`*
+
+Before getting started, you'll need to [sign up for TaxJar](https://app.taxjar.com/api_sign_up/plus/) and get an API key. If you have any questions or would like to request support for a new client language, feel free to [contact us](mailto:support@taxjar.com).
 
 # Authentication
 
 > Example Request With Authentication Headers
 
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+```
+
 ```shell
 # Authorization headers must be passed for every request
-curl "api_endpoint_here"
-  -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214c041""
+curl "API_ENDPOINT" \
+  -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214""
 
 or 
 
-curl "api_endpoint_here"
-  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041"
+curl "API_ENDPOINT" \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
-> Make sure to replace `9e0cd62a22f451701f29c3bde214c041` with your API key.
+> Make sure to replace `9e0cd62a22f451701f29c3bde214` with your API key.
 
-TaxJar uses API keys to allow access to the API. You can register a new TaxJar API key at our [developer portal](http://taxjar.com/developers).
+TaxJar uses API keys to allow access to the API. If you're new to TaxJar, you'll need to [sign up for an account](https://app.taxjar.com/api_sign_up/plus/) to get your API key. Otherwise, [log in](https://app.taxjar.com) and go to *Account > API Access* to generate a new API token.
 
-TaxJar expects for the API key to be included in all API requests to the server in a header that looks like the following:
+TaxJar expects the API key to be included in all API requests to the server using a header like the following:
 
-`Authorization: Token token="9e0cd62a22f451701f29c3bde214c041"`
+`Authorization: Token token="9e0cd62a22f451701f29c3bde214"`
 
 or
 
-`Authorization: Bearer 9e0cd62a22f451701f29c3bde214c041`
+`Authorization: Bearer 9e0cd62a22f451701f29c3bde214`
 
 <aside class="notice">
-You must replace <code>9e0cd62a22f451701f29c3bde214c041</code> with your personal API key.
+You must replace <code>9e0cd62a22f451701f29c3bde214</code> with your personal API key.
 </aside>
 
 # Sales Tax API
 
-The TaxJar API endpoints provide for detailed sales tax rates and calculations. It also supports extended reporting and filing capabilities for TaxJar users.
-
-The details of all API endpoints follow:
+TaxJar API endpoints provide detailed sales tax rates and calculations. They also support extended reporting and filing capabilities for TaxJar users.
 
 ## Categories
 
@@ -69,6 +90,33 @@ We will be expanding support for additional, less common categories over time. I
 GET https://api.taxjar.com/v2/categories
 ```
 
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+categories = client.categories
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.categories().then(function(res) {
+  res.categories; // Array of categories
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$categories = $taxjar->categories();
+```
+
+```shell
+curl https://api.taxjar.com/v2/categories \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
+```
 
 > Response Body
 
@@ -138,6 +186,37 @@ GET https://api.taxjar.com/v2/rates/90002
 }
 ```
 
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+rates = client.rates_for_location('90002')
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.ratesForLocation(90002).then(function(res) {
+  res.rate; // Rate object
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$rates = $taxjar->ratesForLocation(90002, [
+  'city' => 'LOS ANGELES',
+  'country' => 'US'
+]);
+```
+
+```shell
+curl https://api.taxjar.com/v2/rates/90002 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
+```
+
 > Response Body
 
 ```json
@@ -202,6 +281,78 @@ POST https://api.taxjar.com/v2/taxes
     }
   ]
 }
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.tax_for_order({
+  :to_country => 'US',
+  :to_zip => '90002',
+  :to_city => 'Los Angeles',
+  :to_state => 'CA',
+  :from_country => 'US',
+  :from_zip => '92093',
+  :from_city => 'San Diego',                
+  :amount => 16.50,
+  :shipping => 1.5,
+  :line_items => [{:quantity => 1,
+                   :product_identifier => '12-34243-9',
+                   :unit_price => 15.0,
+                   :product_tax_code => 31000}]
+})
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.taxForOrder({
+  'from_country': 'US',
+  'from_zip': '07001',
+  'from_state': 'NJ',
+  'to_country': 'US',
+  'to_zip': '07446',
+  'to_state': 'NJ',
+  'amount': 16.50,
+  'shipping': 1.5
+}).then(function(res) {
+  res.tax; // Tax object
+  res.tax.amount_to_collect; // Amount to collect
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order_taxes = $taxjar->taxForOrder([
+  'from_country' => 'US',
+  'from_zip' => '07001',
+  'from_state' => 'NJ',
+  'to_country' => 'US',
+  'to_zip' => '07446',
+  'to_state' => 'NJ',
+  'amount' => 16.50,
+  'shipping' => 1.5
+]);
+```
+
+```shell
+curl https://api.taxjar.com/v2/taxes \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d to_country="US" \
+  -d to_zip="90002" \
+  -d to_state="CA" \
+  -d from_country="US" \
+  -d from_zip="San Diego" \
+  -d amount=16.50 \
+  -d shipping=1.5 \
+  -d "line_items[][quantity]=1 \
+  &line_items[][product_identifier]='12-34234-9' \
+  &line_items[][unit_price]=15.0 \
+  &line_items[][product_tax_code]=31000"
 ```
 
 > Response Body
@@ -323,6 +474,105 @@ POST https://api.taxjar.com/v2/transactions/orders
 }
 ```
 
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.create_order({
+  :transaction_id => '123',
+  :transaction_date => '2015/05/14',
+  :to_country => 'US',
+  :to_zip => '90002',
+  :to_state => 'CA',
+  :to_city => 'Los Angeles',
+  :to_street => '123 Palm Grove Ln',
+  :amount => 17.45,
+  :shipping => 1.5,
+  :sales_tax => 0.95,
+  :line_items => [{:quantity => 1,
+                   :product_identifier => '12-34243-9',
+                   :description => 'Fuzzy Widget',
+                   :unit_price => 15.0,
+                   :sales_tax => 0.95}]
+})
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.createOrder({
+  'transaction_id': '123',
+  'transaction_date': '2015/05/14',
+  'to_country': 'US',
+  'to_zip': '90002',
+  'to_state': 'CA',
+  'to_city': 'Los Angeles',
+  'to_street': '123 Palm Grove Ln',
+  'amount': 17.45,
+  'shipping': 1.5,
+  'sales_tax': 0.95,
+  'line_items': [
+    {
+      'quantity': 1,
+      'product_identifier': '12-34243-9',
+      'description': 'Fuzzy Widget',
+      'unit_price': 15.0,
+      'sales_tax': 0.95
+    }
+  ]
+}).then(function(res) {
+  res.order; // Order object
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order = $taxjar->createOrder([
+  'transaction_id' => '123',
+  'transaction_date' => '2015/05/14',
+  'to_country' => 'US',
+  'to_zip' => '90002',
+  'to_state' => 'CA',
+  'to_city' => 'Los Angeles',
+  'to_street' => '123 Palm Grove Ln',
+  'amount' => 17.45,
+  'shipping' => 1.5,
+  'sales_tax' => 0.95,
+  'line_items' => [
+    [
+      'quantity' => 1,
+      'product_identifier' => '12-34243-9',
+      'description' => 'Fuzzy Widget',
+      'unit_price' => 15.0,
+      'sales_tax' => 0.95
+    ]
+  ]
+]);
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/orders \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d transaction_id="123" \
+  -d transaction_date="2015/05/14" \
+  -d to_country="US" \
+  -d to_zip="90002" \
+  -d to_state="CA" \
+  -d to_city="Los Angeles" \
+  -d to_street="123 Palm Grove Ln" \
+  -d amount=17.45 \
+  -d shipping=1.5 \
+  -d sales_tax=0.95 \
+  -d "line_items[][quantity]=1 \
+  &line_items[][product_identifier]='12-34234-9' \
+  &line_items[][description]='Fuzzy Widget' \
+  &line_items[][unit_price]=15.0 \
+  &line_items[][sales_tax]=0.95"
+```
+
 > Response Body
 
 ```json
@@ -412,6 +662,82 @@ PUT https://api.taxjar.com/v2/transactions/orders/123
     }
   ]
 }
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.update_order({
+  :transaction_id => '123',
+  :amount => 17.45,
+  :shipping => 1.5,
+  :line_items => [{:quantity => 1,
+                   :product_identifier => '12-34243-0',
+                   :description => 'Heavy Widget',
+                   :unit_price => 15.0,
+                   :discount => 0.0,
+                   :sales_tax => 0.95}]
+})
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.updateOrder({
+  'transaction_id': '123',
+  'amount': 17.45,
+  'shipping': 1.5,
+  'line_items': [
+    {
+      'quantity': 1,
+      'product_identifier': '12-34243-0',
+      'description': 'Heavy Widget',
+      'unit_price': 15.0,
+      'discount': 0.0,
+      'sales_tax': 0.95
+    }
+  ]
+}).then(function(res) {
+  res.order; // Order object
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order = $taxjar->updateOrder([
+  'transaction_id' => '123',
+  'amount' => 17.95,
+  'shipping' => 2.0,
+  'line_items' => [
+    [
+      'quantity' => 1,
+      'product_identifier' => '12-34243-0',
+      'description' => 'Heavy Widget',
+      'unit_price' => 15.0,
+      'discount' => 0.0,
+      'sales_tax' => 0.95
+    ]
+  ]
+]);
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/orders/123 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d transaction_id="123" \
+  -d amount=17.45 \
+  -d shipping=1.5 \
+  -d "line_items[][quantity]=1 \
+  &line_items[][product_identifier]='12-34234-0' \
+  &line_items[][description]='Heavy Widget' \
+  &line_items[][unit_price]=15.0 \
+  &line_items[][discount]=0.0 \
+  &line_items[][sales_tax]=0.95" \
+  -X PUT
 ```
 
 > Response Body
@@ -511,7 +837,109 @@ POST https://api.taxjar.com/v2/transactions/refunds
     }
   ]
 }
+```
 
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.create_refund({
+  :transaction_id => '123',
+  :transaction_date => '2015/05/14',
+  :transaction_reference_id => '123',
+  :to_country => 'US',
+  :to_zip => '90002',
+  :to_state => 'CA',
+  :to_city => 'Los Angeles',
+  :to_street => '123 Palm Grove Ln',
+  :amount => 17.45,
+  :shipping => 1.5,
+  :sales_tax => 0.95,
+  :line_items => [{:quantity => 1,
+                   :product_identifier => '12-34243-9',
+                   :description => 'Fuzzy Widget',
+                   :unit_price => 15.0,
+                   :sales_tax => 0.95}]
+})
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.createRefund({
+  'transaction_id': '123',
+  'transaction_date': '2015/05/14',
+  'transaction_reference_id': '123',
+  'to_country': 'US',
+  'to_zip': '90002',
+  'to_state': 'CA',
+  'to_city': 'Los Angeles',
+  'to_street': '123 Palm Grove Ln',
+  'amount': 17.45,
+  'shipping': 1.5,
+  'sales_tax': 0.95,
+  'line_items': [
+    {
+      'quantity': 1,
+      'product_identifier': '12-34243-9',
+      'description': 'Fuzzy Widget',
+      'unit_price': 15.0,
+      'sales_tax': 0.95
+    }
+  ]
+}).then(function(res) {
+  res.refund; // Refund object
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$refund = $taxjar->createRefund([
+  'transaction_id' => '321',
+  'transaction_date' => '2015/05/14',
+  'transaction_reference_id' => '123',
+  'to_country' => 'US',
+  'to_zip' => '90002',
+  'to_state' => 'CA',
+  'to_city' => 'Los Angeles',
+  'to_street' => '123 Palm Grove Ln',
+  'amount' => 17.45,
+  'shipping' => 1.5,
+  'sales_tax' => 0.95,
+  'line_items' => [
+    [
+      'quantity' => 1,
+      'product_identifier' => '12-34243-9',
+      'description' => 'Fuzzy Widget',
+      'unit_price' => 15.0,
+      'sales_tax' => 0.95
+    ]
+  ]
+]);
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/refunds \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d transaction_id="123" \
+  -d transaction_date="2015/05/14" \
+  -d transaction_reference_id="123" \
+  -d to_country="US" \
+  -d to_zip="90002" \
+  -d to_state="CA" \
+  -d to_city="Los Angeles" \
+  -d to_street="123 Palm Grove Ln" \
+  -d amount=17.45 \
+  -d shipping=1.5 \
+  -d sales_tax=0.95 \
+  -d "line_items[][quantity]=1 \
+  &line_items[][product_identifier]='12-34234-9' \
+  &line_items[][description]='Fuzzy Widget' \
+  &line_items[][unit_price]=15.0 \
+  &line_items[][sales_tax]=0.95"
 ```
 
 > Response Body
@@ -604,6 +1032,80 @@ PUT https://api.taxjar.com/v2/transactions/refunds/321
     }
   ]
 }
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.update_refund({
+  :transaction_id => '321',
+  :amount => 17.95,
+  :shipping => 2.0,
+  :sales_tax => 0.95,
+  :line_items => [{:quantity => 1,
+                   :product_identifier => '12-34243-0',
+                   :description => 'Heavy Widget',
+                   :unit_price => 15.0,
+                   :sales_tax => 0.95}]
+})
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.updateRefund({
+  'transaction_id': '123',
+  'amount': 17.95,
+  'shipping': 2.0,
+  'line_items': [
+    {
+      'quantity': 1,
+      'product_identifier': '12-34243-0',
+      'description': 'Heavy Widget',
+      'unit_price': 15.0,
+      'sales_tax': 0.95
+    }
+  ]
+}).then(function(res) {
+  res.refund; // Refund object
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$refund = $taxjar->updateRefund([
+  'transaction_id' => '321',
+  'amount' => 17.95,
+  'shipping' => 2.0,
+  'line_items' => [
+    [
+      'quantity' => 1,
+      'product_identifier' => '12-34243-0',
+      'description' => 'Heavy Widget',
+      'unit_price' => 15.0,
+      'sales_tax' => 0.95
+    ]
+  ]
+]);
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/refunds/321 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d transaction_id="321" \
+  -d amount=17.95 \
+  -d shipping=2.0 \
+  -d sales_tax=0.95 \
+  -d "line_items[][quantity]=1 \
+  &line_items[][product_identifier]='12-34234-0' \
+  &line_items[][description]='Heavy Widget' \
+  &line_items[][unit_price]=15.0 \
+  &line_items[][sales_tax]=0.95" \
+  -X PUT
 ```
 
 > Response Body
