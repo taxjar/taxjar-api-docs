@@ -451,6 +451,35 @@ GET https://api.taxjar.com/v2/transactions/orders
 > Request Body
 
 ```json
+{}
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+orders = client.orders
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.orders().then(function(res) {
+  res.orders; // Array of orders
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$orders = $taxjar->orders();
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/orders \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
 > Response Body
@@ -489,6 +518,35 @@ GET https://api.taxjar.com/v2/transactions/orders/123
 > Request Body
 
 ```json
+{}
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.orders(123)
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.orders(123).then(function(res) {
+  res.order;
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order = $taxjar->orders(123);
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/orders/123 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
 > Response Body
@@ -911,6 +969,35 @@ DELETE https://api.taxjar.com/v2/transactions/orders/123
 ```json
 ```
 
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+client.delete_order(123)
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.deleteOrder(123).then(function(res) {
+
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$taxjar->delete_order(123);
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/orders/123 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
+  -X DELETE
+```
+
 > Response Body
 
 ```json
@@ -965,6 +1052,35 @@ GET https://api.taxjar.com/v2/transactions/refunds
 > Request Body
 
 ```json
+{}
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+refunds = client.refunds
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.refunds().then(function(res) {
+  res.refunds; // Array of refunds
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$refunds = $taxjar->refunds();
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/refunds \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
 > Response Body
@@ -1003,6 +1119,35 @@ GET https://api.taxjar.com/v2/transactions/refunds/321
 > Request Body
 
 ```json
+{}
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+refund = client.refunds(321)
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.refunds(321).then(function(res) {
+  res.refund;
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$refund = $taxjar->refunds(321);
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/refunds/321 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
 > Response Body
@@ -1430,6 +1575,35 @@ DELETE https://api.taxjar.com/v2/transactions/refunds/321
 > Request Body
 
 ```json
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+client.delete_refund(321)
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.deleteRefund(321).then(function(res) {
+
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$taxjar->delete_refund(321);
+```
+
+```shell
+curl https://api.taxjar.com/v2/transactions/refunds/321 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
+  -X DELETE
 ```
 
 > Response Body
