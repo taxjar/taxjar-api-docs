@@ -451,7 +451,10 @@ GET https://api.taxjar.com/v2/transactions/orders
 > Request Body
 
 ```json
-{}
+{
+  "from_transaction_date": "2015/05/01",
+  "to_transaction_date": "2015/05/31"
+}
 ```
 
 > Request Example
@@ -460,13 +463,19 @@ GET https://api.taxjar.com/v2/transactions/orders
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
-orders = client.orders
+orders = client.orders({
+  :from_transaction_date => '2015/05/01',
+  :to_transaction_date => '2015/05/31'
+})
 ```
 
 ```javascript
 var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.orders().then(function(res) {
+taxjar.orders({
+  from_transaction_date: '2015/05/01',
+  to_transaction_date: '2015/05/31'
+}).then(function(res) {
   res.orders; // Array of orders
 });
 ```
@@ -474,12 +483,17 @@ taxjar.orders().then(function(res) {
 ```php?start_inline=1
 $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$orders = $taxjar->orders();
+$orders = $taxjar->orders([
+  'from_transaction_date' => '2015/05/01',
+  'to_transaction_date' => '2015/05/31'
+]);
 ```
 
 ```shell
 curl https://api.taxjar.com/v2/transactions/orders \
-  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d from_transaction_date="2015/05/01" \
+  -d to_transaction_date="2015/05/31"
 ```
 
 > Response Body
@@ -500,6 +514,8 @@ This endpoint lists existing order transactions.
 GET https://api.taxjar.com/v2/transactions/orders
 
 #### Parameters
+
+Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates.
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
@@ -1052,7 +1068,10 @@ GET https://api.taxjar.com/v2/transactions/refunds
 > Request Body
 
 ```json
-{}
+{
+  "from_transaction_date": "2015/05/01",
+  "to_transaction_date": "2015/05/31"
+}
 ```
 
 > Request Example
@@ -1061,13 +1080,19 @@ GET https://api.taxjar.com/v2/transactions/refunds
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
-refunds = client.refunds
+refunds = client.refunds({
+  :from_transaction_date => '2015/05/01',
+  :to_transaction_date => '2015/05/31'
+})
 ```
 
 ```javascript
 var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.refunds().then(function(res) {
+taxjar.refunds({
+  from_transaction_date: '2015/05/01',
+  to_transaction_date: '2015/05/31'
+}).then(function(res) {
   res.refunds; // Array of refunds
 });
 ```
@@ -1075,12 +1100,17 @@ taxjar.refunds().then(function(res) {
 ```php?start_inline=1
 $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$refunds = $taxjar->refunds();
+$refunds = $taxjar->refunds([
+  'from_transaction_date' => '2015/05/01',
+  'to_transaction_date' => '2015/05/31'
+]);
 ```
 
 ```shell
 curl https://api.taxjar.com/v2/transactions/refunds \
-  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d from_transaction_date="2015/05/01" \
+  -d to_transaction_date="2015/05/31"
 ```
 
 > Response Body
@@ -1101,6 +1131,8 @@ This endpoint lists existing refund transactions.
 GET https://api.taxjar.com/v2/transactions/refunds
 
 #### Parameters
+
+Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates.
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
