@@ -198,7 +198,7 @@ rates = client.rates_for_location('90002')
 ```javascript
 var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.ratesForLocation(90002).then(function(res) {
+taxjar.ratesForLocation('90002').then(function(res) {
   res.rate; // Rate object
 });
 ```
@@ -206,7 +206,7 @@ taxjar.ratesForLocation(90002).then(function(res) {
 ```php?start_inline=1
 $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$rates = $taxjar->ratesForLocation(90002, [
+$rates = $taxjar->ratesForLocation('90002', [
   'city' => 'LOS ANGELES',
   'country' => 'US'
 ]);
