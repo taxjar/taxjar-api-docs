@@ -531,12 +531,6 @@ to_transaction_date | date | optional | The end date of a range for which the tr
 GET https://api.taxjar.com/v2/transactions/orders/123
 ```
 
-> Request Body
-
-```json
-{}
-```
-
 > Request Example
 
 ```ruby
@@ -1146,12 +1140,6 @@ to_transaction_date | date | optional | The end date of a range for which the tr
 
 ```
 GET https://api.taxjar.com/v2/transactions/refunds/321
-```
-
-> Request Body
-
-```json
-{}
 ```
 
 > Request Example
