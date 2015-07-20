@@ -992,7 +992,7 @@ transaction_date | date | optional | The date the transactions were originally r
 from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
 to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
 
-### Show an refund transaction
+### Show a refund transaction
 
 > Request Path
 
@@ -1049,7 +1049,7 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | The unique identifier of the given refund transaction.
 
-### Create an refund transaction
+### Create a refund transaction
 
 > Request Path
 
@@ -1253,7 +1253,7 @@ line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
-### Update an refund transaction
+### Update a refund transaction
 
 > Request Path
 
@@ -1419,7 +1419,7 @@ line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
-### Delete an refund transaction
+### Delete a refund transaction
 
 > Request Path
 
