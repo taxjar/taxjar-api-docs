@@ -422,7 +422,7 @@ to_zip | string | required | The postal code where the order shipped to.
 to_state | string | required | The state where the order shipped to.
 to_city | string | optional | The city where the order shipped to.
 to_street | string | optional | The street address where the order shipped to.
-amount | long | required | The total amount of the order.
+amount | long | required | The total amount of the order, excluding shipping.
 shipping | long | required | The total amount of shipping for the order.
 nexus_addresses[][address_id] | long | optional | The unique identifier of the given nexus address.
 nexus_addresses[][country] | integer | optional | The ISO two country code of the country for the nexus address.
@@ -626,7 +626,7 @@ to_zip | string | required | The postal code where the order shipped to.
 to_state | string | required | The state where the order shipped to.
 to_city | string | optional | The city where the order shipped to.
 to_street | string | optional | The street address where the order shipped to.
-amount | long | required | The total amount of the order.
+amount | long | required | The total amount of the order, excluding shipping.
 shipping | long | required | The total amount of shipping for the order.
 sales_tax | long | required | The total amount of sales tax collected for the order.
 line_items[][id] | long | optional | The unique identifier of the given line item.
@@ -793,7 +793,7 @@ to_zip | string | optional | The postal code where the order shipped to.
 to_state | string | optional | The state where the order shipped to.
 to_city | string | optional | The city where the order shipped to.
 to_street | string | optional | The street address where the order shipped to.
-amount | long | optional | The total amount of the order.
+amount | long | optional | The total amount of the order, excluding shipping.
 shipping | long | optional | The total amount of shipping for the order.
 sales_tax | long | optional | The total amount of sales tax collected for the order.
 line_items[][id] | long | optional | The unique identifier of the given line item.
