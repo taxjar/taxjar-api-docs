@@ -84,9 +84,21 @@ We will be expanding support for additional, less common categories over time. I
 
 ### List tax categories
 
-> Request Path
+> Definition
 
+```ruby
+client.categories
 ```
+
+```javascript
+taxjar.categories();
+```
+
+```php?start_inline=1
+$taxjar->categories();
+```
+
+```shell
 GET https://api.taxjar.com/v2/categories
 ```
 
@@ -118,7 +130,7 @@ curl https://api.taxjar.com/v2/categories \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
-> Response Body
+> Response Example
 
 ```json
 {
@@ -172,18 +184,22 @@ GET https://api.taxjar.com/v2/categories
 
 ### Show tax rates for a location
 
-> Request Path
+> Definition
 
+```ruby
+client.rates_for_location
 ```
+
+```javascript
+taxjar.ratesForLocation();
+```
+
+```php?start_inline=1
+$taxjar->ratesForLocation();
+```
+
+```shell
 GET https://api.taxjar.com/v2/rates/90002
-```
-
-> Request Body
-
-```json
-{
-  "country": "US"
-}
 ```
 
 > Request Example
@@ -198,7 +214,7 @@ rates = client.rates_for_location('90002')
 ```javascript
 var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.ratesForLocation(90002).then(function(res) {
+taxjar.ratesForLocation('90002').then(function(res) {
   res.rate; // Rate object
 });
 ```
@@ -206,7 +222,7 @@ taxjar.ratesForLocation(90002).then(function(res) {
 ```php?start_inline=1
 $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$rates = $taxjar->ratesForLocation(90002, [
+$rates = $taxjar->ratesForLocation('90002', [
   'city' => 'LOS ANGELES',
   'country' => 'US'
 ]);
@@ -217,7 +233,7 @@ curl https://api.taxjar.com/v2/rates/90002 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
-> Response Body
+> Response Example
 
 ```json
 {
@@ -253,34 +269,22 @@ city | string | optional | The city for given location.
 
 ### Calculate sales tax for an order
 
-> Request Path
+> Definition
 
+```ruby
+client.tax_for_order
 ```
+
+```javascript
+taxjar.taxForOrder();
+```
+
+```php?start_inline=1
+$taxjar->taxForOrder();
+```
+
+```shell
 POST https://api.taxjar.com/v2/taxes
-```
-
-> Request Body
-
-```json
-{
-  "from_country": "US",
-  "from_zip": "07001",
-  "from_state": "NJ",
-  "to_country": "US",
-  "to_zip": "07446",
-  "to_state": "NJ",  
-  "amount": 16.50,
-  "shipping": 1.5,
-  "line_items": [
-    {
-      "line_item": {
-        "quantity": "1",
-        "unit_price": "15.0",
-        "product_tax_code": 20010
-      }
-    }
-  ]
-}
 ```
 
 > Request Example
@@ -355,7 +359,7 @@ curl https://api.taxjar.com/v2/taxes \
   &line_items[][product_tax_code]=31000"
 ```
 
-> Response Body
+> Response Example
 
 ```json
 {
@@ -442,19 +446,22 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 ### List order transactions
 
-> Request Path
+> Definition
 
+```ruby
+client.list_orders
 ```
+
+```javascript
+taxjar.listOrders();
+```
+
+```php?start_inline=1
+$taxjar->listOrders();
+```
+
+```shell
 GET https://api.taxjar.com/v2/transactions/orders
-```
-
-> Request Body
-
-```json
-{
-  "from_transaction_date": "2015/05/01",
-  "to_transaction_date": "2015/05/31"
-}
 ```
 
 > Request Example
@@ -463,7 +470,7 @@ GET https://api.taxjar.com/v2/transactions/orders
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
-orders = client.orders({
+orders = client.list_orders({
   :from_transaction_date => '2015/05/01',
   :to_transaction_date => '2015/05/31'
 })
@@ -472,7 +479,7 @@ orders = client.orders({
 ```javascript
 var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.orders({
+taxjar.listOrders({
   from_transaction_date: '2015/05/01',
   to_transaction_date: '2015/05/31'
 }).then(function(res) {
@@ -483,7 +490,7 @@ taxjar.orders({
 ```php?start_inline=1
 $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$orders = $taxjar->orders([
+$orders = $taxjar->listOrders([
   'from_transaction_date' => '2015/05/01',
   'to_transaction_date' => '2015/05/31'
 ]);
@@ -496,7 +503,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
   -d to_transaction_date="2015/05/31"
 ```
 
-> Response Body
+> Response Example
 
 ```json
 {
@@ -525,9 +532,21 @@ to_transaction_date | date | optional | The end date of a range for which the tr
 
 ### Show an order transaction
 
-> Request Path
+> Definition
 
+```ruby
+client.show_order
 ```
+
+```javascript
+taxjar.showOrder();
+```
+
+```php?start_inline=1
+$taxjar->showOrder();
+```
+
+```shell
 GET https://api.taxjar.com/v2/transactions/orders/123
 ```
 
@@ -537,13 +556,13 @@ GET https://api.taxjar.com/v2/transactions/orders/123
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
-order = client.orders(123)
+order = client.show_order(123)
 ```
 
 ```javascript
 var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.orders(123).then(function(res) {
+taxjar.showOrder(123).then(function(res) {
   res.order;
 });
 ```
@@ -551,7 +570,7 @@ taxjar.orders(123).then(function(res) {
 ```php?start_inline=1
 $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$order = $taxjar->orders(123);
+$order = $taxjar->showOrder(123);
 ```
 
 ```shell
@@ -559,7 +578,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
-> Response Body
+> Response Example
 
 ```json
 {
@@ -604,36 +623,22 @@ transaction_id | string | required | The unique identifier of the given order tr
 
 ### Create an order transaction
 
-> Request Path
+> Definition
 
+```ruby
+client.create_order
 ```
+
+```javascript
+taxjar.createOrder();
+```
+
+```php?start_inline=1
+$taxjar->createOrder();
+```
+
+```shell
 POST https://api.taxjar.com/v2/transactions/orders
-```
-
-> Request Body
-
-```json
-{
-  "transaction_id": "123",
-  "transaction_date": "2015/05/14",
-  "to_country": "US",
-  "to_zip": "90002",
-  "to_state": "CA",
-  "to_city": "Los Angeles",
-  "to_street": "123 Palm Grove Ln",
-  "amount": 17.45,
-  "shipping": 1.5,
-  "sales_tax": 0.95,
-  "line_items": [
-    {
-      "quantity": 1,
-      "product_identifier": "12-34243-9",
-      "description": "Fuzzy Widget",
-      "unit_price": 15.0,
-      "sales_tax": 0.95
-    }
-  ]
-}
 ```
 
 > Request Example
@@ -735,7 +740,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
   &line_items[][sales_tax]=0.95"
 ```
 
-> Response Body
+> Response Example
 
 ```json
 {
@@ -801,29 +806,22 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 ### Update an order transaction
 
-> Request Path
+> Definition
 
+```ruby
+client.update_order
 ```
+
+```javascript
+taxjar.updateOrder();
+```
+
+```php?start_inline=1
+$taxjar->updateOrder();
+```
+
+```shell
 PUT https://api.taxjar.com/v2/transactions/orders/123
-```
-
-> Request Body
-
-```json
-{
-  "amount": 17.95,
-  "shipping": 2.0,
-  "line_items": [
-    {
-      "quantity": 1,
-      "product_identifier": "12-34243-0",
-      "description": "Heavy Widget",
-      "unit_price": "15.0",
-      "discount": "0.0",
-      "sales_tax": "0.95"
-    }
-  ]
-}
 ```
 
 > Request Example
@@ -902,7 +900,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   -X PUT
 ```
 
-> Response Body
+> Response Example
 
 ```json
 {
@@ -968,15 +966,22 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 ### Delete an order transaction
 
-> Request Path
+> Definition
 
+```ruby
+client.delete_order
 ```
+
+```javascript
+taxjar.deleteOrder();
+```
+
+```php?start_inline=1
+$taxjar->deleteOrder();
+```
+
+```shell
 DELETE https://api.taxjar.com/v2/transactions/orders/123
-```
-
-> Request Body
-
-```json
 ```
 
 > Request Example
@@ -1008,7 +1013,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   -X DELETE
 ```
 
-> Response Body
+> Response Example
 
 ```json
 {
@@ -1053,19 +1058,22 @@ transaction_id | string | required | The unique identifier of the given order tr
 
 ### List refund transactions
 
-> Request Path
+> Definition
 
+```ruby
+client.list_refunds
 ```
+
+```javascript
+taxjar.listRefunds();
+```
+
+```php?start_inline=1
+$taxjar->listRefunds();
+```
+
+```shell
 GET https://api.taxjar.com/v2/transactions/refunds
-```
-
-> Request Body
-
-```json
-{
-  "from_transaction_date": "2015/05/01",
-  "to_transaction_date": "2015/05/31"
-}
 ```
 
 > Request Example
@@ -1074,7 +1082,7 @@ GET https://api.taxjar.com/v2/transactions/refunds
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
-refunds = client.refunds({
+refunds = client.list_refunds({
   :from_transaction_date => '2015/05/01',
   :to_transaction_date => '2015/05/31'
 })
@@ -1083,7 +1091,7 @@ refunds = client.refunds({
 ```javascript
 var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.refunds({
+taxjar.listRefunds({
   from_transaction_date: '2015/05/01',
   to_transaction_date: '2015/05/31'
 }).then(function(res) {
@@ -1094,7 +1102,7 @@ taxjar.refunds({
 ```php?start_inline=1
 $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$refunds = $taxjar->refunds([
+$refunds = $taxjar->listRefunds([
   'from_transaction_date' => '2015/05/01',
   'to_transaction_date' => '2015/05/31'
 ]);
@@ -1107,7 +1115,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
   -d to_transaction_date="2015/05/31"
 ```
 
-> Response Body
+> Response Example
 
 ```json
 {
@@ -1136,9 +1144,21 @@ to_transaction_date | date | optional | The end date of a range for which the tr
 
 ### Show a refund transaction
 
-> Request Path
+> Definition
 
+```ruby
+client.show_refund
 ```
+
+```javascript
+taxjar.showRefund();
+```
+
+```php?start_inline=1
+$taxjar->showRefund();
+```
+
+```shell
 GET https://api.taxjar.com/v2/transactions/refunds/321
 ```
 
@@ -1148,13 +1168,13 @@ GET https://api.taxjar.com/v2/transactions/refunds/321
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
-refund = client.refunds(321)
+refund = client.show_refund(321)
 ```
 
 ```javascript
 var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.refunds(321).then(function(res) {
+taxjar.showRefund(321).then(function(res) {
   res.refund;
 });
 ```
@@ -1162,7 +1182,7 @@ taxjar.refunds(321).then(function(res) {
 ```php?start_inline=1
 $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$refund = $taxjar->refunds(321);
+$refund = $taxjar->showRefund(321);
 ```
 
 ```shell
@@ -1170,7 +1190,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
-> Response Body
+> Response Example
 
 ```json
 {
@@ -1216,37 +1236,22 @@ transaction_id | string | required | The unique identifier of the given refund t
 
 ### Create a refund transaction
 
-> Request Path
+> Definition
 
+```ruby
+client.create_refund
 ```
+
+```javascript
+taxjar.createRefund();
+```
+
+```php?start_inline=1
+$taxjar->createRefund();
+```
+
+```shell
 POST https://api.taxjar.com/v2/transactions/refunds
-```
-
-> Request Body
-
-```json
-{
-  "transaction_id": "321",
-  "transaction_date": "2015/05/14",
-  "transaction_reference_id": "123",
-  "to_country": "US",
-  "to_zip": "90002",
-  "to_state": "CA",
-  "to_city": "Los Angeles",
-  "to_street": "123 Palm Grove Ln",
-  "amount": 17.45,
-  "shipping": 1.5,
-  "sales_tax": 0.95,
-  "line_items": [
-    {
-      "quantity": 1,
-      "product_identifier": "12-34243-9",
-      "description": "Fuzzy Widget",
-      "unit_price": 15.0,
-      "sales_tax": 0.95
-    }
-  ]
-}
 ```
 
 > Request Example
@@ -1352,7 +1357,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
   &line_items[][sales_tax]=0.95"
 ```
 
-> Response Body
+> Response Example
 
 ```json
 {
@@ -1420,28 +1425,22 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 ### Update a refund transaction
 
-> Request Path
+> Definition
 
+```ruby
+client.update_refund
 ```
+
+```javascript
+taxjar.updateRefund();
+```
+
+```php?start_inline=1
+$taxjar->updateRefund();
+```
+
+```shell
 PUT https://api.taxjar.com/v2/transactions/refunds/321
-```
-
-> Request Body
-
-```json
-{
-  "amount": 17.95,
-  "shipping": 2.0,
-  "line_items": [
-    {
-      "quantity": 1,
-      "product_identifier": "12-34243-0",
-      "description": "Heavy Widget",
-      "unit_price": 15.0,
-      "sales_tax": 0.95
-    }
-  ]
-}
 ```
 
 > Request Example
@@ -1518,7 +1517,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -X PUT
 ```
 
-> Response Body
+> Response Example
 
 ```json
 {
@@ -1586,15 +1585,22 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 ### Delete a refund transaction
 
-> Request Path
+> Definition
 
+```ruby
+client.delete_refund
 ```
+
+```javascript
+taxjar.deleteRefund();
+```
+
+```php?start_inline=1
+$taxjar->deleteRefund();
+```
+
+```shell
 DELETE https://api.taxjar.com/v2/transactions/refunds/321
-```
-
-> Request Body
-
-```json
 ```
 
 > Request Example
@@ -1626,7 +1632,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -X DELETE
 ```
 
-> Response Body
+> Response Example
 
 ```json
 {
