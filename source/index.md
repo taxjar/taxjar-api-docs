@@ -174,6 +174,26 @@ curl https://api.taxjar.com/v2/categories \
 }
 ```
 
+```ruby
+[
+  #<Taxjar::Category:0x007f081dc3e278 @attrs={
+    :name => "Digital Goods", 
+    :product_tax_code => 31000, 
+    :description => "Digital products transferred electronically."
+  }>, 
+  #<Taxjar::Category:0x007f081dc3de90 @attrs={
+    :name => "Clothing", 
+    :product_tax_code => 20010, 
+    :description => "All human wearing apparel suitable for general use"
+  }>, 
+  #<Taxjar::Category:0x007f081dc3da80 @attrs={
+    :name => "Non-Prescription",
+    :product_tax_code => 51010, 
+    :description => "Drugs for human use without a prescription"
+  }>
+]
+```
+
 This endpoint lists all tax categories.
 
 #### Request
@@ -249,6 +269,20 @@ curl https://api.taxjar.com/v2/rates/90002 \
     "combined_rate": "0.09"
   }
 }
+```
+
+```ruby
+#<Taxjar::Rate:0x007fc47056a928 @attrs={
+  :zip => 90002, 
+  :state => "CA",
+  :state_rate => 0.065,
+  :county => "LOS ANGELES",
+  :county_rate => 0.01,
+  :city => "WATTS",
+  :city_rate => 0,
+  :combined_district_rate => 0.015,
+  :combined_rate => 0.09
+}>
 ```
 
 This endpoint shows the sales tax rates for a given location.
@@ -406,6 +440,39 @@ curl https://api.taxjar.com/v2/taxes \
 }
 ```
 
+```ruby
+#<Taxjar::Tax:0x007f3945688fc8 @attrs={
+  :order_total_amount => 16.5,
+  :amount_to_collect => 1.35,
+  :has_nexus => true,
+  :freight_taxable => false,
+  :tax_source => "destination",
+  :breakdown => {
+    :state_taxable_amount => 15.0,
+    :state_tax_collectable => 0.98,
+    :county_taxable_amount => 15.0,
+    :county_tax_collectable => 0.15,
+    :city_taxable_amount => 0.0,
+    :city_tax_collectable => 0.0,
+    :special_district_taxable_amount => 15.0,
+    :special_district_tax_collectable => 0.22,
+    :line_items => [
+      {
+        :id => "1",
+        :state_taxable_amount => 15.0,
+        :state_sales_tax_rate => 0.065,
+        :county_taxable_amount => 15.0,
+        :county_tax_rate => 0.01,
+        :city_taxable_amount => 0.0,
+        :city_tax_rate => 0.0,
+        :special_district_taxable_amount => 15.0,
+        :special_tax_rate => 0.015
+      }
+    ]
+  }
+}>
+```
+
 This endpoint shows the sales tax that should be collected for a given order.
 
 #### Request
@@ -514,6 +581,10 @@ curl https://api.taxjar.com/v2/transactions/orders \
 }
 ```
 
+```ruby
+["20", "21", "22"]
+```
+
 This endpoint lists existing order transactions.
 
 #### Request
@@ -607,6 +678,40 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
     ]
   }
 }
+```
+
+```ruby
+#<Taxjar::Order:0x007fd3e514a940 @attrs={
+  :transaction_id => 123,
+  :user_id => 11836,
+  :transaction_date => "2015-05-14T00:00:00Z",
+  :transaction_reference_id => nil,
+  :from_country => "US",
+  :from_zip => 93107,
+  :from_state => "CA",
+  :from_city => "SANTA BARBARA",
+  :from_street => "1281 State St",
+  :to_country => "US",
+  :to_zip => 90002,
+  :to_state => "CA",
+  :to_city => "LOS ANGELES",
+  :to_street => "123 Palm Grove Ln",
+  :amount => 17.95,
+  :shipping => 2,
+  :sales_tax => 0.95,
+  :line_items => [
+    {
+      :id => 1,
+      :quantity => 1,
+      :product_identifier => "12-34243-0",
+      :product_tax_code => nil,
+      :description => "Heavy Widget",
+      :unit_price => "15.0",
+      :discount => "0.0",
+      :sales_tax => "0.95"
+    }
+  ]
+}>
 ```
 
 This endpoint shows an existing order transaction.
@@ -771,6 +876,40 @@ curl https://api.taxjar.com/v2/transactions/orders \
 }
 ```
 
+```ruby
+#<Taxjar::Order:0x007f6d65b252d0 @attrs={
+  :transaction_id => 20,
+  :user_id => 11836,
+  :transaction_date => "2015-05-14T00:00:00Z",
+  :transaction_reference_id => nil,
+  :from_country => "US",
+  :from_zip => 93101,
+  :from_state => "CA",
+  :from_city => "SANTA BARBARA",
+  :from_street => "1218 State St",
+  :to_country => "US",
+  :to_zip => 90002,
+  :to_state => "CA",
+  :to_city => "LOS ANGELES",
+  :to_street => "123 Palm Grove Ln",
+  :amount => 15.02,
+  :shipping => 1.5,
+  :sales_tax => 0.95,
+  :line_items => [
+    {
+      :id => 1,
+      :quantity => 1,
+      :product_identifier => "12-34243-9",
+      :product_tax_code => nil,
+      :description => "Fuzzy Widget",
+      :unit_price => "15.0",
+      :discount => "0.0",
+      :sales_tax => "0.85"
+    }
+  ]
+}>
+```
+
 This endpoint creates a new order transaction.
 
 #### Request
@@ -931,6 +1070,40 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }
 ```
 
+```ruby
+#<Taxjar::Order:0x007f6d65b252d0 @attrs={
+  :transaction_id => 123,
+  :user_id => 11836,
+  :transaction_date => "2015-05-14T00:00:00Z",
+  :transaction_reference_id => nil,
+  :from_country => "US",
+  :from_zip => 93101,
+  :from_state => "CA",
+  :from_city => "SANTA BARBARA",
+  :from_street => "1218 State St",
+  :to_country => "US",
+  :to_zip => 90002,
+  :to_state => "CA",
+  :to_city => "LOS ANGELES",
+  :to_street => "123 Palm Grove Ln",
+  :amount => 17.95,
+  :shipping => 2.0,
+  :sales_tax => 0.95,
+  :line_items => [
+    {
+      :id => 1,
+      :quantity => 1,
+      :product_identifier => "12-34243-0",
+      :product_tax_code => nil,
+      :description => "Heavy Widget",
+      :unit_price => "15.0",
+      :discount => "0.0",
+      :sales_tax => "0.95"
+    }
+  ]
+}>
+```
+
 This endpoint updates an existing order transaction.
 
 #### Request
@@ -1044,6 +1217,40 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }
 ```
 
+```ruby
+#<Taxjar::Order:0x007f6d65b252d0 @attrs={
+  :transaction_id => 123,
+  :user_id => 11836,
+  :transaction_date => "2015-05-14T00:00:00Z",
+  :transaction_reference_id => nil,
+  :from_country => "US",
+  :from_zip => 93101,
+  :from_state => "CA",
+  :from_city => "SANTA BARBARA",
+  :from_street => "1218 State St",
+  :to_country => "US",
+  :to_zip => 90002,
+  :to_state => "CA",
+  :to_city => "LOS ANGELES",
+  :to_street => "123 Palm Grove Ln",
+  :amount => 17.95,
+  :shipping => 2.0,
+  :sales_tax => 0.95,
+  :line_items => [
+    {
+      :id => 1,
+      :quantity => 1,
+      :product_identifier => "12-34243-0",
+      :product_tax_code => nil,
+      :description => "Heavy Widget",
+      :unit_price => "15.0",
+      :discount => "0.0",
+      :sales_tax => "0.95"
+    }
+  ]
+}>
+```
+
 This endpoint shows an existing order transaction.
 
 #### Request
@@ -1124,6 +1331,10 @@ curl https://api.taxjar.com/v2/transactions/refunds \
     "654"
   ]
 }
+```
+
+```ruby
+["203", "204", "205"]
 ```
 
 This endpoint lists existing refund transactions.
@@ -1220,6 +1431,40 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     ]
   }
 }
+```
+
+```ruby
+#<Taxjar::Refund:0x007f6da40e33a0 @attrs={
+  :transaction_id => 321,
+  :user_id => 11836,
+  :transaction_date => "2015-06-14T00:00:00Z",
+  :transaction_reference_id => 123,
+  :from_country => "US",
+  :from_zip => 93107,
+  :from_state => "CA",
+  :from_city => "SANTA BARBARA",
+  :from_street => "1218 State St",
+  :to_country => "US",
+  :to_zip => 90002,
+  :to_state => "CA",
+  :to_city => "LOS ANGELES",
+  :to_street => "123 Palm Grove Ln",
+  :amount => 17.95,
+  :shipping => 2.0,
+  :sales_tax => 0.95,
+  :line_items => [
+    {
+      :id => 1,
+      :quantity => 1,
+      :product_identifier => "12-34243-0",
+      :product_tax_code => nil,
+      :description => "Heavy Widget",
+      :unit_price => "15.0",
+      :discount => "0.0",
+      :sales_tax => "0.95"
+    }
+  ]
+}>
 ```
 
 This endpoint shows an existing refund transaction.
@@ -1389,6 +1634,40 @@ curl https://api.taxjar.com/v2/transactions/refunds \
 }
 ```
 
+```ruby
+#<Taxjar::Refund:0x007f6da40e33a0 @attrs={
+  :transaction_id => 321,
+  :user_id => 11836,
+  :transaction_date => "2015-06-14T00:00:00Z",
+  :transaction_reference_id => 123,
+  :from_country => "US",
+  :from_zip => 93107,
+  :from_state => "CA",
+  :from_city => "SANTA BARBARA",
+  :from_street => "1218 State St",
+  :to_country => "US",
+  :to_zip => 90002,
+  :to_state => "CA",
+  :to_city => "LOS ANGELES",
+  :to_street => "123 Palm Grove Ln",
+  :amount => 17.95,
+  :shipping => 2.0,
+  :sales_tax => 0.95,
+  :line_items => [
+    {
+      :id => 1,
+      :quantity => 1,
+      :product_identifier => "12-34243-0",
+      :product_tax_code => nil,
+      :description => "Heavy Widget",
+      :unit_price => "15.0",
+      :discount => "0.0",
+      :sales_tax => "0.95"
+    }
+  ]
+}>
+```
+
 This endpoint creates a new refund transaction.
 
 #### Request
@@ -1549,6 +1828,40 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 }
 ```
 
+```ruby
+#<Taxjar::Refund:0x007f6da40e33a0 @attrs={
+  :transaction_id => 321,
+  :user_id => 11836,
+  :transaction_date => "2015-06-14T00:00:00Z",
+  :transaction_reference_id => 123,
+  :from_country => "US",
+  :from_zip => 93107,
+  :from_state => "CA",
+  :from_city => "SANTA BARBARA",
+  :from_street => "1218 State St",
+  :to_country => "US",
+  :to_zip => 90002,
+  :to_state => "CA",
+  :to_city => "LOS ANGELES",
+  :to_street => "123 Palm Grove Ln",
+  :amount => 17.95,
+  :shipping => 2.0,
+  :sales_tax => 0.95,
+  :line_items => [
+    {
+      :id => 1,
+      :quantity => 1,
+      :product_identifier => "12-34243-9",
+      :product_tax_code => nil,
+      :description => "Heavy Widget",
+      :unit_price => "15.0",
+      :discount => "0.0",
+      :sales_tax => "0.95"
+    }
+  ]
+}>
+```
+
 This endpoint updates an existing refund transaction.
 
 #### Request
@@ -1662,6 +1975,40 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     ]
   }
 }
+```
+
+```ruby
+#<Taxjar::Refund:0x007f6da40e33a0 @attrs={
+  :transaction_id => 321,
+  :user_id => 11836,
+  :transaction_date => "2015-06-14T00:00:00Z",
+  :transaction_reference_id => 123,
+  :from_country => "US",
+  :from_zip => 93107,
+  :from_state => "CA",
+  :from_city => "SANTA BARBARA",
+  :from_street => "1218 State St",
+  :to_country => "US",
+  :to_zip => 90002,
+  :to_state => "CA",
+  :to_city => "LOS ANGELES",
+  :to_street => "123 Palm Grove Ln",
+  :amount => 17.95,
+  :shipping => 2.0,
+  :sales_tax => 0.95,
+  :line_items => [
+    {
+      :id => 1,
+      :quantity => 1,
+      :product_identifier => "12-34243-9",
+      :product_tax_code => nil,
+      :description => "Heavy Widget",
+      :unit_price => "15.0",
+      :discount => "0.0",
+      :sales_tax => "0.95"
+    }
+  ]
+}>
 ```
 
 This endpoint shows an existing refund transaction.
