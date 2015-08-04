@@ -30,7 +30,15 @@ under the License.
     for (var i=0; i < languages.length; i++) {
       $(".highlight." + languages[i]).hide();
     }
+
     $(".highlight." + language).show();
+
+    // Hide JSON response examples if Ruby
+    if (language != 'ruby') {
+      $('.highlight.json').show();
+    } else {
+      $('.highlight.json').hide();
+    }
 
     global.toc.calculateHeights();
 

@@ -143,6 +143,54 @@ header {
   outline: none;
 }
 
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 10px;
+  text-transform: uppercase;
+  color: #fff;
+  background: #000;
+  margin: 0 6px 0 0;
+  padding: 4px 8px;
+  border-radius: 4px;
+
+  h1 &, h2 &, h3 & {
+    vertical-align: 1px;
+  }
+
+  .tocify-item & {
+    width: 8px;
+    line-height: 8px;
+    padding: 0;
+    text-indent: -9999em;
+    border-radius: 50%;
+  }
+
+  // .tocify-item a:hover & {
+  //   width: auto;
+  //   padding: 4px 8px;
+  //   text-indent: 0;
+  //   border-radius: 4px;
+  // }
+
+  &.badge--get {
+    background: #3fae2a;
+  }
+
+  &.badge--post {
+    background: #2969aa;
+  }
+
+  &.badge--put {
+    background: #7129aa;
+  }
+
+  &.badge--delete {
+    background: #c22f3a;
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // TABLE OF CONTENTS
 ////////////////////////////////////////////////////////////////////////////////
