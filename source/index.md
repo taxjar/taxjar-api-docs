@@ -82,7 +82,7 @@ The TaxJar API provides product-level tax rules for a subset of product categori
 
 We will be expanding support for additional, less common categories over time. If you would like to request the addition of a new product category, please email us at [support@taxjar.com](mailto:support@taxjar.com).
 
-### List tax categories
+### <span class="badge badge--get">get</span> List tax categories
 
 > Definition
 
@@ -182,7 +182,7 @@ GET https://api.taxjar.com/v2/categories
 
 ## Rates
 
-### Show tax rates for a location
+### <span class="badge badge--get">get</span> Show tax rates for a location
 
 > Definition
 
@@ -267,7 +267,7 @@ city | string | optional | The city for given location.
 
 ## Taxes
 
-### Calculate sales tax for an order
+### <span class="badge badge--post">post</span> Calculate sales tax for an order
 
 > Definition
 
@@ -444,7 +444,7 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 ## Transactions
 
-### List order transactions
+### <span class="badge badge--get">get</span> List order transactions
 
 > Definition
 
@@ -530,7 +530,7 @@ transaction_date | date | optional | The date the transactions were originally r
 from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
 to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
 
-### Show an order transaction
+### <span class="badge badge--get">get</span> Show an order transaction
 
 > Definition
 
@@ -621,7 +621,7 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | The unique identifier of the given order transaction.
 
-### Create an order transaction
+### <span class="badge badge--post">post</span> Create an order transaction
 
 > Definition
 
@@ -804,7 +804,7 @@ line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
-### Update an order transaction
+### <span class="badge badge--put">put</span> Update an order transaction
 
 > Definition
 
@@ -964,7 +964,7 @@ line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
-### Delete an order transaction
+### <span class="badge badge--delete">delete</span> Delete an order transaction
 
 > Definition
 
@@ -1056,7 +1056,7 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | The unique identifier of the given order transaction.
 
-### List refund transactions
+### <span class="badge badge--get">get</span> List refund transactions
 
 > Definition
 
@@ -1142,7 +1142,7 @@ transaction_date | date | optional | The date the transactions were originally r
 from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
 to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
 
-### Show a refund transaction
+### <span class="badge badge--get">get</span> Show a refund transaction
 
 > Definition
 
@@ -1234,7 +1234,7 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | The unique identifier of the given refund transaction.
 
-### Create a refund transaction
+### <span class="badge badge--post">post</span> Create a refund transaction
 
 > Definition
 
@@ -1423,7 +1423,7 @@ line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
-### Update a refund transaction
+### <span class="badge badge--put">put</span> Update a refund transaction
 
 > Definition
 
@@ -1583,7 +1583,7 @@ line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
-### Delete a refund transaction
+### <span class="badge badge--delete">delete</span> Delete a refund transaction
 
 > Definition
 
