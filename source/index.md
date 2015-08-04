@@ -1378,13 +1378,15 @@ GET https://api.taxjar.com/v2/transactions/refunds
 
 #### Parameters
 
-Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates.
-
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_date | date | optional | The date the transactions were originally recorded.
 from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
 to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
+
+**Notes**
+
+*Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates.*
 
 ### <span class="badge badge--get">get</span> Show a refund transaction
 
