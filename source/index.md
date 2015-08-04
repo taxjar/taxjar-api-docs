@@ -522,15 +522,15 @@ line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
-**Notes**  
+#### Notes 
 
-*Either amount or line_items parameters are required to perform tax calculations*
+- *Either `amount` or `line_items` parameters are required to perform tax calculations.*
 
-*The to_zip parameter is required when to_country is 'US'*
+- *The `to_zip` parameter is required when `to_country` is 'US'.*
 
-*The to_state parameter is required when to_country is 'US' or 'CA'*
+- *The `to_state` parameter is required when `to_country` is 'US' or 'CA'.*
 
-*Either an address on file, or nexus_addresses parameter, or from_ parameters are required to perform tax calculations*
+- *Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
 
 ## Transactions
 
@@ -622,7 +622,7 @@ transaction_date | date | optional | The date the transactions were originally r
 from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
 to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
 
-**Notes**
+#### Notes
 
 *Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates.*
 
@@ -968,9 +968,9 @@ line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
-**Notes**  
+#### Notes  
 
-*Either an address on file, or nexus_addresses parameter, or from_ parameters are required to perform tax calculations*
+*Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
 
 ### <span class="badge badge--put">put</span> Update an order transaction
 
@@ -1166,9 +1166,9 @@ line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
-**Notes**  
+#### Notes  
 
-*Either an address on file, or nexus_addresses parameter, or from_ parameters are required to perform tax calculations*
+*Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
 
 ### <span class="badge badge--delete">delete</span> Delete an order transaction
 
@@ -1384,7 +1384,7 @@ transaction_date | date | optional | The date the transactions were originally r
 from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
 to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
 
-**Notes**
+#### Notes
 
 *Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates.*
 
@@ -1737,9 +1737,9 @@ line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
-**Notes**  
+#### Notes  
 
-*Either an address on file, or nexus_addresses parameter, or from_ parameters are required to perform tax calculations*
+*Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
 
 ### <span class="badge badge--put">put</span> Update a refund transaction
 
@@ -1935,9 +1935,9 @@ line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
-**Notes**  
+#### Notes  
 
-*Either an address on file, or nexus_addresses parameter, or from_ parameters are required to perform tax calculations*
+*Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
 
 ### <span class="badge badge--delete">delete</span> Delete a refund transaction
 
@@ -2065,4 +2065,3 @@ DELETE https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | The unique identifier of the given refund transaction.
->>>>>>> master
