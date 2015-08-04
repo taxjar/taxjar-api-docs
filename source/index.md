@@ -398,24 +398,26 @@ curl https://api.taxjar.com/v2/taxes \
 ```json
 {
   "tax": {
-    "order_total_amount": 16.5,
-    "amount_to_collect": 1.16,
+    "order_total_amount": 42.5,
+    "shipping": 1.5,
+    "taxable_amount": 31.5,
+    "amount_to_collect": 2.21,
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "destination",
     "breakdown": {
       "shipping": {
-        "state_amount": 0.11,
-        "state_sales_tax_rate": 0.07,
-        "county_amount": 0,
-        "county_tax_rate": 0,
-        "city_amount": 0,
-        "city_tax_rate": 0,
-        "special_district_amount": 0,
-        "special_tax_rate": 0
+          "state_amount": 0.11,
+          "state_sales_tax_rate": 0.07,
+          "county_amount": 0,
+          "county_tax_rate": 0,
+          "city_amount": 0,
+          "city_tax_rate": 0,
+          "special_district_amount": 0,
+          "special_tax_rate": 0
       },
-      "state_taxable_amount": 16.5,
-      "state_tax_collectable": 1.16,
+      "state_taxable_amount": 31.5,
+      "state_tax_collectable": 2.21,
       "county_taxable_amount": 0,
       "county_tax_collectable": 0,
       "city_taxable_amount": 0,
@@ -423,17 +425,28 @@ curl https://api.taxjar.com/v2/taxes \
       "special_district_taxable_amount": 0,
       "special_district_tax_collectable": 0,
       "line_items": [
-        {
-          "id": "1",
-          "state_taxable_amount": 15,
-          "state_sales_tax_rate": 0.07,
-          "county_taxable_amount": 0,
-          "county_tax_rate": 0,
-          "city_taxable_amount": 0,
-          "city_tax_rate": 0,
-          "special_district_taxable_amount": 0,
-          "special_tax_rate": 0
-        }
+          {
+              "id": "1",
+              "state_taxable_amount": 30,
+              "state_sales_tax_rate": 0.07,
+              "county_taxable_amount": 0,
+              "county_tax_rate": 0,
+              "city_taxable_amount": 0,
+              "city_tax_rate": 0,
+              "special_district_taxable_amount": 0,
+              "special_tax_rate": 0
+          },
+          {
+              "id": "2",
+              "state_taxable_amount": 0,
+              "state_sales_tax_rate": 0,
+              "county_taxable_amount": 0,
+              "county_tax_rate": 0,
+              "city_taxable_amount": 0,
+              "city_tax_rate": 0,
+              "special_district_taxable_amount": 0,
+              "special_tax_rate": 0
+          }
       ]
     }
   }
@@ -493,7 +506,7 @@ to_zip | string | required | The postal code where the order shipped to.
 to_state | string | required | The state where the order shipped to.
 to_city | string | optional | The city where the order shipped to.
 to_street | string | optional | The street address where the order shipped to.
-amount | long | required | The total amount of the order, excluding shipping.
+amount | long | optional | The total amount of the order, excluding shipping.
 shipping | long | required | The total amount of shipping for the order.
 nexus_addresses[][address_id] | long | optional | The unique identifier of the given nexus address.
 nexus_addresses[][country] | integer | optional | The ISO two country code of the country for the nexus address.
@@ -508,6 +521,16 @@ line_items[][description] | string | optional | The description of the line item
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
+
+#### Notes 
+
+- *Either `amount` or `line_items` parameters are required to perform tax calculations.*
+
+- *The `to_zip` parameter is required when `to_country` is 'US'.*
+
+- *The `to_state` parameter is required when `to_country` is 'US' or 'CA'.*
+
+- *Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
 
 ## Transactions
 
@@ -593,13 +616,15 @@ GET https://api.taxjar.com/v2/transactions/orders
 
 #### Parameters
 
-Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates.
-
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_date | date | optional | The date the transactions were originally recorded.
 from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
 to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
+
+#### Notes
+
+*Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates.*
 
 ### <span class="badge badge--get">get</span> Show an order transaction
 
@@ -943,6 +968,10 @@ line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
+#### Notes  
+
+*Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
+
 ### <span class="badge badge--put">put</span> Update an order transaction
 
 > Definition
@@ -1136,6 +1165,10 @@ line_items[][description] | string | optional | The description of the line item
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
+
+#### Notes  
+
+*Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
 
 ### <span class="badge badge--delete">delete</span> Delete an order transaction
 
@@ -1345,13 +1378,15 @@ GET https://api.taxjar.com/v2/transactions/refunds
 
 #### Parameters
 
-Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates.
-
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_date | date | optional | The date the transactions were originally recorded.
 from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
 to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
+
+#### Notes
+
+*Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates.*
 
 ### <span class="badge badge--get">get</span> Show a refund transaction
 
@@ -1702,6 +1737,10 @@ line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
+#### Notes  
+
+*Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
+
 ### <span class="badge badge--put">put</span> Update a refund transaction
 
 > Definition
@@ -1895,6 +1934,10 @@ line_items[][description] | string | optional | The description of the line item
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
+
+#### Notes  
+
+*Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
 
 ### <span class="badge badge--delete">delete</span> Delete a refund transaction
 
