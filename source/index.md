@@ -1174,8 +1174,6 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 *The `transaction_date` may be a date '2015-05-25', a iso utc date time '2015-05-25T13:05:45', or and iso date time with zone offset '2015-05-25T13:05:45-05:00'.*
 
-*The `transaction_date` may be a date '2015-05-25', a iso utc date time '2015-05-25T13:05:45', or and iso date time with zone offset '2015-05-25T13:05:45-05:00'.*
-
 ### <span class="badge badge--delete">delete</span> Delete an order transaction
 
 > Definition
