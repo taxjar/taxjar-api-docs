@@ -446,11 +446,9 @@ nexus_addresses[][city] | string | optional | The city for the nexus address.
 nexus_addresses[][street] | long | optional | The street address for the nexus address.
 line_items[][id] | long | optional | The unique identifier of the given line item.
 line_items[][quantity] | integer | optional | The quantity for the item.
-line_items[][product_identifier] | string | optional | The product identifier for the item.
-line_items[][description] | string | optional | The description of the line item.
+line_items[][product_tax_code] | string | optional | The product tax code for the item.
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
-line_items[][sales_tax] | long | optional | The sales tax collected for the item.
 
 **Notes**  
 
@@ -657,6 +655,7 @@ line_items[][id] | long | optional | The unique identifier of the given line ite
 line_items[][quantity] | integer | optional | The quantity for the item.
 line_items[][product_identifier] | string | optional | The product identifier for the item.
 line_items[][description] | string | optional | The description of the line item.
+line_items[][product_tax_code] | string | optional | The product tax code for the item.
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
@@ -828,6 +827,7 @@ line_items[][id] | long | optional | The unique identifier of the given line ite
 line_items[][quantity] | integer | optional | The quantity for the item.
 line_items[][product_identifier] | string | optional | The product identifier for the item.
 line_items[][description] | string | optional | The description of the line item.
+line_items[][product_tax_code] | string | optional | The product tax code for the item.
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
@@ -1036,6 +1036,7 @@ line_items[][id] | long | optional | The unique identifier of the given line ite
 line_items[][quantity] | integer | optional | The quantity for the item.
 line_items[][product_identifier] | string | optional | The product identifier for the item.
 line_items[][description] | string | optional | The description of the line item.
+line_items[][product_tax_code] | string | optional | The product tax code for the item.
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
@@ -1206,6 +1207,7 @@ line_items[][id] | long | optional | The unique identifier of the given line ite
 line_items[][quantity] | integer | optional | The quantity for the item.
 line_items[][product_identifier] | string | optional | The product identifier for the item.
 line_items[][description] | string | optional | The description of the line item.
+line_items[][product_tax_code] | string | optional | The product tax code for the item.
 line_items[][unit_price] | long | optional | The unit price for the item.
 line_items[][discount] | long | optional | The discount amount for the item.
 line_items[][sales_tax] | long | optional | The sales tax collected for the item.
