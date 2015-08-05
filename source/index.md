@@ -970,9 +970,9 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 #### Notes  
 
-*Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
+- *Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
 
-*The `transaction_date` may be a date '2015-05-25', a iso utc date time '2015-05-25T13:05:45', or and iso date time with zone offset '2015-05-25T13:05:45-05:00'.*
+- *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
 ### <span class="badge badge--put">put</span> Update an order transaction
 
@@ -1170,9 +1170,9 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 #### Notes  
 
-*Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
+- *Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
 
-*The `transaction_date` may be a date '2015-05-25', a iso utc date time '2015-05-25T13:05:45', or and iso date time with zone offset '2015-05-25T13:05:45-05:00'.*
+- *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
 ### <span class="badge badge--delete">delete</span> Delete an order transaction
 
@@ -1743,9 +1743,9 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 #### Notes  
 
-*Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
+- *Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
 
-*The `transaction_date` may be a date '2015-05-25', a iso utc date time '2015-05-25T13:05:45', or and iso date time with zone offset '2015-05-25T13:05:45-05:00'.*
+- *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
 ### <span class="badge badge--put">put</span> Update a refund transaction
 
@@ -1943,9 +1943,9 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 #### Notes  
 
-*Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
+- *Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
 
-*The `transaction_date` may be a date '2015-05-25', a iso utc date time '2015-05-25T13:05:45', or and iso date time with zone offset '2015-05-25T13:05:45-05:00'.*
+- *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
 ### <span class="badge badge--delete">delete</span> Delete a refund transaction
 
