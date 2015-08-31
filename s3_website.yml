@@ -1,0 +1,21 @@
+s3_id: <%= ENV['S3_ID'] %>
+s3_secret: <%= ENV['S3_SECRET'] %>
+s3_bucket: <%= ENV['S3_BUCKET'] %>
+s3_key_prefix: api
+# cloudfront_distribution_id: <%= ENV['CF_DISTRIBUTION_ID'] %>
+# cloudfront_invalidate_root: true
+
+site: build
+index_document: index.html
+error_document: 404.html
+
+max_age:
+  "fonts/*": 31536000
+  "images/*": 31536000
+  "javascripts/*": 31536000
+  "stylesheets/*": 31536000
+
+gzip: true
+
+exclude_from_upload:
+  - .DS_Store
