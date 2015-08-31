@@ -24,4 +24,4 @@ This will watch for changes and compile them on the fly.
 
 ## Deployment
 
-Commits to the `master` branch are compiled on the fly and deployed to our MediaTemple server via Codeship. If you don't want your changes to appear on production immediately, create a branch and submit a pull request for review.
+Commits to the `master` branch are compiled on the fly and deployed to Amazon S3 via Codeship.
