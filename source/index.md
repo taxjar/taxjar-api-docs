@@ -296,7 +296,7 @@ GET https://api.taxjar.com/v2/rates/:zip
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 country | string | optional | The ISO two country code of the country for given location.
-zip | string | required | The postal code for given location.
+zip | string | required | The postal code for given location (5-Digit ZIP or ZIP+4).
 city | string | optional | The city for given location.
 
 ## Taxes
@@ -497,12 +497,12 @@ POST https://api.taxjar.com/v2/taxes
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 from_country | string | optional | The ISO two country code of the country where the order shipped from.
-from_zip | string | optional | The postal code where the order shipped from.
+from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
 from_street | string | optional | The street address where the order shipped from.
 to_country | string | required | The ISO two country code of the country where the order shipped to.
-to_zip | string | required | The postal code where the order shipped to.
+to_zip | string | required | The postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | required | The state where the order shipped to.
 to_city | string | optional | The city where the order shipped to.
 to_street | string | optional | The street address where the order shipped to.
@@ -946,12 +946,12 @@ Parameter | Type | Required | Description
 transaction_id | string | required | The unique identifier of the given order transaction.
 transaction_date | datetime | required | The date/time the transaction was originally recorded.
 from_country | string | optional | The ISO two country code of the country where the order shipped from.
-from_zip | string | optional | The postal code where the order shipped from.
+from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
 from_street | string | optional | The street address where the order shipped from.
 to_country | string | required | The ISO two country code of the country where the order shipped to.
-to_zip | string | required | The postal code where the order shipped to.
+to_zip | string | required | The postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | required | The state where the order shipped to.
 to_city | string | optional | The city where the order shipped to.
 to_street | string | optional | The street address where the order shipped to.
@@ -1147,12 +1147,12 @@ Parameter | Type | Required | Description
 transaction_id | string | required | The unique identifier of the given order transaction.
 transaction_date | datetime | optional | The date/time the transaction was originally recorded.
 from_country | string | optional | The ISO two country code of the country where the order shipped from.
-from_zip | string | optional | The postal code where the order shipped from.
+from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
 from_street | string | optional | The street address where the order shipped from.
 to_country | string | optional | The ISO two country code of the country where the order shipped to.
-to_zip | string | optional | The postal code where the order shipped to.
+to_zip | string | optional | The postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | optional | The state where the order shipped to.
 to_city | string | optional | The city where the order shipped to.
 to_street | string | optional | The street address where the order shipped to.
@@ -1721,12 +1721,12 @@ transaction_id | string | required | The unique identifier of the given refund t
 transaction_reference_id | string | required | The unique identifier of the corresponding order transaction for the refund.
 transaction_date | datetime | required | The date/time the transaction was originally recorded.
 from_country | string | optional | The ISO two country code of the country where the order shipped from.
-from_zip | string | optional | The postal code where the order shipped from.
+from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
 from_street | string | optional | The street address where the order shipped from.
 to_country | string | required | The ISO two country code of the country where the order shipped to.
-to_zip | string | required | The postal code where the order shipped to.
+to_zip | string | required | The postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | required | The state where the order shipped to.
 to_city | string | optional | The city where the order shipped to.
 to_street | string | optional | The street address where the order shipped to.
@@ -1922,12 +1922,12 @@ transaction_id | string | required | The unique identifier of the given transact
 transaction_reference_id | string | required | The unique identifier of the corresponding order transaction for the refund.
 transaction_date | datetime | optional | The date/time the transaction was originally recorded.
 from_country | string | optional | The ISO two country code of the country where the order shipped from.
-from_zip | string | optional | The postal code where the order shipped from.
+from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
 from_street | string | optional | The street address where the order shipped from.
 to_country | string | optional | The ISO two country code of the country where the refunded order shipped to.
-to_zip | string | optional | The postal code where the refunded order shipped to.
+to_zip | string | optional | The postal code where the refunded order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | optional | The state where the refunded order shipped to.
 to_city | string | optional | The city where the refunded order shipped to.
 to_street | string | optional | The street address where the refunded order shipped to.
