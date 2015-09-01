@@ -384,7 +384,8 @@ curl https://api.taxjar.com/v2/taxes \
   -d to_zip="90002" \
   -d to_state="CA" \
   -d from_country="US" \
-  -d from_zip="San Diego" \
+  -d from_zip="92101" \
+  -d from_state="CA" \
   -d amount=16.50 \
   -d shipping=1.5 \
   -d "line_items[][quantity]=1 \
