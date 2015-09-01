@@ -228,13 +228,13 @@ GET https://api.taxjar.com/v2/rates/90002
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
-rates = client.rates_for_location('90002')
+rates = client.rates_for_location('90404-3370')
 ```
 
 ```javascript
 var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.ratesForLocation('90002').then(function(res) {
+taxjar.ratesForLocation('90404-3370').then(function(res) {
   res.rate; // Rate object
 });
 ```
@@ -242,14 +242,14 @@ taxjar.ratesForLocation('90002').then(function(res) {
 ```php?start_inline=1
 $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$rates = $taxjar->ratesForLocation('90002', [
-  'city' => 'LOS ANGELES',
+$rates = $taxjar->ratesForLocation('90404-3370', [
+  'city' => 'SANTA MONICA',
   'country' => 'US'
 ]);
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/rates/90002 \
+curl https://api.taxjar.com/v2/rates/90404-3370 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
@@ -258,30 +258,30 @@ curl https://api.taxjar.com/v2/rates/90002 \
 ```json
 {
   "rate": {
-    "zip": "90002",
+    "zip": "90404",
     "state": "CA",
     "state_rate": "0.065",
     "county": "LOS ANGELES",
     "county_rate": "0.01",
-    "city": "WATTS",
-    "city_rate": "0.0",
+    "city": "SANTA MONICA",
+    "city_rate": "0.005",
     "combined_district_rate": "0.015",
-    "combined_rate": "0.09"
+    "combined_rate": "0.095"
   }
 }
 ```
 
 ```ruby
 #<Taxjar::Rate:0x007fc47056a928 @attrs={
-  :zip => 90002, 
+  :zip => 90404, 
   :state => "CA",
   :state_rate => 0.065,
   :county => "LOS ANGELES",
   :county_rate => 0.01,
-  :city => "WATTS",
-  :city_rate => 0,
+  :city => "SANTA MONICA",
+  :city_rate => 0.005,
   :combined_district_rate => 0.015,
-  :combined_rate => 0.09
+  :combined_rate => 0.095
 }>
 ```
 
