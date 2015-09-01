@@ -219,7 +219,7 @@ $taxjar->ratesForLocation();
 ```
 
 ```shell
-GET https://api.taxjar.com/v2/rates/90002
+GET https://api.taxjar.com/v2/rates/:zip
 ```
 
 > Request Example
@@ -641,7 +641,7 @@ $taxjar->showOrder();
 ```
 
 ```shell
-GET https://api.taxjar.com/v2/transactions/orders/123
+GET https://api.taxjar.com/v2/transactions/orders/:transaction_id
 ```
 
 > Request Example
@@ -990,7 +990,7 @@ $taxjar->updateOrder();
 ```
 
 ```shell
-PUT https://api.taxjar.com/v2/transactions/orders/123
+PUT https://api.taxjar.com/v2/transactions/orders/:transaction_id
 ```
 
 > Request Example
@@ -1191,7 +1191,7 @@ $taxjar->deleteOrder();
 ```
 
 ```shell
-DELETE https://api.taxjar.com/v2/transactions/orders/123
+DELETE https://api.taxjar.com/v2/transactions/orders/:transaction_id
 ```
 
 > Request Example
@@ -1409,7 +1409,7 @@ $taxjar->showRefund();
 ```
 
 ```shell
-GET https://api.taxjar.com/v2/transactions/refunds/321
+GET https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 ```
 
 > Request Example
@@ -1765,7 +1765,7 @@ $taxjar->updateRefund();
 ```
 
 ```shell
-PUT https://api.taxjar.com/v2/transactions/refunds/321
+PUT https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 ```
 
 > Request Example
@@ -1966,7 +1966,7 @@ $taxjar->deleteRefund();
 ```
 
 ```shell
-DELETE https://api.taxjar.com/v2/transactions/refunds/321
+DELETE https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 ```
 
 > Request Example
