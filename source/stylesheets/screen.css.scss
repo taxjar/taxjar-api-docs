@@ -4,6 +4,7 @@
 @import 'variables';
 @import 'syntax';
 @import 'icon-font';
+@import 'drop-theme-taxjar';
 
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
@@ -608,6 +609,20 @@ header {
 
     tr:last-child td {
       border-bottom: 0;
+    }
+    
+    .conditional {
+      color: #78649f;
+      border-bottom: 1px dotted #78649f;
+      cursor: help;
+    }
+    
+    .usage-note {
+      color: #8A6D3B;
+      padding: 0 4px;
+      background: #FCF8E3;
+      border-radius: 2px;
+      cursor: help;
     }
   }
 
