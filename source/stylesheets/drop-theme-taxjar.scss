@@ -7,7 +7,8 @@
   z-index: 10;
 }
   .drop-element.drop-open {
-    display: block; }
+    display: block;
+  }
 
 .drop-element.drop-theme-taxjar-popovers {
   max-width: 100%;
@@ -110,10 +111,10 @@
 .drop-element.drop-theme-taxjar-popovers .drop-content {
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  @extend %default-font;
   max-width: 300px;
   padding: 10px;
-  font-size: 13px; }
+  font-size: 12px; }
   .drop-element.drop-theme-taxjar-popovers .drop-content .drop-content-inner {
     border: 1px solid #dbdbdb;
     padding: 14px;
