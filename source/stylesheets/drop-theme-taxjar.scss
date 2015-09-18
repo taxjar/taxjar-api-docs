@@ -111,7 +111,7 @@
 .drop-element.drop-theme-taxjar-popovers .drop-content {
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
-  @extend %default-font;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, Sans-serif;
   max-width: 300px;
   padding: 10px;
   font-size: 12px; }
