@@ -497,25 +497,25 @@ POST https://api.taxjar.com/v2/taxes
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-from_country | string | optional | The ISO two country code of the country where the order shipped from.
+from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
 from_street | string | optional | The street address where the order shipped from.
 to_country | string | required | The ISO two country code of the country where the order shipped to.
-to_zip | string | required | The postal code where the order shipped to (5-Digit ZIP or ZIP+4).
-to_state | string | required | The state where the order shipped to.
+to_zip | string | <span class="conditional" data-tooltip="If `to_country` is 'US', `to_zip` is required." data-tooltip-position="top center">conditional</span> | The postal code where the order shipped to (5-Digit ZIP or ZIP+4).
+to_state | string | <span class="conditional" data-tooltip="If `to_country` is 'US' or 'CA', `to_state` is required." data-tooltip-position="top center">conditional</span> | The state where the order shipped to.
 to_city | string | optional | The city where the order shipped to.
 to_street | string | optional | The street address where the order shipped to.
-amount | long | optional | The total amount of the order, excluding shipping.
+amount | long | optional | The total amount of the order, excluding shipping. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 shipping | long | required | The total amount of shipping for the order.
-nexus_addresses[][address_id] | long | optional | The unique identifier of the given nexus address.
-nexus_addresses[][country] | integer | optional | The ISO two country code of the country for the nexus address.
-nexus_addresses[][zip] | long | optional | The postal code for the nexus address.
-nexus_addresses[][state] | string | optional | The state for the nexus address.
+nexus_addresses[][address_id] | long | optional | The unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+nexus_addresses[][country] | integer | <span class="conditional" data-tooltip="If providing `nexus_addresses`, country is required." data-tooltip-position="top center">conditional</span> | The ISO two country code of the country for the nexus address.
+nexus_addresses[][zip] | long | <span class="conditional" data-tooltip="If providing `nexus_addresses`, zip is required." data-tooltip-position="top center">conditional</span> | The postal code for the nexus address.
+nexus_addresses[][state] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, state is required." data-tooltip-position="top center">conditional</span> | The state for the nexus address.
 nexus_addresses[][city] | string | optional | The city for the nexus address.
 nexus_addresses[][street] | long | optional | The street address for the nexus address.
-line_items[][id] | long | optional | The unique identifier of the given line item.
+line_items[][id] | long | optional | The unique identifier of the given line item. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 line_items[][quantity] | integer | optional | The quantity for the item.
 line_items[][product_tax_code] | string | optional | The product tax code for the item.
 line_items[][unit_price] | long | optional | The unit price for the item.
@@ -617,7 +617,7 @@ GET https://api.taxjar.com/v2/transactions/orders
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_date | date | optional | The date the transactions were originally recorded.
+transaction_date | date | optional | The date the transactions were originally recorded. <span class="usage-note" data-tooltip="Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates." data-tooltip-position="top center">View Note</span>
 from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
 to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
 
@@ -945,8 +945,8 @@ POST https://api.taxjar.com/v2/transactions/orders
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | The unique identifier of the given order transaction.
-transaction_date | datetime | required | The date/time the transaction was originally recorded.
-from_country | string | optional | The ISO two country code of the country where the order shipped from.
+transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
+from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
@@ -1146,8 +1146,8 @@ PUT https://api.taxjar.com/v2/transactions/orders/:transaction_id
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | The unique identifier of the given order transaction.
-transaction_date | datetime | optional | The date/time the transaction was originally recorded.
-from_country | string | optional | The ISO two country code of the country where the order shipped from.
+transaction_date | datetime | optional | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
+from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
@@ -1385,7 +1385,7 @@ GET https://api.taxjar.com/v2/transactions/refunds
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_date | date | optional | The date the transactions were originally recorded.
+transaction_date | date | optional | The date the transactions were originally recorded. <span class="usage-note" data-tooltip="Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates." data-tooltip-position="top center">View Note</span>
 from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
 to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
 
@@ -1720,8 +1720,8 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | The unique identifier of the given refund transaction.
 transaction_reference_id | string | required | The unique identifier of the corresponding order transaction for the refund.
-transaction_date | datetime | required | The date/time the transaction was originally recorded.
-from_country | string | optional | The ISO two country code of the country where the order shipped from.
+transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
+from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
@@ -1922,7 +1922,7 @@ Parameter | Type | Required | Description
 transaction_id | string | required | The unique identifier of the given transaction.
 transaction_reference_id | string | required | The unique identifier of the corresponding order transaction for the refund.
 transaction_date | datetime | optional | The date/time the transaction was originally recorded.
-from_country | string | optional | The ISO two country code of the country where the order shipped from.
+from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
