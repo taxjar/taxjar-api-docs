@@ -200,7 +200,7 @@ Because we won’t know anything about a given merchant when you call SmartCalcs
 
 - If you're building or operating a marketplace, TaxJar's [SmartCalcs API](http://www.taxjar.com/api/) can help you calculate sales tax.
 
-- For most marketplaces where each merchant acts as the seller of record, you'll need to submit `nexus_address` parameters for the merchant in every SmartCalcs API call.
+- For most marketplaces where each merchant acts as the seller of record, you will need to submit `nexus_address` parameters for the merchant in every SmartCalcs API call.
 
 - We recommend storing all merchant business location addresses in your system to pass in when calculating sales tax.
 
