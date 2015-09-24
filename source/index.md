@@ -1215,7 +1215,7 @@ taxjar.deleteOrder(123).then(function(res) {
 ```php?start_inline=1
 $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$taxjar->delete_order(123);
+$taxjar->deleteOrder(123);
 ```
 
 ```shell
@@ -1990,7 +1990,7 @@ taxjar.deleteRefund(321).then(function(res) {
 ```php?start_inline=1
 $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$taxjar->delete_refund(321);
+$taxjar->deleteRefund(321);
 ```
 
 ```shell
