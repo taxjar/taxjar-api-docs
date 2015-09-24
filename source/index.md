@@ -946,7 +946,7 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | The unique identifier of the given order transaction.
 transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
-from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
@@ -970,7 +970,7 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 #### Notes  
 
-- *Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
+- *Either an address on file or `from_` parameters are required to perform tax calculations.*
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
@@ -1147,7 +1147,7 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | The unique identifier of the given order transaction.
 transaction_date | datetime | optional | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
-from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
@@ -1171,7 +1171,7 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 #### Notes  
 
-- *Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
+- *Either an address on file or `from_` parameters are required to perform tax calculations.*
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
@@ -1721,7 +1721,7 @@ Parameter | Type | Required | Description
 transaction_id | string | required | The unique identifier of the given refund transaction.
 transaction_reference_id | string | required | The unique identifier of the corresponding order transaction for the refund.
 transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
-from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
@@ -1745,7 +1745,7 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 #### Notes  
 
-- *Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
+- *Either an address on file or `from_` parameters are required to perform tax calculations.*
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
@@ -1922,7 +1922,7 @@ Parameter | Type | Required | Description
 transaction_id | string | required | The unique identifier of the given transaction.
 transaction_reference_id | string | required | The unique identifier of the corresponding order transaction for the refund.
 transaction_date | datetime | optional | The date/time the transaction was originally recorded.
-from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | The state where the order shipped from.
 from_city | string | optional | The city where the order shipped from.
@@ -1946,7 +1946,7 @@ line_items[][sales_tax] | long | optional | The sales tax collected for the item
 
 #### Notes  
 
-- *Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
+- *Either an address on file or `from_` parameters are required to perform tax calculations.*
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
