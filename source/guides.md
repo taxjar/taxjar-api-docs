@@ -208,6 +208,24 @@ Because we won’t know anything about a given merchant when you call SmartCalcs
 
 Want a simple way to reduce the number of SmartCalcs calls you need to make? Compare the delivery address of an order to the list of `nexus_addresses` that a merchant has on file with you. **If the delivery address falls in a different state than those in which a merchant has nexus, no sales tax need be collected.** *Note, this only works for US-based sales. Overseas sales, especially in the European Union, have different rules.*
 
-In addition to helping you calculate sales tax for your merchants, we also make it very easy to help them file and remit their sales tax to the states. [TaxJar’s Transactions endpoint](http://developers.taxjar.com/api/#get-list-order-transactions) allows you to send completed order information to a merchant’s TaxJar account. Simply include the merchant’s TaxJar API token when posting, and those orders will show up in the merchant’s account with a return-ready report breaking out tax owed by jurisdiction. API calls to the Transactions endpoint do not get counted toward your monthly threshold. Merchants who choose to use TaxJar will simply pay us based on the number of transactions we’re processing for them on a monthly basis.
+In addition to helping you calculate sales tax for your merchants, we also make it very easy to help them file and remit their sales tax to the states. [TaxJar’s transaction endpoints](http://developers.taxjar.com/api/#transactions) allow you to send completed order information to a merchant’s TaxJar account. Simply include the merchant’s TaxJar API token when posting, and those orders will show up in the merchant’s account with a return-ready report breaking out tax owed by jurisdiction. API calls to the Transactions endpoint do not get counted toward your monthly threshold. Merchants who choose to use TaxJar will simply pay us based on the number of transactions we’re processing for them on a monthly basis.
 
 We also offer an affiliate program, which provides a revenue sharing opportunity back to you for each merchant who signs up for TaxJar’s reporting and filing through you. [Find out more here.](http://www.taxjar.com/affiliates/)
+
+# Custom Apps & Carts
+
+While SmartCalcs was originally created as a way for eCommerce marketplaces to provide compliance help for merchants, our [transaction endpoints](http://developers.taxjar.com/api/#transactions) also make it possible to build an integration from any shopping cart, invoicing tool or accounting platform to TaxJar.
+
+You only need two things to make this possible:
+
+1. A customer's TaxJar API token (so that you are sending the data to the proper account). This will require some work to collect and store the user submitted token.
+
+2. [Sufficient order detail information](http://developers.taxjar.com/api/#post-create-an-order-transaction) for TaxJar to generate accurate return-ready sales tax reports.
+
+Please note that every pushed transaction requires a unique ID string. You can submit both orders and refunds as well as instructions to edit or delete them.
+
+How and when to send these transactions to TaxJar is entirely up to you. Some potential ideas:
+
+1. If you already provide customers with a reporting interface that allows them to select a date range to view orders within that range, simply add a button that uses the same date range to query and send those orders/refunds.
+
+2. To enable a more automated solution, allow users to opt-in to regular transaction submissions. You can choose to do this upon saving completed orders to your platform's database or set up in batches that occur on a regular basis (e.g. nightly).
