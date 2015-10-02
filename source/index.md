@@ -253,7 +253,8 @@ curl https://api.taxjar.com/v2/rates/90404-3370 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
-> Response Example
+> Response Example<br>
+> <small>*International requests outside of US/Canada may return different parameters.*</small>
 
 ```json
 {
