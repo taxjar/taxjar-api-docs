@@ -339,7 +339,6 @@ order = client.tax_for_order({
   :amount => 16.50,
   :shipping => 1.5,
   :line_items => [{:quantity => 1,
-                   :product_identifier => '12-34243-9',
                    :unit_price => 15.0,
                    :product_tax_code => 31000}]
 })
@@ -390,7 +389,6 @@ curl https://api.taxjar.com/v2/taxes \
   -d amount=16.50 \
   -d shipping=1.5 \
   -d "line_items[][quantity]=1 \
-  &line_items[][product_identifier]='12-34234-9' \
   &line_items[][unit_price]=15.0 \
   &line_items[][product_tax_code]=31000"
 ```
