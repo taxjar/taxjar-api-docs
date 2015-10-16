@@ -14,4 +14,4 @@ Error Code | Meaning
 422 | Unprocessable Entity -- Your request could not be processed
 429 | Too Many Requests -- You're requesting too many resources! Slow down!
 500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
+503 | Service Unavailable -- We're temporarily offline for maintenance. Try again later.
