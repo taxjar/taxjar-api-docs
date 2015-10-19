@@ -228,13 +228,55 @@ GET https://api.taxjar.com/v2/rates/:zip
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
+# United States (ZIP+4)
 rates = client.rates_for_location('90404-3370')
+
+# United States (ZIP w/ Optional Params)
+rates = client.rates_for_location('90404', {
+  :city => 'SANTA MONICA',
+  :country => 'US'
+})
+
+# International Examples (Requires City and Country)
+rates = client.rates_for_location('V5K0A1', {
+  :city => 'VANCOUVER',
+  :country => 'CA'
+})
+
+rates = client.rates_for_location('00150', {
+  :city => 'HELSINKI',
+  :country => 'FI'
+})
 ```
 
 ```javascript
 var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
+// United States (ZIP+4)
 taxjar.ratesForLocation('90404-3370').then(function(res) {
+  res.rate; // Rate object
+});
+
+// United States (ZIP w/ Optional Params)
+taxjar.ratesForLocation('90404', {
+  city: 'SANTA MONICA',
+  country: 'US'
+}).then(function(res) {
+  res.rate; // Rate object
+});
+
+// International Examples (Requires City and Country)
+taxjar.ratesForLocation('V5K0A1', {
+  city: 'VANCOUVER',
+  country: 'CA'
+}).then(function(res) {
+  res.rate; // Rate object
+});
+
+taxjar.ratesForLocation('00150', {
+  city: 'HELSINKI',
+  country: 'FI'
+}).then(function(res) {
   res.rate; // Rate object
 });
 ```
@@ -242,15 +284,48 @@ taxjar.ratesForLocation('90404-3370').then(function(res) {
 ```php?start_inline=1
 $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$rates = $taxjar->ratesForLocation('90404-3370', [
+// United States (ZIP+4)
+$rates = $taxjar->ratesForLocation('90404-3370');
+
+// United States (ZIP w/ Optional Params)
+$rates = $taxjar->ratesForLocation('90404', [
   'city' => 'SANTA MONICA',
   'country' => 'US'
+]);
+
+// International Examples (Requires City and Country)
+$rates = $taxjar->ratesForLocation('V5K0A1', [
+  'city' => 'VANCOUVER',
+  'country' => 'CA'
+]);
+
+$rates = $taxjar->ratesForLocation('00150', [
+  'city' => 'HELSINKI',
+  'country' => 'FI'
 ]);
 ```
 
 ```shell
+# United States (ZIP+4)
 curl https://api.taxjar.com/v2/rates/90404-3370 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
+  
+# United States (ZIP w/ Optional Params)
+curl https://api.taxjar.com/v2/rates/90404 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d city="SANTA MONICA" \
+  -d country="US"
+
+# International Examples (Requires City and Country)
+curl https://api.taxjar.com/v2/rates/V5K0A1 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d city="VANCOUVER" \
+  -d country="CA"
+
+curl https://api.taxjar.com/v2/rates/00150 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d city="HELSINKI" \
+  -d country="FI"
 ```
 
 > Response Example<br>
@@ -296,9 +371,9 @@ GET https://api.taxjar.com/v2/rates/:zip
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-country | string | optional | The ISO two country code of the country for given location.
+country | string | <span class="conditional" data-tooltip="For international locations outside of US, `country` is required." data-tooltip-position="top center">conditional</span> | The ISO two country code of the country for given location.
 zip | string | required | The postal code for given location (5-Digit ZIP or ZIP+4).
-city | string | optional | The city for given location.
+city | string | <span class="conditional" data-tooltip="For international locations outside of US, `city` is required." data-tooltip-position="top center">conditional</span> | The city for given location.
 
 ## Taxes
 
