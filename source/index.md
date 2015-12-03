@@ -375,6 +375,37 @@ country | string | <span class="conditional" data-tooltip="For international loc
 zip | string | required | The postal code for given location (5-Digit ZIP or ZIP+4).
 city | string | <span class="conditional" data-tooltip="For international locations outside of US, `city` is required." data-tooltip-position="top center">conditional</span> | The city for given location.
 
+#### Response
+
+Returns a JSON object with rates for a given location broken down by state, county, city, and district. For international requests, returns standard and reduced rates.
+
+#### US/Canada Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+zip | string | Postal code for given location.
+state | string | State name for given location.
+state_rate | long | State sales tax rate for given location.
+county | string | County name for given location.
+county_rate | long | County sales tax rate for given location.
+city | string | City name for given location.
+city_rate | long | City sales tax rate for given location.
+combined_district_rate | long | Aggregate rate for all city and county sales tax districts effective at the location.
+combined_rate | long | Overall sales tax rate which includes state, county, city and district tax. This rate should be used to determine how much sales tax to collect for an order.
+
+#### International Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+country | string | ISO two country code of the country for given location.
+name | string | Country name for given location.
+standard_rate | long | Standard rate for given location.
+reduced_rate | long | Reduced rate for given location.
+super_reduced_rate | long | Super reduced rate for given location.
+parking_rate | long | Parking rate for given location.
+distance_sale_threshold | long | Distance sale threshold for given location.
+freight_taxable | bool | Freight taxability for given location.
+
 ## Taxes
 
 ### <span class="badge badge--post">post</span> Calculate sales tax for an order
