@@ -178,17 +178,17 @@ curl https://api.taxjar.com/v2/categories \
 [
   #<Taxjar::Category:0x007f081dc3e278 @attrs={
     :name => "Digital Goods", 
-    :product_tax_code => 31000, 
+    :product_tax_code => "31000", 
     :description => "Digital products transferred electronically."
   }>, 
   #<Taxjar::Category:0x007f081dc3de90 @attrs={
     :name => "Clothing", 
-    :product_tax_code => 20010, 
+    :product_tax_code => "20010", 
     :description => "All human wearing apparel suitable for general use"
   }>, 
   #<Taxjar::Category:0x007f081dc3da80 @attrs={
     :name => "Non-Prescription",
-    :product_tax_code => 51010, 
+    :product_tax_code => "51010", 
     :description => "Drugs for human use without a prescription"
   }>
 ]
@@ -349,7 +349,7 @@ curl https://api.taxjar.com/v2/rates/00150 \
 
 ```ruby
 #<Taxjar::Rate:0x007fc47056a928 @attrs={
-  :zip => 90404, 
+  :zip => "90404", 
   :state => "CA",
   :state_rate => 0.065,
   :county => "LOS ANGELES",
@@ -828,7 +828,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 
 ```ruby
 #<Taxjar::Order:0x007fd3e514a940 @attrs={
-  :transaction_id => 123,
+  :transaction_id => "123",
   :user_id => 11836,
   :transaction_date => "2015-05-14T00:00:00Z",
   :transaction_reference_id => nil,
@@ -1225,7 +1225,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 
 ```ruby
 #<Taxjar::Order:0x007f6d65b252d0 @attrs={
-  :transaction_id => 123,
+  :transaction_id => "123",
   :user_id => 11836,
   :transaction_date => "2015-05-14T00:00:00Z",
   :transaction_reference_id => nil,
@@ -1379,7 +1379,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 
 ```ruby
 #<Taxjar::Order:0x007f6d65b252d0 @attrs={
-  :transaction_id => 123,
+  :transaction_id => "123",
   :user_id => 11836,
   :transaction_date => "2015-05-14T00:00:00Z",
   :transaction_reference_id => nil,
@@ -1597,10 +1597,10 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 
 ```ruby
 #<Taxjar::Refund:0x007f6da40e33a0 @attrs={
-  :transaction_id => 321,
+  :transaction_id => "321",
   :user_id => 11836,
   :transaction_date => "2015-06-14T00:00:00Z",
-  :transaction_reference_id => 123,
+  :transaction_reference_id => "123",
   :from_country => "US",
   :from_zip => 93107,
   :from_state => "CA",
@@ -1798,10 +1798,10 @@ curl https://api.taxjar.com/v2/transactions/refunds \
 
 ```ruby
 #<Taxjar::Refund:0x007f6da40e33a0 @attrs={
-  :transaction_id => 321,
+  :transaction_id => "321",
   :user_id => 11836,
   :transaction_date => "2015-06-14T00:00:00Z",
-  :transaction_reference_id => 123,
+  :transaction_reference_id => "123",
   :from_country => "US",
   :from_zip => 93107,
   :from_state => "CA",
@@ -1999,10 +1999,10 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 
 ```ruby
 #<Taxjar::Refund:0x007f6da40e33a0 @attrs={
-  :transaction_id => 321,
+  :transaction_id => "321",
   :user_id => 11836,
   :transaction_date => "2015-06-14T00:00:00Z",
-  :transaction_reference_id => 123,
+  :transaction_reference_id => "123",
   :from_country => "US",
   :from_zip => 93107,
   :from_state => "CA",
@@ -2155,10 +2155,10 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 
 ```ruby
 #<Taxjar::Refund:0x007f6da40e33a0 @attrs={
-  :transaction_id => 321,
+  :transaction_id => "321",
   :user_id => 11836,
   :transaction_date => "2015-06-14T00:00:00Z",
-  :transaction_reference_id => 123,
+  :transaction_reference_id => "123",
   :from_country => "US",
   :from_zip => 93107,
   :from_state => "CA",
