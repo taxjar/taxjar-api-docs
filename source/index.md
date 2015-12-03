@@ -413,9 +413,9 @@ GET https://api.taxjar.com/v2/rates/:zip
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-country | string | <span class="conditional" data-tooltip="For international locations outside of US, `country` is required." data-tooltip-position="top center">conditional</span> | The ISO two country code of the country for given location.
-zip | string | required | The postal code for given location (5-Digit ZIP or ZIP+4).
-city | string | <span class="conditional" data-tooltip="For international locations outside of US, `city` is required." data-tooltip-position="top center">conditional</span> | The city for given location.
+country | string | <span class="conditional" data-tooltip="For international locations outside of US, `country` is required." data-tooltip-position="top center">conditional</span> | ISO two country code of the country for given location.
+zip | string | required | Postal code for given location (5-Digit ZIP or ZIP+4).
+city | string | <span class="conditional" data-tooltip="For international locations outside of US, `city` is required." data-tooltip-position="top center">conditional</span> | City for given location.
 
 #### Response
 
@@ -644,29 +644,29 @@ POST https://api.taxjar.com/v2/taxes
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
-from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
-from_state | string | optional | The state where the order shipped from.
-from_city | string | optional | The city where the order shipped from.
-from_street | string | optional | The street address where the order shipped from.
-to_country | string | required | The ISO two country code of the country where the order shipped to.
-to_zip | string | <span class="conditional" data-tooltip="If `to_country` is 'US', `to_zip` is required." data-tooltip-position="top center">conditional</span> | The postal code where the order shipped to (5-Digit ZIP or ZIP+4).
-to_state | string | <span class="conditional" data-tooltip="If `to_country` is 'US' or 'CA', `to_state` is required." data-tooltip-position="top center">conditional</span> | The state where the order shipped to.
-to_city | string | optional | The city where the order shipped to.
-to_street | string | optional | The street address where the order shipped to.
-amount | long | optional | The total amount of the order, excluding shipping. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
-shipping | long | required | The total amount of shipping for the order.
-nexus_addresses[][id] | long | optional | The unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
-nexus_addresses[][country] | integer | <span class="conditional" data-tooltip="If providing `nexus_addresses`, country is required." data-tooltip-position="top center">conditional</span> | The ISO two country code of the country for the nexus address.
-nexus_addresses[][zip] | long | <span class="conditional" data-tooltip="If providing `nexus_addresses`, zip is required." data-tooltip-position="top center">conditional</span> | The postal code for the nexus address.
-nexus_addresses[][state] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, state is required." data-tooltip-position="top center">conditional</span> | The state for the nexus address.
-nexus_addresses[][city] | string | optional | The city for the nexus address.
-nexus_addresses[][street] | long | optional | The street address for the nexus address.
-line_items[][id] | long | optional | The unique identifier of the given line item. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
-line_items[][quantity] | integer | optional | The quantity for the item.
-line_items[][product_tax_code] | string | optional | The product tax code for the item.
-line_items[][unit_price] | long | optional | The unit price for the item.
-line_items[][discount] | long | optional | The discount amount for the item.
+from_country | string | optional | ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
+from_state | string | optional | State where the order shipped from.
+from_city | string | optional | City where the order shipped from.
+from_street | string | optional | Street address where the order shipped from.
+to_country | string | required | ISO two country code of the country where the order shipped to.
+to_zip | string | <span class="conditional" data-tooltip="If `to_country` is 'US', `to_zip` is required." data-tooltip-position="top center">conditional</span> | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
+to_state | string | <span class="conditional" data-tooltip="If `to_country` is 'US' or 'CA', `to_state` is required." data-tooltip-position="top center">conditional</span> | State where the order shipped to.
+to_city | string | optional | City where the order shipped to.
+to_street | string | optional | Street address where the order shipped to.
+amount | long | optional | Total amount of the order, excluding shipping. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+shipping | long | required | Total amount of shipping for the order.
+nexus_addresses[][id] | long | optional | Unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+nexus_addresses[][country] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, country is required." data-tooltip-position="top center">conditional</span> | ISO two country code of the country for the nexus address.
+nexus_addresses[][zip] | long | <span class="conditional" data-tooltip="If providing `nexus_addresses`, zip is required." data-tooltip-position="top center">conditional</span> | Postal code for the nexus address.
+nexus_addresses[][state] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, state is required." data-tooltip-position="top center">conditional</span> | State for the nexus address.
+nexus_addresses[][city] | string | optional | City for the nexus address.
+nexus_addresses[][street] | long | optional | Street address for the nexus address.
+line_items[][id] | long | optional | Unique identifier of the given line item. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+line_items[][quantity] | integer | optional | Quantity for the item.
+line_items[][product_tax_code] | string | optional | Product tax code for the item.
+line_items[][unit_price] | long | optional | Unit price for the item.
+line_items[][discount] | long | optional | Discount amount for the item.
 
 #### Notes 
 
@@ -782,8 +782,8 @@ GET https://api.taxjar.com/v2/transactions/orders
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_date | date | optional | The date the transactions were originally recorded. <span class="usage-note" data-tooltip="Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates." data-tooltip-position="top center">View Note</span>
-from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
-to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
+from_transaction_date | date | optional | Start date of a range for which the transactions were originally recorded.
+to_transaction_date | date | optional | End date of a range for which the transactions were originally recorded.
 
 #### Notes
 
@@ -912,7 +912,7 @@ GET https://api.taxjar.com/v2/transactions/orders/:transaction_id
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_id | string | required | The unique identifier of the given order transaction.
+transaction_id | string | required | Unique identifier of the given order transaction.
 
 ### <span class="badge badge--post">post</span> Create an order transaction
 
@@ -1108,29 +1108,29 @@ POST https://api.taxjar.com/v2/transactions/orders
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_id | string | required | The unique identifier of the given order transaction.
+transaction_id | string | required | Unique identifier of the given order transaction.
 transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
-from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
-from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
-from_state | string | optional | The state where the order shipped from.
-from_city | string | optional | The city where the order shipped from.
-from_street | string | optional | The street address where the order shipped from.
-to_country | string | required | The ISO two country code of the country where the order shipped to.
-to_zip | string | required | The postal code where the order shipped to (5-Digit ZIP or ZIP+4).
-to_state | string | required | The state where the order shipped to.
-to_city | string | optional | The city where the order shipped to.
-to_street | string | optional | The street address where the order shipped to.
-amount | long | required | The total amount of the order with shipping, excluding sales tax.
-shipping | long | required | The total amount of shipping for the order.
-sales_tax | long | required | The total amount of sales tax collected for the order.
-line_items[][id] | long | optional | The unique identifier of the given line item.
-line_items[][quantity] | integer | optional | The quantity for the item.
-line_items[][product_identifier] | string | optional | The product identifier for the item.
-line_items[][description] | string | optional | The description of the line item.
-line_items[][product_tax_code] | string | optional | The product tax code for the item.
-line_items[][unit_price] | long | optional | The unit price for the item.
-line_items[][discount] | long | optional | The discount amount for the item.
-line_items[][sales_tax] | long | optional | The sales tax collected for the item.
+from_country | string | optional | ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
+from_state | string | optional | State where the order shipped from.
+from_city | string | optional | City where the order shipped from.
+from_street | string | optional | Street address where the order shipped from.
+to_country | string | required | ISO two country code of the country where the order shipped to.
+to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
+to_state | string | required | State where the order shipped to.
+to_city | string | optional | City where the order shipped to.
+to_street | string | optional | Street address where the order shipped to.
+amount | long | required | Total amount of the order with shipping, excluding sales tax.
+shipping | long | required | Total amount of shipping for the order.
+sales_tax | long | required | Total amount of sales tax collected for the order.
+line_items[][id] | long | optional | Unique identifier of the given line item.
+line_items[][quantity] | integer | optional | Quantity for the item.
+line_items[][product_identifier] | string | optional | Product identifier for the item.
+line_items[][description] | string | optional | Description of the line item.
+line_items[][product_tax_code] | string | optional | Product tax code for the item.
+line_items[][unit_price] | long | optional | Unit price for the item.
+line_items[][discount] | long | optional | Discount amount for the item.
+line_items[][sales_tax] | long | optional | Sales tax collected for the item.
 
 #### Notes  
 
@@ -1309,29 +1309,29 @@ PUT https://api.taxjar.com/v2/transactions/orders/:transaction_id
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_id | string | required | The unique identifier of the given order transaction.
+transaction_id | string | required | Unique identifier of the given order transaction.
 transaction_date | datetime | optional | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
-from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
-from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
-from_state | string | optional | The state where the order shipped from.
-from_city | string | optional | The city where the order shipped from.
-from_street | string | optional | The street address where the order shipped from.
-to_country | string | optional | The ISO two country code of the country where the order shipped to.
-to_zip | string | optional | The postal code where the order shipped to (5-Digit ZIP or ZIP+4).
-to_state | string | optional | The state where the order shipped to.
-to_city | string | optional | The city where the order shipped to.
-to_street | string | optional | The street address where the order shipped to.
-amount | long | optional | The total amount of the order with shipping, excluding sales tax.
-shipping | long | optional | The total amount of shipping for the order.
-sales_tax | long | optional | The total amount of sales tax collected for the order.
-line_items[][id] | long | optional | The unique identifier of the given line item.
-line_items[][quantity] | integer | optional | The quantity for the item.
-line_items[][product_identifier] | string | optional | The product identifier for the item.
-line_items[][description] | string | optional | The description of the line item.
-line_items[][product_tax_code] | string | optional | The product tax code for the item.
-line_items[][unit_price] | long | optional | The unit price for the item.
-line_items[][discount] | long | optional | The discount amount for the item.
-line_items[][sales_tax] | long | optional | The sales tax collected for the item.
+from_country | string | optional | ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
+from_state | string | optional | State where the order shipped from.
+from_city | string | optional | City where the order shipped from.
+from_street | string | optional | Street address where the order shipped from.
+to_country | string | optional | ISO two country code of the country where the order shipped to.
+to_zip | string | optional | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
+to_state | string | optional | State where the order shipped to.
+to_city | string | optional | City where the order shipped to.
+to_street | string | optional | Street address where the order shipped to.
+amount | long | optional | Total amount of the order with shipping, excluding sales tax.
+shipping | long | optional | Total amount of shipping for the order.
+sales_tax | long | optional | Total amount of sales tax collected for the order.
+line_items[][id] | long | optional | Unique identifier of the given line item.
+line_items[][quantity] | integer | optional | Quantity for the item.
+line_items[][product_identifier] | string | optional | Product identifier for the item.
+line_items[][description] | string | optional | Description of the line item.
+line_items[][product_tax_code] | string | optional | Product tax code for the item.
+line_items[][unit_price] | long | optional | Unit price for the item.
+line_items[][discount] | long | optional | Discount amount for the item.
+line_items[][sales_tax] | long | optional | Sales tax collected for the item.
 
 #### Notes  
 
@@ -1463,7 +1463,7 @@ DELETE https://api.taxjar.com/v2/transactions/orders/:transaction_id
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_id | string | required | The unique identifier of the given order transaction.
+transaction_id | string | required | Unique identifier of the given order transaction.
 
 ### <span class="badge badge--get">get</span> List refund transactions
 
@@ -1681,7 +1681,7 @@ GET https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_id | string | required | The unique identifier of the given refund transaction.
+transaction_id | string | required | Unique identifier of the given refund transaction.
 
 ### <span class="badge badge--post">post</span> Create a refund transaction
 
@@ -1882,30 +1882,30 @@ POST https://api.taxjar.com/v2/transactions/refunds
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_id | string | required | The unique identifier of the given refund transaction.
-transaction_reference_id | string | required | The unique identifier of the corresponding order transaction for the refund.
+transaction_id | string | required | Unique identifier of the given refund transaction.
+transaction_reference_id | string | required | Unique identifier of the corresponding order transaction for the refund.
 transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
-from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
-from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
-from_state | string | optional | The state where the order shipped from.
-from_city | string | optional | The city where the order shipped from.
-from_street | string | optional | The street address where the order shipped from.
-to_country | string | required | The ISO two country code of the country where the order shipped to.
-to_zip | string | required | The postal code where the order shipped to (5-Digit ZIP or ZIP+4).
-to_state | string | required | The state where the order shipped to.
-to_city | string | optional | The city where the order shipped to.
-to_street | string | optional | The street address where the order shipped to.
-amount | long | required | The total amount of the refunded order with shipping, excluding sales tax.
-shipping | long | required | The total amount of shipping for the refunded order.
-sales_tax | long | required | The total amount of sales tax collected for the refunded order.
-line_items[][id] | long | optional | The unique identifier of the given line item.
-line_items[][quantity] | integer | optional | The quantity for the item.
-line_items[][product_identifier] | string | optional | The product identifier for the item.
-line_items[][description] | string | optional | The description of the line item.
-line_items[][product_tax_code] | string | optional | The product tax code for the item.
-line_items[][unit_price] | long | optional | The unit price for the item.
-line_items[][discount] | long | optional | The discount amount for the item.
-line_items[][sales_tax] | long | optional | The sales tax collected for the item.
+from_country | string | optional | ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
+from_state | string | optional | State where the order shipped from.
+from_city | string | optional | City where the order shipped from.
+from_street | string | optional | Street address where the order shipped from.
+to_country | string | required | ISO two country code of the country where the order shipped to.
+to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
+to_state | string | required | State where the order shipped to.
+to_city | string | optional | City where the order shipped to.
+to_street | string | optional | Street address where the order shipped to.
+amount | long | required | Total amount of the refunded order with shipping, excluding sales tax.
+shipping | long | required | Total amount of shipping for the refunded order.
+sales_tax | long | required | Total amount of sales tax collected for the refunded order.
+line_items[][id] | long | optional | Unique identifier of the given line item.
+line_items[][quantity] | integer | optional | Quantity for the item.
+line_items[][product_identifier] | string | optional | Product identifier for the item.
+line_items[][description] | string | optional | Description of the line item.
+line_items[][product_tax_code] | string | optional | Product tax code for the item.
+line_items[][unit_price] | long | optional | Unit price for the item.
+line_items[][discount] | long | optional | Discount amount for the item.
+line_items[][sales_tax] | long | optional | Sales tax collected for the item.
 
 #### Notes  
 
@@ -2083,30 +2083,30 @@ PUT https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_id | string | required | The unique identifier of the given transaction.
-transaction_reference_id | string | required | The unique identifier of the corresponding order transaction for the refund.
+transaction_id | string | required | Unique identifier of the given transaction.
+transaction_reference_id | string | required | Unique identifier of the corresponding order transaction for the refund.
 transaction_date | datetime | optional | The date/time the transaction was originally recorded.
-from_country | string | optional | The ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
-from_zip | string | optional | The postal code where the order shipped from (5-Digit ZIP or ZIP+4).
-from_state | string | optional | The state where the order shipped from.
-from_city | string | optional | The city where the order shipped from.
-from_street | string | optional | The street address where the order shipped from.
-to_country | string | optional | The ISO two country code of the country where the refunded order shipped to.
-to_zip | string | optional | The postal code where the refunded order shipped to (5-Digit ZIP or ZIP+4).
-to_state | string | optional | The state where the refunded order shipped to.
-to_city | string | optional | The city where the refunded order shipped to.
-to_street | string | optional | The street address where the refunded order shipped to.
-amount | long | optional | The total amount of the refunded order with shipping, excluding sales tax.
-shipping | long | optional | The total amount of shipping for the refunded order.
-sales_tax | long | optional | The total amount of sales tax collected for the refunded order.
-line_items[][id] | long | optional | The unique identifier of the given line item.
-line_items[][quantity] | integer | optional | The quantity for the item.
-line_items[][product_identifier] | string | optional | The product identifier for the item.
-line_items[][description] | string | optional | The description of the line item.
-line_items[][product_tax_code] | string | optional | The product tax code for the item.
-line_items[][unit_price] | long | optional | The unit price for the item.
-line_items[][discount] | long | optional | The discount amount for the item.
-line_items[][sales_tax] | long | optional | The sales tax collected for the item.
+from_country | string | optional | ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
+from_state | string | optional | State where the order shipped from.
+from_city | string | optional | City where the order shipped from.
+from_street | string | optional | Street address where the order shipped from.
+to_country | string | optional | ISO two country code of the country where the refunded order shipped to.
+to_zip | string | optional | Postal code where the refunded order shipped to (5-Digit ZIP or ZIP+4).
+to_state | string | optional | State where the refunded order shipped to.
+to_city | string | optional | City where the refunded order shipped to.
+to_street | string | optional | Street address where the refunded order shipped to.
+amount | long | optional | Total amount of the refunded order with shipping, excluding sales tax.
+shipping | long | optional | Total amount of shipping for the refunded order.
+sales_tax | long | optional | Total amount of sales tax collected for the refunded order.
+line_items[][id] | long | optional | Unique identifier of the given line item.
+line_items[][quantity] | integer | optional | Quantity for the item.
+line_items[][product_identifier] | string | optional | Product identifier for the item.
+line_items[][description] | string | optional | Description of the line item.
+line_items[][product_tax_code] | string | optional | Product tax code for the item.
+line_items[][unit_price] | long | optional | Unit price for the item.
+line_items[][discount] | long | optional | Discount amount for the item.
+line_items[][sales_tax] | long | optional | Sales tax collected for the item.
 
 #### Notes  
 
@@ -2239,4 +2239,4 @@ DELETE https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_id | string | required | The unique identifier of the given refund transaction.
+transaction_id | string | required | Unique identifier of the given refund transaction.
