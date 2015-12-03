@@ -399,11 +399,11 @@ Parameter | Type | Description
 --------- | ------- | -----------
 country | string | ISO two country code of the country for given location.
 name | string | Country name for given location.
-standard_rate | long | Standard rate for given location.
-reduced_rate | long | Reduced rate for given location.
+standard_rate | long | [Standard rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
+reduced_rate | long | [Reduced rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
 super_reduced_rate | long | Super reduced rate for given location.
 parking_rate | long | Parking rate for given location.
-distance_sale_threshold | long | Distance sale threshold for given location.
+distance_sale_threshold | long | [Distance selling threshold](https://en.wikipedia.org/wiki/European_Union_value_added_tax#Distance_sales) for given location.
 freight_taxable | bool | Freight taxability for given location.
 
 ## Taxes
@@ -635,6 +635,23 @@ line_items[][discount] | long | optional | The discount amount for the item.
 - *The `to_state` parameter is required when `to_country` is 'US' or 'CA'.*
 
 - *Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations.*
+
+#### Response
+
+Returns a JSON object with sales tax for a given order. If available, returns a breakdown of rates by jurisdiction.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+order_total_amount | long | Total amount of the order.
+shipping | long | Total amount of shipping for the order.
+taxable_amount | long | Amount of the order to be taxed.
+amount_to_collect | long | Amount of sales tax to collect.
+has_nexus | bool | Whether or not you have [nexus](http://blog.taxjar.com/sales-tax-nexus-definition/) for the order based on an address on file, `nexus_addresses` parameter, or `from_` parameters.
+freight_taxable | bool | Freight taxability for the order.
+tax_source | string | [Origin-based or destination-based](http://blog.taxjar.com/charging-sales-tax-rates/) sales tax collection.
+breakdown | object | Breakdown of rates by jurisdiction for the order, shipping, and individual line items.
 
 ## Transactions
 
