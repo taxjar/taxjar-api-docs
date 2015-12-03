@@ -194,7 +194,7 @@ curl https://api.taxjar.com/v2/categories \
 ]
 ```
 
-This endpoint lists all tax categories.
+Lists all tax categories.
 
 #### Request
 
@@ -403,7 +403,7 @@ curl https://api.taxjar.com/v2/rates/00150 \
 }>
 ```
 
-This endpoint shows the sales tax rates for a given location.
+Shows the sales tax rates for a given location.
 
 #### Request
 
@@ -634,7 +634,7 @@ curl https://api.taxjar.com/v2/taxes \
 }>
 ```
 
-This endpoint shows the sales tax that should be collected for a given order.
+Shows the sales tax that should be collected for a given order.
 
 #### Request
 
@@ -771,7 +771,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
 ["20", "21", "22"]
 ```
 
-This endpoint lists existing order transactions.
+Lists existing order transactions.
 
 #### Request
 
@@ -902,7 +902,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }>
 ```
 
-This endpoint shows an existing order transaction.
+Shows an existing order transaction.
 
 #### Request
 
@@ -1098,7 +1098,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
 }>
 ```
 
-This endpoint creates a new order transaction.
+Creates a new order transaction.
 
 #### Request
 
@@ -1299,7 +1299,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }>
 ```
 
-This endpoint updates an existing order transaction.
+Updates an existing order transaction.
 
 #### Request
 
@@ -1453,7 +1453,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }>
 ```
 
-This endpoint shows an existing order transaction.
+Shows an existing order transaction.
 
 #### Request
 
@@ -1539,7 +1539,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
 ["203", "204", "205"]
 ```
 
-This endpoint lists existing refund transactions.
+Lists existing refund transactions.
 
 #### Request
 
@@ -1671,7 +1671,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 }>
 ```
 
-This endpoint shows an existing refund transaction.
+Shows an existing refund transaction.
 
 #### Request
 
@@ -1872,7 +1872,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
 }>
 ```
 
-This endpoint creates a new refund transaction.
+Creates a new refund transaction.
 
 #### Request
 
@@ -2073,7 +2073,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 }>
 ```
 
-This endpoint updates an existing refund transaction.
+Updates an existing refund transaction.
 
 #### Request
 
@@ -2229,7 +2229,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 }>
 ```
 
-This endpoint shows an existing refund transaction.
+Shows an existing refund transaction.
 
 #### Request
 
