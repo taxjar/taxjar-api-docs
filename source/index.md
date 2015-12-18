@@ -417,6 +417,7 @@ country | string | <span class="conditional" data-tooltip="For international loc
 zip | string | required | Postal code for given location (5-Digit ZIP or ZIP+4).
 city | string | <span class="conditional" data-tooltip="For international locations outside of US, `city` is required." data-tooltip-position="top center">conditional</span> | City for given location.
 street | string | <span class="conditional" data-tooltip="Currently in beta testing for State of Washington addresses." data-tooltip-position="top center">optional</span> | Street address for given location.
+
 #### Response
 
 Returns a JSON object with rates for a given location broken down by state, county, city, and district. For international requests, returns standard and reduced rates.
