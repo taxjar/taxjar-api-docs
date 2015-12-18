@@ -50,7 +50,7 @@ $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 curl "API_ENDPOINT" \
   -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214""
 
-or 
+or
 
 curl "API_ENDPOINT" \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
@@ -177,18 +177,18 @@ curl https://api.taxjar.com/v2/categories \
 ```ruby
 [
   #<Taxjar::Category:0x007f081dc3e278 @attrs={
-    :name => "Digital Goods", 
-    :product_tax_code => "31000", 
+    :name => "Digital Goods",
+    :product_tax_code => "31000",
     :description => "Digital products transferred electronically."
-  }>, 
+  }>,
   #<Taxjar::Category:0x007f081dc3de90 @attrs={
-    :name => "Clothing", 
-    :product_tax_code => "20010", 
+    :name => "Clothing",
+    :product_tax_code => "20010",
     :description => "All human wearing apparel suitable for general use"
-  }>, 
+  }>,
   #<Taxjar::Category:0x007f081dc3da80 @attrs={
     :name => "Non-Prescription",
-    :product_tax_code => "51010", 
+    :product_tax_code => "51010",
     :description => "Drugs for human use without a prescription"
   }>
 ]
@@ -309,7 +309,7 @@ $rates = $taxjar->ratesForLocation('00150', [
 # United States (ZIP+4)
 curl https://api.taxjar.com/v2/rates/90404-3370 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
-  
+
 # United States (ZIP w/ Optional Params)
 curl https://api.taxjar.com/v2/rates/90404 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -372,7 +372,7 @@ curl https://api.taxjar.com/v2/rates/00150 \
 
 ```ruby
 #<Taxjar::Rate:0x007fc47056a928 @attrs={
-  :zip => "90404", 
+  :zip => "90404",
   :state => "CA",
   :state_rate => 0.065,
   :county => "LOS ANGELES",
@@ -416,7 +416,7 @@ Parameter | Type | Required | Description
 country | string | <span class="conditional" data-tooltip="For international locations outside of US, `country` is required." data-tooltip-position="top center">conditional</span> | ISO two country code of the country for given location.
 zip | string | required | Postal code for given location (5-Digit ZIP or ZIP+4).
 city | string | <span class="conditional" data-tooltip="For international locations outside of US, `city` is required." data-tooltip-position="top center">conditional</span> | City for given location.
-
+street | string | <span class="conditional" data-tooltip="Currently in beta testing for State of Washington addresses." data-tooltip-position="top center">optional</span> | Street address for given location.
 #### Response
 
 Returns a JSON object with rates for a given location broken down by state, county, city, and district. For international requests, returns standard and reduced rates.
@@ -483,7 +483,7 @@ order = client.tax_for_order({
   :to_state => 'CA',
   :from_country => 'US',
   :from_zip => '92093',
-  :from_city => 'San Diego',                
+  :from_city => 'San Diego',
   :amount => 16.50,
   :shipping => 1.5,
   :line_items => [{:quantity => 1,
@@ -634,6 +634,7 @@ curl https://api.taxjar.com/v2/taxes \
 }>
 ```
 
+
 Shows the sales tax that should be collected for a given order.
 
 #### Request
@@ -648,12 +649,12 @@ from_country | string | optional | ISO two country code of the country where the
 from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | State where the order shipped from.
 from_city | string | optional | City where the order shipped from.
-from_street | string | optional | Street address where the order shipped from.
+from_street | string | <span class="conditional" data-tooltip="Currently in beta testing for State of Washington addresses." data-tooltip-position="top center">optional</span> | Street address where the order shipped from.
 to_country | string | required | ISO two country code of the country where the order shipped to.
 to_zip | string | <span class="conditional" data-tooltip="If `to_country` is 'US', `to_zip` is required." data-tooltip-position="top center">conditional</span> | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | <span class="conditional" data-tooltip="If `to_country` is 'US' or 'CA', `to_state` is required." data-tooltip-position="top center">conditional</span> | State where the order shipped to.
 to_city | string | optional | City where the order shipped to.
-to_street | string | optional | Street address where the order shipped to.
+to_street | string | <span class="conditional" data-tooltip="Currently in beta testing for State of Washington addresses." data-tooltip-position="top center">optional</span> | Street address where the order shipped to.
 amount | long | optional | Total amount of the order, excluding shipping. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 shipping | long | required | Total amount of shipping for the order.
 nexus_addresses[][id] | long | optional | Unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
@@ -668,7 +669,7 @@ line_items[][product_tax_code] | string | optional | Product tax code for the it
 line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Discount amount for the item.
 
-#### Notes 
+#### Notes
 
 - *Either `amount` or `line_items` parameters are required to perform tax calculations.*
 
@@ -1132,7 +1133,7 @@ line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Discount amount for the item.
 line_items[][sales_tax] | long | optional | Sales tax collected for the item.
 
-#### Notes  
+#### Notes
 
 - *Either an address on file or `from_` parameters are required to perform tax calculations.*
 
@@ -1333,7 +1334,7 @@ line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Discount amount for the item.
 line_items[][sales_tax] | long | optional | Sales tax collected for the item.
 
-#### Notes  
+#### Notes
 
 - *Either an address on file or `from_` parameters are required to perform tax calculations.*
 
@@ -1907,7 +1908,7 @@ line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Discount amount for the item.
 line_items[][sales_tax] | long | optional | Sales tax collected for the item.
 
-#### Notes  
+#### Notes
 
 - *Either an address on file or `from_` parameters are required to perform tax calculations.*
 
@@ -2108,7 +2109,7 @@ line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Discount amount for the item.
 line_items[][sales_tax] | long | optional | Sales tax collected for the item.
 
-#### Notes  
+#### Notes
 
 - *Either an address on file or `from_` parameters are required to perform tax calculations.*
 
