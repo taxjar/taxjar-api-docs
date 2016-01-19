@@ -26,7 +26,7 @@ We currently provide API clients for the following languages:
 - <img class="client-icon" src="images/clients/php-logo.png" width="16"> [PHP Sales Tax API](https://github.com/taxjar/taxjar-php) *via Composer as `taxjar/taxjar-php`*
 - <img class="client-icon" src="images/clients/node-logo.png" width="16"> [Node Sales Tax API](https://github.com/taxjar/taxjar-node) *via NPM as `taxjar`*
 
-Before getting started, you'll need to [sign up for TaxJar](https://app.taxjar.com/api_sign_up/plus/) and get an API key. If you have any questions or would like to request support for a new client language, feel free to [contact us](mailto:support@taxjar.com).
+Before getting started, you'll need to [sign up for TaxJar](https://app.taxjar.com/api_sign_up/basic/) and get an API key. If you have any questions or would like to request support for a new client language, feel free to [contact us](mailto:support@taxjar.com).
 
 # Authentication
 
@@ -58,7 +58,7 @@ curl "API_ENDPOINT" \
 
 > Make sure to replace `9e0cd62a22f451701f29c3bde214` with your API key.
 
-TaxJar uses API keys to allow access to the API. If you're new to TaxJar, you'll need to [sign up for an account](https://app.taxjar.com/api_sign_up/plus/) to get your API key. Otherwise, [log in](https://app.taxjar.com) and go to *Account > API Access* to generate a new API token.
+TaxJar uses API keys to allow access to the API. If you're new to TaxJar, you'll need to [sign up for an account](https://app.taxjar.com/api_sign_up/basic/) to get your API key. Otherwise, [log in](https://app.taxjar.com) and go to *Account > API Access* to generate a new API token.
 
 TaxJar expects the API key to be included in all API requests to the server using a header like the following:
 
