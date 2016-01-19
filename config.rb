@@ -25,7 +25,6 @@ activate :relative_assets
 set :relative_links, true
 
 ignore 'javascripts/**/*'
-ignore 'partials/*'
 ignore 'stylesheets/**/*'
 
 # Build Configuration
