@@ -53,14 +53,14 @@ header {
 
 .logo {
   float: left;
-  padding: 17px 20px;
+  padding: 16px 20px;
 }
 
 .logo span {
   position: absolute;
   top: 10px;
   left: 158px;
-  margin-top: 12px;
+  margin-top: 13px;
   font-size: 18px;
   font-weight: 300;
   color: #999;
@@ -68,18 +68,23 @@ header {
 
 .menu--main {
   float: left;
-  margin: 5px 0 0 110px;
+  margin: 0 0 0 110px;
   padding: 0 0 0 10px;
   border-left: 1px solid #f7f7f7;
 }
 
 .menu--actions {
   float: right;
-  margin: 5px 20px 0 0;
+  margin: 0 20px 0 0;
 }
 
 .menu nav ul {
+  margin: 20px 0;
   padding-left: 0;
+}
+
+.menu--actions nav ul {
+  margin: 17px 0;
 }
 
 .menu nav li {
@@ -94,18 +99,21 @@ header {
 
 .menu nav li a {
   display: block;
+  @extend %secondary-font;
+  font-size: 13px;
   padding: 6px 15px;
   color: #333;
   text-decoration: none;
+  text-transform: uppercase;
   letter-spacing: -0.25px;
 }
 
 .menu nav li .active {
-  font-weight: bold;
+  color: #3FAE2A;
 }
 
 .menu nav li a:hover {
-  color: #000;
+  color: #3FAE2A;
 }
 
 .btn {
@@ -114,16 +122,25 @@ header {
   color: #333;
   text-decoration: none;
   letter-spacing: -0.25px;
+  line-height: 20px;
   border: 1px solid #d9d9d9;
   border-radius: 5px;
   font-weight: bold;
   text-transform: uppercase;
+  
+  &:hover {
+    border-color: #3FAE2A;
+  }
 }
 
 .btn.cta {
   color: #fff;
   background: linear-gradient(#f39c12, darken(#f39c12, 3%));
   border: 1px solid transparent;
+  
+  &:hover {
+    background: linear-gradient(#f5ac39, #ea940c);
+  }
 }
 
 .btn.cta:hover {
@@ -132,7 +149,7 @@ header {
 
 .menu input {
   width: 300px;
-  font-size: 14px;
+  font-size: 15px;
   padding: 6px 10px;
   background: #fcfcfc;
   border: 1px solid #d9d9d9;
@@ -147,9 +164,10 @@ header {
 
 .badge {
   display: inline-block;
+  @extend %secondary-font;
   font-size: 10px;
   font-weight: bold;
-  line-height: 10px;
+  line-height: 11px;
   text-transform: uppercase;
   color: #fff;
   background: #000;
@@ -158,7 +176,7 @@ header {
   border-radius: 4px;
 
   h1 &, h2 &, h3 & {
-    vertical-align: 1px;
+    vertical-align: 2px;
   }
 
   .tocify-item & {
@@ -221,7 +239,7 @@ header {
   width: $nav-width;
   background-color: $nav-bg;
   padding: 20px 0;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
 
   // language selector for mobile devices
@@ -354,7 +372,7 @@ header {
     font-weight: 500;
     .tocify-item>a {
       padding-left: $nav-padding + $nav-indent;
-      font-size: 12px;
+      font-size: 13px;
     }
 
     &>li:last-child {
@@ -369,7 +387,7 @@ header {
       font-weight: 500;
       .tocify-item>a {
         padding-left: $nav-padding + $nav-indent * 2;
-        font-size: 12px;
+        font-size: 13px;
       }
 
       &>li:last-child {
@@ -513,6 +531,10 @@ header {
 
   a {
     color: $link-text;
+    
+    &:hover {
+      color: #000;
+    }
   }
 
   h1 {
@@ -550,7 +572,7 @@ header {
 
   h3, h4, h5, h6 {
     @extend %header-font;
-    font-size: 14px;
+    font-size: 15px;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
     text-transform: uppercase;
@@ -562,9 +584,11 @@ header {
   }
 
   h4, h5, h6 {
+    @extend %secondary-font;
     color: #999;
     font-size: 12px;
-    letter-spacing: 0.5px;
+    font-weight: normal;
+    letter-spacing: 1px;
   }
 
   hr {
@@ -584,7 +608,7 @@ header {
     }
 
     th {
-      font-size: 12px;
+      font-size: 13px;
       padding: 5px 10px;
       // border-bottom: 1px solid #e8e8e8;
       vertical-align: bottom;
@@ -596,7 +620,7 @@ header {
     }
 
     td {
-      font-size: 12px;
+      font-size: 13px;
       padding: 10px;
     }
 
@@ -688,7 +712,7 @@ header {
   aside:before {
     vertical-align: middle;
     padding-right: 0.5em;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   aside.notice:before {
@@ -787,7 +811,7 @@ header {
 
   .sandbox__button {
     color: #fff;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     background: #3EB049;
     margin: 0 10px 0 0;
