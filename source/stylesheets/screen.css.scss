@@ -5,6 +5,7 @@
 @import 'syntax';
 @import 'icon-font';
 @import 'drop-theme-taxjar';
+@import 'partials/sidebar';
 @import 'pages/guides';
 
 /*
@@ -66,6 +67,10 @@ header {
   color: #999;
 }
 
+.logo .short {
+  display: none;
+}
+
 .menu--main {
   float: left;
   margin: 0 0 0 110px;
@@ -85,6 +90,10 @@ header {
 
 .menu--actions nav ul {
   margin: 17px 0;
+}
+
+.menu--actions .navbar-responsive {
+  display: none;
 }
 
 .menu nav li {
@@ -118,6 +127,8 @@ header {
 
 .btn {
   display: inline-block;
+  @extend %secondary-font;
+  font-size: 13px;
   padding: 6px 15px;
   color: #333;
   text-decoration: none;
@@ -129,6 +140,7 @@ header {
   text-transform: uppercase;
   
   &:hover {
+    color: #3FAE2A;
     border-color: #3FAE2A;
   }
 }
@@ -139,6 +151,7 @@ header {
   border: 1px solid transparent;
   
   &:hover {
+    color: #fff;
     background: linear-gradient(#f5ac39, #ea940c);
   }
 }
@@ -844,26 +857,6 @@ header {
 // There are also a couple styles disperesed
 
 @media (max-width: $tablet-width) {
-  .logo {
-    float: none;
-    padding: 17px 0;
-    text-align: center;
-  }
-
-  .logo span {
-    display: none;
-  }
-
-  .menu--main {
-    display: none;
-  }
-
-  .menu--actions {
-    position: absolute;
-    top: 0;
-    right: 10px;
-  }
-
   .tocify-wrapper {
     left: -$nav-width;
 
@@ -895,10 +888,6 @@ header {
 }
 
 @media (max-width: $phone-width) {
-  .menu nav {
-    display: none;
-  }
-
   .dark-box {
     display: none;
   }
@@ -934,5 +923,33 @@ header {
   .content blockquote {
     padding-top: 2em;
     background-color: $code-bg;
+  }
+}
+
+@media (max-width: 1199px) {
+  .logo .long {
+    display: none;
+  }
+  
+  .logo .short {
+    display: block;
+  }
+  
+  .menu--main {
+    margin-left: 55px;  
+  }
+}
+
+@media (max-width: 1140px) {
+  .menu--main {
+    display: none;
+  }
+  
+  .menu--actions ul {
+    display: none;
+  }
+  
+  .menu--actions .navbar-responsive {
+    display: block;
   }
 }
