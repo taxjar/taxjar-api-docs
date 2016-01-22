@@ -1,5 +1,6 @@
 ---
 title: TaxJar API Guides
+description: "Tips and tricks on how to use SmartCalcs, TaxJar's sales tax API."
 ---
 
 # Product Exemptions
