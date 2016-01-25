@@ -26,7 +26,7 @@ Verify your API token is correct and make sure you're correctly setting the [Aut
 
 ## 403 Forbidden
 
-Make sure you have an active API token with TaxJar by [signing into your account](https://app.taxjar.com/sign_in) and reviewing [SmartCalcs API](https://app.taxjar.com/account#api-access). Your trial or subscription may have expired. If you're still not sure what's wrong, [contact us](http://www.taxjar.com/contact) and we'll investigate.
+Make sure you have an active API token with TaxJar by [reviewing your account](https://app.taxjar.com/account). Your trial or subscription may have expired. If you're still not sure what's wrong, [contact us](http://www.taxjar.com/contact) and we'll investigate.
 
 ## 406 Not Acceptable
 
