@@ -312,18 +312,18 @@ curl https://api.taxjar.com/v2/rates/90404-3370 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 
 # United States (ZIP w/ Optional Params)
-curl https://api.taxjar.com/v2/rates/90404 \
+curl -G https://api.taxjar.com/v2/rates/90404 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d city="SANTA MONICA" \
+  -d city="SANTA%20MONICA" \
   -d country="US"
 
 # International Examples (Requires City and Country)
-curl https://api.taxjar.com/v2/rates/V5K0A1 \
+curl -G https://api.taxjar.com/v2/rates/V5K0A1 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d city="VANCOUVER" \
   -d country="CA"
 
-curl https://api.taxjar.com/v2/rates/00150 \
+curl -G https://api.taxjar.com/v2/rates/00150 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d city="HELSINKI" \
   -d country="FI"
@@ -753,7 +753,7 @@ $orders = $taxjar->listOrders([
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/orders \
+curl -G https://api.taxjar.com/v2/transactions/orders \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d from_transaction_date="2015/05/01" \
   -d to_transaction_date="2015/05/31"
@@ -1521,7 +1521,7 @@ $refunds = $taxjar->listRefunds([
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/refunds \
+curl -G https://api.taxjar.com/v2/transactions/refunds \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d from_transaction_date="2015/05/01" \
   -d to_transaction_date="2015/05/31"
