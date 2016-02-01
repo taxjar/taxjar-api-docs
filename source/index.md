@@ -170,6 +170,31 @@ curl https://api.taxjar.com/v2/categories \
         "name": "Software as a Service",
         "product_tax_code": "30070",
         "description": "Pre-written software, delivered electronically, but access remotely."
+     },
+     {
+       "name": "Magazines & Subscriptions",
+       "product_tax_code": "81300",
+       "description": "Periodicals, printed, sold by subscription"
+     },
+     {
+       "name": "Books",
+       "product_tax_code": "81100",
+       "description": "Books, printed"
+     },
+     {
+       "name": "Magazine",
+       "product_tax_code": "81310",
+       "description": "Periodicals, printed, sold individually"
+     },
+     {
+       "name": "Textbook",
+       "product_tax_code": "81110",
+       "description": "Textbooks, printed"
+     },
+     {
+       "name": "Religious Books",
+       "product_tax_code": "81120",
+       "description": "Religious books and manuals, printed"
      }
   ]
 }
