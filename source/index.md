@@ -989,11 +989,15 @@ order = client.create_order({
   :amount => 17.45,
   :shipping => 1.5,
   :sales_tax => 0.95,
-  :line_items => [{:quantity => 1,
-                   :product_identifier => '12-34243-9',
-                   :description => 'Fuzzy Widget',
-                   :unit_price => 15.0,
-                   :sales_tax => 0.95}]
+  :line_items => [
+    {
+      :quantity => 1,
+      :product_identifier => '12-34243-9',
+      :description => 'Fuzzy Widget',
+      :unit_price => 15.0,
+      :sales_tax => 0.95
+    }
+  ]
 })
 ```
 
@@ -1206,12 +1210,16 @@ order = client.update_order({
   :transaction_id => '123',
   :amount => 17.45,
   :shipping => 1.5,
-  :line_items => [{:quantity => 1,
-                   :product_identifier => '12-34243-0',
-                   :description => 'Heavy Widget',
-                   :unit_price => 15.0,
-                   :discount => 0.0,
-                   :sales_tax => 0.95}]
+  :line_items => [
+    {
+      :quantity => 1,
+      :product_identifier => '12-34243-0',
+      :description => 'Heavy Widget',
+      :unit_price => 15.0,
+      :discount => 0.0,
+      :sales_tax => 0.95
+    }
+  ]
 })
 ```
 
@@ -1759,11 +1767,15 @@ order = client.create_refund({
   :amount => 17.45,
   :shipping => 1.5,
   :sales_tax => 0.95,
-  :line_items => [{:quantity => 1,
-                   :product_identifier => '12-34243-9',
-                   :description => 'Fuzzy Widget',
-                   :unit_price => 15.0,
-                   :sales_tax => 0.95}]
+  :line_items => [
+    {
+      :quantity => 1,
+      :product_identifier => '12-34243-9',
+      :description => 'Fuzzy Widget',
+      :unit_price => 15.0,
+      :sales_tax => 0.95
+    }
+  ]
 })
 ```
 
@@ -1982,11 +1994,15 @@ order = client.update_refund({
   :amount => 17.95,
   :shipping => 2.0,
   :sales_tax => 0.95,
-  :line_items => [{:quantity => 1,
-                   :product_identifier => '12-34243-0',
-                   :description => 'Heavy Widget',
-                   :unit_price => 15.0,
-                   :sales_tax => 0.95}]
+  :line_items => [
+    {
+      :quantity => 1,
+      :product_identifier => '12-34243-0',
+      :description => 'Heavy Widget',
+      :unit_price => 15.0,
+      :sales_tax => 0.95
+    }
+  ]
 })
 ```
 
