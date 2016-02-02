@@ -10,20 +10,31 @@ description: "Tips and tricks on how to use SmartCalcs, TaxJar's sales tax API."
 ```shell
 curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d amount=215.30 \
-  -d from_city="Delmar" \
-  -d from_state="NY" \
-  -d from_zip="12054" \
-  -d to_city="Mahopac" \
-  -d to_state="NY" \
-  -d to_zip="10541" \
-  -d "line_items[][quantity]=1 \
-  &line_items[][unit_price]=150 \
-  &line_items[][product_tax_code]=20010" \
-  -d "line_items[][quantity]=3 \
-  &line_items[][unit_price]=19.95 \
-  &line_items[][product_tax_code]=20010 \
-  &line_items[][shipping]=5.45"
+  -H "Content-Type: application/json" \
+  -d '{
+    "to_city": "Mahopac",
+    "to_state": "NY",
+    "to_zip": "10541",
+    "to_country": "US",
+    "from_city": "Delmar",
+    "from_state": "NY",
+    "from_zip": "12054",
+    "from_country": "US",
+    "amount": 29.94,
+    "shipping": 0,
+    "line_items": [
+      {
+        "quantity": 1,
+        "unit_price": 19.99,
+        "product_tax_code": "20010"
+      },
+      { 
+        "quantity": 1,
+        "unit_price": 9.95,
+        "product_tax_code": "20010"
+      }
+    ]
+  }'
 ```
 
 > Taxability By Line Item
@@ -149,24 +160,40 @@ Using TaxJar's [SmartCalcs API](http://www.taxjar.com/api/), there are two ways 
 ```shell
 curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d amount=215.30 \
-  -d from_city="Delmar" \
-  -d from_state="NY" \
-  -d from_zip="12054" \
-  -d to_city="Mahopac" \
-  -d to_state="NY" \
-  -d to_zip="10541" \
-  -d "line_items[][quantity]=1 \
-  &line_items[][unit_price]=150 \
-  &line_items[][product_tax_code]=20010" \
-  -d "line_items[][quantity]=3 \
-  &line_items[][unit_price]=19.95 \
-  &line_items[][product_tax_code]=20010 \
-  &line_items[][shipping]=5.45" \
-  -d "nexus_addresses[][city]='Delmar' \
-  &nexus_addresses[][state]='NY' \
-  &nexus_addresses[][zip]=12054 \
-  &nexus_addresses[][country]='US'"
+  -H "Content-Type: application/json" \
+  -d '{
+    "to_city": "Mahopac",
+    "to_state": "NY",
+    "to_zip": "10541",
+    "to_country": "US",
+    "from_city": "Delmar",
+    "from_state": "NY",
+    "from_zip": "12054",
+    "from_country": "US",
+    "amount": 215.30,
+    "shipping": 0,
+    "line_items": [
+      {
+        "quantity": 1,
+        "unit_price": 150,
+        "product_tax_code": "20010"
+      },
+      { 
+        "quantity": 3,
+        "unit_price": 19.95,
+        "shipping": 5.45,
+        "product_tax_code": "20010"
+      }
+    ],
+    "nexus_addresses": [
+      {
+        "city": "Delmar",
+        "state": "NY",
+        "zip": "12054",
+        "country": "US"
+      }
+    ]
+  }'
 ```
 
 ### Nexus Address Example
