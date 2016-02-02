@@ -513,9 +513,13 @@ order = client.tax_for_order({
   :from_city => 'San Diego',
   :amount => 16.50,
   :shipping => 1.5,
-  :line_items => [{:quantity => 1,
-                   :unit_price => 15.0,
-                   :product_tax_code => 31000}]
+  :line_items => [
+    {
+      :quantity => 1,
+      :unit_price => 15.0,
+      :product_tax_code => 31000
+    }
+  ]
 })
 ```
 
@@ -530,7 +534,14 @@ taxjar.taxForOrder({
   to_zip: '07446',
   to_state: 'NJ',
   amount: 16.50,
-  shipping: 1.5
+  shipping: 1.5,
+  line_items: [
+    {
+      quantity: 1,
+      unit_price: 15.0,
+      product_tax_code: 31000
+    }
+  ]
 }).then(function(res) {
   res.tax; // Tax object
   res.tax.amount_to_collect; // Amount to collect
@@ -548,7 +559,14 @@ $order_taxes = $taxjar->taxForOrder([
   'to_zip' => '07446',
   'to_state' => 'NJ',
   'amount' => 16.50,
-  'shipping' => 1.5
+  'shipping' => 1.5,
+  'line_items' => [
+    [
+      'quantity' => 1,
+      'unit_price' => 15.0,
+      'product_tax_code' => 31000
+    ]
+  ]
 ]);
 ```
 
@@ -573,55 +591,47 @@ curl https://api.taxjar.com/v2/taxes \
 ```json
 {
   "tax": {
-    "order_total_amount": 42.5,
+    "order_total_amount": 16.5,
     "shipping": 1.5,
-    "taxable_amount": 31.5,
-    "amount_to_collect": 2.21,
+    "taxable_amount": 15.0,
+    "amount_to_collect": 1.35,
+    "rate": 0.09,
     "has_nexus": true,
-    "freight_taxable": true,
+    "freight_taxable": false,
     "tax_source": "destination",
-    "breakdown": {
-      "shipping": {
-          "state_amount": 0.11,
-          "state_sales_tax_rate": 0.07,
-          "county_amount": 0,
-          "county_tax_rate": 0,
-          "city_amount": 0,
-          "city_tax_rate": 0,
-          "special_district_amount": 0,
-          "special_tax_rate": 0
-      },
-      "state_taxable_amount": 31.5,
-      "state_tax_collectable": 2.21,
-      "county_taxable_amount": 0,
-      "county_tax_collectable": 0,
-      "city_taxable_amount": 0,
-      "city_tax_collectable": 0,
-      "special_district_taxable_amount": 0,
-      "special_district_tax_collectable": 0,
-      "line_items": [
-          {
-              "id": "1",
-              "state_taxable_amount": 30,
-              "state_sales_tax_rate": 0.07,
-              "county_taxable_amount": 0,
-              "county_tax_rate": 0,
-              "city_taxable_amount": 0,
-              "city_tax_rate": 0,
-              "special_district_taxable_amount": 0,
-              "special_tax_rate": 0
-          },
-          {
-              "id": "2",
-              "state_taxable_amount": 0,
-              "state_sales_tax_rate": 0,
-              "county_taxable_amount": 0,
-              "county_tax_rate": 0,
-              "city_taxable_amount": 0,
-              "city_tax_rate": 0,
-              "special_district_taxable_amount": 0,
-              "special_tax_rate": 0
-          }
+    "breakdown": {  
+      "taxable_amount": 15.0,
+      "tax_collectable": 1.35,
+      "state_taxable_amount": 15.0,
+      "state_tax_rate": 0.065,
+      "state_tax_collectable": 0.98,
+      "county_taxable_amount": 15.0,
+      "county_tax_rate": 0.01,
+      "county_tax_collectable": 0.15,
+      "city_taxable_amount": 0.0,
+      "city_tax_rate": 0.0,
+      "city_tax_collectable": 0.0,
+      "special_district_taxable_amount": 15.0,
+      "special_tax_rate": 0.015,
+      "special_district_tax_collectable": 0.23,
+      "line_items": [  
+        {  
+          "id": "1",
+          "taxable_amount": 15.0,
+          "tax_collectable": 1.35,
+          "state_taxable_amount": 15.0,
+          "state_sales_tax_rate": 0.065,
+          "state_amount": 0.98,
+          "county_taxable_amount": 15.0,
+          "county_tax_rate": 0.01,
+          "county_amount": 0.15,
+          "city_taxable_amount": 0.0,
+          "city_tax_rate": 0.0,
+          "city_amount": 0.0,
+          "special_district_taxable_amount": 15.0,
+          "special_tax_rate": 0.015,
+          "special_district_amount": 0.23
+        }
       ]
     }
   }
