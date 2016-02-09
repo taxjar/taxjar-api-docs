@@ -1568,7 +1568,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }>
 ```
 
-Shows an existing order transaction.
+Deletes an existing order transaction.
 
 #### Request
 
@@ -2352,7 +2352,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 }>
 ```
 
-Shows an existing refund transaction.
+Deletes an existing refund transaction.
 
 #### Request
 
