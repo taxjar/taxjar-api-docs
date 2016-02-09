@@ -751,6 +751,12 @@ header {
   #request + p {
     word-wrap: break-word;
   }
+  
+  .column-set {
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    columns: 3;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
