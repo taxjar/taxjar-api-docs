@@ -2363,3 +2363,64 @@ DELETE https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given refund transaction.
+
+## Validation
+
+### <span class="badge badge--get">get</span> Validate a VAT number
+
+Validates an existing VAT identification number against [VIES](http://ec.europa.eu/taxation_customs/vies/).
+
+> Definition
+
+```shell
+GET https://api.taxjar.com/v2/validation
+```
+
+> Request Example
+
+```shell
+curl -G https://api.taxjar.com/v2/validation \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d vat="FR40303265045"
+```
+
+> Response Example
+
+```json
+{
+  "valid": true,
+  "exists": true,
+  "vies_available": true,
+  "vies_response": {
+    "country_code": "FR",
+    "vat_number": "40303265045",
+    "request_date": "2016-02-10",
+    "valid": true,
+    "name": "SA SODIMAS",
+    "address": "11 RUE AMPERE\n26600 PONT DE L ISERE"
+  }
+}
+```
+
+#### Request
+
+GET https://api.taxjar.com/v2/validation
+
+#### Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+vat | string | required | VAT identification number to validate.
+
+#### Response
+
+Returns a JSON object declaring if the VAT number is valid and exists along with data returned by VIES.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+valid | bool | Whether or not the VAT number is valid via regex and VIES.
+exists | bool | Whether or not the VAT number exists in VIES.
+vies_available | bool | Whether or not VIES is [currently available](http://ec.europa.eu/taxation_customs/vies/help.html).
+vies_response | object | Data returned by VIES based on the given VAT number.
