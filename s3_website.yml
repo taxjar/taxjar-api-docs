@@ -20,7 +20,7 @@ gzip: true
 treat_zero_length_objects_as_redirects: true
 
 redirects:
-  index.html: http://developers.taxjar.com/api/reference
+  index.html: http://developers.taxjar.com/api/reference/
 
 exclude_from_upload:
   - .DS_Store
