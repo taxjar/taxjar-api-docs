@@ -2364,7 +2364,7 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given refund transaction.
 
-## Validation
+## Validations
 
 ### <span class="badge badge--get">get</span> Validate a VAT number
 
