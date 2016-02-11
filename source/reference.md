@@ -2410,7 +2410,7 @@ GET https://api.taxjar.com/v2/validation
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-vat | string | required | VAT identification number to validate.
+vat | string | required | VAT identification number to validate. Country code should precede number, e.g. GB980780684.
 
 #### Response
 
@@ -2425,9 +2425,9 @@ exists | bool | Whether or not the VAT number exists in VIES.
 vies_available | bool | Whether or not VIES is [currently available](http://ec.europa.eu/taxation_customs/vies/help.html).
 vies_response | object | Data returned by VIES based on the given VAT number.
 
-## Backups
+## Summarized Rates
 
-### <span class="badge badge--get">get</span> Summarize rates for all regions
+### <span class="badge badge--get">get</span> Summarize tax rates for all regions
 
 Retrieve minimum and average sales tax rates by region as a backup.
 
