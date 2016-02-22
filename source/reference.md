@@ -586,7 +586,7 @@ order = client.tax_for_order({
     {
       :quantity => 1,
       :unit_price => 15.0,
-      :product_tax_code => 31000
+      :product_tax_code => '31000'
     }
   ]
 })
@@ -608,7 +608,7 @@ taxjar.taxForOrder({
     {
       quantity: 1,
       unit_price: 15.0,
-      product_tax_code: 31000
+      product_tax_code: '31000'
     }
   ]
 }).then(function(res) {
@@ -633,7 +633,7 @@ $order_taxes = $taxjar->taxForOrder([
     [
       'quantity' => 1,
       'unit_price' => 15.0,
-      'product_tax_code' => 31000
+      'product_tax_code' => '31000'
     ]
   ]
 ]);
@@ -652,7 +652,7 @@ curl https://api.taxjar.com/v2/taxes \
   -d shipping=1.5 \
   -d "line_items[][quantity]=1 \
   &line_items[][unit_price]=15.0 \
-  &line_items[][product_tax_code]=31000"
+  &line_items[][product_tax_code]='31000'"
 ```
 
 > Response Example
@@ -763,13 +763,13 @@ to_city | string | optional | City where the order shipped to.
 to_street | string | <span class="conditional" data-tooltip="Currently in beta testing for State of Washington addresses." data-tooltip-position="top center">optional</span> | Street address where the order shipped to.
 amount | long | optional | Total amount of the order, excluding shipping. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 shipping | long | required | Total amount of shipping for the order.
-nexus_addresses[][id] | long | optional | Unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+nexus_addresses[][id] | string | optional | Unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 nexus_addresses[][country] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, country is required." data-tooltip-position="top center">conditional</span> | ISO two country code of the country for the nexus address.
-nexus_addresses[][zip] | long | <span class="conditional" data-tooltip="If providing `nexus_addresses`, zip is required." data-tooltip-position="top center">conditional</span> | Postal code for the nexus address.
+nexus_addresses[][zip] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, zip is required." data-tooltip-position="top center">conditional</span> | Postal code for the nexus address.
 nexus_addresses[][state] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, state is required." data-tooltip-position="top center">conditional</span> | State for the nexus address.
 nexus_addresses[][city] | string | optional | City for the nexus address.
-nexus_addresses[][street] | long | optional | Street address for the nexus address.
-line_items[][id] | long | optional | Unique identifier of the given line item. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+nexus_addresses[][street] | string | optional | Street address for the nexus address.
+line_items[][id] | string | optional | Unique identifier of the given line item. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_tax_code] | string | optional | Product tax code for the item.
 line_items[][unit_price] | long | optional | Unit price for the item.
@@ -1234,7 +1234,7 @@ to_street | string | optional | Street address where the order shipped to.
 amount | long | required | Total amount of the order with shipping, excluding sales tax.
 shipping | long | required | Total amount of shipping for the order.
 sales_tax | long | required | Total amount of sales tax collected for the order.
-line_items[][id] | long | optional | Unique identifier of the given line item.
+line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item.
@@ -1439,7 +1439,7 @@ to_street | string | optional | Street address where the order shipped to.
 amount | long | optional | Total amount of the order with shipping, excluding sales tax.
 shipping | long | optional | Total amount of shipping for the order.
 sales_tax | long | optional | Total amount of sales tax collected for the order.
-line_items[][id] | long | optional | Unique identifier of the given line item.
+line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item.
@@ -2017,7 +2017,7 @@ to_street | string | optional | Street address where the order shipped to.
 amount | long | required | Total amount of the refunded order with shipping, excluding sales tax.
 shipping | long | required | Total amount of shipping for the refunded order.
 sales_tax | long | required | Total amount of sales tax collected for the refunded order.
-line_items[][id] | long | optional | Unique identifier of the given line item.
+line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item.
@@ -2222,7 +2222,7 @@ to_street | string | optional | Street address where the refunded order shipped 
 amount | long | optional | Total amount of the refunded order with shipping, excluding sales tax.
 shipping | long | optional | Total amount of shipping for the refunded order.
 sales_tax | long | optional | Total amount of sales tax collected for the refunded order.
-line_items[][id] | long | optional | Unique identifier of the given line item.
+line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item.
