@@ -2488,11 +2488,44 @@ Retrieve minimum and average sales tax rates by region as a backup.
 
 > Definition
 
+```ruby
+client.summary_rates
+```
+
+```javascript
+taxjar.summaryRates();
+```
+
+```php?start_inline=1
+$taxjar->summaryRates();
+```
+
 ```shell
 GET https://api.taxjar.com/v2/summary_rates
 ```
 
 > Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+summarized_rates = client.summary_rates
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.summaryRates().then(function(res) {
+  res.summary_rates; // Array of summarized rates
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$summarized_rates = $taxjar->summaryRates();
+```
 
 ```shell
 curl https://api.taxjar.com/v2/summary_rates \
@@ -2549,6 +2582,53 @@ curl https://api.taxjar.com/v2/summary_rates \
     }
   ]
 }
+```
+
+```ruby
+[
+  {
+    :country_code => "US",
+    :country => "United States",
+    :region_code => "CA",
+    :region => "California",
+    :minimum_rate => {
+      :label => "State Tax",
+      :rate => 0.065
+    },
+    :average_rate => {
+      :label => "Tax",
+      :rate => 0.0827
+    }
+  },
+  {
+    :country_code => "CA",
+    :country => "Canada",
+    :region_code => "BC",
+    :region => "British Columbia",
+    :minimum_rate => {
+      :label => "GST",
+      :rate => 0.05
+    },
+    :average_rate => {
+      :label => "PST",
+      :rate => 0.12
+    }
+  },
+  {
+    :country_code => "UK",
+    :country => "United Kingdom",
+    :region_code => nil,
+    :region => nil,
+    :minimum_rate => {
+      :label => "VAT",
+      :rate => 0.2
+    },
+    :average_rate => {
+      :label => "VAT",
+      :rate => 0.2
+    }
+  }
+]
 ```
 
 #### Request
