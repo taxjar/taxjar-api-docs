@@ -2372,11 +2372,50 @@ Validates an existing VAT identification number against [VIES](http://ec.europa.
 
 > Definition
 
+```ruby
+client.validate
+```
+
+```javascript
+taxjar.validate();
+```
+
+```php?start_inline=1
+$taxjar->validate();
+```
+
 ```shell
 GET https://api.taxjar.com/v2/validation
 ```
 
 > Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+validation = client.validate({
+  :vat => 'FR40303265045'
+})
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.validate({
+  vat: 'FR40303265045'
+}).then(function(res) {
+  res.validation; // Validation object
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$validation = $taxjar->validate([
+  'vat' => 'FR40303265045'
+]);
+```
 
 ```shell
 curl -G https://api.taxjar.com/v2/validation \
@@ -2400,6 +2439,22 @@ curl -G https://api.taxjar.com/v2/validation \
     "address": "11 RUE AMPERE\n26600 PONT DE L ISERE"
   }
 }
+```
+
+```ruby
+#<Taxjar::Validation:0x006f6da40e33a0 @attrs={
+  :valid => true,
+  :exists => true,
+  :vies_available => true,
+  :vies_response => {
+    :country_code => "FR",
+    :vat_number => "40303265045",
+    :request_date => "2016-02-10",
+    :valid => true,
+    :name => "SA SODIMAS",
+    :address => "11 RUE AMPERE\n26600 PONT DE L ISERE"
+  }
+}>
 ```
 
 #### Request
