@@ -2370,7 +2370,8 @@ transaction_id | string | required | Unique identifier of the given refund trans
 
 Validates an existing VAT identification number against [VIES](http://ec.europa.eu/taxation_customs/vies/).
 
-> Definition
+> Definition<br>
+> <small>*Ruby, PHP, and JavaScript client methods in progress.*</small>
 
 ```ruby
 client.validate
@@ -2486,7 +2487,8 @@ vies_response | object | Data returned by VIES based on the given VAT number.
 
 Retrieve minimum and average sales tax rates by region as a backup.
 
-> Definition
+> Definition<br>
+> <small>*Ruby, PHP, and JavaScript client methods in progress.*</small>
 
 ```ruby
 client.summary_rates
@@ -2533,7 +2535,7 @@ curl https://api.taxjar.com/v2/summary_rates \
 ```
 
 > Response Example<br>
-> <small>*Summary response shortened for reference brevity.*</small>
+> <small>*Summary response shortened for brevity.*</small>
 
 ```json
 {
