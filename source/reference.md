@@ -2363,3 +2363,293 @@ DELETE https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given refund transaction.
+
+## Validations
+
+### <span class="badge badge--get">get</span> Validate a VAT number
+
+Validates an existing VAT identification number against [VIES](http://ec.europa.eu/taxation_customs/vies/).
+
+> Definition<br>
+> <small>*Ruby, PHP, and JavaScript client methods in progress.*</small>
+
+```ruby
+client.validate
+```
+
+```javascript
+taxjar.validate();
+```
+
+```php?start_inline=1
+$taxjar->validate();
+```
+
+```shell
+GET https://api.taxjar.com/v2/validation
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+validation = client.validate({
+  :vat => 'FR40303265045'
+})
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.validate({
+  vat: 'FR40303265045'
+}).then(function(res) {
+  res.validation; // Validation object
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$validation = $taxjar->validate([
+  'vat' => 'FR40303265045'
+]);
+```
+
+```shell
+curl -G https://api.taxjar.com/v2/validation \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d vat="FR40303265045"
+```
+
+> Response Example
+
+```json
+{
+  "validation": {
+    "valid": true,
+    "exists": true,
+    "vies_available": true,
+    "vies_response": {
+      "country_code": "FR",
+      "vat_number": "40303265045",
+      "request_date": "2016-02-10",
+      "valid": true,
+      "name": "SA SODIMAS",
+      "address": "11 RUE AMPERE\n26600 PONT DE L ISERE"
+    }
+  }
+}
+```
+
+```ruby
+#<Taxjar::Validation:0x006f6da40e33a0 @attrs={
+  :valid => true,
+  :exists => true,
+  :vies_available => true,
+  :vies_response => {
+    :country_code => "FR",
+    :vat_number => "40303265045",
+    :request_date => "2016-02-10",
+    :valid => true,
+    :name => "SA SODIMAS",
+    :address => "11 RUE AMPERE\n26600 PONT DE L ISERE"
+  }
+}>
+```
+
+#### Request
+
+GET https://api.taxjar.com/v2/validation
+
+#### Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+vat | string | required | VAT identification number to validate. Country code should precede number, e.g. GB980780684.
+
+#### Response
+
+Returns a JSON object declaring if the VAT number is valid and exists along with data returned by VIES.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+valid | bool | Whether or not the VAT number is valid via regex and VIES.
+exists | bool | Whether or not the VAT number exists in VIES.
+vies_available | bool | Whether or not VIES is [currently available](http://ec.europa.eu/taxation_customs/vies/help.html).
+vies_response | object | Data returned by VIES based on the given VAT number.
+
+## Summarized Rates
+
+### <span class="badge badge--get">get</span> Summarize tax rates for all regions
+
+Retrieve minimum and average sales tax rates by region as a backup.
+
+> Definition<br>
+> <small>*Ruby, PHP, and JavaScript client methods in progress.*</small>
+
+```ruby
+client.summary_rates
+```
+
+```javascript
+taxjar.summaryRates();
+```
+
+```php?start_inline=1
+$taxjar->summaryRates();
+```
+
+```shell
+GET https://api.taxjar.com/v2/summary_rates
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+summarized_rates = client.summary_rates
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.summaryRates().then(function(res) {
+  res.summary_rates; // Array of summarized rates
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$summarized_rates = $taxjar->summaryRates();
+```
+
+```shell
+curl https://api.taxjar.com/v2/summary_rates \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
+```
+
+> Response Example<br>
+> <small>*Summary response shortened for brevity.*</small>
+
+```json
+{
+  "summary_rates": [
+    {
+      "country_code": "US",
+      "country": "United States",
+      "region_code": "CA",
+      "region": "California",
+      "minimum_rate": {
+        "label": "State Tax",
+        "rate": 0.065
+      },
+      "average_rate": {
+        "label": "Tax",
+        "rate": 0.0827
+      }
+    },
+    {
+      "country_code": "CA",
+      "country": "Canada",
+      "region_code": "BC",
+      "region": "British Columbia",
+      "minimum_rate": {
+        "label": "GST",
+        "rate": 0.05
+      },
+      "average_rate": {
+        "label": "PST",
+        "rate": 0.12
+      }
+    },
+    {
+      "country_code": "UK",
+      "country": "United Kingdom",
+      "region_code": null,
+      "region": null,
+      "minimum_rate": {
+        "label": "VAT",
+        "rate": 0.2
+      },
+      "average_rate": {
+        "label": "VAT",
+        "rate": 0.2
+      }
+    }
+  ]
+}
+```
+
+```ruby
+[
+  {
+    :country_code => "US",
+    :country => "United States",
+    :region_code => "CA",
+    :region => "California",
+    :minimum_rate => {
+      :label => "State Tax",
+      :rate => 0.065
+    },
+    :average_rate => {
+      :label => "Tax",
+      :rate => 0.0827
+    }
+  },
+  {
+    :country_code => "CA",
+    :country => "Canada",
+    :region_code => "BC",
+    :region => "British Columbia",
+    :minimum_rate => {
+      :label => "GST",
+      :rate => 0.05
+    },
+    :average_rate => {
+      :label => "PST",
+      :rate => 0.12
+    }
+  },
+  {
+    :country_code => "UK",
+    :country => "United Kingdom",
+    :region_code => nil,
+    :region => nil,
+    :minimum_rate => {
+      :label => "VAT",
+      :rate => 0.2
+    },
+    :average_rate => {
+      :label => "VAT",
+      :rate => 0.2
+    }
+  }
+]
+```
+
+#### Request
+
+GET https://api.taxjar.com/v2/summary_rates
+
+#### Response
+
+Returns a JSON object with an array of summarized rates for each region/state.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+country_code | string | Country code for summarized region.
+country | string | Country name for summarized region.
+region_code | string | Region code for summarized region.
+region | string | Region name for summarized region.
+minimum_rate | object | Region/state-only sales tax rate with label.
+average_rate | object | Average rate for region/state and local sales tax across all postal codes in the summarized region with label.
