@@ -2428,16 +2428,18 @@ curl -G https://api.taxjar.com/v2/validation \
 
 ```json
 {
-  "valid": true,
-  "exists": true,
-  "vies_available": true,
-  "vies_response": {
-    "country_code": "FR",
-    "vat_number": "40303265045",
-    "request_date": "2016-02-10",
+  "validation": {
     "valid": true,
-    "name": "SA SODIMAS",
-    "address": "11 RUE AMPERE\n26600 PONT DE L ISERE"
+    "exists": true,
+    "vies_available": true,
+    "vies_response": {
+      "country_code": "FR",
+      "vat_number": "40303265045",
+      "request_date": "2016-02-10",
+      "valid": true,
+      "name": "SA SODIMAS",
+      "address": "11 RUE AMPERE\n26600 PONT DE L ISERE"
+    }
   }
 }
 ```
