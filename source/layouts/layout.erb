@@ -23,6 +23,9 @@ under the License.
     <title><%= current_page.data.title || "TaxJar API Reference" %></title>
     <meta name="description" content="<%= current_page.data.description %>">
     <link rel="shortcut icon" href="<%= image_path "favicon.png" %>">
+    <%- if current_page.data.preferred_url %>
+    <link rel="canonical" href="<%= current_page.data.preferred_url %>">
+    <%- end %>
 
     <link href="http://fonts.googleapis.com/css?family=Montserrat|Lato:400,700|Source+Code+Pro" rel="stylesheet" type="text/css">
     <%= stylesheet_link_tag :screen, media: :screen %>

@@ -1,6 +1,7 @@
 ---
 title: TaxJar API Reference
 description: "Documentation and code examples for SmartCalcs, TaxJar's sales tax API."
+preferred_url: http://developers.taxjar.com/api/reference/
 
 language_tabs:
   - shell
