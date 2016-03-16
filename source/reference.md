@@ -128,6 +128,8 @@ We currently support the following countries around the world. If you would like
 
 TaxJar API endpoints provide detailed sales tax rates and calculations. They also support extended reporting and filing capabilities for TaxJar users.
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.getpostman.com/run-collection/591e69b1095ef11195be)
+
 ## Categories
 
 The TaxJar API provides product-level tax rules for a subset of product categories. These categories are to be used for products that are either exempt from sales tax in some jurisdictions or are taxed at reduced rates. You need not pass in a product tax code for sales tax calculations on product that is fully taxable. Simply leave that parameter out.
