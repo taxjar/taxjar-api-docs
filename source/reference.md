@@ -1059,7 +1059,7 @@ order = client.create_order({
   :to_state => 'CA',
   :to_city => 'Los Angeles',
   :to_street => '123 Palm Grove Ln',
-  :amount => 17.45,
+  :amount => 16.5,
   :shipping => 1.5,
   :sales_tax => 0.95,
   :line_items => [
@@ -1085,7 +1085,7 @@ taxjar.createOrder({
   to_state: 'CA',
   to_city: 'Los Angeles',
   to_street: '123 Palm Grove Ln',
-  amount: 17.45,
+  amount: 16.5,
   shipping: 1.5,
   sales_tax: 0.95,
   line_items: [
@@ -1113,7 +1113,7 @@ $order = $taxjar->createOrder([
   'to_state' => 'CA',
   'to_city' => 'Los Angeles',
   'to_street' => '123 Palm Grove Ln',
-  'amount' => 17.45,
+  'amount' => 16.5,
   'shipping' => 1.5,
   'sales_tax' => 0.95,
   'line_items' => [
@@ -1138,7 +1138,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
   -d to_state="CA" \
   -d to_city="Los Angeles" \
   -d to_street="123 Palm Grove Ln" \
-  -d amount=17.45 \
+  -d amount=16.5 \
   -d shipping=1.5 \
   -d sales_tax=0.95 \
   -d "line_items[][quantity]=1 \
@@ -1161,7 +1161,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "17.45",
+    "amount": "16.5",
     "shipping": "1.5",
     "sales_tax": "0.95",
     "line_items": [
@@ -1195,7 +1195,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
   :to_state => "CA",
   :to_city => "LOS ANGELES",
   :to_street => "123 Palm Grove Ln",
-  :amount => 15.02,
+  :amount => 16.5,
   :shipping => 1.5,
   :sales_tax => 0.95,
   :line_items => [
@@ -1207,7 +1207,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
       :description => "Fuzzy Widget",
       :unit_price => "15.0",
       :discount => "0.0",
-      :sales_tax => "0.85"
+      :sales_tax => "0.95"
     }
   ]
 }>
@@ -1281,8 +1281,8 @@ client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 order = client.update_order({
   :transaction_id => '123',
-  :amount => 17.45,
-  :shipping => 1.5,
+  :amount => 17.0,
+  :shipping => 2.0,
   :line_items => [
     {
       :quantity => 1,
@@ -1301,8 +1301,8 @@ var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
 taxjar.updateOrder({
   transaction_id: '123',
-  amount: 17.45,
-  shipping: 1.5,
+  amount: 17.0,
+  shipping: 2.0,
   line_items: [
     {
       quantity: 1,
@@ -1323,7 +1323,7 @@ $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
 $order = $taxjar->updateOrder([
   'transaction_id' => '123',
-  'amount' => 17.95,
+  'amount' => 17.0,
   'shipping' => 2.0,
   'line_items' => [
     [
@@ -1342,8 +1342,8 @@ $order = $taxjar->updateOrder([
 curl https://api.taxjar.com/v2/transactions/orders/123 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d transaction_id="123" \
-  -d amount=17.45 \
-  -d shipping=1.5 \
+  -d amount=17.0 \
+  -d shipping=2.0 \
   -d "line_items[][quantity]=1 \
   &line_items[][product_identifier]='12-34234-0' \
   &line_items[][description]='Heavy Widget' \
@@ -1366,7 +1366,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "17.95",
+    "amount": "17.0",
     "shipping": "2.0",
     "sales_tax": "0.95",
     "line_items": [
@@ -1400,7 +1400,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   :to_state => "CA",
   :to_city => "LOS ANGELES",
   :to_street => "123 Palm Grove Ln",
-  :amount => 17.95,
+  :amount => 17.0,
   :shipping => 2.0,
   :sales_tax => 0.95,
   :line_items => [
@@ -1520,7 +1520,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "17.95",
+    "amount": "17.0",
     "shipping": "2.0",
     "sales_tax": "0.95",
     "line_items": [
@@ -1554,7 +1554,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   :to_state => "CA",
   :to_city => "LOS ANGELES",
   :to_street => "123 Palm Grove Ln",
-  :amount => 17.95,
+  :amount => 17.0,
   :shipping => 2.0,
   :sales_tax => 0.95,
   :line_items => [
@@ -1738,7 +1738,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "17.95",
+    "amount": "17.0",
     "shipping": "2.0",
     "sales_tax": "0.95",
     "line_items": [
@@ -1772,7 +1772,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   :to_state => "CA",
   :to_city => "LOS ANGELES",
   :to_street => "123 Palm Grove Ln",
-  :amount => 17.95,
+  :amount => 17.0,
   :shipping => 2.0,
   :sales_tax => 0.95,
   :line_items => [
@@ -1837,7 +1837,7 @@ order = client.create_refund({
   :to_state => 'CA',
   :to_city => 'Los Angeles',
   :to_street => '123 Palm Grove Ln',
-  :amount => 17.45,
+  :amount => 16.5,
   :shipping => 1.5,
   :sales_tax => 0.95,
   :line_items => [
@@ -1864,7 +1864,7 @@ taxjar.createRefund({
   to_state: 'CA',
   to_city: 'Los Angeles',
   to_street: '123 Palm Grove Ln',
-  amount: 17.45,
+  amount: 16.5,
   shipping: 1.5,
   sales_tax: 0.95,
   line_items: [
@@ -1893,7 +1893,7 @@ $refund = $taxjar->createRefund([
   'to_state' => 'CA',
   'to_city' => 'Los Angeles',
   'to_street' => '123 Palm Grove Ln',
-  'amount' => 17.45,
+  'amount' => 16.5,
   'shipping' => 1.5,
   'sales_tax' => 0.95,
   'line_items' => [
@@ -1919,7 +1919,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
   -d to_state="CA" \
   -d to_city="Los Angeles" \
   -d to_street="123 Palm Grove Ln" \
-  -d amount=17.45 \
+  -d amount=16.5 \
   -d shipping=1.5 \
   -d sales_tax=0.95 \
   -d "line_items[][quantity]=1 \
@@ -1943,7 +1943,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "17.45",
+    "amount": "16.5",
     "shipping": "1.5",
     "sales_tax": "0.95",
     "line_items": [
@@ -1977,7 +1977,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
   :to_state => "CA",
   :to_city => "LOS ANGELES",
   :to_street => "123 Palm Grove Ln",
-  :amount => 17.95,
+  :amount => 17.0,
   :shipping => 2.0,
   :sales_tax => 0.95,
   :line_items => [
@@ -2064,7 +2064,7 @@ client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 order = client.update_refund({
   :transaction_id => '321',
-  :amount => 17.95,
+  :amount => 17.0,
   :shipping => 2.0,
   :sales_tax => 0.95,
   :line_items => [
@@ -2084,7 +2084,7 @@ var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
 taxjar.updateRefund({
   transaction_id: '123',
-  amount: 17.95,
+  amount: 17.0,
   shipping: 2.0,
   line_items: [
     {
@@ -2105,7 +2105,7 @@ $taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
 $refund = $taxjar->updateRefund([
   'transaction_id' => '321',
-  'amount' => 17.95,
+  'amount' => 17.0,
   'shipping' => 2.0,
   'line_items' => [
     [
@@ -2123,7 +2123,7 @@ $refund = $taxjar->updateRefund([
 curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d transaction_id="321" \
-  -d amount=17.95 \
+  -d amount=17.0 \
   -d shipping=2.0 \
   -d sales_tax=0.95 \
   -d "line_items[][quantity]=1 \
@@ -2148,7 +2148,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "17.95",
+    "amount": "17.0",
     "shipping": "2.0",
     "sales_tax": "0.95",
     "line_items": [
@@ -2182,7 +2182,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   :to_state => "CA",
   :to_city => "LOS ANGELES",
   :to_street => "123 Palm Grove Ln",
-  :amount => 17.95,
+  :amount => 17.0,
   :shipping => 2.0,
   :sales_tax => 0.95,
   :line_items => [
@@ -2304,7 +2304,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "17.95",
+    "amount": "17.0",
     "shipping": "2.0",
     "sales_tax": "0.95",
     "line_items": [
@@ -2338,7 +2338,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   :to_state => "CA",
   :to_city => "LOS ANGELES",
   :to_street => "123 Palm Grove Ln",
-  :amount => 17.95,
+  :amount => 17.0,
   :shipping => 2.0,
   :sales_tax => 0.95,
   :line_items => [
