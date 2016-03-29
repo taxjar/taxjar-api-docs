@@ -24,6 +24,9 @@ activate :syntax
 activate :relative_assets
 set :relative_links, true
 
+ignore 'javascripts/**/*'
+ignore 'stylesheets/**/*'
+
 # Build Configuration
 configure :build do
   activate :minify_css

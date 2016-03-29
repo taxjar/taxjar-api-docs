@@ -1,5 +1,7 @@
 ---
 title: TaxJar API Guides
+description: "Tips and tricks on how to use SmartCalcs, TaxJar's sales tax API."
+preferred_url: http://developers.taxjar.com/api/guides/
 ---
 
 # Product Exemptions
@@ -9,20 +11,31 @@ title: TaxJar API Guides
 ```shell
 curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d amount=215.30 \
-  -d from_city="Delmar" \
-  -d from_state="NY" \
-  -d from_zip="12054" \
-  -d to_city="Mahopac" \
-  -d to_state="NY" \
-  -d to_zip="10541" \
-  -d "line_items[][quantity]=1 \
-  &line_items[][unit_price]=150 \
-  &line_items[][product_tax_code]=20010" \
-  -d "line_items[][quantity]=3 \
-  &line_items[][unit_price]=19.95 \
-  &line_items[][product_tax_code]=20010 \
-  &line_items[][shipping]=5.45"
+  -H "Content-Type: application/json" \
+  -d '{
+    "to_city": "Mahopac",
+    "to_state": "NY",
+    "to_zip": "10541",
+    "to_country": "US",
+    "from_city": "Delmar",
+    "from_state": "NY",
+    "from_zip": "12054",
+    "from_country": "US",
+    "amount": 29.94,
+    "shipping": 7.99,
+    "line_items": [
+      {
+        "quantity": 1,
+        "unit_price": 19.99,
+        "product_tax_code": "20010"
+      },
+      { 
+        "quantity": 1,
+        "unit_price": 9.95,
+        "product_tax_code": "20010"
+      }
+    ]
+  }'
 ```
 
 > Taxability By Line Item
@@ -30,67 +43,79 @@ curl https://api.taxjar.com/v2/taxes \
 ```json
 {
   "tax": {
-    "order_total_amount": 215.3,
-    "shipping": 5.45,
-    "taxable_amount": 215.3,
-    "amount_to_collect": 15.63,
-    "rate": 0.08375,
+    "order_total_amount": 37.93,
+    "shipping": 7.99,
+    "taxable_amount": 37.93,
+    "amount_to_collect": 1.98,
+    "rate": 0.05218,
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "destination",
     "breakdown": {
+      "taxable_amount": 37.93,
+      "tax_collectable": 1.98,
+      "state_taxable_amount": 7.99,
+      "state_tax_rate": 0.04,
+      "state_tax_collectable": 0.32,
+      "county_taxable_amount": 37.93,
+      "county_tax_rate": 0.04,
+      "county_tax_collectable": 1.52,
+      "city_taxable_amount": 0.0,
+      "city_tax_rate": 0.0,
+      "city_tax_collectable": 0.0,
+      "special_district_taxable_amount": 37.93,
+      "special_tax_rate": 0.00375,
+      "special_district_tax_collectable": 0.14,
       "shipping": {
-        "taxable_amount": 5.45,
-        "tax_collectable": 0.46,
-        "state_amount": 0.22,
+        "taxable_amount": 7.99,
+        "tax_collectable": 0.67,
+        "state_taxable_amount": 7.99,
         "state_sales_tax_rate": 0.04,
-        "county_amount": 0.22,
+        "state_amount": 0.32,
+        "county_taxable_amount": 7.99,
         "county_tax_rate": 0.04,
-        "city_amount": 0,
-        "city_tax_rate": 0,
-        "special_district_amount": 0.02,
-        "special_tax_rate": 0.00375
+        "county_amount": 0.32,
+        "city_taxable_amount": 0.0,
+        "city_tax_rate": 0.0,
+        "city_amount": 0.0,
+        "special_taxable_amount": 7.99,
+        "special_tax_rate": 0.00375,
+        "special_district_amount": 0.03
       },
-      "state_taxable_amount": 155.45,
-      "state_tax_collectable": 6.22,
-      "county_taxable_amount": 215.3,
-      "county_tax_collectable": 8.61,
-      "city_taxable_amount": 0,
-      "city_tax_collectable": 0,
-      "special_district_taxable_amount": 215.3,
-      "special_district_tax_collectable": 0.8,
-      "line_items": [
-        {
+      "line_items": [  
+        {  
           "id": "1",
-          "tax_collectable": 12.56,
-          "state_taxable_amount": 150,
-          "state_sales_tax_rate": 0.04,
-          "state_amount": 6,
-          "county_taxable_amount": 150,
+          "taxable_amount": 19.99,
+          "tax_collectable": 0.87,
+          "state_taxable_amount": 0.0,
+          "state_sales_tax_rate": 0.0,
+          "state_amount": 0.0,
+          "county_taxable_amount": 19.99,
           "county_tax_rate": 0.04,
-          "county_amount": 6,
-          "city_taxable_amount": 0,
-          "city_tax_rate": 0,
-          "city_amount": 0,
-          "special_district_taxable_amount": 150,
+          "county_amount": 0.8,
+          "city_taxable_amount": 0.0,
+          "city_tax_rate": 0.0,
+          "city_amount": 0.0,
+          "special_district_taxable_amount": 19.99,
           "special_tax_rate": 0.00375,
-          "special_district_amount": 0.56
+          "special_district_amount": 0.07
         },
-        {
+        {  
           "id": "2",
-          "tax_collectable": 2.62,
-          "state_taxable_amount": 0,
-          "state_sales_tax_rate": 0,
-          "state_amount": 0,
-          "county_taxable_amount": 59.85,
+          "taxable_amount": 9.95,
+          "tax_collectable": 0.44,
+          "state_taxable_amount": 0.0,
+          "state_sales_tax_rate": 0.0,
+          "state_amount": 0.0,
+          "county_taxable_amount": 9.95,
           "county_tax_rate": 0.04,
-          "county_amount": 2.39,
-          "city_taxable_amount": 0,
-          "city_tax_rate": 0,
-          "city_amount": 0,
-          "special_district_taxable_amount": 59.85,
+          "county_amount": 0.4,
+          "city_taxable_amount": 0.0,
+          "city_tax_rate": 0.0,
+          "city_amount": 0.0,
+          "special_district_taxable_amount": 9.95,
           "special_tax_rate": 0.00375,
-          "special_district_amount": 0.22
+          "special_district_amount": 0.04
         }
       ]
     }
@@ -148,24 +173,40 @@ Using TaxJar's [SmartCalcs API](http://www.taxjar.com/api/), there are two ways 
 ```shell
 curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d amount=215.30 \
-  -d from_city="Delmar" \
-  -d from_state="NY" \
-  -d from_zip="12054" \
-  -d to_city="Mahopac" \
-  -d to_state="NY" \
-  -d to_zip="10541" \
-  -d "line_items[][quantity]=1 \
-  &line_items[][unit_price]=150 \
-  &line_items[][product_tax_code]=20010" \
-  -d "line_items[][quantity]=3 \
-  &line_items[][unit_price]=19.95 \
-  &line_items[][product_tax_code]=20010 \
-  &line_items[][shipping]=5.45" \
-  -d "nexus_addresses[][city]='Delmar' \
-  &nexus_addresses[][state]='NY' \
-  &nexus_addresses[][zip]=12054 \
-  &nexus_addresses[][country]='US'"
+  -H "Content-Type: application/json" \
+  -d '{
+    "to_city": "Mahopac",
+    "to_state": "NY",
+    "to_zip": "10541",
+    "to_country": "US",
+    "from_city": "Delmar",
+    "from_state": "NY",
+    "from_zip": "12054",
+    "from_country": "US",
+    "amount": 215.30,
+    "shipping": 0,
+    "line_items": [
+      {
+        "quantity": 1,
+        "unit_price": 150,
+        "product_tax_code": "20010"
+      },
+      { 
+        "quantity": 3,
+        "unit_price": 19.95,
+        "shipping": 5.45,
+        "product_tax_code": "20010"
+      }
+    ],
+    "nexus_addresses": [
+      {
+        "city": "Delmar",
+        "state": "NY",
+        "zip": "12054",
+        "country": "US"
+      }
+    ]
+  }'
 ```
 
 ### Nexus Address Example
