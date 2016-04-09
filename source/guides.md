@@ -270,3 +270,20 @@ How and when to send these transactions to TaxJar is entirely up to you. Some po
 1. If you already provide customers with a reporting interface that allows them to select a date range to view orders within that range, simply add a button that uses the same date range to query and send those orders/refunds.
 
 2. To enable a more automated solution, allow users to opt-in to regular transaction submissions. You can choose to do this upon saving completed orders to your platform's database or set up in batches that occur on a regular basis (e.g. nightly).
+
+# Cart Integrations
+
+At TaxJar, we provide integrations for popular eCommerce platforms such as WooCommerce and Magento. All of our plugins and extensions are **built and maintained in-house** by eCommerce experts.
+
+We currently provide API-driven cart integrations for the following platforms:
+
+- <img class="client-icon" src="../images/integrations/magento.png" width="16"> [Magento](https://github.com/taxjar/taxjar-magento-extension)
+- <img class="client-icon" src="../images/integrations/woocommerce.png" width="16"> [WooCommerce](https://github.com/taxjar/taxjar-woocommerce-plugin)
+
+## Magento
+
+Our Magento sales tax extension currently supports Magento CE 1.7.x - 1.9.x. We’re actively developing a Magento 2 extension for release later this year. SmartCalcs is fully integrated for live checkout calculations and zip-based rate imports as a fallback.
+
+- Install the extension from [Magento Connect](https://www.magentocommerce.com/magento-connect/sales-tax-automation-by-taxjar.html)
+- Get started and learn how it works with our [Extension Guide](http://www.taxjar.com/guides/integrations/magento/)
+- Browse the code in our [GitHub Repository](https://github.com/taxjar/taxjar-magento-extension)
