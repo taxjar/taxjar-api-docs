@@ -665,44 +665,46 @@ curl https://api.taxjar.com/v2/taxes \
   "tax": {
     "order_total_amount": 16.5,
     "shipping": 1.5,
-    "taxable_amount": 15.0,
+    "taxable_amount": 15,
     "amount_to_collect": 1.35,
     "rate": 0.09,
     "has_nexus": true,
     "freight_taxable": false,
     "tax_source": "destination",
     "breakdown": {  
-      "taxable_amount": 15.0,
+      "taxable_amount": 15,
       "tax_collectable": 1.35,
-      "state_taxable_amount": 15.0,
-      "state_tax_rate": 0.065,
-      "state_tax_collectable": 0.98,
-      "county_taxable_amount": 15.0,
-      "county_tax_rate": 0.01,
-      "county_tax_collectable": 0.15,
-      "city_taxable_amount": 0.0,
-      "city_tax_rate": 0.0,
-      "city_tax_collectable": 0.0,
-      "special_district_taxable_amount": 15.0,
-      "special_tax_rate": 0.015,
-      "special_district_tax_collectable": 0.23,
+      "combined_tax_rate": 0.09,
+      "state_taxable_amount": 15,
+      "state_tax_rate": 0.0625,
+      "state_tax_collectable": 0.94,
+      "county_taxable_amount": 15,
+      "county_tax_rate": 0.0025,
+      "county_tax_collectable": 0.04,
+      "city_taxable_amount": 0,
+      "city_tax_rate": 0,
+      "city_tax_collectable": 0,
+      "special_district_taxable_amount": 15,
+      "special_tax_rate": 0.025,
+      "special_district_tax_collectable": 0.38,
       "line_items": [  
         {  
           "id": "1",
-          "taxable_amount": 15.0,
+          "taxable_amount": 15,
           "tax_collectable": 1.35,
-          "state_taxable_amount": 15.0,
-          "state_sales_tax_rate": 0.065,
-          "state_amount": 0.98,
-          "county_taxable_amount": 15.0,
-          "county_tax_rate": 0.01,
-          "county_amount": 0.15,
-          "city_taxable_amount": 0.0,
-          "city_tax_rate": 0.0,
-          "city_amount": 0.0,
-          "special_district_taxable_amount": 15.0,
-          "special_tax_rate": 0.015,
-          "special_district_amount": 0.23
+          "combined_tax_rate": 0.09,
+          "state_taxable_amount": 15,
+          "state_sales_tax_rate": 0.0625,
+          "state_amount": 0.94,
+          "county_taxable_amount": 15,
+          "county_tax_rate": 0.0025,
+          "county_amount": 0.04,
+          "city_taxable_amount": 0,
+          "city_tax_rate": 0,
+          "city_amount": 0,
+          "special_district_taxable_amount": 15,
+          "special_tax_rate": 0.025,
+          "special_district_amount": 0.38
         }
       ]
     }
@@ -711,36 +713,53 @@ curl https://api.taxjar.com/v2/taxes \
 ```
 
 ```ruby
-#<Taxjar::Tax:0x007f3945688fc8 @attrs={
+{
   :order_total_amount => 16.5,
+  :shipping => 1.5,
+  :taxable_amount => 15.0,
   :amount_to_collect => 1.35,
+  :rate => 0.09,
   :has_nexus => true,
   :freight_taxable => false,
   :tax_source => "destination",
   :breakdown => {
+    :taxable_amount => 15.0,
+    :tax_collectable => 1.35,
+    :combined_tax_rate => 0.09,
     :state_taxable_amount => 15.0,
-    :state_tax_collectable => 0.98,
+    :state_tax_rate => 0.0625,
+    :state_tax_collectable => 0.94,
     :county_taxable_amount => 15.0,
-    :county_tax_collectable => 0.15,
+    :county_tax_rate => 0.0025,
+    :county_tax_collectable => 0.04,
     :city_taxable_amount => 0.0,
+    :city_tax_rate => 0.0,
     :city_tax_collectable => 0.0,
     :special_district_taxable_amount => 15.0,
-    :special_district_tax_collectable => 0.22,
+    :special_tax_rate => 0.025,
+    :special_district_tax_collectable => 0.38,
     :line_items => [
       {
         :id => "1",
+        :taxable_amount => 15.0,
+        :tax_collectable => 1.35,
+        :combined_tax_rate => 0.09,
         :state_taxable_amount => 15.0,
         :state_sales_tax_rate => 0.065,
+        :state_amount => 0.94,
         :county_taxable_amount => 15.0,
-        :county_tax_rate => 0.01,
+        :county_tax_rate => 0.0025,
+        :county_amount => 0.04,
         :city_taxable_amount => 0.0,
         :city_tax_rate => 0.0,
+        :city_amount => 0.0,
         :special_district_taxable_amount => 15.0,
-        :special_tax_rate => 0.015
+        :special_tax_rate => 0.025,
+        :special_district_amount => 0.38
       }
     ]
   }
-}>
+}
 ```
 
 
