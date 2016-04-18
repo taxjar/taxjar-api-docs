@@ -511,7 +511,7 @@ GET https://api.taxjar.com/v2/rates/:zip
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-country | string | <span class="conditional" data-tooltip="For international locations outside of US, `country` is required." data-tooltip-position="top center">conditional</span> | ISO two country code of the country for given location.
+country | string | <span class="conditional" data-tooltip="For international locations outside of US, `country` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code of the country for given location.
 zip | string | required | Postal code for given location (5-Digit ZIP or ZIP+4).
 city | string | <span class="conditional" data-tooltip="For international locations outside of US, `city` is required." data-tooltip-position="top center">conditional</span> | City for given location.
 street | string | <span class="conditional" data-tooltip="Currently in beta testing for State of Washington addresses." data-tooltip-position="top center">optional</span> | Street address for given location.
@@ -538,7 +538,7 @@ combined_rate | long | Overall sales tax rate which includes state, county, city
 
 Parameter | Type | Description
 --------- | ------- | -----------
-country | string | ISO two country code of the country for given location.
+country | string | Two-letter ISO country code of the country for given location.
 name | string | Country name for given location.
 standard_rate | long | [Standard rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
 reduced_rate | long | [Reduced rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
@@ -773,20 +773,20 @@ POST https://api.taxjar.com/v2/taxes
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-from_country | string | optional | ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_country | string | optional | Two-letter ISO country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
-from_state | string | optional | State where the order shipped from.
+from_state | string | optional | Two-letter ISO state code where the order shipped from.
 from_city | string | optional | City where the order shipped from.
 from_street | string | <span class="conditional" data-tooltip="Currently in beta testing for State of Washington addresses." data-tooltip-position="top center">optional</span> | Street address where the order shipped from.
-to_country | string | required | ISO two country code of the country where the order shipped to.
+to_country | string | required | Two-letter ISO country code of the country where the order shipped to.
 to_zip | string | <span class="conditional" data-tooltip="If `to_country` is 'US', `to_zip` is required." data-tooltip-position="top center">conditional</span> | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
-to_state | string | <span class="conditional" data-tooltip="If `to_country` is 'US' or 'CA', `to_state` is required." data-tooltip-position="top center">conditional</span> | State where the order shipped to.
+to_state | string | <span class="conditional" data-tooltip="If `to_country` is 'US' or 'CA', `to_state` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | <span class="conditional" data-tooltip="Currently in beta testing for State of Washington addresses." data-tooltip-position="top center">optional</span> | Street address where the order shipped to.
 amount | long | optional | Total amount of the order, excluding shipping. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 shipping | long | required | Total amount of shipping for the order.
 nexus_addresses[][id] | string | optional | Unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
-nexus_addresses[][country] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, country is required." data-tooltip-position="top center">conditional</span> | ISO two country code of the country for the nexus address.
+nexus_addresses[][country] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, country is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code of the country for the nexus address.
 nexus_addresses[][zip] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, zip is required." data-tooltip-position="top center">conditional</span> | Postal code for the nexus address.
 nexus_addresses[][state] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, state is required." data-tooltip-position="top center">conditional</span> | State for the nexus address.
 nexus_addresses[][city] | string | optional | City for the nexus address.
@@ -1244,14 +1244,14 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given order transaction.
 transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
-from_country | string | optional | ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_country | string | optional | Two-letter ISO country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
-from_state | string | optional | State where the order shipped from.
+from_state | string | optional | Two-letter ISO state code where the order shipped from.
 from_city | string | optional | City where the order shipped from.
 from_street | string | optional | Street address where the order shipped from.
-to_country | string | required | ISO two country code of the country where the order shipped to.
+to_country | string | required | Two-letter ISO country code of the country where the order shipped to.
 to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
-to_state | string | required | State where the order shipped to.
+to_state | string | required | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
 amount | long | required | Total amount of the order with shipping, excluding sales tax.
@@ -1449,14 +1449,14 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given order transaction.
 transaction_date | datetime | optional | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
-from_country | string | optional | ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_country | string | optional | Two-letter ISO country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
-from_state | string | optional | State where the order shipped from.
+from_state | string | optional | Two-letter ISO state code where the order shipped from.
 from_city | string | optional | City where the order shipped from.
 from_street | string | optional | Street address where the order shipped from.
-to_country | string | optional | ISO two country code of the country where the order shipped to.
+to_country | string | optional | Two-letter ISO country code of the country where the order shipped to.
 to_zip | string | optional | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
-to_state | string | optional | State where the order shipped to.
+to_state | string | optional | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
 amount | long | optional | Total amount of the order with shipping, excluding sales tax.
@@ -2027,14 +2027,14 @@ Parameter | Type | Required | Description
 transaction_id | string | required | Unique identifier of the given refund transaction.
 transaction_reference_id | string | required | Unique identifier of the corresponding order transaction for the refund.
 transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
-from_country | string | optional | ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_country | string | optional | Two-letter ISO country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
-from_state | string | optional | State where the order shipped from.
+from_state | string | optional | Two-letter ISO state code where the order shipped from.
 from_city | string | optional | City where the order shipped from.
 from_street | string | optional | Street address where the order shipped from.
-to_country | string | required | ISO two country code of the country where the order shipped to.
+to_country | string | required | Two-letter ISO country code of the country where the order shipped to.
 to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
-to_state | string | required | State where the order shipped to.
+to_state | string | required | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
 amount | long | required | Total amount of the refunded order with shipping, excluding sales tax.
@@ -2232,14 +2232,14 @@ Parameter | Type | Required | Description
 transaction_id | string | required | Unique identifier of the given transaction.
 transaction_reference_id | string | required | Unique identifier of the corresponding order transaction for the refund.
 transaction_date | datetime | optional | The date/time the transaction was originally recorded.
-from_country | string | optional | ISO two country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+from_country | string | optional | Two-letter ISO country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
-from_state | string | optional | State where the order shipped from.
+from_state | string | optional | Two-letter ISO state code where the order shipped from.
 from_city | string | optional | City where the order shipped from.
 from_street | string | optional | Street address where the order shipped from.
-to_country | string | optional | ISO two country code of the country where the refunded order shipped to.
+to_country | string | optional | Two-letter ISO country code of the country where the refunded order shipped to.
 to_zip | string | optional | Postal code where the refunded order shipped to (5-Digit ZIP or ZIP+4).
-to_state | string | optional | State where the refunded order shipped to.
+to_state | string | optional | Two-letter ISO state code where the refunded order shipped to.
 to_city | string | optional | City where the refunded order shipped to.
 to_street | string | optional | Street address where the refunded order shipped to.
 amount | long | optional | Total amount of the refunded order with shipping, excluding sales tax.
