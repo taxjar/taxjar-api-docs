@@ -2387,6 +2387,126 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given refund transaction.
 
+## Nexus
+
+### <span class="badge badge--get">get</span> List nexus regions
+
+> Definition<br>
+> <small>*Ruby, PHP, and JavaScript client methods in progress.*</small>
+
+```ruby
+client.nexus_regions
+```
+
+```javascript
+taxjar.nexusRegions();
+```
+
+```php?start_inline=1
+$taxjar->nexusRegions();
+```
+
+```shell
+GET https://api.taxjar.com/v2/nexus/regions
+```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+nexus_regions = client.nexus_regions
+```
+
+```javascript
+var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+taxjar.nexusRegions().then(function(res) {
+  res.nexusRegions; // Array of nexus regions
+});
+```
+
+```php?start_inline=1
+$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$nexus_regions = $taxjar->nexusRegions();
+```
+
+```shell
+curl https://api.taxjar.com/v2/nexus/regions \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
+```
+
+> Response Example
+
+```json
+{
+  "regions": [
+    {
+      "country_code": "US",
+      "country": "United States",
+      "region_code": "CA",
+      "region": "California"
+    },
+    {
+      "country_code": "US",
+      "country": "United States",
+      "region_code": "NY",
+      "region": "New York"
+    },
+    {
+      "country_code": "US",
+      "country": "United States",
+      "region_code": "WA",
+      "region": "Washington"
+    }
+  ]
+}
+```
+
+```ruby
+[
+  {
+    :country_code => "US",
+    :country => "United States",
+    :region_code => "CA",
+    :region => "California"
+  },
+  {
+    :country_code => "US",
+    :country => "United States",
+    :region_code => "NY",
+    :region => "New York"
+  },
+  {
+    :country_code => "US",
+    :country => "United States",
+    :region_code => "WA",
+    :region => "Washington"
+  }
+]
+```
+
+Lists existing nexus locations for a TaxJar account.
+
+#### Request
+
+GET https://api.taxjar.com/v2/nexus/regions
+
+#### Response
+
+Returns a JSON object with an array of nexus regions sorted alphabetically.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+country_code | string | Two-letter ISO country code for nexus region.
+country | string | Country name for nexus region.
+region_code | string | Two-letter ISO region code for nexus region.
+region | string | Region name for nexus region.
+
 ## Validations
 
 ### <span class="badge badge--get">get</span> Validate a VAT number
