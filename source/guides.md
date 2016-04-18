@@ -54,6 +54,7 @@ curl https://api.taxjar.com/v2/taxes \
     "breakdown": {
       "taxable_amount": 37.93,
       "tax_collectable": 1.98,
+      "combined_tax_rate": 0.05218,
       "state_taxable_amount": 7.99,
       "state_tax_rate": 0.04,
       "state_tax_collectable": 0.32,
@@ -69,6 +70,7 @@ curl https://api.taxjar.com/v2/taxes \
       "shipping": {
         "taxable_amount": 7.99,
         "tax_collectable": 0.67,
+        "combined_tax_rate": 0.08375,
         "state_taxable_amount": 7.99,
         "state_sales_tax_rate": 0.04,
         "state_amount": 0.32,
@@ -87,6 +89,7 @@ curl https://api.taxjar.com/v2/taxes \
           "id": "1",
           "taxable_amount": 19.99,
           "tax_collectable": 0.87,
+          "combined_tax_rate": 0.04375,
           "state_taxable_amount": 0.0,
           "state_sales_tax_rate": 0.0,
           "state_amount": 0.0,
@@ -104,6 +107,7 @@ curl https://api.taxjar.com/v2/taxes \
           "id": "2",
           "taxable_amount": 9.95,
           "tax_collectable": 0.44,
+          "combined_tax_rate": 0.04375,
           "state_taxable_amount": 0.0,
           "state_sales_tax_rate": 0.0,
           "state_amount": 0.0,
