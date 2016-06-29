@@ -1260,7 +1260,7 @@ sales_tax | long | required | Total amount of sales tax collected for the order.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
-line_items[][description] | string | optional | Description of the line item.
+line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item.
 line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Total discount (non-unit) for the item.
@@ -1465,7 +1465,7 @@ sales_tax | long | optional | Total amount of sales tax collected for the order.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
-line_items[][description] | string | optional | Description of the line item.
+line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item.
 line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Total discount (non-unit) for the item.
@@ -2043,7 +2043,7 @@ sales_tax | long | required | Total amount of sales tax collected for the refund
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
-line_items[][description] | string | optional | Description of the line item.
+line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item.
 line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Total discount (non-unit) for the item.
@@ -2248,7 +2248,7 @@ sales_tax | long | optional | Total amount of sales tax collected for the refund
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
-line_items[][description] | string | optional | Description of the line item.
+line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item.
 line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Total discount (non-unit) for the item.
