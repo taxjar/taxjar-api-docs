@@ -282,6 +282,7 @@ At TaxJar, we provide integrations for popular eCommerce platforms such as WooCo
 We currently provide API-driven cart integrations for the following platforms:
 
 - <img class="client-icon" src="../images/integrations/magento.png" width="16"> [Magento](https://github.com/taxjar/taxjar-magento-extension)
+- <img class="client-icon" src="../images/integrations/stripe.png" width="16"> [Stripe](https://stripe.com/docs/relay/taxjar)
 - <img class="client-icon" src="../images/integrations/woocommerce.png" width="16"> [WooCommerce](https://github.com/taxjar/taxjar-woocommerce-plugin)
 
 ## Magento
