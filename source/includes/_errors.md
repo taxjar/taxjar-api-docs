@@ -20,6 +20,19 @@ Error Code | Meaning
 
 If you receive the message "No from address, no nexus address, and no address on file", we recommend providing `from_` or `nexus_addresses[]` depending on the endpoint's accepted parameters. Otherwise [sign in](https://app.taxjar.com/sign_in) and provide your [business address and locations](https://app.taxjar.com/account) in TaxJar.
 
+Additionally, we provide specific 400 error messages for invalid data:
+
+- Invalid ZIP and state combinations for `to_zip`, `to_state` and `from_zip`, `from_state`
+
+### Taxes
+
+- `amount` param does not equal sum of `line_items`
+
+### Transactions
+
+- `amount` param does not equal sum of `line_items` + `shipping`
+- `line_items[][description]` param exceeds limit of 255 characters
+
 ## 401 Unauthorized
 
 Verify your API token is correct and make sure you're correctly setting the [Authorization header](#authentication).
