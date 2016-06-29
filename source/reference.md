@@ -783,7 +783,7 @@ to_zip | string | <span class="conditional" data-tooltip="If `to_country` is 'US
 to_state | string | <span class="conditional" data-tooltip="If `to_country` is 'US' or 'CA', `to_state` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | <span class="conditional" data-tooltip="Currently in beta testing for State of Washington addresses." data-tooltip-position="top center">optional</span> | Street address where the order shipped to.
-amount | long | optional | Total amount of the order, excluding shipping. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+amount | long | optional | Total amount of the order, **excluding shipping**. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 shipping | long | required | Total amount of shipping for the order.
 nexus_addresses[][id] | string | optional | Unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 nexus_addresses[][country] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, country is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code of the country for the nexus address.
@@ -1254,7 +1254,7 @@ to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | required | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | long | required | Total amount of the order with shipping, excluding sales tax.
+amount | long | required | Total amount of the order with shipping, **excluding sales tax**.
 shipping | long | required | Total amount of shipping for the order.
 sales_tax | long | required | Total amount of sales tax collected for the order.
 line_items[][id] | string | optional | Unique identifier of the given line item.
@@ -1459,7 +1459,7 @@ to_zip | string | optional | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | optional | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | long | optional | Total amount of the order with shipping, excluding sales tax.
+amount | long | optional | Total amount of the order with shipping, **excluding sales tax**.
 shipping | long | optional | Total amount of shipping for the order.
 sales_tax | long | optional | Total amount of sales tax collected for the order.
 line_items[][id] | string | optional | Unique identifier of the given line item.
@@ -2037,7 +2037,7 @@ to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | required | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | long | required | Total amount of the refunded order with shipping, excluding sales tax.
+amount | long | required | Total amount of the refunded order with shipping, **excluding sales tax**.
 shipping | long | required | Total amount of shipping for the refunded order.
 sales_tax | long | required | Total amount of sales tax collected for the refunded order.
 line_items[][id] | string | optional | Unique identifier of the given line item.
@@ -2242,7 +2242,7 @@ to_zip | string | optional | Postal code where the refunded order shipped to (5-
 to_state | string | optional | Two-letter ISO state code where the refunded order shipped to.
 to_city | string | optional | City where the refunded order shipped to.
 to_street | string | optional | Street address where the refunded order shipped to.
-amount | long | optional | Total amount of the refunded order with shipping, excluding sales tax.
+amount | long | optional | Total amount of the refunded order with shipping, **excluding sales tax**.
 shipping | long | optional | Total amount of shipping for the refunded order.
 sales_tax | long | optional | Total amount of sales tax collected for the refunded order.
 line_items[][id] | string | optional | Unique identifier of the given line item.
