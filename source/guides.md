@@ -282,12 +282,13 @@ At TaxJar, we provide integrations for popular eCommerce platforms such as WooCo
 We currently provide API-driven cart integrations for the following platforms:
 
 - <img class="client-icon" src="../images/integrations/magento.png" width="16"> [Magento](https://github.com/taxjar/taxjar-magento-extension)
+- <img class="client-icon" src="../images/integrations/magento.png" width="16"> [Magento 2](https://github.com/taxjar/taxjar-magento2-extension)
 - <img class="client-icon" src="../images/integrations/stripe.png" width="16"> [Stripe](https://stripe.com/docs/relay/taxjar)
 - <img class="client-icon" src="../images/integrations/woocommerce.png" width="16"> [WooCommerce](https://github.com/taxjar/taxjar-woocommerce-plugin)
 
 ## Magento
 
-Our Magento sales tax extension currently supports Magento CE 1.7.x - 1.9.x. We’re actively developing a Magento 2 extension for release later this year. SmartCalcs is fully integrated for live checkout calculations and zip-based rate imports as a fallback.
+Our Magento sales tax extensions currently support Magento CE 1.7.x - 1.9.x and Magento CE 2.0.x - 2.1.x. SmartCalcs is fully integrated for free checkout calculations and zip-based rate imports as a fallback.
 
 - Install the extension from [Magento Connect](https://www.magentocommerce.com/magento-connect/sales-tax-automation-by-taxjar.html)
 - Get started and learn how it works with our [Extension Guide](http://www.taxjar.com/guides/integrations/magento/)
