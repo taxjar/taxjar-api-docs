@@ -793,7 +793,7 @@ nexus_addresses[][city] | string | optional | City for the nexus address.
 nexus_addresses[][street] | string | optional | Street address for the nexus address.
 line_items[][id] | string | optional | Unique identifier of the given line item. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 line_items[][quantity] | integer | optional | Quantity for the item.
-line_items[][product_tax_code] | string | optional | Product tax code for the item.
+line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
 line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Total discount (non-unit) for the item.
 
@@ -1261,7 +1261,7 @@ line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
-line_items[][product_tax_code] | string | optional | Product tax code for the item.
+line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
 line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Total discount (non-unit) for the item.
 line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item.
@@ -1466,7 +1466,7 @@ line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
-line_items[][product_tax_code] | string | optional | Product tax code for the item.
+line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
 line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Total discount (non-unit) for the item.
 line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item.
@@ -2044,7 +2044,7 @@ line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
-line_items[][product_tax_code] | string | optional | Product tax code for the item.
+line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
 line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Total discount (non-unit) for the item.
 line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item.
@@ -2249,7 +2249,7 @@ line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
-line_items[][product_tax_code] | string | optional | Product tax code for the item.
+line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
 line_items[][unit_price] | long | optional | Unit price for the item.
 line_items[][discount] | long | optional | Total discount (non-unit) for the item.
 line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item.
