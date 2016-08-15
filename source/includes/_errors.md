@@ -24,10 +24,6 @@ Additionally, we provide specific 400 error messages for invalid data:
 
 - Invalid ZIP and state combinations for `to_zip`, `to_state` and `from_zip`, `from_state`
 
-### Taxes
-
-- `amount` param does not equal sum of `line_items`
-
 ### Transactions
 
 - `amount` param does not equal sum of `line_items` + `shipping`
