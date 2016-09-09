@@ -514,7 +514,7 @@ Parameter | Type | Required | Description
 country | string | <span class="conditional" data-tooltip="For international locations outside of US, `country` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code of the country for given location.
 zip | string | required | Postal code for given location (5-Digit ZIP or ZIP+4).
 city | string | <span class="conditional" data-tooltip="For international locations outside of US, `city` is required." data-tooltip-position="top center">conditional</span> | City for given location.
-street | string | <span class="conditional" data-tooltip="Currently in beta testing for State of Washington addresses." data-tooltip-position="top center">optional</span> | Street address for given location.
+street | string | optional | Street address for given location.
 
 #### Response
 
@@ -777,12 +777,12 @@ from_country | string | optional | Two-letter ISO country code of the country wh
 from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | Two-letter ISO state code where the order shipped from.
 from_city | string | optional | City where the order shipped from.
-from_street | string | <span class="conditional" data-tooltip="Currently in beta testing for State of Washington addresses." data-tooltip-position="top center">optional</span> | Street address where the order shipped from.
+from_street | string | optional | Street address where the order shipped from.
 to_country | string | required | Two-letter ISO country code of the country where the order shipped to.
 to_zip | string | <span class="conditional" data-tooltip="If `to_country` is 'US', `to_zip` is required." data-tooltip-position="top center">conditional</span> | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | <span class="conditional" data-tooltip="If `to_country` is 'US' or 'CA', `to_state` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
-to_street | string | <span class="conditional" data-tooltip="Currently in beta testing for State of Washington addresses." data-tooltip-position="top center">optional</span> | Street address where the order shipped to.
+to_street | string | optional | Street address where the order shipped to.
 amount | long | optional | Total amount of the order, **excluding shipping**. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 shipping | long | required | Total amount of shipping for the order.
 nexus_addresses[][id] | string | optional | Unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, or `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
