@@ -1,7 +1,7 @@
 ---
 title: TaxJar API Reference
 description: "Documentation and code examples for SmartCalcs, TaxJar's sales tax API."
-preferred_url: http://developers.taxjar.com/api/reference/
+preferred_url: https://developers.taxjar.com/api/reference/
 
 language_tabs:
   - shell
@@ -10,7 +10,7 @@ language_tabs:
   - javascript
 
 toc_footers:
-  - <a href='http://www.taxjar.com/api/docs/'>v1 Documentation</a>
+  - <a href='https://www.taxjar.com/api/docs/'>v1 Documentation</a>
 
 includes:
   - errors
@@ -2392,7 +2392,7 @@ transaction_id | string | required | Unique identifier of the given refund trans
 ### <span class="badge badge--get">get</span> List nexus regions
 
 > Definition<br>
-> <small>*Ruby, PHP, and JavaScript client methods in progress.*</small>
+> <small>*Ruby and PHP client methods in progress.*</small>
 
 ```ruby
 client.nexus_regions
@@ -2423,7 +2423,7 @@ nexus_regions = client.nexus_regions
 var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
 taxjar.nexusRegions().then(function(res) {
-  res.nexusRegions; // Array of nexus regions
+  res.regions; // Array of nexus regions
 });
 ```
 
