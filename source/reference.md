@@ -8,6 +8,7 @@ language_tabs:
   - ruby
   - php
   - javascript
+  - csharp
 
 toc_footers:
   - <a href='https://www.taxjar.com/api/docs/'>v1 Documentation</a>
@@ -27,6 +28,7 @@ We currently provide API clients for the following languages:
 - <img class="client-icon" src="../images/clients/ruby-logo.png" width="16"> [Ruby Sales Tax API](https://github.com/taxjar/taxjar-ruby) *via RubyGems as `taxjar-ruby`*
 - <img class="client-icon" src="../images/clients/php-logo.png" width="16"> [PHP Sales Tax API](https://github.com/taxjar/taxjar-php) *via Composer as `taxjar/taxjar-php`*
 - <img class="client-icon" src="../images/clients/node-logo.png" width="16"> [Node Sales Tax API](https://github.com/taxjar/taxjar-node) *via NPM as `taxjar`*
+- <img class="client-icon" src="../images/clients/csharp-logo.svg" width="16"> [C# / .NET Sales Tax API](https://github.com/taxjar/taxjar.net) *via NuGet as `TaxJar`*
 
 Before getting started, you'll need to [sign up for TaxJar](https://app.taxjar.com/api_sign_up/basic/) and get an API key. If you have any questions or would like to request support for a new client language, feel free to [contact us](mailto:support@taxjar.com).
 
@@ -40,11 +42,17 @@ client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 ```
 
 ```shell
@@ -145,11 +153,15 @@ client.categories
 ```
 
 ```javascript
-taxjar.categories();
+client.categories();
 ```
 
 ```php?start_inline=1
-$taxjar->categories();
+$client->categories();
+```
+
+```csharp
+client.Categories();
 ```
 
 ```shell
@@ -166,17 +178,25 @@ categories = client.categories
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.categories().then(function(res) {
+client.categories().then(function(res) {
   res.categories; // Array of categories
 });
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$categories = $taxjar->categories();
+$categories = $client->categories();
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var categories = client.Categories();
 ```
 
 ```shell
@@ -309,11 +329,15 @@ client.rates_for_location
 ```
 
 ```javascript
-taxjar.ratesForLocation();
+client.ratesForLocation();
 ```
 
 ```php?start_inline=1
-$taxjar->ratesForLocation();
+$client->ratesForLocation();
+```
+
+```csharp
+client.RatesForLocation();
 ```
 
 ```shell
@@ -348,15 +372,15 @@ rates = client.rates_for_location('00150', {
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
 // United States (ZIP+4)
-taxjar.ratesForLocation('90404-3370').then(function(res) {
+client.ratesForLocation('90404-3370').then(function(res) {
   res.rate; // Rate object
 });
 
 // United States (ZIP w/ Optional Params)
-taxjar.ratesForLocation('90404', {
+client.ratesForLocation('90404', {
   city: 'SANTA MONICA',
   country: 'US'
 }).then(function(res) {
@@ -364,14 +388,14 @@ taxjar.ratesForLocation('90404', {
 });
 
 // International Examples (Requires City and Country)
-taxjar.ratesForLocation('V5K0A1', {
+client.ratesForLocation('V5K0A1', {
   city: 'VANCOUVER',
   country: 'CA'
 }).then(function(res) {
   res.rate; // Rate object
 });
 
-taxjar.ratesForLocation('00150', {
+client.ratesForLocation('00150', {
   city: 'HELSINKI',
   country: 'FI'
 }).then(function(res) {
@@ -380,27 +404,53 @@ taxjar.ratesForLocation('00150', {
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
 // United States (ZIP+4)
-$rates = $taxjar->ratesForLocation('90404-3370');
+$rates = $client->ratesForLocation('90404-3370');
 
 // United States (ZIP w/ Optional Params)
-$rates = $taxjar->ratesForLocation('90404', [
+$rates = $client->ratesForLocation('90404', [
   'city' => 'SANTA MONICA',
   'country' => 'US'
 ]);
 
 // International Examples (Requires City and Country)
-$rates = $taxjar->ratesForLocation('V5K0A1', [
+$rates = $client->ratesForLocation('V5K0A1', [
   'city' => 'VANCOUVER',
   'country' => 'CA'
 ]);
 
-$rates = $taxjar->ratesForLocation('00150', [
+$rates = $client->ratesForLocation('00150', [
   'city' => 'HELSINKI',
   'country' => 'FI'
 ]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+// United States (ZIP+4)
+var rates = client.RatesForLocation("90404-3370");
+
+// United States (ZIP w/ Optional Params)
+var rates = client.RatesForLocation("90404", new {
+  city = "SANTA MONICA",
+  country = "US"
+});
+
+// International Examples (Requires City and Country)
+var rates = client.RatesForLocation("V5K0A1", new {
+  city = "VANCOUVER",
+  country = "CA"
+});
+
+var rates = client.RatesForLocation("00150", new {
+  city = "HELSINKI",
+  country = "FI"
+});
 ```
 
 ```shell
@@ -558,11 +608,15 @@ client.tax_for_order
 ```
 
 ```javascript
-taxjar.taxForOrder();
+client.taxForOrder();
 ```
 
 ```php?start_inline=1
-$taxjar->taxForOrder();
+$client->taxForOrder();
+```
+
+```csharp
+client.TaxForOrder();
 ```
 
 ```shell
@@ -596,9 +650,9 @@ order = client.tax_for_order({
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.taxForOrder({
+client.taxForOrder({
   from_country: 'US',
   from_zip: '07001',
   from_state: 'NJ',
@@ -621,9 +675,10 @@ taxjar.taxForOrder({
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$order_taxes = $taxjar->taxForOrder([
+$order_taxes = $client->taxForOrder([
   'from_country' => 'US',
   'from_zip' => '07001',
   'from_state' => 'NJ',
@@ -640,6 +695,29 @@ $order_taxes = $taxjar->taxForOrder([
     ]
   ]
 ]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.TaxForOrder(new {
+  from_country =  "US",
+  from_zip = "07001",
+  from_state = "NJ",
+  to_country = "US",
+  to_zip = "07446",
+  to_state = "NJ",
+  amount = 16.50,
+  shipping = 1.50,
+  line_items = new[] {
+    new {
+      quantity = 1,
+      unit_price = 15.0,
+      product_tax_code = "31000"
+    }
+  }
+});
 ```
 
 ```shell
@@ -836,11 +914,15 @@ client.list_orders
 ```
 
 ```javascript
-taxjar.listOrders();
+client.listOrders();
 ```
 
 ```php?start_inline=1
-$taxjar->listOrders();
+$client->listOrders();
+```
+
+```csharp
+client.ListOrders();
 ```
 
 ```shell
@@ -860,9 +942,9 @@ orders = client.list_orders({
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.listOrders({
+client.listOrders({
   from_transaction_date: '2015/05/01',
   to_transaction_date: '2015/05/31'
 }).then(function(res) {
@@ -871,12 +953,23 @@ taxjar.listOrders({
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$orders = $taxjar->listOrders([
+$orders = $client->listOrders([
   'from_transaction_date' => '2015/05/01',
   'to_transaction_date' => '2015/05/31'
 ]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var orders = client.ListOrders(new {
+    from_transaction_date = "2015/05/01",
+    to_transaction_date = "2015/05/31"
+});
 ```
 
 ```shell
@@ -928,11 +1021,15 @@ client.show_order
 ```
 
 ```javascript
-taxjar.showOrder();
+client.showOrder();
 ```
 
 ```php?start_inline=1
-$taxjar->showOrder();
+$client->showOrder();
+```
+
+```csharp
+client.ShowOrder();
 ```
 
 ```shell
@@ -949,17 +1046,25 @@ order = client.show_order(123)
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.showOrder(123).then(function(res) {
+client.showOrder(123).then(function(res) {
   res.order;
 });
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$order = $taxjar->showOrder(123);
+$order = $client->showOrder(123);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var order = client.ShowOrder(123);
 ```
 
 ```shell
@@ -1053,11 +1158,15 @@ client.create_order
 ```
 
 ```javascript
-taxjar.createOrder();
+client.createOrder();
 ```
 
 ```php?start_inline=1
-$taxjar->createOrder();
+$client->createOrder();
+```
+
+```csharp
+client.CreateOrder();
 ```
 
 ```shell
@@ -1094,9 +1203,9 @@ order = client.create_order({
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.createOrder({
+client.createOrder({
   transaction_id: '123',
   transaction_date: '2015/05/14',
   to_country: 'US',
@@ -1122,9 +1231,10 @@ taxjar.createOrder({
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$order = $taxjar->createOrder([
+$order = $client->createOrder([
   'transaction_id' => '123',
   'transaction_date' => '2015/05/14',
   'to_country' => 'US',
@@ -1145,6 +1255,32 @@ $order = $taxjar->createOrder([
     ]
   ]
 ]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var order = client.CreateOrder(new {
+  transaction_id = "123",
+  transaction_date = "2015/05/04",
+  to_country = "US",
+  to_zip = "90002",
+  to_city = "Los Angeles",
+  to_street = "123 Palm Grove Ln",
+  amount = 17.95,
+  shipping = 2,
+  sales_tax = 0.95,
+  line_items = new[] {
+    new {
+      quantity = 1,
+      product_identifier = "12-34243-0",
+      description = "Heavy Widget",
+      unit_price = 15,
+      sales_tax = 0.95
+    }
+  }
+});
 ```
 
 ```shell
@@ -1281,11 +1417,15 @@ client.update_order
 ```
 
 ```javascript
-taxjar.updateOrder();
+client.updateOrder();
 ```
 
 ```php?start_inline=1
-$taxjar->updateOrder();
+$client->updateOrder();
+```
+
+```csharp
+client.UpdateOrder();
 ```
 
 ```shell
@@ -1316,9 +1456,9 @@ order = client.update_order({
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.updateOrder({
+client.updateOrder({
   transaction_id: '123',
   amount: 17.0,
   shipping: 2.0,
@@ -1338,9 +1478,10 @@ taxjar.updateOrder({
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$order = $taxjar->updateOrder([
+$order = $client->updateOrder([
   'transaction_id' => '123',
   'amount' => 17.0,
   'shipping' => 2.0,
@@ -1355,6 +1496,28 @@ $order = $taxjar->updateOrder([
     ]
   ]
 ]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var order = client.UpdateOrder(new
+{
+  transaction_id = "123",
+  amount = 17.95,
+  shipping = 2,
+  line_items = new[] {
+    new {
+      quantity = 1,
+      product_identifier = "12-34243-0",
+      description = "Heavy Widget",
+      unit_price = 15,
+      discount = 0,
+      sales_tax = 0.95
+    }
+  }
+});
 ```
 
 ```shell
@@ -1486,11 +1649,15 @@ client.delete_order
 ```
 
 ```javascript
-taxjar.deleteOrder();
+client.deleteOrder();
 ```
 
 ```php?start_inline=1
-$taxjar->deleteOrder();
+$client->deleteOrder();
+```
+
+```csharp
+client.DeleteOrder();
 ```
 
 ```shell
@@ -1507,17 +1674,25 @@ client.delete_order(123)
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.deleteOrder(123).then(function(res) {
+client.deleteOrder(123).then(function(res) {
 
 });
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$taxjar->deleteOrder(123);
+$client->deleteOrder(123);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var order = client.DeleteOrder(123);
 ```
 
 ```shell
@@ -1612,11 +1787,15 @@ client.list_refunds
 ```
 
 ```javascript
-taxjar.listRefunds();
+client.listRefunds();
 ```
 
 ```php?start_inline=1
-$taxjar->listRefunds();
+$client->listRefunds();
+```
+
+```csharp
+client.ListRefunds();
 ```
 
 ```shell
@@ -1636,9 +1815,9 @@ refunds = client.list_refunds({
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.listRefunds({
+client.listRefunds({
   from_transaction_date: '2015/05/01',
   to_transaction_date: '2015/05/31'
 }).then(function(res) {
@@ -1647,12 +1826,24 @@ taxjar.listRefunds({
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$refunds = $taxjar->listRefunds([
+$refunds = $client->listRefunds([
   'from_transaction_date' => '2015/05/01',
   'to_transaction_date' => '2015/05/31'
 ]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var refunds = client.ListRefunds(new
+{
+  from_transaction_date = "2015/05/01",
+  to_transaction_date = "2015/05/31"
+});
 ```
 
 ```shell
@@ -1704,11 +1895,15 @@ client.show_refund
 ```
 
 ```javascript
-taxjar.showRefund();
+client.showRefund();
 ```
 
 ```php?start_inline=1
-$taxjar->showRefund();
+$client->showRefund();
+```
+
+```csharp
+client.ShowRefund();
 ```
 
 ```shell
@@ -1725,17 +1920,25 @@ refund = client.show_refund(321)
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.showRefund(321).then(function(res) {
+client.showRefund(321).then(function(res) {
   res.refund;
 });
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$refund = $taxjar->showRefund(321);
+$refund = $client->showRefund(321);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var refund = client.ShowRefund(321);
 ```
 
 ```shell
@@ -1830,11 +2033,15 @@ client.create_refund
 ```
 
 ```javascript
-taxjar.createRefund();
+client.createRefund();
 ```
 
 ```php?start_inline=1
-$taxjar->createRefund();
+$client->createRefund();
+```
+
+```csharp
+client.CreateRefund();
 ```
 
 ```shell
@@ -1872,9 +2079,9 @@ order = client.create_refund({
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.createRefund({
+client.createRefund({
   transaction_id: '123',
   transaction_date: '2015/05/14',
   transaction_reference_id: '123',
@@ -1901,9 +2108,10 @@ taxjar.createRefund({
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$refund = $taxjar->createRefund([
+$refund = $client->createRefund([
   'transaction_id' => '321',
   'transaction_date' => '2015/05/14',
   'transaction_reference_id' => '123',
@@ -1925,6 +2133,34 @@ $refund = $taxjar->createRefund([
     ]
   ]
 ]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var refund = client.CreateRefund(new
+{
+  transaction_id = "321",
+  transaction_date = "2015/05/04",
+  transaction_reference_id = "123",
+  to_country = "US",
+  to_zip = "90002",
+  to_city = "Los Angeles",
+  to_street = "123 Palm Grove Ln",
+  amount = 17.95,
+  shipping = 2,
+  sales_tax = 0.95,
+  line_items = new[] {
+    new {
+      quantity = 1,
+      product_identifier = "12-34243-0",
+      description = "Heavy Widget",
+      unit_price = 15,
+      sales_tax = 0.95
+    }
+  }
+});
 ```
 
 ```shell
@@ -2064,11 +2300,15 @@ client.update_refund
 ```
 
 ```javascript
-taxjar.updateRefund();
+client.updateRefund();
 ```
 
 ```php?start_inline=1
-$taxjar->updateRefund();
+$client->updateRefund();
+```
+
+```csharp
+client.UpdateRefund();
 ```
 
 ```shell
@@ -2099,9 +2339,9 @@ order = client.update_refund({
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.updateRefund({
+client.updateRefund({
   transaction_id: '123',
   amount: 17.0,
   shipping: 2.0,
@@ -2120,9 +2360,10 @@ taxjar.updateRefund({
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$refund = $taxjar->updateRefund([
+$refund = $client->updateRefund([
   'transaction_id' => '321',
   'amount' => 17.0,
   'shipping' => 2.0,
@@ -2136,6 +2377,28 @@ $refund = $taxjar->updateRefund([
     ]
   ]
 ]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var refund = client.UpdateRefund(new
+{
+  transaction_id = "321",
+  amount = 17.95,
+  shipping = 2,
+  line_items = new[] {
+    new {
+      quantity = 1,
+      product_identifier = "12-34243-0",
+      description = "Heavy Widget",
+      unit_price = 15,
+      discount = 0,
+      sales_tax = 0.95
+    }
+  }
+});
 ```
 
 ```shell
@@ -2269,11 +2532,15 @@ client.delete_refund
 ```
 
 ```javascript
-taxjar.deleteRefund();
+client.deleteRefund();
 ```
 
 ```php?start_inline=1
-$taxjar->deleteRefund();
+$client->deleteRefund();
+```
+
+```csharp
+client.DeleteRefund();
 ```
 
 ```shell
@@ -2290,17 +2557,25 @@ client.delete_refund(321)
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.deleteRefund(321).then(function(res) {
+client.deleteRefund(321).then(function(res) {
 
 });
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$taxjar->deleteRefund(321);
+$client->deleteRefund(321);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var refund = client.DeleteRefund(321);
 ```
 
 ```shell
@@ -2399,11 +2674,15 @@ client.nexus_regions
 ```
 
 ```javascript
-taxjar.nexusRegions();
+client.nexusRegions();
 ```
 
 ```php?start_inline=1
-$taxjar->nexusRegions();
+$client->nexusRegions();
+```
+
+```csharp
+client.NexusRegions();
 ```
 
 ```shell
@@ -2420,17 +2699,25 @@ nexus_regions = client.nexus_regions
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.nexusRegions().then(function(res) {
+client.nexusRegions().then(function(res) {
   res.regions; // Array of nexus regions
 });
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$nexus_regions = $taxjar->nexusRegions();
+$nexus_regions = $client->nexusRegions();
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var nexusRegions = client.NexusRegions();
 ```
 
 ```shell
@@ -2520,11 +2807,15 @@ client.validate
 ```
 
 ```javascript
-taxjar.validate();
+client.validate();
 ```
 
 ```php?start_inline=1
-$taxjar->validate();
+$client->validate();
+```
+
+```csharp
+client.Validate();
 ```
 
 ```shell
@@ -2543,9 +2834,9 @@ validation = client.validate({
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.validate({
+client.validate({
   vat: 'FR40303265045'
 }).then(function(res) {
   res.validation; // Validation object
@@ -2553,11 +2844,21 @@ taxjar.validate({
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$validation = $taxjar->validate([
+$validation = $client->validate([
   'vat' => 'FR40303265045'
 ]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var validation = client.Validate(new {
+  vat = "FR40303265045"
+});
 ```
 
 ```shell
@@ -2638,11 +2939,15 @@ client.summary_rates
 ```
 
 ```javascript
-taxjar.summaryRates();
+client.summaryRates();
 ```
 
 ```php?start_inline=1
-$taxjar->summaryRates();
+$client->summaryRates();
+```
+
+```csharp
+client.SummaryRates();
 ```
 
 ```shell
@@ -2659,17 +2964,25 @@ summarized_rates = client.summary_rates
 ```
 
 ```javascript
-var taxjar = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-taxjar.summaryRates().then(function(res) {
+client.summaryRates().then(function(res) {
   res.summary_rates; // Array of summarized rates
 });
 ```
 
 ```php?start_inline=1
-$taxjar = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$summarized_rates = $taxjar->summaryRates();
+$summarized_rates = $client->summaryRates();
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var summaryRates = client.SummaryRates();
 ```
 
 ```shell
