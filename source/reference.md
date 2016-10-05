@@ -2666,8 +2666,7 @@ transaction_id | string | required | Unique identifier of the given refund trans
 
 ### <span class="badge badge--get">get</span> List nexus regions
 
-> Definition<br>
-> <small>*Ruby and PHP client methods in progress.*</small>
+> Definition
 
 ```ruby
 client.nexus_regions
