@@ -637,12 +637,12 @@ order = client.tax_for_order({
   :from_country => 'US',
   :from_zip => '92093',
   :from_city => 'San Diego',
-  :amount => 16.50,
+  :amount => 15,
   :shipping => 1.5,
   :line_items => [
     {
       :quantity => 1,
-      :unit_price => 15.0,
+      :unit_price => 15,
       :product_tax_code => '31000'
     }
   ]
@@ -659,12 +659,12 @@ client.taxForOrder({
   to_country: 'US',
   to_zip: '07446',
   to_state: 'NJ',
-  amount: 16.50,
+  amount: 15,
   shipping: 1.5,
   line_items: [
     {
       quantity: 1,
-      unit_price: 15.0,
+      unit_price: 15,
       product_tax_code: '31000'
     }
   ]
@@ -685,12 +685,12 @@ $order_taxes = $client->taxForOrder([
   'to_country' => 'US',
   'to_zip' => '07446',
   'to_state' => 'NJ',
-  'amount' => 16.50,
+  'amount' => 15,
   'shipping' => 1.5,
   'line_items' => [
     [
       'quantity' => 1,
-      'unit_price' => 15.0,
+      'unit_price' => 15,
       'product_tax_code' => '31000'
     ]
   ]
@@ -708,12 +708,12 @@ var rates = client.TaxForOrder(new {
   to_country = "US",
   to_zip = "07446",
   to_state = "NJ",
-  amount = 16.50,
-  shipping = 1.50,
+  amount = 15,
+  shipping = 1.5,
   line_items = new[] {
     new {
       quantity = 1,
-      unit_price = 15.0,
+      unit_price = 15,
       product_tax_code = "31000"
     }
   }
@@ -729,10 +729,10 @@ curl https://api.taxjar.com/v2/taxes \
   -d from_country="US" \
   -d from_zip="92101" \
   -d from_state="CA" \
-  -d amount=16.50 \
+  -d amount=15 \
   -d shipping=1.5 \
   -d "line_items[][quantity]=1 \
-  &line_items[][unit_price]=15.0 \
+  &line_items[][unit_price]=15 \
   &line_items[][product_tax_code]='31000'"
 ```
 
@@ -1195,7 +1195,7 @@ order = client.create_order({
       :quantity => 1,
       :product_identifier => '12-34243-9',
       :description => 'Fuzzy Widget',
-      :unit_price => 15.0,
+      :unit_price => 15,
       :sales_tax => 0.95
     }
   ]
@@ -1221,7 +1221,7 @@ client.createOrder({
       quantity: 1,
       product_identifier: '12-34243-9',
       description: 'Fuzzy Widget',
-      unit_price: 15.0,
+      unit_price: 15,
       sales_tax: 0.95
     }
   ]
@@ -1250,7 +1250,7 @@ $order = $client->createOrder([
       'quantity' => 1,
       'product_identifier' => '12-34243-9',
       'description' => 'Fuzzy Widget',
-      'unit_price' => 15.0,
+      'unit_price' => 15,
       'sales_tax' => 0.95
     ]
   ]
@@ -1299,7 +1299,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
   -d "line_items[][quantity]=1 \
   &line_items[][product_identifier]='12-34234-9' \
   &line_items[][description]='Fuzzy Widget' \
-  &line_items[][unit_price]=15.0 \
+  &line_items[][unit_price]=15 \
   &line_items[][sales_tax]=0.95"
 ```
 
@@ -1440,15 +1440,15 @@ client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 order = client.update_order({
   :transaction_id => '123',
-  :amount => 17.0,
-  :shipping => 2.0,
+  :amount => 17,
+  :shipping => 2,
   :line_items => [
     {
       :quantity => 1,
       :product_identifier => '12-34243-0',
       :description => 'Heavy Widget',
-      :unit_price => 15.0,
-      :discount => 0.0,
+      :unit_price => 15,
+      :discount => 0,
       :sales_tax => 0.95
     }
   ]
@@ -1460,15 +1460,15 @@ var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
 client.updateOrder({
   transaction_id: '123',
-  amount: 17.0,
-  shipping: 2.0,
+  amount: 17,
+  shipping: 2,
   line_items: [
     {
       quantity: 1,
       product_identifier: '12-34243-0',
       description: 'Heavy Widget',
-      unit_price: 15.0,
-      discount: 0.0,
+      unit_price: 15,
+      discount: 0,
       sales_tax: 0.95
     }
   ]
@@ -1483,15 +1483,15 @@ $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
 $order = $client->updateOrder([
   'transaction_id' => '123',
-  'amount' => 17.0,
-  'shipping' => 2.0,
+  'amount' => 17,
+  'shipping' => 2,
   'line_items' => [
     [
       'quantity' => 1,
       'product_identifier' => '12-34243-0',
       'description' => 'Heavy Widget',
-      'unit_price' => 15.0,
-      'discount' => 0.0,
+      'unit_price' => 15,
+      'discount' => 0,
       'sales_tax' => 0.95
     ]
   ]
@@ -1524,13 +1524,13 @@ var order = client.UpdateOrder(new
 curl https://api.taxjar.com/v2/transactions/orders/123 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d transaction_id="123" \
-  -d amount=17.0 \
-  -d shipping=2.0 \
+  -d amount=17 \
+  -d shipping=2 \
   -d "line_items[][quantity]=1 \
   &line_items[][product_identifier]='12-34234-0' \
   &line_items[][description]='Heavy Widget' \
-  &line_items[][unit_price]=15.0 \
-  &line_items[][discount]=0.0 \
+  &line_items[][unit_price]=15 \
+  &line_items[][discount]=0 \
   &line_items[][sales_tax]=0.95" \
   -X PUT
 ```
@@ -2071,7 +2071,7 @@ order = client.create_refund({
       :quantity => 1,
       :product_identifier => '12-34243-9',
       :description => 'Fuzzy Widget',
-      :unit_price => 15.0,
+      :unit_price => 15,
       :sales_tax => 0.95
     }
   ]
@@ -2098,7 +2098,7 @@ client.createRefund({
       quantity: 1,
       product_identifier: '12-34243-9',
       description: 'Fuzzy Widget',
-      unit_price: 15.0,
+      unit_price: 15,
       sales_tax: 0.95
     }
   ]
@@ -2128,7 +2128,7 @@ $refund = $client->createRefund([
       'quantity' => 1,
       'product_identifier' => '12-34243-9',
       'description' => 'Fuzzy Widget',
-      'unit_price' => 15.0,
+      'unit_price' => 15,
       'sales_tax' => 0.95
     ]
   ]
@@ -2180,7 +2180,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
   -d "line_items[][quantity]=1 \
   &line_items[][product_identifier]='12-34234-9' \
   &line_items[][description]='Fuzzy Widget' \
-  &line_items[][unit_price]=15.0 \
+  &line_items[][unit_price]=15 \
   &line_items[][sales_tax]=0.95"
 ```
 
@@ -2323,15 +2323,15 @@ client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 order = client.update_refund({
   :transaction_id => '321',
-  :amount => 17.0,
-  :shipping => 2.0,
+  :amount => 17,
+  :shipping => 2,
   :sales_tax => 0.95,
   :line_items => [
     {
       :quantity => 1,
       :product_identifier => '12-34243-0',
       :description => 'Heavy Widget',
-      :unit_price => 15.0,
+      :unit_price => 15,
       :sales_tax => 0.95
     }
   ]
@@ -2343,14 +2343,14 @@ var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
 client.updateRefund({
   transaction_id: '123',
-  amount: 17.0,
-  shipping: 2.0,
+  amount: 17,
+  shipping: 2,
   line_items: [
     {
       quantity: 1,
       product_identifier: '12-34243-0',
       description: 'Heavy Widget',
-      unit_price: 15.0,
+      unit_price: 15,
       sales_tax: 0.95
     }
   ]
@@ -2365,14 +2365,14 @@ $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
 $refund = $client->updateRefund([
   'transaction_id' => '321',
-  'amount' => 17.0,
-  'shipping' => 2.0,
+  'amount' => 17,
+  'shipping' => 2,
   'line_items' => [
     [
       'quantity' => 1,
       'product_identifier' => '12-34243-0',
       'description' => 'Heavy Widget',
-      'unit_price' => 15.0,
+      'unit_price' => 15,
       'sales_tax' => 0.95
     ]
   ]
@@ -2405,13 +2405,13 @@ var refund = client.UpdateRefund(new
 curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d transaction_id="321" \
-  -d amount=17.0 \
-  -d shipping=2.0 \
+  -d amount=17 \
+  -d shipping=2 \
   -d sales_tax=0.95 \
   -d "line_items[][quantity]=1 \
   &line_items[][product_identifier]='12-34234-0' \
   &line_items[][description]='Heavy Widget' \
-  &line_items[][unit_price]=15.0 \
+  &line_items[][unit_price]=15 \
   &line_items[][sales_tax]=0.95" \
   -X PUT
 ```
