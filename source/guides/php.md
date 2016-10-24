@@ -147,6 +147,23 @@ $order = $client->createOrder([
     ]
   ]
 ]);
+
+/*
+Truncated Response:
+
+object(stdClass)#38 (18) {
+  ["transaction_id"] => string(8) "123"
+  ["user_id"] => int(99999)
+  ["transaction_date"] => string(24) "2015-05-14T00:00:00.000Z"
+  ["transaction_reference_id"] => NULL
+  ["from_country"] => string(2) "US"
+  ["from_zip"] => string(5) "94111"
+  ["from_state"] => string(2) "CA"
+  ["from_city"] => string(13) "SAN FRANCISCO"
+  ["from_street"] => string(17) "600 Montgomery St"
+  ...
+}
+*/
 ```
 
 To get the full TaxJar experience you'll also want to set up sales tax reporting to file your tax returns later. To push transactions (orders and refunds) into TaxJar, we provide a [collection of endpoints](/api/reference/?php#transactions) that cover your basic CRUD operations. In the example to the right, we're pushing an order into TaxJar. Once imported, it'll appear on the **Transactions** page in the [TaxJar app](https://app.taxjar.com). We're passing the following parameters:
@@ -159,6 +176,8 @@ To get the full TaxJar experience you'll also want to set up sales tax reporting
 - **Shipping**: Total amount of shipping for the order.
 - **Sales Tax**: Total amount of sales tax collected.
 - **Line Items**: A nested array of items purchased in the order. Includes the product ID, description, and amount of sales tax collected for the line item.
+
+A successful response will return back the imported order transaction. Nifty!
 
 # Error Handling
 
@@ -186,7 +205,7 @@ try {
 
 ```
 
-When invalid data is sent to TaxJar or we encounter an error, we'll throw an exception with the HTTP status code and error message. To cache these exceptions, you can use the example to the right. Here's a list of common [error response codes](/api/reference/?php#errors) for reference:
+When invalid data is sent to TaxJar or we encounter an error, we'll throw a `TaxJar\Exception` with the HTTP status code and error message. To cache these exceptions, you can use the example to the right. Here's a list of common [error response codes](/api/reference/?php#errors) for reference:
 
 Error Code | Meaning
 ---------- | -------
