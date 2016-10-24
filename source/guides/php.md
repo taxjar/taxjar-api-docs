@@ -30,8 +30,6 @@ Boom! You now have the TaxJar PHP client inside your project. You'll also notice
 
 ## Authentication
 
-> Autoloading & Authentication
-
 ```php
 <?php
 require __DIR__ . '/vendor/autoload.php';
