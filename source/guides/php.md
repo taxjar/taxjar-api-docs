@@ -44,7 +44,7 @@ Using Composer's [autoloading](https://getcomposer.org/doc/01-basic-usage.md#aut
 
 In order to make requests to our [sales tax API](https://www.taxjar.com/smartcalcs/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
 
-We recommend using a `.env` file (with a library such as [PHP dotenv](https://github.com/vlucas/phpdotenv)) to keep sensitive credentials like API tokens outside of your code.
+We recommend using a `.env` file with a library such as [PHP dotenv](https://github.com/vlucas/phpdotenv) to keep sensitive credentials like API tokens outside of your code.
 
 # Sales Tax Calculations
 
@@ -200,7 +200,6 @@ try {
   // 406 Not Acceptable – transaction_id is missing
   echo $e->getMessage();
 }
-
 ```
 
 When invalid data is sent to TaxJar or we encounter an error, we'll throw a `TaxJar\Exception` with the HTTP status code and error message. To cache these exceptions, you can use the example to the right. Here's a list of common [error response codes](/api/reference/?php#errors) for reference:
