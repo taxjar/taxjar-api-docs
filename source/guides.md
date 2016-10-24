@@ -4,6 +4,14 @@ description: "Tips and tricks on how to use SmartCalcs, TaxJar's sales tax API."
 preferred_url: https://developers.taxjar.com/api/guides/
 ---
 
+# Quickstart Guides
+
+Using one of our official API clients? Hit the ground running with our quickstart guides:
+
+- <img class="client-icon" src="../images/clients/php-logo.png" width="16"> [PHP Quickstart](/api/guides/php/)
+
+You'll learn how to set up the API client, authenticate with TaxJar, and make common requests using our sales tax API such as sales tax calculations and pushing transactions into TaxJar.
+
 # Product Exemptions
 
 > Mixed Order of Exempt and Non-Exempt Clothing in NY
