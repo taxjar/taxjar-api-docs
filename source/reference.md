@@ -1085,7 +1085,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "17.95",
+    "amount": "17.0",
     "shipping": "2.0",
     "sales_tax": "0.95",
     "line_items": [
@@ -1119,7 +1119,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   :to_state => "CA",
   :to_city => "LOS ANGELES",
   :to_street => "123 Palm Grove Ln",
-  :amount => 17.95,
+  :amount => 17,
   :shipping => 2,
   :sales_tax => 0.95,
   :line_items => [
@@ -1268,7 +1268,7 @@ var order = client.CreateOrder(new {
   to_zip = "90002",
   to_city = "Los Angeles",
   to_street = "123 Palm Grove Ln",
-  amount = 17.95,
+  amount = 17,
   shipping = 2,
   sales_tax = 0.95,
   line_items = new[] {
@@ -1505,7 +1505,7 @@ var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 var order = client.UpdateOrder(new
 {
   transaction_id = "123",
-  amount = 17.95,
+  amount = 17,
   shipping = 2,
   line_items = new[] {
     new {
@@ -2148,7 +2148,7 @@ var refund = client.CreateRefund(new
   to_zip = "90002",
   to_city = "Los Angeles",
   to_street = "123 Palm Grove Ln",
-  amount = 17.95,
+  amount = 17,
   shipping = 2,
   sales_tax = 0.95,
   line_items = new[] {
@@ -2386,7 +2386,7 @@ var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 var refund = client.UpdateRefund(new
 {
   transaction_id = "321",
-  amount = 17.95,
+  amount = 17,
   shipping = 2,
   line_items = new[] {
     new {
