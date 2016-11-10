@@ -10,6 +10,7 @@ Using one of our official API clients? Hit the ground running with our quickstar
 
 - <img class="client-icon" src="../images/clients/ruby-logo.png" width="16"> [Ruby Quickstart](/api/guides/ruby/)
 - <img class="client-icon" src="../images/clients/php-logo.png" width="16"> [PHP Quickstart](/api/guides/php/)
+- <img class="client-icon" src="../images/clients/node-logo.png" width="16"> [Node Quickstart](/api/guides/node/)
 
 You'll learn how to set up the API client, authenticate with TaxJar, and make common requests using our sales tax API such as sales tax calculations and pushing transactions into TaxJar.
 
@@ -38,7 +39,7 @@ curl https://api.taxjar.com/v2/taxes \
         "unit_price": 19.99,
         "product_tax_code": "20010"
       },
-      { 
+      {
         "quantity": 1,
         "unit_price": 9.95,
         "product_tax_code": "20010"
@@ -93,8 +94,8 @@ curl https://api.taxjar.com/v2/taxes \
         "special_tax_rate": 0.00375,
         "special_district_amount": 0.03
       },
-      "line_items": [  
-        {  
+      "line_items": [
+        {
           "id": "1",
           "taxable_amount": 19.99,
           "tax_collectable": 0.87,
@@ -112,7 +113,7 @@ curl https://api.taxjar.com/v2/taxes \
           "special_tax_rate": 0.00375,
           "special_district_amount": 0.07
         },
-        {  
+        {
           "id": "2",
           "taxable_amount": 9.95,
           "tax_collectable": 0.44,
@@ -146,7 +147,7 @@ Here’s an example of an order in NY that contains a mixed order of exempt and 
 
 As you can see in the response, SmartCalcs figures out the taxability by item, by jurisdiction. All you need to do is tell us an item is “Clothing” using `product_tax_code` **20010**.
 
-To obtain the current list of supported product_tax_codes, they are always available via our [Categories endpoint](https://developers.taxjar.com/api/#categories). 
+To obtain the current list of supported product_tax_codes, they are always available via our [Categories endpoint](https://developers.taxjar.com/api/#categories).
 
 #### Helpful Tip
 
@@ -162,7 +163,7 @@ The very first bit of logic used when calculating sales tax is the notion of [ne
 
 Using TaxJar's [SmartCalcs API](https://www.taxjar.com/api/), there are two ways for you let us know if you have nexus for a given order:
 
-1. If you are calculating tax just for your own business, you can store all of your nexus information within your [TaxJar account](https://app.taxjar.com/api_sign_up/). Just use the [State Settings page](https://app.taxjar.com/account#states) to enter all of your business locations. When you make a call to SmartCalcs with your API token, we will look at your nexus information on file and calculate sales tax when appropriate. Of course, our ability to calculate properly will depend on your maintaining an accurate list of nexus locations. To add states and nexus locations, just go to the [State Settings page](https://app.taxjar.com/account#states) and click the **Add State with Nexus** button. 
+1. If you are calculating tax just for your own business, you can store all of your nexus information within your [TaxJar account](https://app.taxjar.com/api_sign_up/). Just use the [State Settings page](https://app.taxjar.com/account#states) to enter all of your business locations. When you make a call to SmartCalcs with your API token, we will look at your nexus information on file and calculate sales tax when appropriate. Of course, our ability to calculate properly will depend on your maintaining an accurate list of nexus locations. To add states and nexus locations, just go to the [State Settings page](https://app.taxjar.com/account#states) and click the **Add State with Nexus** button.
 
 2. If you would rather not load your locations into your TaxJar account or if you are trying to perform calculations for other merchants, you may pass in nexus information with each call to SmartCalcs. At minimum, if you pass in valid values for nexus_country and nexus_state, we can make a proper nexus determination.
 
@@ -204,7 +205,7 @@ curl https://api.taxjar.com/v2/taxes \
         "unit_price": 150,
         "product_tax_code": "20010"
       },
-      { 
+      {
         "quantity": 3,
         "unit_price": 19.95,
         "shipping": 5.45,

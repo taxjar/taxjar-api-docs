@@ -167,7 +167,7 @@ object(stdClass)#38 (18) {
 To get the full TaxJar experience you'll also want to set up sales tax reporting to file your tax returns later. To push transactions (orders and refunds) into TaxJar, we provide a [collection of endpoints](/api/reference/?php#transactions) that cover your basic CRUD operations. In the example to the right, we're pushing an order into TaxJar. Once imported, it'll appear on the **Transactions** page in the [TaxJar app](https://app.taxjar.com). We're passing the following parameters:
 
 - **Transaction ID**: A unique identifier for your order.
-- **Transaction Date**: The date the transaction was recorded. 
+- **Transaction Date**: The date the transaction was recorded.
 - **From Address**: The address you're shipping from, such as a warehouse or business location.
 - **To Address**: The buyer's shipping address or destination of the order.
 - **Amount**: Total amount of the order, **including shipping** and **excluding sales tax**. Yeah, this is a gotcha we're planning to fix in the next API version.
@@ -202,7 +202,7 @@ try {
 }
 ```
 
-When invalid data is sent to TaxJar or we encounter an error, we'll throw a `TaxJar\Exception` with the HTTP status code and error message. To cache these exceptions, you can use the example to the right. Here's a list of common [error response codes](/api/reference/?php#errors) for reference:
+When invalid data is sent to TaxJar or we encounter an error, we'll throw a `TaxJar\Exception` with the HTTP status code and error message. To catch these exceptions, you can use the example to the right. Here's a list of common [error response codes](/api/reference/?php#errors) for reference:
 
 Error Code | Meaning
 ---------- | -------

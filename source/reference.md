@@ -89,7 +89,7 @@ We currently support the following countries around the world. If you would like
 #### North America
 
 <p class="column-set">
-  <span class="flag-icon flag-icon-us"></span>&nbsp;&nbsp; United States<br>  
+  <span class="flag-icon flag-icon-us"></span>&nbsp;&nbsp; United States<br>
   <span class="flag-icon flag-icon-ca"></span>&nbsp;&nbsp; Canada
 </p>
 
@@ -749,7 +749,7 @@ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": false,
     "tax_source": "destination",
-    "breakdown": {  
+    "breakdown": {
       "taxable_amount": 15,
       "tax_collectable": 1.35,
       "combined_tax_rate": 0.09,
@@ -765,8 +765,8 @@ curl https://api.taxjar.com/v2/taxes \
       "special_district_taxable_amount": 15,
       "special_tax_rate": 0.025,
       "special_district_tax_collectable": 0.38,
-      "line_items": [  
-        {  
+      "line_items": [
+        {
           "id": "1",
           "taxable_amount": 15,
           "tax_collectable": 1.35,

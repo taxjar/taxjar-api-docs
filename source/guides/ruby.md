@@ -177,7 +177,7 @@ rescue Taxjar::Error => e
 end
 ```
 
-When invalid data is sent to TaxJar or we encounter an error, we'll throw a `Taxjar::Error` with the HTTP status code and error message. To cache these exceptions, you can use the example to the right. Here's a list of common [error response classes](/api/reference/?ruby#errors) for reference:
+When invalid data is sent to TaxJar or we encounter an error, we'll throw a `Taxjar::Error` with the HTTP status code and error message. To catch these exceptions, you can use the example to the right. Here's a list of common [error response classes](/api/reference/?ruby#errors) for reference:
 
 Error Class | Meaning
 ---------- | -------
