@@ -89,7 +89,7 @@ Now that we've set up the Ruby client, let's calculate some sales tax. In the ex
 
 You can learn more about the parameters passed to our tax endpoint in the [API reference](/api/reference/?ruby#post-calculate-sales-tax-for-an-order). If you're passing a [product tax code](/api/guides#product-exemptions) for specific line items, refer to our [category list](/api/reference/?ruby#categories) to determine which code to use.
 
-After calling `tax_for_order`, you'll get a response back. Check it out with [pry](https://github.com/pry/pry), [byebug](https://github.com/deivid-rodriguez/byebug), or simply `p tax`. To access a specific attribute in the response, just use the `->` object operator: `$tax->amount_to_collect`.
+After calling `tax_for_order`, you'll get a response back. Check it out with [pry](https://github.com/pry/pry), [byebug](https://github.com/deivid-rodriguez/byebug), or simply `p tax`. To access a specific attribute in the response, use Ruby's dot syntax: `tax.amount_to_collect`.
 
 If you just need the rate for a given location, use the [/v2/rates](/api/reference/?ruby#get-show-tax-rates-for-a-location) endpoint. You can also take advantage of our [summarized rates endpoint](/api/reference/?ruby#get-summarize-tax-rates-for-all-regions) as a backup to store in your database.
 
