@@ -1628,11 +1628,13 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
     "amount": 17,
     "shipping": 2,
     "line_items": [
-      "quantity": 1,
-      "product_identifier": "12-34234-0",
-      "unit_price": 15,
-      "discount": 0,
-      "sales_tax": 0.95
+      {
+        "quantity": 1,
+        "product_identifier": "12-34234-0",
+        "unit_price": 15,
+        "discount": 0,
+        "sales_tax": 0.95
+      }
     ]
   }' \
   -X PUT
