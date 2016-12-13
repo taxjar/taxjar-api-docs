@@ -1,5 +1,97 @@
 # Errors
 
+> Error Handling Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+begin
+  # Invalid request
+  order = client.create_order({
+    :transaction_date => '2015/05/14',
+    :to_country => 'US',
+    :to_state => 'CA',
+    :to_zip => '90002',
+    :amount => 17.45,
+    :shipping => 1.5,
+    :sales_tax => 0.95
+  })
+rescue Taxjar::Error => e
+  # <Taxjar::Error::NotAcceptable: transaction_id is missing>
+  puts e.class.name
+  puts e.message
+end
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+// Invalid request
+taxjar.createOrder({
+  transaction_date: '2015/05/14',
+  to_country: 'US',
+  to_state: 'CA',
+  to_zip: '90002',
+  amount: 17.45,
+  shipping: 1.5,
+  sales_tax: 0.95
+}).then(function(res) {
+  res.order; // Order object
+}).catch(function(err) {
+  err.detail; // Error detail
+  err.status; // Error status code
+});
+```
+
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+try {
+  // Invalid request
+  $order = $client->createOrder([
+    'transaction_date' => '2015/05/14',
+    'to_country' => 'US',
+    'to_zip' => '90002',
+    'to_state' => 'CA',
+    'amount' => 17.45,
+    'shipping' => 1.5,
+    'sales_tax' => 0.95
+  ]);
+} catch (Exception $e) {
+  // 406 Not Acceptable – transaction_id is missing
+  echo $e->getMessage();
+}
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+try
+{
+  // Invalid request
+  var order = client.CreateOrder(new {
+    transaction_date = "2015/05/04",
+    to_country = "US",
+    to_zip = "90002",
+    to_state = "CA",
+    amount = 17.45,
+    shipping = 1.5,
+    sales_tax = 0.95
+  });
+}
+catch(TaxjarException e)
+{
+  // 406 Not Acceptable – transaction_id is missing
+  e.TaxjarError.Error;
+  e.TaxjarError.Detail;
+  e.TaxjarError.StatusCode;
+}
+```
+
 The TaxJar API uses the following error codes:
 
 Error Code | Meaning
