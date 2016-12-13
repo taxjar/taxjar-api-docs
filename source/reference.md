@@ -729,17 +729,40 @@ var rates = client.TaxForOrder(new {
 ```shell
 curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d to_country="US" \
-  -d to_zip="90002" \
-  -d to_state="CA" \
-  -d from_country="US" \
-  -d from_zip="92101" \
-  -d from_state="CA" \
-  -d amount=15 \
-  -d shipping=1.5 \
-  -d "line_items[][quantity]=1 \
-  &line_items[][unit_price]=15 \
-  &line_items[][product_tax_code]='31000'"
+  -H "Content-Type: application/json" \
+  -d '{
+    "from_country": "US",
+    "from_zip": "92093",
+    "from_state": "CA",
+    "from_city": "La Jolla",
+    "from_street": "9500 Gilman Drive",
+    "to_country": "US",
+    "to_zip": "90002",
+    "to_state": "CA",
+    "to_city": "Los Angeles",
+    "to_street": "1335 E 103rd St",
+    "amount": 15,
+    "shipping": 1.5,
+    "nexus_addresses": [
+      {
+        "id": "Main Location",
+        "country": "US",
+        "zip": "92093",
+        "state": "CA",
+        "city": "La Jolla",
+        "street": "9500 Gilman Drive"
+      }
+    ],
+    "line_items": [
+      {
+        "id": "1",
+        "quantity": 1,
+        "product_tax_code": "20010",
+        "unit_price": 15,
+        "discount": 0
+      }
+    ]
+  }'
 ```
 
 > Response Example
@@ -1292,21 +1315,28 @@ var order = client.CreateOrder(new {
 ```shell
 curl https://api.taxjar.com/v2/transactions/orders \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d transaction_id="123" \
-  -d transaction_date="2015/05/14" \
-  -d to_country="US" \
-  -d to_zip="90002" \
-  -d to_state="CA" \
-  -d to_city="Los Angeles" \
-  -d to_street="123 Palm Grove Ln" \
-  -d amount=16.5 \
-  -d shipping=1.5 \
-  -d sales_tax=0.95 \
-  -d "line_items[][quantity]=1 \
-  &line_items[][product_identifier]='12-34234-9' \
-  &line_items[][description]='Fuzzy Widget' \
-  &line_items[][unit_price]=15 \
-  &line_items[][sales_tax]=0.95"
+  -H "Content-Type: application/json" \
+  -d '{
+    "transaction_id": "123",
+    "transaction_date": "2015/05/14",
+    "to_street": "123 Palm Grove Ln",
+    "to_city": "Los Angeles",
+    "to_state": "CA",
+    "to_zip": "90002",
+    "to_country": "US",
+    "amount": 16.5,
+    "shipping": 1.5,
+    "sales_tax": 0.95,
+    "line_items": [
+      {
+        "quantity": 1,
+        "product_identifier": "12-34234-9",
+        "description": "Fuzzy Widget",
+        "unit_price": 15,
+        "sales_tax": 0.95
+      }
+    ]
+  }'
 ```
 
 > Response Example
@@ -1529,15 +1559,19 @@ var order = client.UpdateOrder(new
 ```shell
 curl https://api.taxjar.com/v2/transactions/orders/123 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d transaction_id="123" \
-  -d amount=17 \
-  -d shipping=2 \
-  -d "line_items[][quantity]=1 \
-  &line_items[][product_identifier]='12-34234-0' \
-  &line_items[][description]='Heavy Widget' \
-  &line_items[][unit_price]=15 \
-  &line_items[][discount]=0 \
-  &line_items[][sales_tax]=0.95" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "transaction_id": "123",
+    "amount": 17,
+    "shipping": 2,
+    "line_items": [
+      "quantity": 1,
+      "product_identifier": "12-34234-0",
+      "unit_price": 15,
+      "discount": 0,
+      "sales_tax": 0.95
+    ]
+  }' \
   -X PUT
 ```
 
@@ -1703,7 +1737,7 @@ var order = client.DeleteOrder(123);
 
 ```shell
 curl https://api.taxjar.com/v2/transactions/orders/123 \
-  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -X DELETE
 ```
 
@@ -2172,22 +2206,29 @@ var refund = client.CreateRefund(new
 ```shell
 curl https://api.taxjar.com/v2/transactions/refunds \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d transaction_id="123" \
-  -d transaction_date="2015/05/14" \
-  -d transaction_reference_id="123" \
-  -d to_country="US" \
-  -d to_zip="90002" \
-  -d to_state="CA" \
-  -d to_city="Los Angeles" \
-  -d to_street="123 Palm Grove Ln" \
-  -d amount=16.5 \
-  -d shipping=1.5 \
-  -d sales_tax=0.95 \
-  -d "line_items[][quantity]=1 \
-  &line_items[][product_identifier]='12-34234-9' \
-  &line_items[][description]='Fuzzy Widget' \
-  &line_items[][unit_price]=15 \
-  &line_items[][sales_tax]=0.95"
+  -H "Content-Type: application/json" \
+  -d '{
+    "transaction_id": "123",
+    "transaction_date": "2015/05/14",
+    "transaction_reference_id": "123",
+    "to_street": "123 Palm Grove Ln",
+    "to_city": "Los Angeles",
+    "to_state": "CA",
+    "to_zip": "90002",
+    "to_country": "US",
+    "amount": 16.5,
+    "shipping": 1.5,
+    "sales_tax": 0.95,
+    "line_items": [
+      {
+        "quantity": 1,
+        "product_identifier": "12-34234-9",
+        "description": "Fuzzy Widget",
+        "unit_price": 15,
+        "sales_tax": 0.95
+      }
+    ]
+  }'
 ```
 
 > Response Example
@@ -2410,15 +2451,22 @@ var refund = client.UpdateRefund(new
 ```shell
 curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d transaction_id="321" \
-  -d amount=17 \
-  -d shipping=2 \
-  -d sales_tax=0.95 \
-  -d "line_items[][quantity]=1 \
-  &line_items[][product_identifier]='12-34234-0' \
-  &line_items[][description]='Heavy Widget' \
-  &line_items[][unit_price]=15 \
-  &line_items[][sales_tax]=0.95" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "transaction_id": "321",
+    "amount": 17,
+    "shipping": 2,
+    "sales_tax": 0.95,
+    "line_items": [
+      {
+        "quantity": 1,
+        "product_identifier": "12-34234-0",
+        "description": "Heavy Widget",
+        "unit_price": 15,
+        "sales_tax": 0.95
+      }
+    ]
+  }' \
   -X PUT
 ```
 
@@ -2586,7 +2634,7 @@ var refund = client.DeleteRefund(321);
 
 ```shell
 curl https://api.taxjar.com/v2/transactions/refunds/321 \
-  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -X DELETE
 ```
 
