@@ -636,20 +636,35 @@ require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 order = client.tax_for_order({
-  :to_country => 'US',
-  :to_zip => '90002',
-  :to_city => 'Los Angeles',
-  :to_state => 'CA',
   :from_country => 'US',
   :from_zip => '92093',
-  :from_city => 'San Diego',
+  :from_state => 'CA',
+  :from_city => 'La Jolla',
+  :from_street => '9500 Gilman Drive',
+  :to_country => 'US',
+  :to_zip => '90002',
+  :to_state => 'CA',
+  :to_city => 'Los Angeles',
+  :to_street => '1335 E 103rd St',
   :amount => 15,
   :shipping => 1.5,
+  :nexus_addresses => [
+    {
+      :id => 'Main Location',
+      :country => 'US'
+      :zip => '92093',
+      :state => 'CA',
+      :city => 'La Jolla',
+      :street => '9500 Gilman Drive',
+    }
+  ],
   :line_items => [
     {
+      :id => '1',
       :quantity => 1,
+      :product_tax_code => '20010',
       :unit_price => 15,
-      :product_tax_code => '31000'
+      :discount => 0
     }
   ]
 })
@@ -660,18 +675,34 @@ var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
 client.taxForOrder({
   from_country: 'US',
-  from_zip: '07001',
-  from_state: 'NJ',
+  from_zip: '92093',
+  from_state: 'CA',
+  from_city: 'La Jolla',
+  from_street: '9500 Gilman Drive',
   to_country: 'US',
-  to_zip: '07446',
-  to_state: 'NJ',
+  to_zip: '90002',
+  to_state: 'CA',
+  to_city: 'Los Angeles',
+  to_street: '1335 E 103rd St',
   amount: 15,
   shipping: 1.5,
+  nexus_addresses: [
+    {
+      id: 'Main Location',
+      country: 'US',
+      zip: '92093',
+      state: 'CA',
+      city: 'La Jolla',
+      street: '9500 Gilman Drive'
+    }
+  ],
   line_items: [
     {
+      id: '1',
       quantity: 1,
+      product_tax_code: '20010',
       unit_price: 15,
-      product_tax_code: '31000'
+      discount: 0
     }
   ]
 }).then(function(res) {
@@ -686,18 +717,34 @@ $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
 $order_taxes = $client->taxForOrder([
   'from_country' => 'US',
-  'from_zip' => '07001',
-  'from_state' => 'NJ',
+  'from_zip' => '92093',
+  'from_state' => 'CA',
+  'from_city' => 'La Jolla',
+  'from_street' => '9500 Gilman Drive',
   'to_country' => 'US',
-  'to_zip' => '07446',
-  'to_state' => 'NJ',
+  'to_zip' => '90002',
+  'to_state' => 'CA',
+  'to_city' => 'Los Angeles',
+  'to_street' => '1335 E 103rd St',
   'amount' => 15,
   'shipping' => 1.5,
+  'nexus_addresses' => [
+    [
+      'id' => 'Main Location',
+      'country' => 'US',
+      'zip' => '92093',
+      'state' => 'CA',
+      'city' => 'La Jolla',
+      'street' => '9500 Gilman Drive',
+    ]
+  ],
   'line_items' => [
     [
+      'id' => '1',
       'quantity' => 1,
+      'product_tax_code' => '20010',
       'unit_price' => 15,
-      'product_tax_code' => '31000'
+      'discount' => 0
     ]
   ]
 ]);
@@ -708,19 +755,35 @@ using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
 var rates = client.TaxForOrder(new {
-  from_country =  "US",
-  from_zip = "07001",
-  from_state = "NJ",
+  from_country = "US",
+  from_zip = "92093",
+  from_state = "CA",
+  from_city = "La Jolla",
+  from_street = "9500 Gilman Drive",
   to_country = "US",
-  to_zip = "07446",
-  to_state = "NJ",
+  to_zip = "90002",
+  to_state = "CA",
+  to_city = "Los Angeles",
+  to_street = "1335 E 103rd St",
   amount = 15,
   shipping = 1.5,
+  nexus_addresses = new[] {
+    new {
+      id = "Main Location",
+      country = "US",
+      zip = "92093",
+      state = "CA",
+      city = "La Jolla",
+      street = "9500 Gilman Drive",
+    }
+  },
   line_items = new[] {
     new {
+      id = "1",
       quantity = 1,
+      product_tax_code = "20010",
       unit_price = 15,
-      product_tax_code = "31000"
+      discount = 0
     }
   }
 });
