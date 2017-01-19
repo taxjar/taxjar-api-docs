@@ -1134,13 +1134,13 @@ GET https://api.taxjar.com/v2/transactions/orders/:transaction_id
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
-order = client.show_order(123)
+order = client.show_order('123')
 ```
 
 ```javascript
 var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-client.showOrder(123).then(function(res) {
+client.showOrder('123').then(function(res) {
   res.order;
 });
 ```
@@ -1149,14 +1149,14 @@ client.showOrder(123).then(function(res) {
 require __DIR__ . '/vendor/autoload.php';
 $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$order = $client->showOrder(123);
+$order = $client->showOrder('123');
 ```
 
 ```csharp
 using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
-var order = client.ShowOrder(123);
+var order = client.ShowOrder("123");
 ```
 
 ```shell
@@ -1775,13 +1775,13 @@ DELETE https://api.taxjar.com/v2/transactions/orders/:transaction_id
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
-client.delete_order(123)
+client.delete_order('123')
 ```
 
 ```javascript
 var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-client.deleteOrder(123).then(function(res) {
+client.deleteOrder('123').then(function(res) {
 
 });
 ```
@@ -1790,14 +1790,14 @@ client.deleteOrder(123).then(function(res) {
 require __DIR__ . '/vendor/autoload.php';
 $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$client->deleteOrder(123);
+$client->deleteOrder('123');
 ```
 
 ```csharp
 using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
-var order = client.DeleteOrder(123);
+var order = client.DeleteOrder("123");
 ```
 
 ```shell
@@ -2021,13 +2021,13 @@ GET https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
-refund = client.show_refund(321)
+refund = client.show_refund('321')
 ```
 
 ```javascript
 var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-client.showRefund(321).then(function(res) {
+client.showRefund('321').then(function(res) {
   res.refund;
 });
 ```
@@ -2036,14 +2036,14 @@ client.showRefund(321).then(function(res) {
 require __DIR__ . '/vendor/autoload.php';
 $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$refund = $client->showRefund(321);
+$refund = $client->showRefund('321');
 ```
 
 ```csharp
 using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
-var refund = client.ShowRefund(321);
+var refund = client.ShowRefund("321");
 ```
 
 ```shell
@@ -2672,13 +2672,13 @@ DELETE https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
-client.delete_refund(321)
+client.delete_refund('321')
 ```
 
 ```javascript
 var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
-client.deleteRefund(321).then(function(res) {
+client.deleteRefund('321').then(function(res) {
 
 });
 ```
@@ -2687,14 +2687,14 @@ client.deleteRefund(321).then(function(res) {
 require __DIR__ . '/vendor/autoload.php';
 $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$client->deleteRefund(321);
+$client->deleteRefund('321');
 ```
 
 ```csharp
 using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
-var refund = client.DeleteRefund(321);
+var refund = client.DeleteRefund("321");
 ```
 
 ```shell
