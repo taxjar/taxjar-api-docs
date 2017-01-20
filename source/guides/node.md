@@ -79,6 +79,7 @@ taxjar.taxForOrder({
     "freight_taxable": true,
     "tax_source": "destination",
     "breakdown": {}
+  }
 }
 ```
 
