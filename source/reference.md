@@ -1182,7 +1182,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
     "sales_tax": "0.95",
     "line_items": [
       {
-        "id": 1,
+        "id": "1",
         "quantity": 1,
         "product_identifier": "12-34243-0",
         "description": "Heavy Widget",
@@ -1216,7 +1216,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   :sales_tax => 0.95,
   :line_items => [
     {
-      :id => 1,
+      :id => "1",
       :quantity => 1,
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
@@ -1420,7 +1420,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
     "sales_tax": "0.95",
     "line_items": [
       {
-        "id": 1,
+        "id": "1",
         "quantity": 1,
         "product_identifier": "12-34243-9",
         "description": "Fuzzy Widget",
@@ -1454,7 +1454,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
   :sales_tax => 0.95,
   :line_items => [
     {
-      :id => 1,
+      :id => "1",
       :quantity => 1,
       :product_identifier => "12-34243-9",
       :product_tax_code => nil,
@@ -1658,7 +1658,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
     "sales_tax": "0.95",
     "line_items": [
       {
-        "id": 1,
+        "id": "1",
         "quantity": 1,
         "product_identifier": "12-34243-0",
         "description": "Heavy Widget",
@@ -1692,7 +1692,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   :sales_tax => 0.95,
   :line_items => [
     {
-      :id => 1,
+      :id => "1",
       :quantity => 1,
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
@@ -1824,7 +1824,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
     "sales_tax": "0.95",
     "line_items": [
       {
-        "id": 1,
+        "id": "1",
         "quantity": 1,
         "product_identifier": "12-34243-0",
         "description": "Heavy Widget",
@@ -1858,7 +1858,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   :sales_tax => 0.95,
   :line_items => [
     {
-      :id => 1,
+      :id => "1",
       :quantity => 1,
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
@@ -2070,7 +2070,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     "sales_tax": "0.95",
     "line_items": [
       {
-        "id": 1,
+        "id": "1",
         "quantity": 1,
         "product_identifier": "12-34243-0",
         "description": "Heavy Widget",
@@ -2104,7 +2104,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   :sales_tax => 0.95,
   :line_items => [
     {
-      :id => 1,
+      :id => "1",
       :quantity => 1,
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
@@ -2315,7 +2315,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
     "sales_tax": "0.95",
     "line_items": [
       {
-        "id": 1,
+        "id": "1",
         "quantity": 1,
         "product_identifier": "12-34243-9",
         "description": "Fuzzy Widget",
@@ -2349,7 +2349,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
   :sales_tax => 0.95,
   :line_items => [
     {
-      :id => 1,
+      :id => "1",
       :quantity => 1,
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
@@ -2554,7 +2554,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     "sales_tax": "0.95",
     "line_items": [
       {
-        "id": 1,
+        "id": "1",
         "quantity": 1,
         "product_identifier": "12-34243-0",
         "description": "Heavy Widget",
@@ -2588,7 +2588,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   :sales_tax => 0.95,
   :line_items => [
     {
-      :id => 1,
+      :id => "1",
       :quantity => 1,
       :product_identifier => "12-34243-9",
       :product_tax_code => nil,
@@ -2722,7 +2722,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     "sales_tax": "0.95",
     "line_items": [
       {
-        "id": 1,
+        "id": "1",
         "quantity": 1,
         "product_identifier": "12-34243-0",
         "description": "Heavy Widget",
@@ -2756,7 +2756,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   :sales_tax => 0.95,
   :line_items => [
     {
-      :id => 1,
+      :id => "1",
       :quantity => 1,
       :product_identifier => "12-34243-9",
       :product_tax_code => nil,
