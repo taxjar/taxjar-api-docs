@@ -1813,26 +1813,22 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   "order": {
     "transaction_id": "123",
     "user_id": 10649,
-    "transaction_date": "2015-05-14T00:00:00Z",
-    "to_country": "US",
-    "to_zip": "90002",
-    "to_state": "CA",
-    "to_city": "LOS ANGELES",
-    "to_street": "123 Palm Grove Ln",
-    "amount": "17.0",
-    "shipping": "2.0",
-    "sales_tax": "0.95",
-    "line_items": [
-      {
-        "id": "1",
-        "quantity": 1,
-        "product_identifier": "12-34243-0",
-        "description": "Heavy Widget",
-        "unit_price": "15.0",
-        "discount": "0.0",
-        "sales_tax": "0.95"
-      }
-    ]
+    "transaction_date": null,
+    "transaction_reference_id": null,
+    "from_country": null,
+    "from_zip": null,
+    "from_state": null,
+    "from_city": null,
+    "from_street": null,
+    "to_country": null,
+    "to_zip": null,
+    "to_state": null,
+    "to_city": null,
+    "to_street": null,
+    "amount": null,
+    "shipping": null,
+    "sales_tax": null,
+    "line_items": []
   }
 }
 ```
@@ -1841,33 +1837,22 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 #<Taxjar::Order:0x007f6d65b252d0 @attrs={
   :transaction_id => "123",
   :user_id => 11836,
-  :transaction_date => "2015-05-14T00:00:00Z",
+  :transaction_date => nil,
   :transaction_reference_id => nil,
-  :from_country => "US",
-  :from_zip => 93101,
-  :from_state => "CA",
-  :from_city => "SANTA BARBARA",
-  :from_street => "1218 State St",
-  :to_country => "US",
-  :to_zip => 90002,
-  :to_state => "CA",
-  :to_city => "LOS ANGELES",
-  :to_street => "123 Palm Grove Ln",
-  :amount => 17.0,
-  :shipping => 2.0,
-  :sales_tax => 0.95,
-  :line_items => [
-    {
-      :id => "1",
-      :quantity => 1,
-      :product_identifier => "12-34243-0",
-      :product_tax_code => nil,
-      :description => "Heavy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
-    }
-  ]
+  :from_country => nil,
+  :from_zip => nil,
+  :from_state => nil,
+  :from_city => nil,
+  :from_street => nil,
+  :to_country => nil,
+  :to_zip => nil,
+  :to_state => nil,
+  :to_city => nil,
+  :to_street => nil,
+  :amount => nil,
+  :shipping => nil,
+  :sales_tax => nil,
+  :line_items => []
 }>
 ```
 
@@ -2710,27 +2695,22 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   "refund": {
     "transaction_id": "321",
     "user_id": 10649,
-    "transaction_date": "2015-05-14T00:00:00Z",
-    "transaction_reference_id": "123",
-    "to_country": "US",
-    "to_zip": "90002",
-    "to_state": "CA",
-    "to_city": "LOS ANGELES",
-    "to_street": "123 Palm Grove Ln",
-    "amount": "17.0",
-    "shipping": "2.0",
-    "sales_tax": "0.95",
-    "line_items": [
-      {
-        "id": "1",
-        "quantity": 1,
-        "product_identifier": "12-34243-0",
-        "description": "Heavy Widget",
-        "unit_price": "15.0",
-        "discount": "0.0",
-        "sales_tax": "0.95"
-      }
-    ]
+    "transaction_date": null,
+    "transaction_reference_id": null,
+    "from_country": null,
+    "from_zip": null,
+    "from_state": null,
+    "from_city": null,
+    "from_street": null,
+    "to_country": null,
+    "to_zip": null,
+    "to_state": null,
+    "to_city": null,
+    "to_street": null,
+    "amount": null,
+    "shipping": null,
+    "sales_tax": null,
+    "line_items": []
   }
 }
 ```
@@ -2739,33 +2719,22 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 #<Taxjar::Refund:0x007f6da40e33a0 @attrs={
   :transaction_id => "321",
   :user_id => 11836,
-  :transaction_date => "2015-06-14T00:00:00Z",
-  :transaction_reference_id => "123",
-  :from_country => "US",
-  :from_zip => 93107,
-  :from_state => "CA",
-  :from_city => "SANTA BARBARA",
-  :from_street => "1218 State St",
-  :to_country => "US",
-  :to_zip => 90002,
-  :to_state => "CA",
-  :to_city => "LOS ANGELES",
-  :to_street => "123 Palm Grove Ln",
-  :amount => 17.0,
-  :shipping => 2.0,
-  :sales_tax => 0.95,
-  :line_items => [
-    {
-      :id => "1",
-      :quantity => 1,
-      :product_identifier => "12-34243-9",
-      :product_tax_code => nil,
-      :description => "Heavy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
-    }
-  ]
+  :transaction_date => nil,
+  :transaction_reference_id => nil,
+  :from_country => nil,
+  :from_zip => nil,
+  :from_state => nil,
+  :from_city => nil,
+  :from_street => nil,
+  :to_country => nil,
+  :to_zip => nil,
+  :to_state => nil,
+  :to_city => nil,
+  :to_street => nil,
+  :amount => nil,
+  :shipping => nil,
+  :sales_tax => nil,
+  :line_items => []
 }>
 ```
 
