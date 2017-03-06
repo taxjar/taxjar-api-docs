@@ -260,10 +260,6 @@ Because we won’t know anything about a given merchant when you call SmartCalcs
 
 - We recommend storing all merchant business location addresses in your system to pass in when calculating sales tax.
 
-### Avoiding Unnecessary API Calls
-
-Want a simple way to reduce the number of SmartCalcs calls you need to make? Compare the delivery address of an order to the list of `nexus_addresses` that a merchant has on file with you. **If the delivery address falls in a different state than those in which a merchant has nexus, no sales tax need be collected.** *Note, this only works for US-based sales. Overseas sales, especially in the European Union, have different rules.*
-
 In addition to helping you calculate sales tax for your merchants, we also make it very easy to help them file and remit their sales tax to the states. [TaxJar’s transaction endpoints](https://developers.taxjar.com/api/#transactions) allow you to send completed order information to a merchant’s TaxJar account. Simply include the merchant’s TaxJar API token when posting, and those orders will show up in the merchant’s account with a return-ready report breaking out tax owed by jurisdiction. API calls to the Transactions endpoint do not get counted toward your monthly threshold. Merchants who choose to use TaxJar will simply pay us based on the number of transactions we’re processing for them on a monthly basis.
 
 We also offer an affiliate program, which provides a revenue sharing opportunity back to you for each merchant who signs up for TaxJar’s reporting and filing through you. [Find out more here.](https://www.taxjar.com/affiliates/)
@@ -285,6 +281,12 @@ How and when to send these transactions to TaxJar is entirely up to you. Some po
 1. If you already provide customers with a reporting interface that allows them to select a date range to view orders within that range, simply add a button that uses the same date range to query and send those orders/refunds.
 
 2. To enable a more automated solution, allow users to opt-in to regular transaction submissions. You can choose to do this upon saving completed orders to your platform's database or set up in batches that occur on a regular basis (e.g. nightly).
+
+### Avoiding Unnecessary API Calls
+
+Want a simple way to reduce the number of SmartCalcs calls you need to make? Compare the delivery address of an order or invoice to the list of `nexus_addresses` for your business or merchant. **If the delivery address falls in a different state than those in which your business (or merchant of sale) has nexus, no sales tax need be collected.** *Note, this only works for US-based sales. Overseas sales, especially in the European Union, have different rules.*
+
+Furthermore many carts estimate taxes in the cart or preview pages prior to checkout. You could consider eliminating this estimate or at least delaying it until the shopper is closer to completing the purchase. One checkout screens you will want to make sure that you are only calling SmartCalcs tax calculations once the shipping address is complete. We have seen many users use address validation services to help get a valid address prior to calling SmartCalcs with the final order totals and shipping FROM and TO addresses.
 
 # Cart Integrations
 
