@@ -84,7 +84,7 @@ header {
 }
 
 .menu nav ul {
-  margin: 20px 0;
+  margin: 20px 0 19px;
   padding-left: 0;
 }
 
@@ -111,6 +111,10 @@ header {
   padding: 6px 15px;
   color: #333;
   text-decoration: none;
+
+  &.btn {
+    padding: 7px 15px;
+  }
 }
 
 .menu nav li .active {
@@ -124,8 +128,8 @@ header {
 .btn {
   display: inline-block;
   @extend %secondary-font;
-  font-size: 13px;
-  padding: 6px 15px;
+  font-size: 14px;
+  padding: 7px 15px;
   color: #333;
   text-decoration: none;
   line-height: 20px;
