@@ -286,7 +286,7 @@ How and when to send these transactions to TaxJar is entirely up to you. Some po
 
 Want a simple way to reduce the number of SmartCalcs calls you need to make? Compare the delivery address of an order or invoice to the list of `nexus_addresses` for your business or merchant. **If the delivery address falls in a different state than those in which your business (or merchant of sale) has nexus, no sales tax need be collected.** *Note, this only works for US-based sales. Overseas sales, especially in the European Union, have different rules.*
 
-Furthermore many carts estimate taxes in the cart or preview pages prior to checkout. You could consider eliminating this estimate or at least delaying it until the shopper is closer to completing the purchase. One checkout screens you will want to make sure that you are only calling SmartCalcs tax calculations once the shipping address is complete. We have seen many users use address validation services to help get a valid address prior to calling SmartCalcs with the final order totals and shipping FROM and TO addresses.
+Furthermore, many carts estimate taxes in the cart or preview pages prior to checkout. You could consider eliminating this estimate or at least delaying it until the shopper is closer to completing the purchase. During checkout make sure you wait to call SmartCalcs tax calculations until the shipping address is complete. Many customers use an [address validation service](https://developers.taxjar.com/blog/address-validation-apis-and-plugins/) to ensure a valid shipping address prior to calling SmartCalcs with the final order totals and shipping `from` and `to` addresses.
 
 # Cart Integrations
 
