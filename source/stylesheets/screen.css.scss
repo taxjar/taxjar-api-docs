@@ -108,13 +108,9 @@ header {
 
 .menu nav li a {
   display: block;
-  @extend %secondary-font;
-  font-size: 13px;
   padding: 6px 15px;
   color: #333;
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: -0.25px;
 }
 
 .menu nav li .active {
@@ -132,13 +128,12 @@ header {
   padding: 6px 15px;
   color: #333;
   text-decoration: none;
-  letter-spacing: -0.25px;
   line-height: 20px;
   border: 1px solid #d9d9d9;
   border-radius: 5px;
   font-weight: bold;
   text-transform: uppercase;
-  
+
   &:hover {
     color: #3FAE2A;
     border-color: #3FAE2A;
