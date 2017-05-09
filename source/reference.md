@@ -997,6 +997,8 @@ breakdown | object | Breakdown of rates by jurisdiction for the order, shipping,
 
 ## Transactions
 
+Manage your transactions for automated sales tax reporting and filing in TaxJar. These endpoints only affect orders and refunds created specifically through the API, *not* transactions from other channels.
+
 ### <span class="badge badge--get">get</span> List order transactions
 
 > Definition
@@ -1086,7 +1088,7 @@ curl -G https://api.taxjar.com/v2/transactions/orders \
 ["20", "21", "22"]
 ```
 
-Lists existing order transactions.
+Lists existing order transactions created through the API.
 
 #### Request
 
@@ -1229,7 +1231,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }>
 ```
 
-Shows an existing order transaction.
+Shows an existing order transaction created through the API.
 
 #### Request
 
@@ -1705,7 +1707,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }>
 ```
 
-Updates an existing order transaction.
+Updates an existing order transaction created through the API.
 
 #### Request
 
@@ -1856,7 +1858,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }>
 ```
 
-Deletes an existing order transaction.
+Deletes an existing order transaction created through the API.
 
 #### Request
 
@@ -1958,7 +1960,7 @@ curl -G https://api.taxjar.com/v2/transactions/refunds \
 ["203", "204", "205"]
 ```
 
-Lists existing refund transactions.
+Lists existing refund transactions created through the API.
 
 #### Request
 
@@ -2102,7 +2104,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 }>
 ```
 
-Shows an existing refund transaction.
+Shows an existing refund transaction created through the API.
 
 #### Request
 
@@ -2586,7 +2588,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 }>
 ```
 
-Updates an existing refund transaction.
+Updates an existing refund transaction created through the API.
 
 #### Request
 
@@ -2738,7 +2740,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 }>
 ```
 
-Deletes an existing refund transaction.
+Deletes an existing refund transaction created through the API.
 
 #### Request
 
