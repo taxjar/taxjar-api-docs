@@ -4,11 +4,11 @@ description: "Documentation and code examples for SmartCalcs, TaxJar's sales tax
 preferred_url: https://developers.taxjar.com/api/reference/
 
 language_tabs:
-  - shell
-  - ruby
-  - php
-  - javascript
-  - csharp
+  - shell: cURL
+  - ruby: Ruby
+  - php: PHP
+  - javascript: Node
+  - csharp: .NET
 
 toc_footers:
   - <a href='https://www.taxjar.com/api/docs/'>v1 Documentation</a>
