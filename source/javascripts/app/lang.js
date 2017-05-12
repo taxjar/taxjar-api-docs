@@ -17,6 +17,7 @@ under the License.
   'use strict';
 
   var languages = [];
+  var customResponseExamples = ['ruby', 'python'];
 
   global.setupLanguages = setupLanguages;
   global.activateLanguage = activateLanguage;
@@ -33,8 +34,8 @@ under the License.
 
     $(".highlight." + language).show();
 
-    // Hide JSON response examples if Ruby
-    if (language != 'ruby') {
+    // Hide JSON response examples for specific languages
+    if (customResponseExamples.indexOf(language) == -1) {
       $('.highlight.json').show();
     } else {
       $('.highlight.json').hide();
