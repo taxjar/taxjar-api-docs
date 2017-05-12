@@ -6,6 +6,7 @@ preferred_url: https://developers.taxjar.com/api/reference/
 language_tabs:
   - shell: cURL
   - ruby: Ruby
+  - python: Python
   - php: PHP
   - javascript: Node
   - csharp: .NET
@@ -39,6 +40,11 @@ Before getting started, you'll need to [sign up for TaxJar](https://app.taxjar.c
 ```ruby
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 ```
 
 ```javascript
@@ -158,6 +164,10 @@ We will be expanding support for additional, less common categories over time. I
 client.categories
 ```
 
+```python
+client.categories
+```
+
 ```javascript
 client.categories();
 ```
@@ -181,6 +191,13 @@ require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 categories = client.categories
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+categories = client.categories()
 ```
 
 ```javascript
@@ -299,6 +316,26 @@ curl https://api.taxjar.com/v2/categories \
 ]
 ```
 
+```python
+[
+  <TaxJarCategory {
+    'product_tax_code': '31000',
+    'name': 'Digital Goods',
+    'description': 'Digital products transferred electronically, meaning obtained by the purchaser by means other than tangible storage media.'
+  }>,
+  <TaxJarCategory {
+    'product_tax_code': '20010',
+    'name': 'Clothing',
+    'description': 'All human wearing apparel suitable for general use'
+  }>,
+  <TaxJarCategory {
+    'product_tax_code': '51010',
+    'name': 'Non-Prescription',
+    'description': 'Drugs for human use without a prescription'
+  }>
+]
+```
+
 Lists all tax categories.
 
 #### Request
@@ -331,6 +368,10 @@ Returns a JSON object with an array of product categories and corresponding tax 
 > Definition
 
 ```ruby
+client.rates_for_location
+```
+
+```python
 client.rates_for_location
 ```
 
@@ -374,6 +415,31 @@ rates = client.rates_for_location('V5K0A1', {
 rates = client.rates_for_location('00150', {
   :city => 'HELSINKI',
   :country => 'FI'
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+# United States (ZIP+4)
+rates = client.rates_for_location('90404-3370')
+
+# United States (ZIP w/ Optional Params)
+rates = client.rates_for_location('90404', {
+  'city': 'SANTA MONICA',
+  'country': 'US'
+})
+
+# International Examples (Requires City and Country)
+rates = client.rates_for_location('V5K0A1', {
+  'city': 'VANCOUVER',
+  'country': 'CA'
+})
+
+rates = client.rates_for_location('00150', {
+  'city': 'HELSINKI',
+  'country': 'FI'
 })
 ```
 
@@ -557,6 +623,40 @@ curl -G https://api.taxjar.com/v2/rates/00150 \
 }>
 ```
 
+```python
+<TaxJarRate {
+  'city': 'SANTA MONICA',
+  'zip': '90404',
+  'combined_district_rate': '0.025',
+  'state_rate': '0.0625',
+  'city_rate': '0.0',
+  'county': 'LOS ANGELES',
+  'state': 'CA',
+  'combined_rate': '0.0975',
+  'county_rate': '0.01',
+  'freight_taxable': False
+}>
+
+<TaxJarRate {
+  'zip': 'V5K0A1',
+  'city': 'Vancouver',
+  'state': 'BC',
+  'country': 'CA',
+  'combined_rate': '0.12',
+}>
+
+<TaxJarRate {
+  'country': 'FI',
+  'name': 'Finland',
+  'standard_rate': '0.24',
+  'reduced_rate': None,
+  'super_reduced_rate': None,
+  'parking_rate': None,
+  'distance_sale_threshold': None,
+  'freight_taxable': True
+}>
+```
+
 Shows the sales tax rates for a given location.
 
 #### Request
@@ -613,6 +713,10 @@ freight_taxable | bool | Freight taxability for given location.
 client.tax_for_order
 ```
 
+```python
+client.tax_for_order
+```
+
 ```javascript
 client.taxForOrder();
 ```
@@ -666,6 +770,41 @@ order = client.tax_for_order({
       :unit_price => 15,
       :discount => 0
     }
+  ]
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+order = client.tax_for_order({
+  'from_country': 'US',
+  'from_zip': '92093',
+  'from_state': 'CA',
+  'from_city': 'La Jolla',
+  'from_street': '9500 Gilman Drive',
+  'to_country': 'US',
+  'to_zip': '90002',
+  'to_state': 'CA',
+  'to_city': 'Los Angeles',
+  'to_street': '1335 E 103rd St',
+  'amount': 15,
+  'shipping': 1.5,
+  'nexus_addresses': [
+    'id': 'Main Location',
+    'country': 'US',
+    'zip': '92093',
+    'state': 'CA',
+    'city': 'La Jolla',
+    'street': '9500 Gilman Drive'
+  ],
+  'line_items': [
+    'id': '1',
+    'quantity': 1,
+    'product_tax_code': '20010',
+    'unit_price': 15,
+    'discount': 0
   ]
 })
 ```
@@ -932,6 +1071,53 @@ curl https://api.taxjar.com/v2/taxes \
 }
 ```
 
+```python
+<TaxJarTax {
+  'breakdown': {
+    'special_district_taxable_amount': 15.0,
+    'city_tax_rate': 0.0,
+    'county_tax_collectable': 0.15,
+    'county_taxable_amount': 15.0,
+    'special_district_tax_collectable': 0.23,
+    'line_items': [{
+      'special_district_taxable_amount': 15.0,
+      'city_tax_rate': 0.0,
+      'county_taxable_amount': 15.0,
+      'special_district_amount': 0.23,
+      'state_sales_tax_rate': 0.0625,
+      'state_amount': 0.94,
+      'city_taxable_amount': 0.0,
+      'taxable_amount': 15.0,
+      'special_tax_rate': 0.015,
+      'state_taxable_amount': 15.0,
+      'combined_tax_rate': 0.0875,
+      'county_tax_rate': 0.01,
+      'city_amount': 0.0,
+      'county_amount': 0.15,
+      'id': '1',
+      'tax_collectable': 1.31
+    }],
+    'taxable_amount': 15.0,
+    'state_taxable_amount': 15.0,
+    'combined_tax_rate': 0.0875,
+    'state_tax_collectable': 0.94,
+    'state_tax_rate': 0.0625,
+    'city_tax_collectable': 0.0,
+    'county_tax_rate': 0.01,
+    'special_tax_rate': 0.015,
+    'city_taxable_amount': 0.0,
+    'tax_collectable': 1.31
+  },
+  'has_nexus': True,
+  'tax_source': 'destination',
+  'shipping': 1.5,
+  'taxable_amount': 15.0,
+  'rate': 0.0875,
+  'freight_taxable': False,
+  'amount_to_collect': 1.31,
+  'order_total_amount': 16.5
+}>
+```
 
 Shows the sales tax that should be collected for a given order.
 
@@ -1007,6 +1193,10 @@ Manage your transactions for automated sales tax reporting and filing in TaxJar.
 client.list_orders
 ```
 
+```python
+client.list_orders
+```
+
 ```javascript
 client.listOrders();
 ```
@@ -1032,6 +1222,16 @@ client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 orders = client.list_orders({
   :from_transaction_date => '2015/05/01',
   :to_transaction_date => '2015/05/31'
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+orders = client.list_orders({
+  'from_transaction_date': '2015/05/01',
+  'to_transaction_date': '2015/05/31'
 })
 ```
 
@@ -1088,6 +1288,10 @@ curl -G https://api.taxjar.com/v2/transactions/orders \
 ["20", "21", "22"]
 ```
 
+```python
+['20', '21', '22']
+```
+
 Lists existing order transactions created through the API.
 
 #### Request
@@ -1114,6 +1318,10 @@ to_transaction_date | date | optional | End date of a range for which the transa
 client.show_order
 ```
 
+```python
+client.show_order
+```
+
 ```javascript
 client.showOrder();
 ```
@@ -1135,6 +1343,13 @@ GET https://api.taxjar.com/v2/transactions/orders/:transaction_id
 ```ruby
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.show_order('123')
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 
 order = client.show_order('123')
 ```
@@ -1231,6 +1446,38 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }>
 ```
 
+```python
+<TaxJarOrder {
+  'from_state': 'CA',
+  'line_items': [{
+    'description': 'Heavy Widget',
+    'unit_price': '15.0',
+    'discount': '0.0',
+    'product_identifier': '12-34243-0',
+    'sales_tax': '0.95',
+    'product_tax_code': None,
+    'id': 1,
+    'quantity': 1
+  }],
+  'user_id': 1,
+  'to_zip': '90002',
+  'from_street': '1218 State St',
+  'from_city': 'SANTA BARBARA',
+  'from_zip': '93107',
+  'to_country': 'US',
+  'shipping': '1.5',
+  'from_country': 'US',
+  'to_city': 'LOS ANGELES',
+  'to_street': '123 Palm Grove Ln',
+  'transaction_date': '2016-03-10T00:00:00.000Z',
+  'transaction_reference_id': None,
+  'sales_tax': '0.95',
+  'amount': '17',
+  'transaction_id': '123',
+  'to_state': 'CA'
+}>
+```
+
 Shows an existing order transaction created through the API.
 
 #### Request
@@ -1248,6 +1495,10 @@ transaction_id | string | required | Unique identifier of the given order transa
 > Definition
 
 ```ruby
+client.create_order
+```
+
+```python
 client.create_order
 ```
 
@@ -1293,6 +1544,31 @@ order = client.create_order({
       :sales_tax => 0.95
     }
   ]
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+order = client.create_order({
+  'transaction_id': '123',
+  'transaction_date': '2015/05/14',
+  'to_country': 'US',
+  'to_zip': '90002',
+  'to_state': 'CA',
+  'to_city': 'Los Angeles',
+  'to_street': '123 Palm Grove Ln',
+  'amount': 16.5,
+  'shipping': 1.5,
+  'sales_tax': 0.95,
+  'line_items': [{
+    'quantity': 1,
+    'product_identifier': '12-34243-9',
+    'description': 'Fuzzy Widget',
+    'unit_price': 15,
+    'sales_tax': 0.95
+  }]
 })
 ```
 
@@ -1469,6 +1745,38 @@ curl https://api.taxjar.com/v2/transactions/orders \
 }>
 ```
 
+```python
+<TaxJarOrder {
+  'from_state': 'CA',
+  'line_items': [{
+    'description': 'Fuzzy Widget',
+    'unit_price': '15.0',
+    'discount': '0.0',
+    'product_identifier': '12-34243-9',
+    'sales_tax': '0.95',
+    'product_tax_code': None,
+    'id': 1,
+    'quantity': 1
+  }],
+  'user_id': 11836,
+  'to_zip': '90002',
+  'from_street': '1218 State St',
+  'from_city': 'SANTA BARBARA',
+  'from_zip': '93101',
+  'to_country': 'US',
+  'shipping': '1.5',
+  'from_country': 'US',
+  'to_city': 'LOS ANGELES',
+  'to_street': '123 Palm Grove Ln',
+  'transaction_date': '2015-05-14T00:00:00Z',
+  'transaction_reference_id': None,
+  'sales_tax': '0.95',
+  'amount': '16.5',
+  'transaction_id': '20',
+  'to_state': 'CA'
+}>
+```
+
 Creates a new order transaction.
 
 #### Request
@@ -1517,6 +1825,10 @@ line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit)
 client.update_order
 ```
 
+```python
+client.update_order
+```
+
 ```javascript
 client.updateOrder();
 ```
@@ -1553,6 +1865,25 @@ order = client.update_order({
       :sales_tax => 0.95
     }
   ]
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+order = client.update_order('123', {
+  'transaction_id': '123',
+  'amount': 17,
+  'shipping': 2,
+  'line_items': [{
+    'quantity': 1,
+    'product_identifier': '12-34243-0',
+    'description': 'Heavy Widget',
+    'unit_price': 15,
+    'discount': 0,
+    'sales_tax': 0.95
+  }]
 })
 ```
 
@@ -1707,6 +2038,38 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }>
 ```
 
+```python
+<TaxJarOrder {
+  'from_state': 'CA',
+  'line_items': [{
+    'description': 'Heavy Widget',
+    'unit_price': '15.0',
+    'discount': '0.0',
+    'product_identifier': '12-34243-0',
+    'sales_tax': '0.95',
+    'product_tax_code': None,
+    'id': 0,
+    'quantity': 1
+  }],
+  'user_id': 11836,
+  'to_zip': '90002',
+  'from_street': '1218 State St',
+  'from_city': 'SANTA BARBARA',
+  'from_zip': '93101',
+  'to_country': 'US',
+  'shipping': '1.5',
+  'from_country': 'US',
+  'to_city': 'LOS ANGELES',
+  'to_street': '123 Palm Grove Ln',
+  'transaction_date': '2015-05-14T00:00:00Z',
+  'transaction_reference_id': None,
+  'sales_tax': '0.95',
+  'amount': '17.0',
+  'transaction_id': '123',
+  'to_state': 'CA'
+}>
+```
+
 Updates an existing order transaction created through the API.
 
 #### Request
@@ -1755,6 +2118,10 @@ line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit)
 client.delete_order
 ```
 
+```python
+client.delete_order
+```
+
 ```javascript
 client.deleteOrder();
 ```
@@ -1776,6 +2143,13 @@ DELETE https://api.taxjar.com/v2/transactions/orders/:transaction_id
 ```ruby
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+client.delete_order('123')
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 
 client.delete_order('123')
 ```
@@ -1838,7 +2212,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 ```ruby
 #<Taxjar::Order:0x007f6d65b252d0 @attrs={
   :transaction_id => "123",
-  :user_id => 11836,
+  :user_id => 10649,
   :transaction_date => nil,
   :transaction_reference_id => nil,
   :from_country => nil,
@@ -1855,6 +2229,29 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   :shipping => nil,
   :sales_tax => nil,
   :line_items => []
+}>
+```
+
+```python
+<TaxJarOrder {
+  'from_state': None,
+  'line_items': [],
+  'user_id': 10649,
+  'to_zip': None,
+  'from_street': None,
+  'from_city': None,
+  'from_zip': None,
+  'to_country': None,
+  'shipping': None,
+  'from_country': None,
+  'to_city': None,
+  'to_street': None,
+  'transaction_date': None,
+  'transaction_reference_id': None,
+  'sales_tax': None,
+  'amount': None,
+  'transaction_id': '123',
+  'to_state': None
 }>
 ```
 
@@ -1875,6 +2272,10 @@ transaction_id | string | required | Unique identifier of the given order transa
 > Definition
 
 ```ruby
+client.list_refunds
+```
+
+```python
 client.list_refunds
 ```
 
@@ -1903,6 +2304,16 @@ client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 refunds = client.list_refunds({
   :from_transaction_date => '2015/05/01',
   :to_transaction_date => '2015/05/31'
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+refunds = client.list_refunds({
+  'from_transaction_date': '2015/05/01',
+  'to_transaction_date': '2015/05/31'
 })
 ```
 
@@ -1960,6 +2371,10 @@ curl -G https://api.taxjar.com/v2/transactions/refunds \
 ["203", "204", "205"]
 ```
 
+```python
+['203', '204', '205']
+```
+
 Lists existing refund transactions created through the API.
 
 #### Request
@@ -1986,6 +2401,10 @@ to_transaction_date | date | optional | The end date of a range for which the tr
 client.show_refund
 ```
 
+```python
+client.show_refund
+```
+
 ```javascript
 client.showRefund();
 ```
@@ -2007,6 +2426,13 @@ GET https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 ```ruby
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+refund = client.show_refund('321')
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 
 refund = client.show_refund('321')
 ```
@@ -2104,6 +2530,38 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 }>
 ```
 
+```python
+<TaxJarRefund {
+  'from_state': 'CA',
+  'line_items': [{
+    'description': 'Heavy Widget',
+    'unit_price': '15.0',
+    'discount': '0.0',
+    'product_identifier': '12-34243-0',
+    'sales_tax': '0.95',
+    'product_tax_code': None,
+    'id': 0,
+    'quantity': 1
+  }],
+  'user_id': 11836,
+  'to_zip': '90002',
+  'from_street': '1218 State St',
+  'from_city': 'SANTA BARBARA',
+  'from_zip': 93107,
+  'to_country': 'US',
+  'shipping': '2.0',
+  'from_country': 'US',
+  'to_city': 'LOS ANGELES',
+  'to_street': '123 Palm Grove Ln',
+  'transaction_date': '2015-06-14T00:00:00Z',
+  'transaction_reference_id': '123',
+  'sales_tax': '0.95',
+  'amount': '17.0',
+  'transaction_id': '321',
+  'to_state': 'CA'
+}>
+```
+
 Shows an existing refund transaction created through the API.
 
 #### Request
@@ -2121,6 +2579,10 @@ transaction_id | string | required | Unique identifier of the given refund trans
 > Definition
 
 ```ruby
+client.create_refund
+```
+
+```python
 client.create_refund
 ```
 
@@ -2167,6 +2629,37 @@ order = client.create_refund({
       :sales_tax => 0.95
     }
   ]
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+refund = client.create_refund({
+  'transaction_id': '321',
+  'transaction_date': '2016-05-14',
+  'transaction_reference_id': '123',
+  'from_state': 'CA',
+  'from_city': 'Santa Barbara',
+  'from_street': '1218 State St',
+  'from_country': 'US',
+  'from_zip': '93101',
+  'to_country': 'US',
+  'to_state': 'CA',
+  'to_city': 'Los Angeles',
+  'to_street': '123 Palm Grove Ln',
+  'to_zip': '90002',
+  'amount': 16.5,
+  'shipping': 1.5,
+  'sales_tax': 0.95,
+  'line_items': [{
+    'quantity': 1,
+    'product_identifier': '12-34243-9',
+    'description': 'Fuzzy Widget',
+    'unit_price': 15,
+    'sales_tax': 0.95
+  }]
 })
 ```
 
@@ -2349,6 +2842,38 @@ curl https://api.taxjar.com/v2/transactions/refunds \
 }>
 ```
 
+```python
+<TaxJarRefund {
+  'from_state': 'CA',
+  'line_items': [{
+    'description': 'Heavy Widget',
+    'unit_price': '15.0',
+    'discount': '0.0',
+    'product_identifier': '12-34243-0',
+    'sales_tax': '0.95',
+    'product_tax_code': None,
+    'id': 0,
+    'quantity': 1
+  }],
+  'user_id': 11836,
+  'to_zip': '90002',
+  'from_street': '1218 State St',
+  'from_city': 'SANTA BARBARA',
+  'from_zip': 93107,
+  'to_country': 'US',
+  'shipping': '2.0',
+  'from_country': 'US',
+  'to_city': 'LOS ANGELES',
+  'to_street': '123 Palm Grove Ln',
+  'transaction_date': '2015-06-14T00:00:00Z',
+  'transaction_reference_id': '123',
+  'sales_tax': '0.95',
+  'amount': '17.0',
+  'transaction_id': '321',
+  'to_state': 'CA'
+}>
+```
+
 Creates a new refund transaction.
 
 #### Request
@@ -2398,6 +2923,10 @@ line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit)
 client.update_refund
 ```
 
+```python
+client.update_refund
+```
+
 ```javascript
 client.updateRefund();
 ```
@@ -2434,6 +2963,25 @@ order = client.update_refund({
       :sales_tax => 0.95
     }
   ]
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+refund = client.update_refund('321', {
+  'transaction_id': '321',
+  'amount': 17,
+  'shipping': 2,
+  'sales_tax': 0.95,
+  'line_items': [{
+    'quantity': 1,
+    'product_identifier': '12-34243-0',
+    'description': 'Heavy Widget',
+    'unit_price': 15,
+    'sales_tax': 0.95
+  }]
 })
 ```
 
@@ -2588,6 +3136,38 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 }>
 ```
 
+```python
+<TaxJarRefund {
+  'from_state': 'CA',
+  'line_items': [{
+    'description': 'Heavy Widget',
+    'unit_price': '15.0',
+    'discount': '0.0',
+    'product_identifier': '12-34243-9',
+    'sales_tax': '0.95',
+    'product_tax_code': None,
+    'id': 0,
+    'quantity': 1
+  }],
+  'user_id': 1,
+  'to_zip': '90002',
+  'from_street': '1218 State St',
+  'from_city': 'SANTA BARBARA',
+  'from_zip': 93107,
+  'to_country': 'US',
+  'shipping': '2.0',
+  'from_country': 'US',
+  'to_city': 'LOS ANGELES',
+  'to_street': '123 Palm Grove Ln',
+  'transaction_date': '2016-03-10T00:00:00.000Z',
+  'transaction_reference_id': '123',
+  'sales_tax': '0.95',
+  'amount': '17.0',
+  'transaction_id': '321',
+  'to_state': 'CA'
+}>
+```
+
 Updates an existing refund transaction created through the API.
 
 #### Request
@@ -2637,6 +3217,10 @@ line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit)
 client.delete_refund
 ```
 
+```python
+client.delete_refund
+```
+
 ```javascript
 client.deleteRefund();
 ```
@@ -2658,6 +3242,13 @@ DELETE https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 ```ruby
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+client.delete_refund('321')
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 
 client.delete_refund('321')
 ```
@@ -2740,6 +3331,29 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 }>
 ```
 
+```python
+<TaxJarRefund {
+  'from_state': None,
+  'line_items': [],
+  'user_id': 11836,
+  'to_zip': None,
+  'from_street': None,
+  'from_city': None,
+  'from_zip': None,
+  'to_country': None,
+  'shipping': None,
+  'from_country': None,
+  'to_city': None,
+  'to_street': None,
+  'transaction_date': None,
+  'transaction_reference_id': None,
+  'sales_tax': None,
+  'amount': None,
+  'transaction_id': '321',
+  'to_state': None
+}>
+```
+
 Deletes an existing refund transaction created through the API.
 
 #### Request
@@ -2759,6 +3373,10 @@ transaction_id | string | required | Unique identifier of the given refund trans
 > Definition
 
 ```ruby
+client.nexus_regions
+```
+
+```python
 client.nexus_regions
 ```
 
@@ -2785,6 +3403,13 @@ require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 nexus_regions = client.nexus_regions
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+nexus_regions = client.nexus_regions()
 ```
 
 ```javascript
@@ -2864,6 +3489,29 @@ curl https://api.taxjar.com/v2/nexus/regions \
 ]
 ```
 
+```python
+[
+  <TaxJarRegion {
+    'country_code': 'US',
+    'country': 'United States',
+    'region_code': 'CA',
+    'region': 'California'
+  }>,
+  <TaxJarRegion {
+    'country_code': 'US',
+    'country': 'United States',
+    'region_code': 'NY',
+    'region': 'New York'
+  }>,
+  <TaxJarRegion {
+    'country_code': 'US',
+    'country': 'United States',
+    'region_code': 'WA',
+    'region': 'Washington'
+  }>
+]
+```
+
 Lists existing nexus locations for a TaxJar account.
 
 #### Request
@@ -2895,6 +3543,10 @@ Validates an existing VAT identification number against [VIES](http://ec.europa.
 client.validate
 ```
 
+```python
+client.validate
+```
+
 ```javascript
 client.validate();
 ```
@@ -2919,6 +3571,15 @@ client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 validation = client.validate({
   :vat => 'FR40303265045'
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+validation = client.validate({
+  'vat': 'FR40303265045'
 })
 ```
 
@@ -2992,6 +3653,22 @@ curl -G https://api.taxjar.com/v2/validation \
 }>
 ```
 
+```python
+<TaxjarValidation {
+  'valid': True,
+  'exists': True,
+  'vies_available': True,
+  'vies_response': {
+    'country_code': 'FR',
+    'vat_number': '40303265045',
+    'request_date': '2016-02-10',
+    'valid': True,
+    'name': 'SA SODIMAS',
+    'address': "11 RUE AMPERE\n26600 PONT DE L ISERE"
+  }
+}>
+```
+
 #### Request
 
 GET https://api.taxjar.com/v2/validation
@@ -3027,6 +3704,10 @@ Retrieve minimum and average sales tax rates by region as a backup.
 client.summary_rates
 ```
 
+```python
+client.summary_rates
+```
+
 ```javascript
 client.summaryRates();
 ```
@@ -3050,6 +3731,13 @@ require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 summarized_rates = client.summary_rates
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+summarized_rates = client.summary_rates()
 ```
 
 ```javascript
@@ -3175,6 +3863,53 @@ curl https://api.taxjar.com/v2/summary_rates \
       :rate => 0.2
     }
   }
+]
+```
+
+```python
+[
+  <TaxJarSummaryRate {
+    'average_rate': {
+      'rate': 0.0827,
+      'label': 'Tax'
+    },
+    'region_code': 'CA',
+    'minimum_rate': {
+      'rate': 0.065,
+      'label': 'State Tax'
+    },
+    'country': 'US',
+    'region': 'California',
+    'country_code': 'US'
+  }>,
+  <TaxJarSummaryRate {
+    'average_rate': {
+      'rate': 0.12,
+      'label': 'PST'
+    },
+    'region_code': 'BC',
+    'minimum_rate': {
+      'rate': 0.05,
+      'label': 'GST'
+    },
+    'country': 'Canada',
+    'region': 'British Columbia',
+    'country_code': 'CA'
+  }>,
+  <TaxJarSummaryRate {
+    'average_rate': {
+      'rate': 0.2,
+      'label': 'VAT'
+    },
+    'region_code': None,
+    'minimum_rate': {
+      'rate': 0.2,
+      'label': 'VAT'
+    },
+    'country': 'United Kingdom',
+    'region': None,
+    'country_code': 'UK'
+  }>
 ]
 ```
 
