@@ -27,6 +27,7 @@ Welcome to the TaxJar Sales Tax API! You can use our API to get information on s
 We currently provide API clients for the following languages:
 
 - <img class="client-icon" src="../images/clients/ruby-logo.png" width="16"> [Ruby Sales Tax API](https://github.com/taxjar/taxjar-ruby) *via RubyGems as `taxjar-ruby`*
+- <img class="client-icon" src="../images/clients/python-logo.png" width="16"> [Python Sales Tax API](https://github.com/taxjar/taxjar-python) *via Pip as `taxjar`*
 - <img class="client-icon" src="../images/clients/php-logo.png" width="16"> [PHP Sales Tax API](https://github.com/taxjar/taxjar-php) *via Composer as `taxjar/taxjar-php`*
 - <img class="client-icon" src="../images/clients/node-logo.png" width="16"> [Node Sales Tax API](https://github.com/taxjar/taxjar-node) *via NPM as `taxjar`*
 - <img class="client-icon" src="../images/clients/csharp-logo.svg" width="16"> [C# / .NET Sales Tax API](https://github.com/taxjar/taxjar.net) *via NuGet as `TaxJar`*
