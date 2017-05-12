@@ -41,6 +41,8 @@ In order to make requests to our [sales tax API](https://www.taxjar.com/smartcal
 
 We recommend using a `.env` file with a package such as [dotenv](https://github.com/motdotla/dotenv) to keep sensitive credentials like API tokens outside of your code.
 
+**Warning:** Never expose your API token in client-side JavaScript. This is insecure and could put your TaxJar account at risk.
+
 # Sales Tax Calculations
 
 ```javascript
