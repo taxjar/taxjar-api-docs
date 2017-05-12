@@ -132,3 +132,5 @@ Make sure you have an active API token with TaxJar by [reviewing your account](h
 ## 406 Not Acceptable
 
 This error occurs most often when posting form-encoded data with parameters such as `nexus_addresses[]` or `line_items[]`. If your code looks correct, try submitting the request with a `Content-Type: application/json` header. **Data should always be JSON-encoded.**
+
+Additionally, a 406 response will be returned if you provide blank values for required fields when pushing orders or refunds through the `/v2/transactions` endpoints.
