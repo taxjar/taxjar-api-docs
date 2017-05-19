@@ -1074,13 +1074,13 @@ curl https://api.taxjar.com/v2/taxes \
 
 ```python
 <TaxJarTax {
-  'breakdown': {
+  'breakdown': <TaxJarBreakdown {
     'special_district_taxable_amount': 15.0,
     'city_tax_rate': 0.0,
     'county_tax_collectable': 0.15,
     'county_taxable_amount': 15.0,
     'special_district_tax_collectable': 0.23,
-    'line_items': [{
+    'line_items': [<TaxJarBreakdownLineItem {
       'special_district_taxable_amount': 15.0,
       'city_tax_rate': 0.0,
       'county_taxable_amount': 15.0,
@@ -1097,7 +1097,7 @@ curl https://api.taxjar.com/v2/taxes \
       'county_amount': 0.15,
       'id': '1',
       'tax_collectable': 1.31
-    }],
+    }>],
     'taxable_amount': 15.0,
     'state_taxable_amount': 15.0,
     'combined_tax_rate': 0.0875,
@@ -1108,7 +1108,7 @@ curl https://api.taxjar.com/v2/taxes \
     'special_tax_rate': 0.015,
     'city_taxable_amount': 0.0,
     'tax_collectable': 1.31
-  },
+  }>,
   'has_nexus': True,
   'tax_source': 'destination',
   'shipping': 1.5,
@@ -1450,7 +1450,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 ```python
 <TaxJarOrder {
   'from_state': 'CA',
-  'line_items': [{
+  'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
     'unit_price': '15.0',
     'discount': '0.0',
@@ -1459,7 +1459,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
     'product_tax_code': None,
     'id': 1,
     'quantity': 1
-  }],
+  }>],
   'user_id': 1,
   'to_zip': '90002',
   'from_street': '1218 State St',
@@ -1749,7 +1749,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
 ```python
 <TaxJarOrder {
   'from_state': 'CA',
-  'line_items': [{
+  'line_items': [<TaxJarLineItem {
     'description': 'Fuzzy Widget',
     'unit_price': '15.0',
     'discount': '0.0',
@@ -1758,7 +1758,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
     'product_tax_code': None,
     'id': 1,
     'quantity': 1
-  }],
+  }>],
   'user_id': 11836,
   'to_zip': '90002',
   'from_street': '1218 State St',
@@ -2042,7 +2042,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 ```python
 <TaxJarOrder {
   'from_state': 'CA',
-  'line_items': [{
+  'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
     'unit_price': '15.0',
     'discount': '0.0',
@@ -2051,7 +2051,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
-  }],
+  }>,
   'user_id': 11836,
   'to_zip': '90002',
   'from_street': '1218 State St',
@@ -2534,7 +2534,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 ```python
 <TaxJarRefund {
   'from_state': 'CA',
-  'line_items': [{
+  'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
     'unit_price': '15.0',
     'discount': '0.0',
@@ -2543,7 +2543,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
-  }],
+  }>],
   'user_id': 11836,
   'to_zip': '90002',
   'from_street': '1218 State St',
@@ -2846,7 +2846,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
 ```python
 <TaxJarRefund {
   'from_state': 'CA',
-  'line_items': [{
+  'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
     'unit_price': '15.0',
     'discount': '0.0',
@@ -2855,7 +2855,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
-  }],
+  }>],
   'user_id': 11836,
   'to_zip': '90002',
   'from_street': '1218 State St',
@@ -3140,7 +3140,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 ```python
 <TaxJarRefund {
   'from_state': 'CA',
-  'line_items': [{
+  'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
     'unit_price': '15.0',
     'discount': '0.0',
@@ -3149,7 +3149,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
-  }],
+  }>],
   'user_id': 1,
   'to_zip': '90002',
   'from_street': '1218 State St',
@@ -3655,18 +3655,18 @@ curl -G https://api.taxjar.com/v2/validation \
 ```
 
 ```python
-<TaxjarValidation {
+<TaxJarValidation {
   'valid': True,
   'exists': True,
   'vies_available': True,
-  'vies_response': {
+  'vies_response': <TaxJarViesResponse {
     'country_code': 'FR',
     'vat_number': '40303265045',
     'request_date': '2016-02-10',
     'valid': True,
     'name': 'SA SODIMAS',
     'address': "11 RUE AMPERE\n26600 PONT DE L ISERE"
-  }
+  }>
 }>
 ```
 
