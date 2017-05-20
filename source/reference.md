@@ -677,7 +677,7 @@ street | string | optional | Street address for given location.
 
 Returns a JSON object with rates for a given location broken down by state, county, city, and district. For international requests, returns standard and reduced rates.
 
-#### US/Canada Attributes
+<h4 id="us-canada-rate-attributes"><span class="flag-icon flag-icon-us"></span> <span class="flag-icon flag-icon-ca"></span>&nbsp; US/Canada Attributes</h4>
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -691,7 +691,7 @@ city_rate | long | City sales tax rate for given location.
 combined_district_rate | long | Aggregate rate for all city and county sales tax districts effective at the location.
 combined_rate | long | Overall sales tax rate which includes state, county, city and district tax. This rate should be used to determine how much sales tax to collect for an order.
 
-#### International Attributes
+<h4 id="international-rate-attributes"><span class="flag-icon flag-icon-eu"></span> <span class="flag-icon flag-icon-au"></span>&nbsp; International Attributes</h4>
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -1180,7 +1180,55 @@ rate | long | Overall sales tax rate of the order (`amount_to_collect` &divide; 
 has_nexus | bool | Whether or not you have [nexus](http://blog.taxjar.com/sales-tax-nexus-definition/) for the order based on an address on file, `nexus_addresses` parameter, or `from_` parameters.
 freight_taxable | bool | Freight taxability for the order.
 tax_source | string | [Origin-based or destination-based](http://blog.taxjar.com/charging-sales-tax-rates/) sales tax collection.
-breakdown | object | Breakdown of rates by jurisdiction for the order, shipping, and individual line items.
+breakdown | object | Breakdown of rates by jurisdiction for the order, shipping, and individual line items if applicable.
+
+<h4 id="us-taxes-breakdown-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; US Breakdown Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+taxable_amount | long | Total amount of the order to be taxed.
+tax_collectable | long | Total amount of sales tax to collect.
+combined_tax_rate | long | Overall sales tax rate of the breakdown which includes state, county, city and district tax for the order and shipping if applicable.
+state_taxable_amount | long | Amount of the order to be taxed at the state tax rate.
+state_tax_rate | long | State sales tax rate for given location.
+state_tax_collectable | long | Amount of sales tax to collect for the state.
+county_taxable_amount | long | Amount of the order to be taxed at the county tax rate.
+county_tax_rate | long | County sales tax rate for given location.
+county_tax_collectable | long | Amount of sales tax to collect for the county.
+city_taxable_amount | long | Amount of the order to be taxed at the city tax rate.
+city_tax_rate | long | City sales tax rate for given location.
+city_tax_collectable | long | Amount of sales tax to collect for the city.
+special_district_taxable_amount | long | Amount of the order to be taxed at the special district tax rate.
+special_district_tax_rate | long | Special district sales tax rate for given location.
+special_district_tax_collectable | long | Amount of sales tax to collect for the special district.
+shipping | object | Breakdown of shipping rates if applicable.
+line_items | object | Breakdown of rates by line item if applicable.
+
+<h4 id="canada-taxes-breakdown-attributes"><span class="flag-icon flag-icon-ca"></span>&nbsp; Canada Breakdown Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+gst_taxable_amount | long | Amount of the order to be taxed at the GST rate.
+gst_tax_rate | long | Goods and services tax rate for given location.
+gst | long | Amount of goods and services tax to collect for given location.
+pst_taxable_amount | long | Amount of the order to be taxed at the PST rate.
+pst_tax_rate | long | Provincial sales tax rate for given location.
+pst | long | Amount of provincial sales tax to collect for given location.
+qst_taxable_amount | long | Amount of the order to be taxed at the QST rate.
+qst_tax_rate | long | Quebec sales tax rate for given location.
+qst | long | Amount of Quebec sales tax to collect for given location.
+shipping | object | Breakdown of shipping rates if applicable.
+line_items | object | Breakdown of rates by line item if applicable.
+
+<h4 id="international-taxes-breakdown-attributes"><span class="flag-icon flag-icon-eu"></span> <span class="flag-icon flag-icon-au"></span>&nbsp; International Breakdown Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+country_taxable_amount | long | Amount of the order to be taxed at the country tax rate.
+country_tax_rate | long | Country sales tax rate for given location
+country_tax_collectable | long | Amount of sales tax to collect for the country.
+shipping | object | Breakdown of shipping rates if applicable.
+line_items | object | Breakdown of rates by line item if applicable.
 
 ## Transactions
 
