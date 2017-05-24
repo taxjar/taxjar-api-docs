@@ -160,7 +160,7 @@ If no `product_tax_code` is submitted with a `line_item`, then that item is deem
 
 # Handling Nexus
 
-The very first bit of logic used when calculating sales tax is the notion of [nexus](http://blog.taxjar.com/sales-tax-nexus-definition/). In short, whether or not your business has sufficient presence within a taxing jurisdiction to require you to remit sales tax.
+The very first bit of logic used when calculating sales tax is the notion of [nexus](https://blog.taxjar.com/sales-tax-nexus-definition/). In short, whether or not your business has sufficient presence within a taxing jurisdiction to require you to remit sales tax.
 
 Using TaxJar's [SmartCalcs API](https://www.taxjar.com/api/), there are two ways for you let us know if you have nexus for a given order:
 
