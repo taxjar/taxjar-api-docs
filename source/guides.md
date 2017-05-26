@@ -9,6 +9,7 @@ preferred_url: https://developers.taxjar.com/api/guides/
 Using one of our official API clients? Hit the ground running with our quickstart guides:
 
 - <img class="client-icon" src="../images/clients/ruby-logo.png" width="16"> [Ruby Quickstart](/api/guides/ruby/)
+- <img class="client-icon" src="../images/clients/python-logo.png" width="16"> [Python Quickstart](/api/guides/python/)
 - <img class="client-icon" src="../images/clients/php-logo.png" width="16"> [PHP Quickstart](/api/guides/php/)
 - <img class="client-icon" src="../images/clients/node-logo.png" width="16"> [Node Quickstart](/api/guides/node/)
 - <img class="client-icon" src="../images/clients/csharp-logo.svg" width="16"> [C# / .NET Quickstart](/api/guides/csharp/)
