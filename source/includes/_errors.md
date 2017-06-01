@@ -65,8 +65,7 @@ taxjar.createOrder({
 });
 ```
 
-```php
-<?php
+```php?start_inline=1
 require __DIR__ . '/vendor/autoload.php';
 $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
