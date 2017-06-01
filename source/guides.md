@@ -9,6 +9,7 @@ preferred_url: https://developers.taxjar.com/api/guides/
 Using one of our official API clients? Hit the ground running with our quickstart guides:
 
 - <img class="client-icon" src="../images/clients/ruby-logo.png" width="16"> [Ruby Quickstart](/api/guides/ruby/)
+- <img class="client-icon" src="../images/clients/python-logo.png" width="16"> [Python Quickstart](/api/guides/python/)
 - <img class="client-icon" src="../images/clients/php-logo.png" width="16"> [PHP Quickstart](/api/guides/php/)
 - <img class="client-icon" src="../images/clients/node-logo.png" width="16"> [Node Quickstart](/api/guides/node/)
 - <img class="client-icon" src="../images/clients/csharp-logo.svg" width="16"> [C# / .NET Quickstart](/api/guides/csharp/)
@@ -160,7 +161,7 @@ If no `product_tax_code` is submitted with a `line_item`, then that item is deem
 
 # Handling Nexus
 
-The very first bit of logic used when calculating sales tax is the notion of [nexus](http://blog.taxjar.com/sales-tax-nexus-definition/). In short, whether or not your business has sufficient presence within a taxing jurisdiction to require you to remit sales tax.
+The very first bit of logic used when calculating sales tax is the notion of [nexus](https://blog.taxjar.com/sales-tax-nexus-definition/). In short, whether or not your business has sufficient presence within a taxing jurisdiction to require you to remit sales tax.
 
 Using TaxJar's [SmartCalcs API](https://www.taxjar.com/api/), there are two ways for you let us know if you have nexus for a given order:
 

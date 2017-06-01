@@ -1177,10 +1177,10 @@ shipping | long | Total amount of shipping for the order.
 taxable_amount | long | Amount of the order to be taxed.
 amount_to_collect | long | Amount of sales tax to collect.
 rate | long | Overall sales tax rate of the order (`amount_to_collect` &divide; `taxable_amount`).
-has_nexus | bool | Whether or not you have [nexus](http://blog.taxjar.com/sales-tax-nexus-definition/) for the order based on an address on file, `nexus_addresses` parameter, or `from_` parameters.
+has_nexus | bool | Whether or not you have [nexus](https://blog.taxjar.com/sales-tax-nexus-definition/) for the order based on an address on file, `nexus_addresses` parameter, or `from_` parameters.
 freight_taxable | bool | Freight taxability for the order.
-tax_source | string | [Origin-based or destination-based](http://blog.taxjar.com/charging-sales-tax-rates/) sales tax collection.
-breakdown | object | Breakdown of rates by jurisdiction for the order, shipping, and individual line items if applicable.
+tax_source | string | [Origin-based or destination-based](https://blog.taxjar.com/charging-sales-tax-rates/) sales tax collection.
+breakdown | object | Breakdown of rates by jurisdiction for the order, shipping, and individual line items.
 
 <h4 id="us-taxes-breakdown-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; US Breakdown Attributes</h4>
 
