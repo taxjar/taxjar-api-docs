@@ -770,11 +770,12 @@ header {
     color: #fff;
 
     padding: 2em $main-padding;
-    margin: 0;
-    width: $examples-width;
+    margin: 0 2% 0 0;
+    width: ($examples-width - 4%);
+    border-radius: 5px;
 
-    float:right;
-    clear:right;
+    float: right;
+    clear: right;
 
     @include box-sizing(border-box);
 
@@ -794,7 +795,10 @@ header {
   }
 
   blockquote {
+    padding-left: 1em;
+    padding-right: 1em;
     padding-bottom: 1em;
+
     &>p {
       // background-color: $code-annotation-bg;
       // border-radius: 5px;
