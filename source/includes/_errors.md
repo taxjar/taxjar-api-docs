@@ -1,6 +1,6 @@
 # Errors
 
-> Error Handling Example
+> &nbsp;
 
 ```ruby
 require "taxjar"
