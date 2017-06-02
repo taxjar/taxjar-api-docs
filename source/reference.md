@@ -1770,9 +1770,9 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
       :description => "Heavy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
+      :unit_price => 15,
+      :discount => 0,
+      :sales_tax => 0.95
     }
   ]
 }>
@@ -1783,10 +1783,10 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
-    'unit_price': '15.0',
-    'discount': '0.0',
+    'unit_price': 15,
+    'discount': 0,
     'product_identifier': '12-34243-0',
-    'sales_tax': '0.95',
+    'sales_tax': 0.95,
     'product_tax_code': None,
     'id': 1,
     'quantity': 1
@@ -1797,14 +1797,14 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   'from_city': 'SANTA BARBARA',
   'from_zip': '93107',
   'to_country': 'US',
-  'shipping': '1.5',
+  'shipping': 2,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2016-03-10T00:00:00.000Z',
   'transaction_reference_id': None,
-  'sales_tax': '0.95',
-  'amount': '17',
+  'sales_tax': 0.95,
+  'amount': 17,
   'transaction_id': '123',
   'to_state': 'CA'
 }>
@@ -1970,8 +1970,8 @@ var order = client.CreateOrder(new {
   to_zip = "90002",
   to_city = "Los Angeles",
   to_street = "123 Palm Grove Ln",
-  amount = 17,
-  shipping = 2,
+  amount = 16.5,
+  shipping = 1.5,
   sales_tax = 0.95,
   line_items = new[] {
     new {
@@ -2069,9 +2069,9 @@ curl https://api.taxjar.com/v2/transactions/orders \
       :product_identifier => "12-34243-9",
       :product_tax_code => nil,
       :description => "Fuzzy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
+      :unit_price => 15,
+      :discount => 0,
+      :sales_tax => 0.95
     }
   ]
 }>
@@ -2082,10 +2082,10 @@ curl https://api.taxjar.com/v2/transactions/orders \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Fuzzy Widget',
-    'unit_price': '15.0',
-    'discount': '0.0',
+    'unit_price': 15,
+    'discount': 0,
     'product_identifier': '12-34243-9',
-    'sales_tax': '0.95',
+    'sales_tax': 0.95,
     'product_tax_code': None,
     'id': 1,
     'quantity': 1
@@ -2096,14 +2096,14 @@ curl https://api.taxjar.com/v2/transactions/orders \
   'from_city': 'SANTA BARBARA',
   'from_zip': '93101',
   'to_country': 'US',
-  'shipping': '1.5',
+  'shipping': 1.5,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2015-05-14T00:00:00Z',
   'transaction_reference_id': None,
-  'sales_tax': '0.95',
-  'amount': '16.5',
+  'sales_tax': 0.95,
+  'amount': 16.5,
   'transaction_id': '20',
   'to_state': 'CA'
 }>
@@ -2362,9 +2362,9 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
       :description => "Heavy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
+      :unit_price => 15,
+      :discount => 0,
+      :sales_tax => 0.95
     }
   ]
 }>
@@ -2375,10 +2375,10 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
-    'unit_price': '15.0',
-    'discount': '0.0',
+    'unit_price': 15,
+    'discount': 0,
     'product_identifier': '12-34243-0',
-    'sales_tax': '0.95',
+    'sales_tax': 0.95,
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
@@ -2389,14 +2389,14 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   'from_city': 'SANTA BARBARA',
   'from_zip': '93101',
   'to_country': 'US',
-  'shipping': '1.5',
+  'shipping': 2,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2015-05-14T00:00:00Z',
   'transaction_reference_id': None,
-  'sales_tax': '0.95',
-  'amount': '17.0',
+  'sales_tax': 0.95,
+  'amount': 17,
   'transaction_id': '123',
   'to_state': 'CA'
 }>
@@ -2854,9 +2854,9 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
       :description => "Heavy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
+      :unit_price => 15,
+      :discount => 0,
+      :sales_tax => 0.95
     }
   ]
 }>
@@ -2867,10 +2867,10 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
-    'unit_price': '15.0',
-    'discount': '0.0',
+    'unit_price': 15,
+    'discount': 0,
     'product_identifier': '12-34243-0',
-    'sales_tax': '0.95',
+    'sales_tax': 0.95,
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
@@ -2881,14 +2881,14 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'from_city': 'SANTA BARBARA',
   'from_zip': 93107,
   'to_country': 'US',
-  'shipping': '2.0',
+  'shipping': 2,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2015-06-14T00:00:00Z',
   'transaction_reference_id': '123',
-  'sales_tax': '0.95',
-  'amount': '17.0',
+  'sales_tax': 0.95,
+  'amount': 17,
   'transaction_id': '321',
   'to_state': 'CA'
 }>
@@ -3065,8 +3065,8 @@ var refund = client.CreateRefund(new
   to_zip = "90002",
   to_city = "Los Angeles",
   to_street = "123 Palm Grove Ln",
-  amount = 17,
-  shipping = 2,
+  amount = 16.5,
+  shipping = 1.5,
   sales_tax = 0.95,
   line_items = new[] {
     new {
@@ -3156,8 +3156,8 @@ curl https://api.taxjar.com/v2/transactions/refunds \
   :to_state => "CA",
   :to_city => "LOS ANGELES",
   :to_street => "123 Palm Grove Ln",
-  :amount => 17.0,
-  :shipping => 2.0,
+  :amount => 16.5,
+  :shipping => 1.5,
   :sales_tax => 0.95,
   :line_items => [
     {
@@ -3166,9 +3166,9 @@ curl https://api.taxjar.com/v2/transactions/refunds \
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
       :description => "Heavy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
+      :unit_price => 15,
+      :discount => 0,
+      :sales_tax => 0.95
     }
   ]
 }>
@@ -3179,10 +3179,10 @@ curl https://api.taxjar.com/v2/transactions/refunds \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
-    'unit_price': '15.0',
-    'discount': '0.0',
+    'unit_price': 15,
+    'discount': 0,
     'product_identifier': '12-34243-0',
-    'sales_tax': '0.95',
+    'sales_tax': 0.95,
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
@@ -3193,14 +3193,14 @@ curl https://api.taxjar.com/v2/transactions/refunds \
   'from_city': 'SANTA BARBARA',
   'from_zip': 93107,
   'to_country': 'US',
-  'shipping': '2.0',
+  'shipping': 1.5,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2015-06-14T00:00:00Z',
   'transaction_reference_id': '123',
-  'sales_tax': '0.95',
-  'amount': '17.0',
+  'sales_tax': 0.95,
+  'amount': 16.5,
   'transaction_id': '321',
   'to_state': 'CA'
 }>
@@ -3425,9 +3425,9 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
         "quantity": 1,
         "product_identifier": "12-34243-0",
         "description": "Heavy Widget",
-        "unit_price": "15.0",
-        "discount": "0.0",
-        "sales_tax": "0.95"
+        "unit_price": 15,
+        "discount": 0,
+        "sales_tax": 0.95
       }
     ]
   }
@@ -3460,9 +3460,9 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
       :product_identifier => "12-34243-9",
       :product_tax_code => nil,
       :description => "Heavy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
+      :unit_price => 15,
+      :discount => 0,
+      :sales_tax => 0.95
     }
   ]
 }>
@@ -3473,10 +3473,10 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
-    'unit_price': '15.0',
-    'discount': '0.0',
+    'unit_price': 15,
+    'discount': 0,
     'product_identifier': '12-34243-9',
-    'sales_tax': '0.95',
+    'sales_tax': 0.95,
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
@@ -3487,14 +3487,14 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'from_city': 'SANTA BARBARA',
   'from_zip': 93107,
   'to_country': 'US',
-  'shipping': '2.0',
+  'shipping': 2,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2016-03-10T00:00:00.000Z',
   'transaction_reference_id': '123',
-  'sales_tax': '0.95',
-  'amount': '17.0',
+  'sales_tax': 0.95,
+  'amount': 17,
   'transaction_id': '321',
   'to_state': 'CA'
 }>
