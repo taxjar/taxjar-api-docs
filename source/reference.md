@@ -299,17 +299,17 @@ curl https://api.taxjar.com/v2/categories \
 
 ```ruby
 [
-  #<Taxjar::Category:0x007f081dc3e278 @attrs={
+  #<Taxjar::Category:0x00000a @attrs={
     :name => "Digital Goods",
     :product_tax_code => "31000",
     :description => "Digital products transferred electronically."
   }>,
-  #<Taxjar::Category:0x007f081dc3de90 @attrs={
+  #<Taxjar::Category:0x00000a @attrs={
     :name => "Clothing",
     :product_tax_code => "20010",
     :description => "All human wearing apparel suitable for general use"
   }>,
-  #<Taxjar::Category:0x007f081dc3da80 @attrs={
+  #<Taxjar::Category:0x00000a @attrs={
     :name => "Non-Prescription",
     :product_tax_code => "51010",
     :description => "Drugs for human use without a prescription"
@@ -1298,7 +1298,7 @@ curl https://api.taxjar.com/v2/taxes \
 ```
 
 ```ruby
-{
+#<Taxjar::Tax:0x00000a @attrs={
   :order_total_amount => 16.5,
   :shipping => 1.5,
   :taxable_amount => 15.0,
@@ -1307,7 +1307,7 @@ curl https://api.taxjar.com/v2/taxes \
   :has_nexus => true,
   :freight_taxable => false,
   :tax_source => "destination",
-  :breakdown => {
+  :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
     :taxable_amount => 15.0,
     :tax_collectable => 1.35,
     :combined_tax_rate => 0.09,
@@ -1324,7 +1324,7 @@ curl https://api.taxjar.com/v2/taxes \
     :special_tax_rate => 0.025,
     :special_district_tax_collectable => 0.38,
     :line_items => [
-      {
+      #<Taxjar::BreakdownLineItem:0x00000a @attrs={
         :id => "1",
         :taxable_amount => 15.0,
         :tax_collectable => 1.35,
@@ -1341,10 +1341,10 @@ curl https://api.taxjar.com/v2/taxes \
         :special_district_taxable_amount => 15.0,
         :special_tax_rate => 0.025,
         :special_district_amount => 0.38
-      }
+      }>
     ]
-  }
-}
+  }>
+}>
 ```
 
 ```python
@@ -1737,7 +1737,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 ```
 
 ```ruby
-#<Taxjar::Order:0x007fd3e514a940 @attrs={
+#<Taxjar::Order:0x00000a @attrs={
   :transaction_id => "123",
   :user_id => 11836,
   :transaction_date => "2015-05-14T00:00:00Z",
@@ -2036,7 +2036,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
 ```
 
 ```ruby
-#<Taxjar::Order:0x007f6d65b252d0 @attrs={
+#<Taxjar::Order:0x00000a @attrs={
   :transaction_id => 20,
   :user_id => 11836,
   :transaction_date => "2015-05-14T00:00:00Z",
@@ -2329,7 +2329,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 ```
 
 ```ruby
-#<Taxjar::Order:0x007f6d65b252d0 @attrs={
+#<Taxjar::Order:0x00000a @attrs={
   :transaction_id => "123",
   :user_id => 11836,
   :transaction_date => "2015-05-14T00:00:00Z",
@@ -2534,7 +2534,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 ```
 
 ```ruby
-#<Taxjar::Order:0x007f6d65b252d0 @attrs={
+#<Taxjar::Order:0x00000a @attrs={
   :transaction_id => "123",
   :user_id => 10649,
   :transaction_date => nil,
@@ -2821,7 +2821,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 ```
 
 ```ruby
-#<Taxjar::Refund:0x007f6da40e33a0 @attrs={
+#<Taxjar::Refund:0x00000a @attrs={
   :transaction_id => "321",
   :user_id => 11836,
   :transaction_date => "2015-06-14T00:00:00Z",
@@ -3133,7 +3133,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
 ```
 
 ```ruby
-#<Taxjar::Refund:0x007f6da40e33a0 @attrs={
+#<Taxjar::Refund:0x00000a @attrs={
   :transaction_id => "321",
   :user_id => 11836,
   :transaction_date => "2015-06-14T00:00:00Z",
@@ -3427,7 +3427,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 ```
 
 ```ruby
-#<Taxjar::Refund:0x007f6da40e33a0 @attrs={
+#<Taxjar::Refund:0x00000a @attrs={
   :transaction_id => "321",
   :user_id => 11836,
   :transaction_date => "2015-06-14T00:00:00Z",
@@ -3633,7 +3633,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 ```
 
 ```ruby
-#<Taxjar::Refund:0x007f6da40e33a0 @attrs={
+#<Taxjar::Refund:0x00000a @attrs={
   :transaction_id => "321",
   :user_id => 11836,
   :transaction_date => nil,
@@ -3792,24 +3792,24 @@ curl https://api.taxjar.com/v2/nexus/regions \
 
 ```ruby
 [
-  {
+  #<Taxjar::NexusRegion:0x00000a @attrs={
     :country_code => "US",
     :country => "United States",
     :region_code => "CA",
     :region => "California"
-  },
-  {
+  }>,
+  #<Taxjar::NexusRegion:0x00000a @attrs={
     :country_code => "US",
     :country => "United States",
     :region_code => "NY",
     :region => "New York"
-  },
-  {
+  }>,
+  #<Taxjar::NexusRegion:0x00000a @attrs={
     :country_code => "US",
     :country => "United States",
     :region_code => "WA",
     :region => "Washington"
-  }
+  }>
 ]
 ```
 
@@ -3962,7 +3962,7 @@ curl -G https://api.taxjar.com/v2/validation \
 ```
 
 ```ruby
-#<Taxjar::Validation:0x006f6da40e33a0 @attrs={
+#<Taxjar::Validation:0x00000a @attrs={
   :valid => true,
   :exists => true,
   :vies_available => true,
@@ -4145,7 +4145,7 @@ curl https://api.taxjar.com/v2/summary_rates \
 
 ```ruby
 [
-  {
+  #<Taxjar::SummaryRate:0x00000a @attrs={
     :country_code => "US",
     :country => "United States",
     :region_code => "CA",
@@ -4158,8 +4158,8 @@ curl https://api.taxjar.com/v2/summary_rates \
       :label => "Tax",
       :rate => 0.0827
     }
-  },
-  {
+  }>,
+  #<Taxjar::SummaryRate:0x00000a @attrs={
     :country_code => "CA",
     :country => "Canada",
     :region_code => "BC",
@@ -4172,8 +4172,8 @@ curl https://api.taxjar.com/v2/summary_rates \
       :label => "PST",
       :rate => 0.12
     }
-  },
-  {
+  }>,
+  #<Taxjar::SummaryRate:0x00000a @attrs={
     :country_code => "UK",
     :country => "United Kingdom",
     :region_code => nil,
@@ -4186,7 +4186,7 @@ curl https://api.taxjar.com/v2/summary_rates \
       :label => "VAT",
       :rate => 0.2
     }
-  }
+  }>
 ]
 ```
 
