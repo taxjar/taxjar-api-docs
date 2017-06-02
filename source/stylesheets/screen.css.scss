@@ -865,12 +865,12 @@ header {
     padding-bottom: 0.3em;
   }
 
-  #api-token {
-    display: none;
-  }
-
-  .sandbox__button {
-    display: none;
+  .content {
+    > pre, > blockquote {
+      border-radius: 0;
+      padding-left: 28px;
+      padding-right: 28px;
+    }
   }
 }
 
