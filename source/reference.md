@@ -153,7 +153,7 @@ We currently support the following countries around the world. If you would like
 
 # Sales Tax API
 
-TaxJar API endpoints provide detailed sales tax rates and calculations. They also support extended reporting and filing capabilities for TaxJar users.
+TaxJar API endpoints provide detailed sales tax rates and calculations. They also support extended US-based reporting and filing capabilities for TaxJar users.
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://www.getpostman.com/run-collection/591e69b1095ef11195be)
 
@@ -1522,6 +1522,8 @@ line_items | object | Breakdown of rates by line item if applicable.
 ## Transactions
 
 Manage your transactions for automated sales tax reporting and filing in TaxJar. These endpoints only affect orders and refunds created specifically through the API, *not* transactions from other channels.
+
+We currently support reporting and filing in the United States.
 
 ### <span class="badge badge--get">get</span> List order transactions
 
