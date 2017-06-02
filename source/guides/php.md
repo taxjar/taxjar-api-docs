@@ -196,7 +196,7 @@ try {
     'shipping' => 1.5,
     'sales_tax' => 0.95
   ]);
-} catch (Exception $e) {
+} catch (TaxJar\Exception $e) {
   // 406 Not Acceptable – transaction_id is missing
   echo $e->getMessage();
 }

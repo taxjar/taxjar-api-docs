@@ -770,11 +770,12 @@ header {
     color: #fff;
 
     padding: 2em $main-padding;
-    margin: 0;
-    width: $examples-width;
+    margin: 0 2% 0 0;
+    width: ($examples-width - 4%);
+    border-radius: 5px;
 
-    float:right;
-    clear:right;
+    float: right;
+    clear: right;
 
     @include box-sizing(border-box);
 
@@ -794,7 +795,10 @@ header {
   }
 
   blockquote {
+    padding-left: 1em;
+    padding-right: 1em;
     padding-bottom: 1em;
+
     &>p {
       // background-color: $code-annotation-bg;
       // border-radius: 5px;
@@ -807,15 +811,19 @@ header {
       padding: 0;
       // font-weight: bold;
     }
-  }
 
-  pre[contenteditable],
-  .CodeMirror-block {
-    border-left: 5px solid #3EB049;
-  }
+    & > .scenarios {
+      float: right;
+      margin: -24px 0 0 0;
 
-  .CodeMirror-block {
-    border-bottom: 3px solid $code-bg;
+      > select {
+        color: #d9d9d9;
+        border-color: lighten(#2d2d2d, 25%);
+        background: #2d2d2d;
+        min-width: 140px;
+        outline: none;
+      }
+    }
   }
 
   h1 + blockquote {
@@ -826,33 +834,6 @@ header {
   h3 + blockquote {
     margin-top: 0;
     padding-top: 0;
-  }
-
-  .sandbox__button {
-    color: #fff;
-    font-size: 13px;
-    font-weight: bold;
-    background: #3EB049;
-    margin: 0 10px 0 0;
-    padding: 5px 10px;
-    border: 0;
-    border-radius: 3px;
-    text-transform: uppercase;
-  }
-
-  .sandbox__button:focus {
-    outline: none;
-  }
-
-  .sandbox__button--demo {
-    float: right;
-    margin: -30px 0 0 0;
-  }
-
-  .sandbox__button--cancel {
-    background: transparent;
-    border: 1px solid #545454;
-    // box-shadow: 0 -1px 0 #2D2D2D;
   }
 }
 
@@ -884,12 +865,12 @@ header {
     padding-bottom: 0.3em;
   }
 
-  #api-token {
-    display: none;
-  }
-
-  .sandbox__button {
-    display: none;
+  .content {
+    > pre, > blockquote {
+      border-radius: 0;
+      padding-left: 28px;
+      padding-right: 28px;
+    }
   }
 }
 

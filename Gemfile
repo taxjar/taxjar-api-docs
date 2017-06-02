@@ -10,4 +10,3 @@ gem 'redcarpet', '~> 3.2.2'
 gem 's3_website'
 
 gem 'rake', '~> 10.4.2'
-gem 'therubyracer', '~> 0.12.1', platforms: :ruby

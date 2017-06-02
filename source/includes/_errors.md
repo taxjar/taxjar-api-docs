@@ -1,6 +1,6 @@
 # Errors
 
-> Error Handling Example
+> &nbsp;
 
 ```ruby
 require "taxjar"
@@ -24,6 +24,27 @@ rescue Taxjar::Error => e
 end
 ```
 
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+try:
+  order = client.create_order({
+    'transaction_date': '2015/05/14',
+    'to_country': 'US',
+    'to_state': 'CA',
+    'to_zip': '90002',
+    'amount': 17.45,
+    'shipping': 1.5,
+    'sales_tax': 0.95
+  })
+except taxjar.exceptions.TaxJarConnectionError as err:
+  print err
+except taxjar.exceptions.TaxJarResponseError as err:
+  # 406 Not Acceptable – transaction_id is missing
+  print err.full_response
+```
+
 ```javascript
 var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
@@ -44,8 +65,7 @@ taxjar.createOrder({
 });
 ```
 
-```php
-<?php
+```php?start_inline=1
 require __DIR__ . '/vendor/autoload.php';
 $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
@@ -60,7 +80,7 @@ try {
     'shipping' => 1.5,
     'sales_tax' => 0.95
   ]);
-} catch (Exception $e) {
+} catch (TaxJar\Exception $e) {
   // 406 Not Acceptable – transaction_id is missing
   echo $e->getMessage();
 }

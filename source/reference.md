@@ -22,6 +22,12 @@ search: false
 
 # Introduction
 
+> API Endpoint
+
+```
+https://api.taxjar.com/v2/
+```
+
 Welcome to the TaxJar Sales Tax API! You can use our API to get information on sales tax rates, categories or upload transactions.
 
 We currently provide API clients for the following languages:
@@ -64,12 +70,12 @@ var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
 ```shell
 # Authorization headers must be passed for every request
-curl "API_ENDPOINT" \
+$ curl "API_ENDPOINT" \
   -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214""
 
 or
 
-curl "API_ENDPOINT" \
+$ curl "API_ENDPOINT" \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
@@ -147,7 +153,7 @@ We currently support the following countries around the world. If you would like
 
 # Sales Tax API
 
-TaxJar API endpoints provide detailed sales tax rates and calculations. They also support extended reporting and filing capabilities for TaxJar users.
+TaxJar API endpoints provide detailed sales tax rates and calculations. They also support extended US-based reporting and filing capabilities for TaxJar users.
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://www.getpostman.com/run-collection/591e69b1095ef11195be)
 
@@ -224,7 +230,7 @@ var categories = client.Categories();
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/categories \
+$ curl https://api.taxjar.com/v2/categories \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
@@ -299,17 +305,17 @@ curl https://api.taxjar.com/v2/categories \
 
 ```ruby
 [
-  #<Taxjar::Category:0x007f081dc3e278 @attrs={
+  #<Taxjar::Category:0x00000a @attrs={
     :name => "Digital Goods",
     :product_tax_code => "31000",
     :description => "Digital products transferred electronically."
   }>,
-  #<Taxjar::Category:0x007f081dc3de90 @attrs={
+  #<Taxjar::Category:0x00000a @attrs={
     :name => "Clothing",
     :product_tax_code => "20010",
     :description => "All human wearing apparel suitable for general use"
   }>,
-  #<Taxjar::Category:0x007f081dc3da80 @attrs={
+  #<Taxjar::Category:0x00000a @attrs={
     :name => "Non-Prescription",
     :product_tax_code => "51010",
     :description => "Drugs for human use without a prescription"
@@ -362,6 +368,14 @@ Returns a JSON object with an array of product categories and corresponding tax 
 | Magazine                  | 81310 |                                                     <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span>                                                      | Periodicals, printed, sold individually.                                                                                   |
 | Other Exempt              | 99999 |                                                                                                                                                                 All                                                                                                                                                                 | Item is exempt.                                                                                                            |
 
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+product_tax_code | string | Tax code of the given product category.
+name | string | Name of the given product category.
+description | string | Description of the given product category.
+
 ## Rates
 
 ### <span class="badge badge--get">get</span> Show tax rates for a location
@@ -403,19 +417,15 @@ rates = client.rates_for_location('90404-3370')
 
 # United States (ZIP w/ Optional Params)
 rates = client.rates_for_location('90404', {
-  :city => 'SANTA MONICA',
+  :city => 'Santa Monica',
   :country => 'US'
 })
 
-# International Examples (Requires City and Country)
-rates = client.rates_for_location('V5K0A1', {
-  :city => 'VANCOUVER',
-  :country => 'CA'
-})
-
-rates = client.rates_for_location('00150', {
-  :city => 'HELSINKI',
-  :country => 'FI'
+# United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
+rates = client.rates_for_location('05495-2086', {
+  :street => '312 Hurricane Lane',
+  :city => 'Williston',
+  :country => 'US'
 })
 ```
 
@@ -428,19 +438,15 @@ rates = client.rates_for_location('90404-3370')
 
 # United States (ZIP w/ Optional Params)
 rates = client.rates_for_location('90404', {
-  'city': 'SANTA MONICA',
+  'city': 'Santa Monica',
   'country': 'US'
 })
 
-# International Examples (Requires City and Country)
-rates = client.rates_for_location('V5K0A1', {
-  'city': 'VANCOUVER',
-  'country': 'CA'
-})
-
-rates = client.rates_for_location('00150', {
-  'city': 'HELSINKI',
-  'country': 'FI'
+# United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
+rates = client.rates_for_location('05495-2086', {
+  'street': '312 Hurricane Lane',
+  'city': 'Williston',
+  'country': 'US'
 })
 ```
 
@@ -454,23 +460,17 @@ client.ratesForLocation('90404-3370').then(function(res) {
 
 // United States (ZIP w/ Optional Params)
 client.ratesForLocation('90404', {
-  city: 'SANTA MONICA',
+  city: 'Santa Monica',
   country: 'US'
 }).then(function(res) {
   res.rate; // Rate object
 });
 
-// International Examples (Requires City and Country)
-client.ratesForLocation('V5K0A1', {
-  city: 'VANCOUVER',
-  country: 'CA'
-}).then(function(res) {
-  res.rate; // Rate object
-});
-
-client.ratesForLocation('00150', {
-  city: 'HELSINKI',
-  country: 'FI'
+// United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
+client.ratesForLocation('05495-2086', {
+  street: '312 Hurricane Lane',
+  city: 'Williston',
+  country: 'US'
 }).then(function(res) {
   res.rate; // Rate object
 });
@@ -485,19 +485,15 @@ $rates = $client->ratesForLocation('90404-3370');
 
 // United States (ZIP w/ Optional Params)
 $rates = $client->ratesForLocation('90404', [
-  'city' => 'SANTA MONICA',
+  'city' => 'Santa Monica',
   'country' => 'US'
 ]);
 
-// International Examples (Requires City and Country)
-$rates = $client->ratesForLocation('V5K0A1', [
-  'city' => 'VANCOUVER',
-  'country' => 'CA'
-]);
-
-$rates = $client->ratesForLocation('00150', [
-  'city' => 'HELSINKI',
-  'country' => 'FI'
+// United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
+$rates = $client->ratesForLocation('05495-2086', [
+  'street' => '312 Hurricane Lane',
+  'city' => 'Williston',
+  'country' => 'US'
 ]);
 ```
 
@@ -510,42 +506,214 @@ var rates = client.RatesForLocation("90404-3370");
 
 // United States (ZIP w/ Optional Params)
 var rates = client.RatesForLocation("90404", new {
-  city = "SANTA MONICA",
+  city = "Santa Monica",
   country = "US"
 });
 
-// International Examples (Requires City and Country)
-var rates = client.RatesForLocation("V5K0A1", new {
-  city = "VANCOUVER",
-  country = "CA"
-});
-
-var rates = client.RatesForLocation("00150", new {
-  city = "HELSINKI",
-  country = "FI"
+// United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
+var rates = client.RatesForLocation("05495-2086", new {
+  street = "312 Hurricane Lane",
+  city = "Williston",
+  country = "US"
 });
 ```
 
 ```shell
 # United States (ZIP+4)
-curl https://api.taxjar.com/v2/rates/90404-3370 \
+$ curl https://api.taxjar.com/v2/rates/90404-3370 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 
 # United States (ZIP w/ Optional Params)
-curl -G https://api.taxjar.com/v2/rates/90404 \
+$ curl -G https://api.taxjar.com/v2/rates/90404 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d city="SANTA%20MONICA" \
+  -d city="Santa%20Monica" \
   -d country="US"
 
-# International Examples (Requires City and Country)
-curl -G https://api.taxjar.com/v2/rates/V5K0A1 \
+# United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
+$ curl -G https://api.taxjar.com/v2/rates/05495-2086 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d city="VANCOUVER" \
-  -d country="CA"
+  -d street="312 Hurricane Lane" \
+  -d city="Williston" \
+  -d country="US"
+```
 
-curl -G https://api.taxjar.com/v2/rates/00150 \
+> Request Scenario: Canada
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+rates = client.rates_for_location('V5K0A1', {
+  :city => 'Vancouver',
+  :country => 'CA'
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+rates = client.rates_for_location('V5K0A1', {
+  'city': 'Vancouver',
+  'country': 'CA'
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.ratesForLocation('V5K0A1', {
+  city: 'Vancouver',
+  country: 'CA'
+}).then(function(res) {
+  res.rate; // Rate object
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$rates = $client->ratesForLocation('V5K0A1', [
+  'city' => 'Vancouver',
+  'country' => 'CA'
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.RatesForLocation("V5K0A1", new {
+  city = "Vancouver",
+  country = "CA"
+});
+```
+
+```shell
+$ curl -G https://api.taxjar.com/v2/rates/V5K0A1 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d city="HELSINKI" \
+  -d city="Vancouver" \
+  -d country="CA"
+```
+
+> Request Scenario: Australia
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+rates = client.rates_for_location('2060', {
+  :city => 'Sydney',
+  :country => 'AU'
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+rates = client.rates_for_location('2060', {
+  'city': 'Sydney',
+  'country': 'AU'
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.ratesForLocation('2060', {
+  city: 'Sydney',
+  country: 'AU'
+}).then(function(res) {
+  res.rate; // Rate object
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$rates = $client->ratesForLocation('2060', [
+  'city' => 'Sydney',
+  'country' => 'AU'
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.RatesForLocation("2060", new {
+  city = "Sydney",
+  country = "AU"
+});
+```
+
+```shell
+$ curl -G https://api.taxjar.com/v2/rates/2060 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d city="Sydney" \
+  -d country="AU"
+```
+
+> Request Scenario: European Union
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+rates = client.rates_for_location('00150', {
+  :city => 'Helsinki',
+  :country => 'FI'
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+rates = client.rates_for_location('00150', {
+  'city': 'Helsinki',
+  'country': 'FI'
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.ratesForLocation('00150', {
+  city: 'Helsinki',
+  country: 'FI'
+}).then(function(res) {
+  res.rate; // Rate object
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$rates = $client->ratesForLocation('00150', [
+  'city' => 'Helsinki',
+  'country' => 'FI'
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.RatesForLocation("00150", new {
+  city = "Helsinki",
+  country = "FI"
+});
+```
+
+```shell
+$ curl -G https://api.taxjar.com/v2/rates/00150 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d city="Helsinki" \
   -d country="FI"
 ```
 
@@ -557,26 +725,164 @@ curl -G https://api.taxjar.com/v2/rates/00150 \
   "rate": {
     "zip": "90404",
     "state": "CA",
-    "state_rate": "0.065",
+    "state_rate": "0.0625",
     "county": "LOS ANGELES",
     "county_rate": "0.01",
     "city": "SANTA MONICA",
-    "city_rate": "0.005",
-    "combined_district_rate": "0.015",
-    "combined_rate": "0.095"
+    "city_rate": "0.0",
+    "combined_district_rate": "0.025",
+    "combined_rate": "0.0975",
+    "freight_taxable": false
   }
 }
 
+{
+  "rate": {
+    "zip": "05495-2086",
+    "country": "US",
+    "country_rate": "0.0",
+    "state": "VT",
+    "state_rate": "0.06",
+    "county": "CHITTENDEN",
+    "county_rate": "0.0",
+    "city": "WILLISTON",
+    "city_rate": "0.0",
+    "combined_district_rate": "0.01",
+    "combined_rate": "0.07",
+    "freight_taxable": true
+  }
+}
+```
+
+```ruby
+#<Taxjar::Rate:0x00000a @attrs={
+  :zip => "90404",
+  :state => "CA",
+  :state_rate => 0.065,
+  :county => "LOS ANGELES",
+  :county_rate => 0.01,
+  :city => "SANTA MONICA",
+  :city_rate => 0.005,
+  :combined_district_rate => 0.015,
+  :combined_rate => 0.095
+}>
+
+#<Taxjar::Rate:0x00000a @attrs={
+  :zip => "05495-2086",
+  :state => "VT",
+  :state_rate => 0.06,
+  :county => "CHITTENDEN",
+  :county_rate => 0,
+  :city => "WILLISTON",
+  :city_rate => 0,
+  :combined_district_rate => 0.01,
+  :combined_rate => 0.07,
+  :freight_taxable => true
+}>
+```
+
+```python
+<TaxJarRate {
+  'city': 'SANTA MONICA',
+  'zip': '90404',
+  'combined_district_rate': 0.025,
+  'state_rate': 0.0625,
+  'city_rate': 0,
+  'county': 'LOS ANGELES',
+  'state': 'CA',
+  'combined_rate': 0.0975,
+  'county_rate': 0.01,
+  'freight_taxable': False
+}>
+
+<TaxJarRate {
+  'city': 'WILLISTON',
+  'zip': '05495-2086',
+  'combined_district_rate': 0.01,
+  'state_rate': 0.06,
+  'city_rate': 0,
+  'county': 'CHITTENDEN',
+  'state': 'VT',
+  'combined_rate': 0.07,
+  'county_rate': 0,
+  'freight_taxable': True
+}>
+```
+
+> Response Scenario: Canada
+
+```json
 {
   "rate": {
     "zip": "V5K0A1",
     "city": "Vancouver",
     "state": "BC",
     "country": "CA",
-    "combined_rate": "0.12"
+    "combined_rate": "0.12",
+    "freight_taxable": true
   }
 }
+```
 
+```ruby
+#<Taxjar::Rate:0x00000a @attrs={
+  :zip => "V5K0A1",
+  :city => "Vancouver",
+  :state => "BC",
+  :country => "CA",
+  :combined_rate => 0.12,
+  :freight_taxable => true
+}>
+```
+
+```python
+<TaxJarRate {
+  'zip': 'V5K0A1',
+  'city': 'Vancouver',
+  'state': 'BC',
+  'country': 'CA',
+  'combined_rate': 0.12,
+  'freight_taxable': True
+}>
+```
+
+> Response Scenario: Australia
+
+```json
+{
+  "rate": {
+    "zip": "2060",
+    "country": "AU",
+    "country_rate": "0.1",
+    "combined_rate": "0.1",
+    "freight_taxable": true
+  }
+}
+```
+
+```ruby
+#<Taxjar::Rate:0x00000a @attrs={
+  :zip => "2060",
+  :country => "AU",
+  :country_rate => 0.1,
+  :combined_rate => 0.1,
+  :freight_taxable => true
+}>
+```
+
+```python
+<TaxJarRate {
+  'zip': '2060',
+  'country': 'AU',
+  'country_rate': 0.1,
+  'combined_rate': 0.1,
+  'freight_taxable': True
+}>
+```
+
+> Response Scenario: European Union
+
+```json
 {
   "rate": {
     "country": "FI",
@@ -592,27 +898,7 @@ curl -G https://api.taxjar.com/v2/rates/00150 \
 ```
 
 ```ruby
-#<Taxjar::Rate:0x007fc47056a928 @attrs={
-  :zip => "90404",
-  :state => "CA",
-  :state_rate => 0.065,
-  :county => "LOS ANGELES",
-  :county_rate => 0.01,
-  :city => "SANTA MONICA",
-  :city_rate => 0.005,
-  :combined_district_rate => 0.015,
-  :combined_rate => 0.095
-}>
-
-#<Taxjar::Rate:0x007fc47056a928 @attrs={
-  :zip => "V5K0A1",
-  :city => "Vancouver",
-  :state => "BC",
-  :country => "CA",
-  :combined_rate => 0.12
-}>
-
-#<Taxjar::Rate:0x007fc47056a928 @attrs={
+#<Taxjar::Rate:0x00000a @attrs={
   :country => "FI",
   :name => "Finland",
   :standard_rate => 0.24,
@@ -626,30 +912,9 @@ curl -G https://api.taxjar.com/v2/rates/00150 \
 
 ```python
 <TaxJarRate {
-  'city': 'SANTA MONICA',
-  'zip': '90404',
-  'combined_district_rate': '0.025',
-  'state_rate': '0.0625',
-  'city_rate': '0.0',
-  'county': 'LOS ANGELES',
-  'state': 'CA',
-  'combined_rate': '0.0975',
-  'county_rate': '0.01',
-  'freight_taxable': False
-}>
-
-<TaxJarRate {
-  'zip': 'V5K0A1',
-  'city': 'Vancouver',
-  'state': 'BC',
-  'country': 'CA',
-  'combined_rate': '0.12',
-}>
-
-<TaxJarRate {
   'country': 'FI',
   'name': 'Finland',
-  'standard_rate': '0.24',
+  'standard_rate': 0.24,
   'reduced_rate': None,
   'super_reduced_rate': None,
   'parking_rate': None,
@@ -671,18 +936,20 @@ Parameter | Type | Required | Description
 country | string | <span class="conditional" data-tooltip="For international locations outside of US, `country` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code of the country for given location.
 zip | string | required | Postal code for given location (5-Digit ZIP or ZIP+4).
 city | string | <span class="conditional" data-tooltip="For international locations outside of US, `city` is required." data-tooltip-position="top center">conditional</span> | City for given location.
-street | string | optional | Street address for given location.
+street | string | optional | Street address for given location. <span class="usage-note" data-tooltip="Street address provides more accurate calculations for the following states: AR, CT, GA, IA, IN, KS, KY, MD, MI, MN, NC, ND, NE, NJ, NV, OH, OK, RI, SD, TN, UT, VT, WA, WI, WV, WY" data-tooltip-position="top center">View Note</span>
 
 #### Response
 
 Returns a JSON object with rates for a given location broken down by state, county, city, and district. For international requests, returns standard and reduced rates.
 
-#### US/Canada Attributes
+<h4 id="us-rate-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; United States Attributes</h4>
 
 Parameter | Type | Description
 --------- | ------- | -----------
 zip | string | Postal code for given location.
-state | string | State name for given location.
+country | string | Country for given location if SST state. <span class="usage-note" data-tooltip="Streamlined sales tax project member states include: AR, GA, IN, IA, KS, KY, MI, MN, NE, NV, NJ, NC, ND, OK, RI, SD, UT, VT, WA, WV, WI, WY" data-tooltip-position="top center">View Note</span>
+country_rate | long | Country sales tax rate for given location if SST state. <span class="usage-note" data-tooltip="Streamlined sales tax project member states include: AR, GA, IN, IA, KS, KY, MI, MN, NE, NV, NJ, NC, ND, OK, RI, SD, UT, VT, WA, WV, WI, WY" data-tooltip-position="top center">View Note</span>
+state | string | Postal abbreviated state name for given location.
 state_rate | long | State sales tax rate for given location.
 county | string | County name for given location.
 county_rate | long | County sales tax rate for given location.
@@ -690,8 +957,30 @@ city | string | City name for given location.
 city_rate | long | City sales tax rate for given location.
 combined_district_rate | long | Aggregate rate for all city and county sales tax districts effective at the location.
 combined_rate | long | Overall sales tax rate which includes state, county, city and district tax. This rate should be used to determine how much sales tax to collect for an order.
+freight_taxable | bool | Freight taxability for given location.
 
-#### International Attributes
+<h4 id="ca-rate-attributes"><span class="flag-icon flag-icon-ca"></span>&nbsp; Canada Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+zip | string | Postal code for given location.
+city | string | City name for given location.
+state | string | Postal abbreviated state name for given location.
+country | string | Two-letter ISO country code of the country for given location.
+combined_rate | long | Overall sales tax rate. This rate should be used to determine how much sales tax to collect for an order.
+freight_taxable | bool | Freight taxability for given location.
+
+<h4 id="au-rate-attributes"><span class="flag-icon flag-icon-au"></span>&nbsp; Australia Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+zip | string | Postal code for given location.
+country | string | Two-letter ISO country code of the country for given location.
+country_rate | long | Country sales tax rate for given location.
+combined_rate | long | Overall sales tax rate. This rate should be used to determine how much sales tax to collect for an order.
+freight_taxable | bool | Freight taxability for given location.
+
+<h4 id="eu-rate-attributes"><span class="flag-icon flag-icon-eu"></span>&nbsp; European Union Attributes</h4>
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -930,7 +1219,7 @@ var rates = client.TaxForOrder(new {
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/taxes \
+$ curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -H "Content-Type: application/json" \
   -d '{
@@ -1023,7 +1312,7 @@ curl https://api.taxjar.com/v2/taxes \
 ```
 
 ```ruby
-{
+#<Taxjar::Tax:0x00000a @attrs={
   :order_total_amount => 16.5,
   :shipping => 1.5,
   :taxable_amount => 15.0,
@@ -1032,7 +1321,7 @@ curl https://api.taxjar.com/v2/taxes \
   :has_nexus => true,
   :freight_taxable => false,
   :tax_source => "destination",
-  :breakdown => {
+  :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
     :taxable_amount => 15.0,
     :tax_collectable => 1.35,
     :combined_tax_rate => 0.09,
@@ -1049,7 +1338,7 @@ curl https://api.taxjar.com/v2/taxes \
     :special_tax_rate => 0.025,
     :special_district_tax_collectable => 0.38,
     :line_items => [
-      {
+      #<Taxjar::BreakdownLineItem:0x00000a @attrs={
         :id => "1",
         :taxable_amount => 15.0,
         :tax_collectable => 1.35,
@@ -1066,10 +1355,10 @@ curl https://api.taxjar.com/v2/taxes \
         :special_district_taxable_amount => 15.0,
         :special_tax_rate => 0.025,
         :special_district_amount => 0.38
-      }
+      }>
     ]
-  }
-}
+  }>
+}>
 ```
 
 ```python
@@ -1182,9 +1471,59 @@ freight_taxable | bool | Freight taxability for the order.
 tax_source | string | [Origin-based or destination-based](https://blog.taxjar.com/charging-sales-tax-rates/) sales tax collection.
 breakdown | object | Breakdown of rates by jurisdiction for the order, shipping, and individual line items.
 
+<h4 id="us-taxes-breakdown-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; United States Breakdown Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+taxable_amount | long | Total amount of the order to be taxed.
+tax_collectable | long | Total amount of sales tax to collect.
+combined_tax_rate | long | Overall sales tax rate of the breakdown which includes state, county, city and district tax for the order and shipping if applicable.
+state_taxable_amount | long | Amount of the order to be taxed at the state tax rate.
+state_tax_rate | long | State sales tax rate for given location.
+state_tax_collectable | long | Amount of sales tax to collect for the state.
+county_taxable_amount | long | Amount of the order to be taxed at the county tax rate.
+county_tax_rate | long | County sales tax rate for given location.
+county_tax_collectable | long | Amount of sales tax to collect for the county.
+city_taxable_amount | long | Amount of the order to be taxed at the city tax rate.
+city_tax_rate | long | City sales tax rate for given location.
+city_tax_collectable | long | Amount of sales tax to collect for the city.
+special_district_taxable_amount | long | Amount of the order to be taxed at the special district tax rate.
+special_district_tax_rate | long | Special district sales tax rate for given location.
+special_district_tax_collectable | long | Amount of sales tax to collect for the special district.
+shipping | object | Breakdown of shipping rates if applicable.
+line_items | object | Breakdown of rates by line item if applicable.
+
+<h4 id="canada-taxes-breakdown-attributes"><span class="flag-icon flag-icon-ca"></span>&nbsp; Canada Breakdown Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+gst_taxable_amount | long | Amount of the order to be taxed at the GST rate.
+gst_tax_rate | long | Goods and services tax rate for given location.
+gst | long | Amount of goods and services tax to collect for given location.
+pst_taxable_amount | long | Amount of the order to be taxed at the PST rate.
+pst_tax_rate | long | Provincial sales tax rate for given location.
+pst | long | Amount of provincial sales tax to collect for given location.
+qst_taxable_amount | long | Amount of the order to be taxed at the QST rate.
+qst_tax_rate | long | Quebec sales tax rate for given location.
+qst | long | Amount of Quebec sales tax to collect for given location.
+shipping | object | Breakdown of shipping rates if applicable.
+line_items | object | Breakdown of rates by line item if applicable.
+
+<h4 id="international-taxes-breakdown-attributes"><span class="flag-icon flag-icon-eu"></span> <span class="flag-icon flag-icon-au"></span>&nbsp; International Breakdown Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+country_taxable_amount | long | Amount of the order to be taxed at the country tax rate.
+country_tax_rate | long | Country sales tax rate for given location
+country_tax_collectable | long | Amount of sales tax to collect for the country.
+shipping | object | Breakdown of shipping rates if applicable.
+line_items | object | Breakdown of rates by line item if applicable.
+
 ## Transactions
 
 Manage your transactions for automated sales tax reporting and filing in TaxJar. These endpoints only affect orders and refunds created specifically through the API, *not* transactions from other channels.
+
+We currently support reporting and filing in the United States.
 
 ### <span class="badge badge--get">get</span> List order transactions
 
@@ -1268,7 +1607,7 @@ var orders = client.ListOrders(new {
 ```
 
 ```shell
-curl -G https://api.taxjar.com/v2/transactions/orders \
+$ curl -G https://api.taxjar.com/v2/transactions/orders \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d from_transaction_date="2015/05/01" \
   -d to_transaction_date="2015/05/31"
@@ -1378,7 +1717,7 @@ var order = client.ShowOrder("123");
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/orders/123 \
+$ curl https://api.taxjar.com/v2/transactions/orders/123 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
@@ -1414,7 +1753,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 ```
 
 ```ruby
-#<Taxjar::Order:0x007fd3e514a940 @attrs={
+#<Taxjar::Order:0x00000a @attrs={
   :transaction_id => "123",
   :user_id => 11836,
   :transaction_date => "2015-05-14T00:00:00Z",
@@ -1439,9 +1778,9 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
       :description => "Heavy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
+      :unit_price => 15,
+      :discount => 0,
+      :sales_tax => 0.95
     }
   ]
 }>
@@ -1452,10 +1791,10 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
-    'unit_price': '15.0',
-    'discount': '0.0',
+    'unit_price': 15,
+    'discount': 0,
     'product_identifier': '12-34243-0',
-    'sales_tax': '0.95',
+    'sales_tax': 0.95,
     'product_tax_code': None,
     'id': 1,
     'quantity': 1
@@ -1466,14 +1805,14 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   'from_city': 'SANTA BARBARA',
   'from_zip': '93107',
   'to_country': 'US',
-  'shipping': '1.5',
+  'shipping': 2,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2016-03-10T00:00:00.000Z',
   'transaction_reference_id': None,
-  'sales_tax': '0.95',
-  'amount': '17',
+  'sales_tax': 0.95,
+  'amount': 17,
   'transaction_id': '123',
   'to_state': 'CA'
 }>
@@ -1639,8 +1978,8 @@ var order = client.CreateOrder(new {
   to_zip = "90002",
   to_city = "Los Angeles",
   to_street = "123 Palm Grove Ln",
-  amount = 17,
-  shipping = 2,
+  amount = 16.5,
+  shipping = 1.5,
   sales_tax = 0.95,
   line_items = new[] {
     new {
@@ -1655,7 +1994,7 @@ var order = client.CreateOrder(new {
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/orders \
+$ curl https://api.taxjar.com/v2/transactions/orders \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -H "Content-Type: application/json" \
   -d '{
@@ -1713,7 +2052,7 @@ curl https://api.taxjar.com/v2/transactions/orders \
 ```
 
 ```ruby
-#<Taxjar::Order:0x007f6d65b252d0 @attrs={
+#<Taxjar::Order:0x00000a @attrs={
   :transaction_id => 20,
   :user_id => 11836,
   :transaction_date => "2015-05-14T00:00:00Z",
@@ -1738,9 +2077,9 @@ curl https://api.taxjar.com/v2/transactions/orders \
       :product_identifier => "12-34243-9",
       :product_tax_code => nil,
       :description => "Fuzzy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
+      :unit_price => 15,
+      :discount => 0,
+      :sales_tax => 0.95
     }
   ]
 }>
@@ -1751,10 +2090,10 @@ curl https://api.taxjar.com/v2/transactions/orders \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Fuzzy Widget',
-    'unit_price': '15.0',
-    'discount': '0.0',
+    'unit_price': 15,
+    'discount': 0,
     'product_identifier': '12-34243-9',
-    'sales_tax': '0.95',
+    'sales_tax': 0.95,
     'product_tax_code': None,
     'id': 1,
     'quantity': 1
@@ -1765,14 +2104,14 @@ curl https://api.taxjar.com/v2/transactions/orders \
   'from_city': 'SANTA BARBARA',
   'from_zip': '93101',
   'to_country': 'US',
-  'shipping': '1.5',
+  'shipping': 1.5,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2015-05-14T00:00:00Z',
   'transaction_reference_id': None,
-  'sales_tax': '0.95',
-  'amount': '16.5',
+  'sales_tax': 0.95,
+  'amount': 16.5,
   'transaction_id': '20',
   'to_state': 'CA'
 }>
@@ -1800,17 +2139,17 @@ to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | required | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | long | required | Total amount of the order with shipping, **excluding sales tax**.
-shipping | long | required | Total amount of shipping for the order.
-sales_tax | long | required | Total amount of sales tax collected for the order.
+amount | long | required | Total amount of the order with shipping, **excluding sales tax** in dollars.
+shipping | long | required | Total amount of shipping for the order in dollars.
+sales_tax | long | required | Total amount of sales tax collected for the order in dollars.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | long | optional | Unit price for the item.
-line_items[][discount] | long | optional | Total discount (non-unit) for the item.
-line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item.
+line_items[][unit_price] | long | optional | Unit price for the item in dollars.
+line_items[][discount] | long | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -1954,7 +2293,7 @@ var order = client.UpdateOrder(new
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/orders/123 \
+$ curl https://api.taxjar.com/v2/transactions/orders/123 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -H "Content-Type: application/json" \
   -d '{
@@ -2006,7 +2345,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 ```
 
 ```ruby
-#<Taxjar::Order:0x007f6d65b252d0 @attrs={
+#<Taxjar::Order:0x00000a @attrs={
   :transaction_id => "123",
   :user_id => 11836,
   :transaction_date => "2015-05-14T00:00:00Z",
@@ -2031,9 +2370,9 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
       :description => "Heavy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
+      :unit_price => 15,
+      :discount => 0,
+      :sales_tax => 0.95
     }
   ]
 }>
@@ -2044,10 +2383,10 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
-    'unit_price': '15.0',
-    'discount': '0.0',
+    'unit_price': 15,
+    'discount': 0,
     'product_identifier': '12-34243-0',
-    'sales_tax': '0.95',
+    'sales_tax': 0.95,
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
@@ -2058,14 +2397,14 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
   'from_city': 'SANTA BARBARA',
   'from_zip': '93101',
   'to_country': 'US',
-  'shipping': '1.5',
+  'shipping': 2,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2015-05-14T00:00:00Z',
   'transaction_reference_id': None,
-  'sales_tax': '0.95',
-  'amount': '17.0',
+  'sales_tax': 0.95,
+  'amount': 17,
   'transaction_id': '123',
   'to_state': 'CA'
 }>
@@ -2093,17 +2432,17 @@ to_zip | string | optional | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | optional | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | long | optional | Total amount of the order with shipping, **excluding sales tax**.
-shipping | long | optional | Total amount of shipping for the order.
-sales_tax | long | optional | Total amount of sales tax collected for the order.
+amount | long | optional | Total amount of the order with shipping, **excluding sales tax** in dollars.
+shipping | long | optional | Total amount of shipping for the order in dollars.
+sales_tax | long | optional | Total amount of sales tax collected for the order in dollars.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | long | optional | Unit price for the item.
-line_items[][discount] | long | optional | Total discount (non-unit) for the item.
-line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item.
+line_items[][unit_price] | long | optional | Unit price for the item in dollars.
+line_items[][discount] | long | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -2178,7 +2517,7 @@ var order = client.DeleteOrder("123");
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/orders/123 \
+$ curl https://api.taxjar.com/v2/transactions/orders/123 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -X DELETE
 ```
@@ -2211,7 +2550,7 @@ curl https://api.taxjar.com/v2/transactions/orders/123 \
 ```
 
 ```ruby
-#<Taxjar::Order:0x007f6d65b252d0 @attrs={
+#<Taxjar::Order:0x00000a @attrs={
   :transaction_id => "123",
   :user_id => 10649,
   :transaction_date => nil,
@@ -2351,7 +2690,7 @@ var refunds = client.ListRefunds(new
 ```
 
 ```shell
-curl -G https://api.taxjar.com/v2/transactions/refunds \
+$ curl -G https://api.taxjar.com/v2/transactions/refunds \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d from_transaction_date="2015/05/01" \
   -d to_transaction_date="2015/05/31"
@@ -2461,7 +2800,7 @@ var refund = client.ShowRefund("321");
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/refunds/321 \
+$ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
@@ -2498,7 +2837,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 ```
 
 ```ruby
-#<Taxjar::Refund:0x007f6da40e33a0 @attrs={
+#<Taxjar::Refund:0x00000a @attrs={
   :transaction_id => "321",
   :user_id => 11836,
   :transaction_date => "2015-06-14T00:00:00Z",
@@ -2523,9 +2862,9 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
       :description => "Heavy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
+      :unit_price => 15,
+      :discount => 0,
+      :sales_tax => 0.95
     }
   ]
 }>
@@ -2536,10 +2875,10 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
-    'unit_price': '15.0',
-    'discount': '0.0',
+    'unit_price': 15,
+    'discount': 0,
     'product_identifier': '12-34243-0',
-    'sales_tax': '0.95',
+    'sales_tax': 0.95,
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
@@ -2550,14 +2889,14 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'from_city': 'SANTA BARBARA',
   'from_zip': 93107,
   'to_country': 'US',
-  'shipping': '2.0',
+  'shipping': 2,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2015-06-14T00:00:00Z',
   'transaction_reference_id': '123',
-  'sales_tax': '0.95',
-  'amount': '17.0',
+  'sales_tax': 0.95,
+  'amount': 17,
   'transaction_id': '321',
   'to_state': 'CA'
 }>
@@ -2734,8 +3073,8 @@ var refund = client.CreateRefund(new
   to_zip = "90002",
   to_city = "Los Angeles",
   to_street = "123 Palm Grove Ln",
-  amount = 17,
-  shipping = 2,
+  amount = 16.5,
+  shipping = 1.5,
   sales_tax = 0.95,
   line_items = new[] {
     new {
@@ -2750,7 +3089,7 @@ var refund = client.CreateRefund(new
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/refunds \
+$ curl https://api.taxjar.com/v2/transactions/refunds \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -H "Content-Type: application/json" \
   -d '{
@@ -2810,7 +3149,7 @@ curl https://api.taxjar.com/v2/transactions/refunds \
 ```
 
 ```ruby
-#<Taxjar::Refund:0x007f6da40e33a0 @attrs={
+#<Taxjar::Refund:0x00000a @attrs={
   :transaction_id => "321",
   :user_id => 11836,
   :transaction_date => "2015-06-14T00:00:00Z",
@@ -2825,8 +3164,8 @@ curl https://api.taxjar.com/v2/transactions/refunds \
   :to_state => "CA",
   :to_city => "LOS ANGELES",
   :to_street => "123 Palm Grove Ln",
-  :amount => 17.0,
-  :shipping => 2.0,
+  :amount => 16.5,
+  :shipping => 1.5,
   :sales_tax => 0.95,
   :line_items => [
     {
@@ -2835,9 +3174,9 @@ curl https://api.taxjar.com/v2/transactions/refunds \
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
       :description => "Heavy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
+      :unit_price => 15,
+      :discount => 0,
+      :sales_tax => 0.95
     }
   ]
 }>
@@ -2848,10 +3187,10 @@ curl https://api.taxjar.com/v2/transactions/refunds \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
-    'unit_price': '15.0',
-    'discount': '0.0',
+    'unit_price': 15,
+    'discount': 0,
     'product_identifier': '12-34243-0',
-    'sales_tax': '0.95',
+    'sales_tax': 0.95,
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
@@ -2862,14 +3201,14 @@ curl https://api.taxjar.com/v2/transactions/refunds \
   'from_city': 'SANTA BARBARA',
   'from_zip': 93107,
   'to_country': 'US',
-  'shipping': '2.0',
+  'shipping': 1.5,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2015-06-14T00:00:00Z',
   'transaction_reference_id': '123',
-  'sales_tax': '0.95',
-  'amount': '17.0',
+  'sales_tax': 0.95,
+  'amount': 16.5,
   'transaction_id': '321',
   'to_state': 'CA'
 }>
@@ -2898,17 +3237,17 @@ to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | required | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | long | required | Total amount of the refunded order with shipping, **excluding sales tax**.
-shipping | long | required | Total amount of shipping for the refunded order.
-sales_tax | long | required | Total amount of sales tax collected for the refunded order.
+amount | long | required | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
+shipping | long | required | Total amount of shipping for the refunded order in dollars.
+sales_tax | long | required | Total amount of sales tax collected for the refunded order in dollars.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | long | optional | Unit price for the item.
-line_items[][discount] | long | optional | Total discount (non-unit) for the item.
-line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item.
+line_items[][unit_price] | long | optional | Unit price for the item in dollars.
+line_items[][discount] | long | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -3050,7 +3389,7 @@ var refund = client.UpdateRefund(new
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/refunds/321 \
+$ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -H "Content-Type: application/json" \
   -d '{
@@ -3094,9 +3433,9 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
         "quantity": 1,
         "product_identifier": "12-34243-0",
         "description": "Heavy Widget",
-        "unit_price": "15.0",
-        "discount": "0.0",
-        "sales_tax": "0.95"
+        "unit_price": 15,
+        "discount": 0,
+        "sales_tax": 0.95
       }
     ]
   }
@@ -3104,7 +3443,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 ```
 
 ```ruby
-#<Taxjar::Refund:0x007f6da40e33a0 @attrs={
+#<Taxjar::Refund:0x00000a @attrs={
   :transaction_id => "321",
   :user_id => 11836,
   :transaction_date => "2015-06-14T00:00:00Z",
@@ -3129,9 +3468,9 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
       :product_identifier => "12-34243-9",
       :product_tax_code => nil,
       :description => "Heavy Widget",
-      :unit_price => "15.0",
-      :discount => "0.0",
-      :sales_tax => "0.95"
+      :unit_price => 15,
+      :discount => 0,
+      :sales_tax => 0.95
     }
   ]
 }>
@@ -3142,10 +3481,10 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
-    'unit_price': '15.0',
-    'discount': '0.0',
+    'unit_price': 15,
+    'discount': 0,
     'product_identifier': '12-34243-9',
-    'sales_tax': '0.95',
+    'sales_tax': 0.95,
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
@@ -3156,14 +3495,14 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'from_city': 'SANTA BARBARA',
   'from_zip': 93107,
   'to_country': 'US',
-  'shipping': '2.0',
+  'shipping': 2,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2016-03-10T00:00:00.000Z',
   'transaction_reference_id': '123',
-  'sales_tax': '0.95',
-  'amount': '17.0',
+  'sales_tax': 0.95,
+  'amount': 17,
   'transaction_id': '321',
   'to_state': 'CA'
 }>
@@ -3192,17 +3531,17 @@ to_zip | string | optional | Postal code where the refunded order shipped to (5-
 to_state | string | optional | Two-letter ISO state code where the refunded order shipped to.
 to_city | string | optional | City where the refunded order shipped to.
 to_street | string | optional | Street address where the refunded order shipped to.
-amount | long | optional | Total amount of the refunded order with shipping, **excluding sales tax**.
-shipping | long | optional | Total amount of shipping for the refunded order.
-sales_tax | long | optional | Total amount of sales tax collected for the refunded order.
+amount | long | optional | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
+shipping | long | optional | Total amount of shipping for the refunded order in dollars.
+sales_tax | long | optional | Total amount of sales tax collected for the refunded order in dollars.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | long | optional | Unit price for the item.
-line_items[][discount] | long | optional | Total discount (non-unit) for the item.
-line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item.
+line_items[][unit_price] | long | optional | Unit price for the item in dollars.
+line_items[][discount] | long | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -3277,7 +3616,7 @@ var refund = client.DeleteRefund("321");
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/refunds/321 \
+$ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -X DELETE
 ```
@@ -3310,7 +3649,7 @@ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 ```
 
 ```ruby
-#<Taxjar::Refund:0x007f6da40e33a0 @attrs={
+#<Taxjar::Refund:0x00000a @attrs={
   :transaction_id => "321",
   :user_id => 11836,
   :transaction_date => nil,
@@ -3436,7 +3775,7 @@ var nexusRegions = client.NexusRegions();
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/nexus/regions \
+$ curl https://api.taxjar.com/v2/nexus/regions \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
@@ -3469,24 +3808,24 @@ curl https://api.taxjar.com/v2/nexus/regions \
 
 ```ruby
 [
-  {
+  #<Taxjar::NexusRegion:0x00000a @attrs={
     :country_code => "US",
     :country => "United States",
     :region_code => "CA",
     :region => "California"
-  },
-  {
+  }>,
+  #<Taxjar::NexusRegion:0x00000a @attrs={
     :country_code => "US",
     :country => "United States",
     :region_code => "NY",
     :region => "New York"
-  },
-  {
+  }>,
+  #<Taxjar::NexusRegion:0x00000a @attrs={
     :country_code => "US",
     :country => "United States",
     :region_code => "WA",
     :region => "Washington"
-  }
+  }>
 ]
 ```
 
@@ -3613,7 +3952,7 @@ var validation = client.Validate(new {
 ```
 
 ```shell
-curl -G https://api.taxjar.com/v2/validation \
+$ curl -G https://api.taxjar.com/v2/validation \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d vat="FR40303265045"
 ```
@@ -3639,7 +3978,7 @@ curl -G https://api.taxjar.com/v2/validation \
 ```
 
 ```ruby
-#<Taxjar::Validation:0x006f6da40e33a0 @attrs={
+#<Taxjar::Validation:0x00000a @attrs={
   :valid => true,
   :exists => true,
   :vies_available => true,
@@ -3764,7 +4103,7 @@ var summaryRates = client.SummaryRates();
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/summary_rates \
+$ curl https://api.taxjar.com/v2/summary_rates \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
@@ -3822,7 +4161,7 @@ curl https://api.taxjar.com/v2/summary_rates \
 
 ```ruby
 [
-  {
+  #<Taxjar::SummaryRate:0x00000a @attrs={
     :country_code => "US",
     :country => "United States",
     :region_code => "CA",
@@ -3835,8 +4174,8 @@ curl https://api.taxjar.com/v2/summary_rates \
       :label => "Tax",
       :rate => 0.0827
     }
-  },
-  {
+  }>,
+  #<Taxjar::SummaryRate:0x00000a @attrs={
     :country_code => "CA",
     :country => "Canada",
     :region_code => "BC",
@@ -3849,8 +4188,8 @@ curl https://api.taxjar.com/v2/summary_rates \
       :label => "PST",
       :rate => 0.12
     }
-  },
-  {
+  }>,
+  #<Taxjar::SummaryRate:0x00000a @attrs={
     :country_code => "UK",
     :country => "United Kingdom",
     :region_code => nil,
@@ -3863,7 +4202,7 @@ curl https://api.taxjar.com/v2/summary_rates \
       :label => "VAT",
       :rate => 0.2
     }
-  }
+  }>
 ]
 ```
 
