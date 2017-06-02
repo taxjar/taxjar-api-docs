@@ -22,6 +22,12 @@ search: false
 
 # Introduction
 
+> API Endpoint
+
+```
+https://api.taxjar.com/v2/
+```
+
 Welcome to the TaxJar Sales Tax API! You can use our API to get information on sales tax rates, categories or upload transactions.
 
 We currently provide API clients for the following languages:
