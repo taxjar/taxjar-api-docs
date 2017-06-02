@@ -936,7 +936,7 @@ Parameter | Type | Required | Description
 country | string | <span class="conditional" data-tooltip="For international locations outside of US, `country` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code of the country for given location.
 zip | string | required | Postal code for given location (5-Digit ZIP or ZIP+4).
 city | string | <span class="conditional" data-tooltip="For international locations outside of US, `city` is required." data-tooltip-position="top center">conditional</span> | City for given location.
-street | string | optional | Street address for given location for <span class="conditional" data-tooltip="Street address provides more accurate calculations for the following states: AR, CT, GA, IA, IN, KS, KY, MD, MI, MN, NC, ND, NE, NJ, NV, OH, OK, RI, SD, TN, UT, VT, WA, WI, WV, WY" data-tooltip-position="top center">rooftop accuracy</span>.
+street | string | optional | Street address for given location. <span class="usage-note" data-tooltip="Street address provides more accurate calculations for the following states: AR, CT, GA, IA, IN, KS, KY, MD, MI, MN, NC, ND, NE, NJ, NV, OH, OK, RI, SD, TN, UT, VT, WA, WI, WV, WY" data-tooltip-position="top center">View Note</span>
 
 #### Response
 
@@ -947,8 +947,8 @@ Returns a JSON object with rates for a given location broken down by state, coun
 Parameter | Type | Description
 --------- | ------- | -----------
 zip | string | Postal code for given location.
-country | string | Country for given location if <span class="conditional" data-tooltip="Streamlined sales tax project member states include: AR, GA, IN, IA, KS, KY, MI, MN, NE, NV, NJ, NC, ND, OK, RI, SD, UT, VT, WA, WV, WI, WY" data-tooltip-position="top center">SST state</span>.
-country_rate | long | Country sales tax rate for given location if <span class="conditional" data-tooltip="Streamlined sales tax project member states include: AR, GA, IN, IA, KS, KY, MI, MN, NE, NV, NJ, NC, ND, OK, RI, SD, UT, VT, WA, WV, WI, WY" data-tooltip-position="top center">SST state</span>.
+country | string | Country for given location if SST state. <span class="usage-note" data-tooltip="Streamlined sales tax project member states include: AR, GA, IN, IA, KS, KY, MI, MN, NE, NV, NJ, NC, ND, OK, RI, SD, UT, VT, WA, WV, WI, WY" data-tooltip-position="top center">View Note</span>
+country_rate | long | Country sales tax rate for given location if SST state. <span class="usage-note" data-tooltip="Streamlined sales tax project member states include: AR, GA, IN, IA, KS, KY, MI, MN, NE, NV, NJ, NC, ND, OK, RI, SD, UT, VT, WA, WV, WI, WY" data-tooltip-position="top center">View Note</span>
 state | string | Postal abbreviated state name for given location.
 state_rate | long | State sales tax rate for given location.
 county | string | County name for given location.
