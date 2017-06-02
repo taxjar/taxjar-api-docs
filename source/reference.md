@@ -936,7 +936,7 @@ street | string | optional | Street address for given location for <span class="
 
 Returns a JSON object with rates for a given location broken down by state, county, city, and district. For international requests, returns standard and reduced rates.
 
-<h4 id="us-rate-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; United States Attributes</h4>
+<h4 id="us-rate-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; US Attributes</h4>
 
 Parameter | Type | Description
 --------- | ------- | -----------
