@@ -64,12 +64,12 @@ var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
 ```shell
 # Authorization headers must be passed for every request
-curl "API_ENDPOINT" \
+$ curl "API_ENDPOINT" \
   -H "Authorization: Token token="9e0cd62a22f451701f29c3bde214""
 
 or
 
-curl "API_ENDPOINT" \
+$ curl "API_ENDPOINT" \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
@@ -224,7 +224,7 @@ var categories = client.Categories();
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/categories \
+$ curl https://api.taxjar.com/v2/categories \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
@@ -514,17 +514,17 @@ var rates = client.RatesForLocation("05495-2086", new {
 
 ```shell
 # United States (ZIP+4)
-curl https://api.taxjar.com/v2/rates/90404-3370 \
+$ curl https://api.taxjar.com/v2/rates/90404-3370 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 
 # United States (ZIP w/ Optional Params)
-curl -G https://api.taxjar.com/v2/rates/90404 \
+$ curl -G https://api.taxjar.com/v2/rates/90404 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d city="Santa%20Monica" \
   -d country="US"
 
 # United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
-curl -G https://api.taxjar.com/v2/rates/05495-2086 \
+$ curl -G https://api.taxjar.com/v2/rates/05495-2086 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d street="312 Hurricane Lane" \
   -d city="Williston" \
@@ -585,7 +585,7 @@ var rates = client.RatesForLocation("V5K0A1", new {
 ```
 
 ```shell
-curl -G https://api.taxjar.com/v2/rates/V5K0A1 \
+$ curl -G https://api.taxjar.com/v2/rates/V5K0A1 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d city="Vancouver" \
   -d country="CA"
@@ -645,7 +645,7 @@ var rates = client.RatesForLocation("2060", new {
 ```
 
 ```shell
-curl -G https://api.taxjar.com/v2/rates/2060 \
+$ curl -G https://api.taxjar.com/v2/rates/2060 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d city="Sydney" \
   -d country="AU"
@@ -705,7 +705,7 @@ var rates = client.RatesForLocation("00150", new {
 ```
 
 ```shell
-curl -G https://api.taxjar.com/v2/rates/00150 \
+$ curl -G https://api.taxjar.com/v2/rates/00150 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d city="Helsinki" \
   -d country="FI"
@@ -936,7 +936,7 @@ street | string | optional | Street address for given location for <span class="
 
 Returns a JSON object with rates for a given location broken down by state, county, city, and district. For international requests, returns standard and reduced rates.
 
-<h4 id="us-rate-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; US Attributes</h4>
+<h4 id="us-rate-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; United States Attributes</h4>
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -1213,7 +1213,7 @@ var rates = client.TaxForOrder(new {
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/taxes \
+$ curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -H "Content-Type: application/json" \
   -d '{
@@ -1465,7 +1465,7 @@ freight_taxable | bool | Freight taxability for the order.
 tax_source | string | [Origin-based or destination-based](https://blog.taxjar.com/charging-sales-tax-rates/) sales tax collection.
 breakdown | object | Breakdown of rates by jurisdiction for the order, shipping, and individual line items.
 
-<h4 id="us-taxes-breakdown-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; US Breakdown Attributes</h4>
+<h4 id="us-taxes-breakdown-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; United States Breakdown Attributes</h4>
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -1599,7 +1599,7 @@ var orders = client.ListOrders(new {
 ```
 
 ```shell
-curl -G https://api.taxjar.com/v2/transactions/orders \
+$ curl -G https://api.taxjar.com/v2/transactions/orders \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d from_transaction_date="2015/05/01" \
   -d to_transaction_date="2015/05/31"
@@ -1709,7 +1709,7 @@ var order = client.ShowOrder("123");
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/orders/123 \
+$ curl https://api.taxjar.com/v2/transactions/orders/123 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
@@ -1986,7 +1986,7 @@ var order = client.CreateOrder(new {
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/orders \
+$ curl https://api.taxjar.com/v2/transactions/orders \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -H "Content-Type: application/json" \
   -d '{
@@ -2285,7 +2285,7 @@ var order = client.UpdateOrder(new
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/orders/123 \
+$ curl https://api.taxjar.com/v2/transactions/orders/123 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -H "Content-Type: application/json" \
   -d '{
@@ -2509,7 +2509,7 @@ var order = client.DeleteOrder("123");
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/orders/123 \
+$ curl https://api.taxjar.com/v2/transactions/orders/123 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -X DELETE
 ```
@@ -2682,7 +2682,7 @@ var refunds = client.ListRefunds(new
 ```
 
 ```shell
-curl -G https://api.taxjar.com/v2/transactions/refunds \
+$ curl -G https://api.taxjar.com/v2/transactions/refunds \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d from_transaction_date="2015/05/01" \
   -d to_transaction_date="2015/05/31"
@@ -2792,7 +2792,7 @@ var refund = client.ShowRefund("321");
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/refunds/321 \
+$ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
@@ -3081,7 +3081,7 @@ var refund = client.CreateRefund(new
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/refunds \
+$ curl https://api.taxjar.com/v2/transactions/refunds \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -H "Content-Type: application/json" \
   -d '{
@@ -3381,7 +3381,7 @@ var refund = client.UpdateRefund(new
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/refunds/321 \
+$ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -H "Content-Type: application/json" \
   -d '{
@@ -3608,7 +3608,7 @@ var refund = client.DeleteRefund("321");
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/transactions/refunds/321 \
+$ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -X DELETE
 ```
@@ -3767,7 +3767,7 @@ var nexusRegions = client.NexusRegions();
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/nexus/regions \
+$ curl https://api.taxjar.com/v2/nexus/regions \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
@@ -3944,7 +3944,7 @@ var validation = client.Validate(new {
 ```
 
 ```shell
-curl -G https://api.taxjar.com/v2/validation \
+$ curl -G https://api.taxjar.com/v2/validation \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d vat="FR40303265045"
 ```
@@ -4095,7 +4095,7 @@ var summaryRates = client.SummaryRates();
 ```
 
 ```shell
-curl https://api.taxjar.com/v2/summary_rates \
+$ curl https://api.taxjar.com/v2/summary_rates \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
