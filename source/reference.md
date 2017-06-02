@@ -403,19 +403,15 @@ rates = client.rates_for_location('90404-3370')
 
 # United States (ZIP w/ Optional Params)
 rates = client.rates_for_location('90404', {
-  :city => 'SANTA MONICA',
+  :city => 'Santa Monica',
   :country => 'US'
 })
 
-# International Examples (Requires City and Country)
-rates = client.rates_for_location('V5K0A1', {
-  :city => 'VANCOUVER',
-  :country => 'CA'
-})
-
-rates = client.rates_for_location('00150', {
-  :city => 'HELSINKI',
-  :country => 'FI'
+# United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
+rates = client.rates_for_location('05495-2086', {
+  :street => '312 Hurricane Lane',
+  :city => 'Williston',
+  :country => 'US'
 })
 ```
 
@@ -428,19 +424,15 @@ rates = client.rates_for_location('90404-3370')
 
 # United States (ZIP w/ Optional Params)
 rates = client.rates_for_location('90404', {
-  'city': 'SANTA MONICA',
+  'city': 'Santa Monica',
   'country': 'US'
 })
 
-# International Examples (Requires City and Country)
-rates = client.rates_for_location('V5K0A1', {
-  'city': 'VANCOUVER',
-  'country': 'CA'
-})
-
-rates = client.rates_for_location('00150', {
-  'city': 'HELSINKI',
-  'country': 'FI'
+# United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
+rates = client.rates_for_location('05495-2086', {
+  'street': '312 Hurricane Lane',
+  'city': 'Williston',
+  'country': 'US'
 })
 ```
 
@@ -454,23 +446,17 @@ client.ratesForLocation('90404-3370').then(function(res) {
 
 // United States (ZIP w/ Optional Params)
 client.ratesForLocation('90404', {
-  city: 'SANTA MONICA',
+  city: 'Santa Monica',
   country: 'US'
 }).then(function(res) {
   res.rate; // Rate object
 });
 
-// International Examples (Requires City and Country)
-client.ratesForLocation('V5K0A1', {
-  city: 'VANCOUVER',
-  country: 'CA'
-}).then(function(res) {
-  res.rate; // Rate object
-});
-
-client.ratesForLocation('00150', {
-  city: 'HELSINKI',
-  country: 'FI'
+// United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
+client.ratesForLocation('05495-2086', {
+  street: '312 Hurricane Lane',
+  city: 'Williston',
+  country: 'US'
 }).then(function(res) {
   res.rate; // Rate object
 });
@@ -485,19 +471,15 @@ $rates = $client->ratesForLocation('90404-3370');
 
 // United States (ZIP w/ Optional Params)
 $rates = $client->ratesForLocation('90404', [
-  'city' => 'SANTA MONICA',
+  'city' => 'Santa Monica',
   'country' => 'US'
 ]);
 
-// International Examples (Requires City and Country)
-$rates = $client->ratesForLocation('V5K0A1', [
-  'city' => 'VANCOUVER',
-  'country' => 'CA'
-]);
-
-$rates = $client->ratesForLocation('00150', [
-  'city' => 'HELSINKI',
-  'country' => 'FI'
+// United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
+$rates = $client->ratesForLocation('05495-2086', [
+  'street' => '312 Hurricane Lane',
+  'city' => 'Williston',
+  'country' => 'US'
 ]);
 ```
 
@@ -510,19 +492,15 @@ var rates = client.RatesForLocation("90404-3370");
 
 // United States (ZIP w/ Optional Params)
 var rates = client.RatesForLocation("90404", new {
-  city = "SANTA MONICA",
+  city = "Santa Monica",
   country = "US"
 });
 
-// International Examples (Requires City and Country)
-var rates = client.RatesForLocation("V5K0A1", new {
-  city = "VANCOUVER",
-  country = "CA"
-});
-
-var rates = client.RatesForLocation("00150", new {
-  city = "HELSINKI",
-  country = "FI"
+// United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
+var rates = client.RatesForLocation("05495-2086", new {
+  street = "312 Hurricane Lane",
+  city = "Williston",
+  country = "US"
 });
 ```
 
@@ -534,10 +512,16 @@ curl https://api.taxjar.com/v2/rates/90404-3370 \
 # United States (ZIP w/ Optional Params)
 curl -G https://api.taxjar.com/v2/rates/90404 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d city="SANTA%20MONICA" \
+  -d city="Santa%20Monica" \
   -d country="US"
 
-# International Examples (Requires City and Country)
+# United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
+curl -G https://api.taxjar.com/v2/rates/05495-2086 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d street="312 Hurricane Lane" \
+  -d city="Williston" \
+  -d country="US"
+```
 curl -G https://api.taxjar.com/v2/rates/V5K0A1 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d city="VANCOUVER" \
@@ -557,42 +541,37 @@ curl -G https://api.taxjar.com/v2/rates/00150 \
   "rate": {
     "zip": "90404",
     "state": "CA",
-    "state_rate": "0.065",
+    "state_rate": "0.0625",
     "county": "LOS ANGELES",
     "county_rate": "0.01",
     "city": "SANTA MONICA",
-    "city_rate": "0.005",
-    "combined_district_rate": "0.015",
-    "combined_rate": "0.095"
+    "city_rate": "0.0",
+    "combined_district_rate": "0.025",
+    "combined_rate": "0.0975",
+    "freight_taxable": false
   }
 }
 
 {
   "rate": {
-    "zip": "V5K0A1",
-    "city": "Vancouver",
-    "state": "BC",
-    "country": "CA",
-    "combined_rate": "0.12"
-  }
-}
-
-{
-  "rate": {
-    "country": "FI",
-    "name": "Finland",
-    "standard_rate": "0.24",
-    "reduced_rate": "0.0",
-    "super_reduced_rate": "0.0",
-    "parking_rate": "0.0",
-    "distance_sale_threshold": "0.0",
+    "zip": "05495-2086",
+    "country": "US",
+    "country_rate": "0.0",
+    "state": "VT",
+    "state_rate": "0.06",
+    "county": "CHITTENDEN",
+    "county_rate": "0.0",
+    "city": "WILLISTON",
+    "city_rate": "0.0",
+    "combined_district_rate": "0.01",
+    "combined_rate": "0.07",
     "freight_taxable": true
   }
 }
 ```
 
 ```ruby
-#<Taxjar::Rate:0x007fc47056a928 @attrs={
+#<Taxjar::Rate:0x00000a @attrs={
   :zip => "90404",
   :state => "CA",
   :state_rate => 0.065,
@@ -604,22 +583,16 @@ curl -G https://api.taxjar.com/v2/rates/00150 \
   :combined_rate => 0.095
 }>
 
-#<Taxjar::Rate:0x007fc47056a928 @attrs={
-  :zip => "V5K0A1",
-  :city => "Vancouver",
-  :state => "BC",
-  :country => "CA",
-  :combined_rate => 0.12
-}>
-
-#<Taxjar::Rate:0x007fc47056a928 @attrs={
-  :country => "FI",
-  :name => "Finland",
-  :standard_rate => 0.24,
-  :reduced_rate => nil,
-  :super_reduced_rate => nil,
-  :parking_rate => nil,
-  :distance_sale_threshold => nil,
+#<Taxjar::Rate:0x00000a @attrs={
+  :zip => "05495-2086",
+  :state => "VT",
+  :state_rate => 0.06,
+  :county => "CHITTENDEN",
+  :county_rate => 0,
+  :city => "WILLISTON",
+  :city_rate => 0,
+  :combined_district_rate => 0.01,
+  :combined_rate => 0.07,
   :freight_taxable => true
 }>
 ```
@@ -628,17 +601,29 @@ curl -G https://api.taxjar.com/v2/rates/00150 \
 <TaxJarRate {
   'city': 'SANTA MONICA',
   'zip': '90404',
-  'combined_district_rate': '0.025',
-  'state_rate': '0.0625',
-  'city_rate': '0.0',
+  'combined_district_rate': 0.025,
+  'state_rate': 0.0625,
+  'city_rate': 0,
   'county': 'LOS ANGELES',
   'state': 'CA',
-  'combined_rate': '0.0975',
-  'county_rate': '0.01',
+  'combined_rate': 0.0975,
+  'county_rate': 0.01,
   'freight_taxable': False
 }>
 
 <TaxJarRate {
+  'city': 'WILLISTON',
+  'zip': '05495-2086',
+  'combined_district_rate': 0.01,
+  'state_rate': 0.06,
+  'city_rate': 0,
+  'county': 'CHITTENDEN',
+  'state': 'VT',
+  'combined_rate': 0.07,
+  'county_rate': 0,
+  'freight_taxable': True
+}>
+```
   'zip': 'V5K0A1',
   'city': 'Vancouver',
   'state': 'BC',
@@ -671,7 +656,7 @@ Parameter | Type | Required | Description
 country | string | <span class="conditional" data-tooltip="For international locations outside of US, `country` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code of the country for given location.
 zip | string | required | Postal code for given location (5-Digit ZIP or ZIP+4).
 city | string | <span class="conditional" data-tooltip="For international locations outside of US, `city` is required." data-tooltip-position="top center">conditional</span> | City for given location.
-street | string | optional | Street address for given location.
+street | string | optional | Street address for given location for <span class="conditional" data-tooltip="Street address provides more accurate calculations for the following states: AR, CT, GA, IA, IN, KS, KY, MD, MI, MN, NC, ND, NE, NJ, NV, OH, OK, RI, SD, TN, UT, VT, WA, WI, WV, WY" data-tooltip-position="top center">rooftop accuracy</span>.
 
 #### Response
 
