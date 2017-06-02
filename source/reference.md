@@ -522,14 +522,184 @@ curl -G https://api.taxjar.com/v2/rates/05495-2086 \
   -d city="Williston" \
   -d country="US"
 ```
+
+> Request Scenario: Canada
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+rates = client.rates_for_location('V5K0A1', {
+  :city => 'Vancouver',
+  :country => 'CA'
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+rates = client.rates_for_location('V5K0A1', {
+  'city': 'Vancouver',
+  'country': 'CA'
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.ratesForLocation('V5K0A1', {
+  city: 'Vancouver',
+  country: 'CA'
+}).then(function(res) {
+  res.rate; // Rate object
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$rates = $client->ratesForLocation('V5K0A1', [
+  'city' => 'Vancouver',
+  'country' => 'CA'
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.RatesForLocation("V5K0A1", new {
+  city = "Vancouver",
+  country = "CA"
+});
+```
+
+```shell
 curl -G https://api.taxjar.com/v2/rates/V5K0A1 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d city="VANCOUVER" \
+  -d city="Vancouver" \
   -d country="CA"
+```
 
+> Request Scenario: Australia
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+rates = client.rates_for_location('2060', {
+  :city => 'Sydney',
+  :country => 'AU'
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+rates = client.rates_for_location('2060', {
+  'city': 'Sydney',
+  'country': 'AU'
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.ratesForLocation('2060', {
+  city: 'Sydney',
+  country: 'AU'
+}).then(function(res) {
+  res.rate; // Rate object
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$rates = $client->ratesForLocation('2060', [
+  'city' => 'Sydney',
+  'country' => 'AU'
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.RatesForLocation("2060", new {
+  city = "Sydney",
+  country = "AU"
+});
+```
+
+```shell
+curl -G https://api.taxjar.com/v2/rates/2060 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -d city="Sydney" \
+  -d country="AU"
+```
+
+> Request Scenario: European Union
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+rates = client.rates_for_location('00150', {
+  :city => 'Helsinki',
+  :country => 'FI'
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+rates = client.rates_for_location('00150', {
+  'city': 'Helsinki',
+  'country': 'FI'
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.ratesForLocation('00150', {
+  city: 'Helsinki',
+  country: 'FI'
+}).then(function(res) {
+  res.rate; // Rate object
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$rates = $client->ratesForLocation('00150', [
+  'city' => 'Helsinki',
+  'country' => 'FI'
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.RatesForLocation("00150", new {
+  city = "Helsinki",
+  country = "FI"
+});
+```
+
+```shell
 curl -G https://api.taxjar.com/v2/rates/00150 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
-  -d city="HELSINKI" \
+  -d city="Helsinki" \
   -d country="FI"
 ```
 
@@ -624,17 +794,113 @@ curl -G https://api.taxjar.com/v2/rates/00150 \
   'freight_taxable': True
 }>
 ```
+
+> Response Scenario: Canada
+
+```json
+{
+  "rate": {
+    "zip": "V5K0A1",
+    "city": "Vancouver",
+    "state": "BC",
+    "country": "CA",
+    "combined_rate": "0.12",
+    "freight_taxable": true
+  }
+}
+```
+
+```ruby
+#<Taxjar::Rate:0x00000a @attrs={
+  :zip => "V5K0A1",
+  :city => "Vancouver",
+  :state => "BC",
+  :country => "CA",
+  :combined_rate => 0.12,
+  :freight_taxable => true
+}>
+```
+
+```python
+<TaxJarRate {
   'zip': 'V5K0A1',
   'city': 'Vancouver',
   'state': 'BC',
   'country': 'CA',
-  'combined_rate': '0.12',
+  'combined_rate': 0.12,
+  'freight_taxable': True
 }>
+```
 
+> Response Scenario: Australia
+
+```json
+{
+  "rate": {
+    "zip": "2060",
+    "country": "AU",
+    "country_rate": "0.1",
+    "combined_rate": "0.1",
+    "freight_taxable": true
+  }
+}
+```
+
+```ruby
+#<Taxjar::Rate:0x00000a @attrs={
+  :zip => "2060",
+  :country => "AU",
+  :country_rate => 0.1,
+  :combined_rate => 0.1,
+  :freight_taxable => true
+}>
+```
+
+```python
+<TaxJarRate {
+  'zip': '2060',
+  'country': 'AU',
+  'country_rate': 0.1,
+  'combined_rate': 0.1,
+  'freight_taxable': True
+}>
+```
+
+> Response Scenario: European Union
+
+```json
+{
+  "rate": {
+    "country": "FI",
+    "name": "Finland",
+    "standard_rate": "0.24",
+    "reduced_rate": "0.0",
+    "super_reduced_rate": "0.0",
+    "parking_rate": "0.0",
+    "distance_sale_threshold": "0.0",
+    "freight_taxable": true
+  }
+}
+```
+
+```ruby
+#<Taxjar::Rate:0x00000a @attrs={
+  :country => "FI",
+  :name => "Finland",
+  :standard_rate => 0.24,
+  :reduced_rate => nil,
+  :super_reduced_rate => nil,
+  :parking_rate => nil,
+  :distance_sale_threshold => nil,
+  :freight_taxable => true
+}>
+```
+
+```python
 <TaxJarRate {
   'country': 'FI',
   'name': 'Finland',
-  'standard_rate': '0.24',
+  'standard_rate': 0.24,
   'reduced_rate': None,
   'super_reduced_rate': None,
   'parking_rate': None,

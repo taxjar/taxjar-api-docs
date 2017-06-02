@@ -17,7 +17,7 @@ under the License.
   'use strict';
 
   var languages = [];
-  var customResponseExamples = ['ruby', 'python'];
+  var customResponseLanguages = ['ruby', 'python'];
 
   global.setupLanguages = setupLanguages;
   global.activateLanguage = activateLanguage;
@@ -32,14 +32,22 @@ under the License.
       $(".highlight." + languages[i]).hide();
     }
 
-    $(".highlight." + language).show();
+    $('.highlight.json').hide();
 
-    // Hide JSON response examples for specific languages
-    if (customResponseExamples.indexOf(language) == -1) {
-      $('.highlight.json').show();
-    } else {
-      $('.highlight.json').hide();
-    }
+    // Show default language examples, no scenarios
+    $('blockquote').not(':contains("Request Scenario:"), :contains("Response Scenario")').each(function() {
+      $(this).nextAll('.highlight.' + language + ':first').show();
+
+      // Show JSON response examples for specific languages, no scenarios
+      if (customResponseLanguages.indexOf(language) == -1) {
+        $(this).nextAll('.highlight.json:first').show();
+      }
+    });
+
+    // Reset scenario dropdowns
+    $('.scenarios').each(function() {
+      $(this).find('option:first').prop('selected', true);
+    });
 
     global.toc.calculateHeights();
 

@@ -807,15 +807,19 @@ header {
       padding: 0;
       // font-weight: bold;
     }
-  }
 
-  pre[contenteditable],
-  .CodeMirror-block {
-    border-left: 5px solid #3EB049;
-  }
+    & > .scenarios {
+      float: right;
+      margin: -24px 0 0 0;
 
-  .CodeMirror-block {
-    border-bottom: 3px solid $code-bg;
+      > select {
+        color: #d9d9d9;
+        border-color: lighten(#2d2d2d, 25%);
+        background: #2d2d2d;
+        min-width: 140px;
+        outline: none;
+      }
+    }
   }
 
   h1 + blockquote {
