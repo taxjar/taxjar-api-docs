@@ -362,6 +362,14 @@ Returns a JSON object with an array of product categories and corresponding tax 
 | Magazine                  | 81310 |                                                     <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span>                                                      | Periodicals, printed, sold individually.                                                                                   |
 | Other Exempt              | 99999 |                                                                                                                                                                 All                                                                                                                                                                 | Item is exempt.                                                                                                            |
 
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+product_tax_code | string | Tax code of the given product category.
+name | string | Name of the given product category.
+description | string | Description of the given product category.
+
 ## Rates
 
 ### <span class="badge badge--get">get</span> Show tax rates for a location
