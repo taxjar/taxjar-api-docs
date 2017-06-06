@@ -764,11 +764,14 @@ $ curl -G https://api.taxjar.com/v2/rates/00150 \
   :city => "SANTA MONICA",
   :city_rate => 0.005,
   :combined_district_rate => 0.015,
-  :combined_rate => 0.095
+  :combined_rate => 0.095,
+  :freight_taxable => false
 }>
 
 #<Taxjar::Rate:0x00000a @attrs={
   :zip => "05495-2086",
+  :country => "US",
+  :country_rate => 0,
   :state => "VT",
   :state_rate => 0.06,
   :county => "CHITTENDEN",
@@ -801,8 +804,10 @@ $ curl -G https://api.taxjar.com/v2/rates/00150 \
   'combined_district_rate': 0.01,
   'state_rate': 0.06,
   'city_rate': 0,
+  'country_rate': 0,
   'county': 'CHITTENDEN',
   'state': 'VT',
+  'country': 'US',
   'combined_rate': 0.07,
   'county_rate': 0,
   'freight_taxable': True
