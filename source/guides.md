@@ -21,7 +21,7 @@ You'll learn how to set up the API client, authenticate with TaxJar, and make co
 > Mixed Order of Exempt and Non-Exempt Clothing in NY
 
 ```shell
-curl https://api.taxjar.com/v2/taxes \
+$ curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -H "Content-Type: application/json" \
   -d '{
@@ -174,12 +174,12 @@ Using TaxJar's [SmartCalcs API](https://www.taxjar.com/api/), there are two ways
 ```json
 {
   "tax": {
-    "taxable_amount": 0,
     "amount_to_collect": 0,
-    "rate": 0,
+    "freight_taxable": false,
     "has_nexus": false,
-    "freight_taxable": null,
-    "tax_source": null
+    "rate": 0,
+    "tax_source": null,
+    "taxable_amount": 0
   }
 }
 ```
@@ -187,7 +187,7 @@ Using TaxJar's [SmartCalcs API](https://www.taxjar.com/api/), there are two ways
 > Mixed Order with `nexus_address` Parameters
 
 ```shell
-curl https://api.taxjar.com/v2/taxes \
+$ curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -H "Content-Type: application/json" \
   -d '{
