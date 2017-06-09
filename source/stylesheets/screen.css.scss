@@ -52,6 +52,10 @@ header {
   box-shadow: 0 1px 3px rgba(0,0,0,.12);
 }
 
+a {
+  transition: all 120ms ease-out;
+}
+
 .logo {
   float: left;
   padding: 16px 20px;
@@ -187,6 +191,7 @@ header {
   margin: 0 6px 0 0;
   padding: 4px 8px;
   border-radius: 4px;
+  vertical-align: 1px;
 
   h1 &, h2 &, h3 & {
     vertical-align: 2px;
