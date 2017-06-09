@@ -766,6 +766,7 @@ header {
 
 .content {
   > pre, > blockquote {
+    position: relative;
     // background-color: $code-bg;
     color: #fff;
 
@@ -787,6 +788,29 @@ header {
       color: #fff;
       text-decoration: none;
       border-bottom: solid 1px #ccc;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      @extend %secondary-font;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border: 0;
+      border-radius: 3px;
+      background: #343434;
+      opacity: 0;
+      outline: none;
+      transition: all 120ms ease-out;
+    }
+
+    &:hover .copy-btn {
+      opacity: 0.6;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 
