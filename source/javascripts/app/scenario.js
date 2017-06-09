@@ -31,7 +31,10 @@
       });
     },
     getScenarioName: function(header) {
-      return $(header).find('> p').text().split(': ')[1];
+      return $(header).find('.scenario').text().split(': ')[1];
+    },
+    getScenarioDescription: function(header) {
+      return $(header).find('.scenario-desc').html();
     },
     getPreviousHeader: function(header, text) {
       return $(header).prevAll('blockquote:contains("' + text + '"):first');
@@ -60,10 +63,14 @@
         var selectedOption = $(e.target).find('option:selected').text();
         var selectedRequestScenario = this.getNextHeader(dom.requestHeader, 'Request Scenario: ' + selectedOption);
         var selectedResponseScenario = this.getNextHeader(dom.responseHeader, 'Response Scenario: ' + selectedOption);
+        var selectedDescription = this.getScenarioDescription(selectedRequestScenario);
 
         // Hide all request examples
         dom.requestExamples.hide();
         dom.responseExamples.hide();
+
+        // Remove existing scenario descriptions
+        $('blockquote.request-description').remove();
 
         // Show scenario example in current language
         if (selectedRequestScenario.length) {
@@ -73,6 +80,11 @@
           // Show JSON response examples for non-custom languages
           if (this.customResponseLanguages.indexOf(currentLanguage) == -1) {
             selectedResponseScenario.nextAll('.highlight.json:first').show();
+          }
+
+          // Show description of scenario if available
+          if (selectedDescription) {
+            selectedRequestScenario.before('<blockquote class="request-description">' + selectedDescription + '</blockquote>');
           }
         } else {
           dom.requestHeader.nextAll('.highlight.' + currentLanguage + ':first').show();

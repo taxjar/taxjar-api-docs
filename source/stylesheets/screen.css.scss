@@ -853,6 +853,21 @@ a {
         outline: none;
       }
     }
+
+    &.request-description {
+      color: #a7a7a7;
+      padding-top: 0;
+      font-size: 13px;
+      line-height: 1.8;
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
   }
 
   h1 + blockquote {

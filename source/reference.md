@@ -537,7 +537,7 @@ $ curl -G https://api.taxjar.com/v2/rates/05495-2086 \
   -d country="US"
 ```
 
-> Request Scenario: Canada
+> <span class="scenario">Request Scenario: Canada</span>
 
 ```ruby
 require "taxjar"
@@ -597,7 +597,7 @@ $ curl -G https://api.taxjar.com/v2/rates/V5K0A1 \
   -d country="CA"
 ```
 
-> Request Scenario: Australia
+> <span class="scenario">Request Scenario: Australia</span>
 
 ```ruby
 require "taxjar"
@@ -657,7 +657,7 @@ $ curl -G https://api.taxjar.com/v2/rates/2060 \
   -d country="AU"
 ```
 
-> Request Scenario: European Union
+> <span class="scenario">Request Scenario: European Union</span>
 
 ```ruby
 require "taxjar"
@@ -1050,7 +1050,7 @@ order = client.tax_for_order({
   :nexus_addresses => [
     {
       :id => 'Main Location',
-      :country => 'US'
+      :country => 'US',
       :zip => '92093',
       :state => 'CA',
       :city => 'La Jolla',
@@ -1087,19 +1087,23 @@ order = client.tax_for_order({
   'amount': 15,
   'shipping': 1.5,
   'nexus_addresses': [
-    'id': 'Main Location',
-    'country': 'US',
-    'zip': '92093',
-    'state': 'CA',
-    'city': 'La Jolla',
-    'street': '9500 Gilman Drive'
+    {
+      'id': 'Main Location',
+      'country': 'US',
+      'zip': '92093',
+      'state': 'CA',
+      'city': 'La Jolla',
+      'street': '9500 Gilman Drive'
+    }
   ],
   'line_items': [
-    'id': '1',
-    'quantity': 1,
-    'product_tax_code': '20010',
-    'unit_price': 15,
-    'discount': 0
+    {
+      'id': '1',
+      'quantity': 1,
+      'product_tax_code': '20010',
+      'unit_price': 15,
+      'discount': 0
+    }
   ]
 })
 ```
@@ -1262,6 +1266,1795 @@ $ curl https://api.taxjar.com/v2/taxes \
   }'
 ```
 
+> <span class="scenario">Request Scenario: Canada</span>
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.tax_for_order({
+  :from_country => 'CA',
+  :from_zip => 'V6G 3E2',
+  :from_state => 'BC',
+  :from_city => 'Vancouver',
+  :from_street => '845 Avison Way',
+  :to_country => 'CA',
+  :to_zip => 'M5V 2T6',
+  :to_state => 'ON',
+  :to_city => 'Toronto',
+  :to_street => '301 Front St W',
+  :amount => 15,
+  :shipping => 1.5,
+  :nexus_addresses => [
+    {
+      :id => 'Main Location',
+      :country => 'CA',
+      :zip => 'V6G 3E2',
+      :state => 'BC',
+      :city => 'Vancouver',
+      :street => '845 Avison Way',
+    }
+  ],
+  :line_items => [
+    {
+      :id => '1',
+      :quantity => 1,
+      :unit_price => 15,
+      :discount => 0
+    }
+  ]
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+order = client.tax_for_order({
+  'from_country': 'CA',
+  'from_zip': 'V6G 3E2',
+  'from_state': 'BC',
+  'from_city': 'Vancouver',
+  'from_street': '845 Avison Way',
+  'to_country': 'CA',
+  'to_zip': 'M5V 2T6',
+  'to_state': 'ON',
+  'to_city': 'Toronto',
+  'to_street': '301 Front St W',
+  'amount': 15,
+  'shipping': 1.5,
+  'nexus_addresses': [
+    {
+      'id': 'Main Location',
+      'country': 'CA',
+      'zip': 'V6G 3E2',
+      'state': 'BC',
+      'city': 'Vancouver',
+      'street': '845 Avison Way'
+    }
+  ],
+  'line_items': [
+    {
+      'id': '1',
+      'quantity': 1,
+      'unit_price': 15,
+      'discount': 0
+    }
+  ]
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.taxForOrder({
+  from_country: 'CA',
+  from_zip: 'V6G 3E2',
+  from_state: 'BC',
+  from_city: 'Vancouver',
+  from_street: '845 Avison Way',
+  to_country: 'CA',
+  to_zip: 'M5V 2T6',
+  to_state: 'ON',
+  to_city: 'Toronto',
+  to_street: '301 Front St W',
+  amount: 15,
+  shipping: 1.5,
+  nexus_addresses: [
+    {
+      id: 'Main Location',
+      country: 'CA',
+      zip: 'V6G 3E2',
+      state: 'BC',
+      city: 'Vancouver',
+      street: '845 Avison Way'
+    }
+  ],
+  line_items: [
+    {
+      id: '1',
+      quantity: 1,
+      unit_price: 15,
+      discount: 0
+    }
+  ]
+}).then(function(res) {
+  res.tax; // Tax object
+  res.tax.amount_to_collect; // Amount to collect
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order_taxes = $client->taxForOrder([
+  'from_country' => 'CA',
+  'from_zip' => 'V6G 3E2',
+  'from_state' => 'BC',
+  'from_city' => 'Vancouver',
+  'from_street' => '845 Avison Way',
+  'to_country' => 'CA',
+  'to_zip' => 'M5V 2T6',
+  'to_state' => 'ON',
+  'to_city' => 'Toronto',
+  'to_street' => '301 Front St W',
+  'amount' => 15,
+  'shipping' => 1.5,
+  'nexus_addresses' => [
+    [
+      'id' => 'Main Location',
+      'country' => 'CA',
+      'zip' => 'V6G 3E2',
+      'state' => 'BC',
+      'city' => 'Vancouver',
+      'street' => '845 Avison Way',
+    ]
+  ],
+  'line_items' => [
+    [
+      'id' => '1',
+      'quantity' => 1,
+      'unit_price' => 15,
+      'discount' => 0
+    ]
+  ]
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.TaxForOrder(new {
+  from_country = "CA",
+  from_zip = "V6G 3E2",
+  from_state = "BC",
+  from_city = "Vancouver",
+  from_street = "845 Avison Way",
+  to_country = "CA",
+  to_zip = "M5V 2T6",
+  to_state = "ON",
+  to_city = "Toronto",
+  to_street = "301 Front St W",
+  amount = 15,
+  shipping = 1.5,
+  nexus_addresses = new[] {
+    new {
+      id = "Main Location",
+      country = "US",
+      zip = "V6G 3E2",
+      state = "BC",
+      city = "Vancouver",
+      street = "845 Avison Way",
+    }
+  },
+  line_items = new[] {
+    new {
+      id = "1",
+      quantity = 1,
+      unit_price = 15,
+      discount = 0
+    }
+  }
+});
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/taxes \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "from_country": "CA",
+    "from_zip": "V6G 3E2",
+    "from_state": "BC",
+    "from_city": "Vancouver",
+    "from_street": "845 Avison Way",
+    "to_country": "CA",
+    "to_zip": "M5V 2T6",
+    "to_state": "ON",
+    "to_city": "Toronto",
+    "to_street": "301 Front St W",
+    "amount": 15,
+    "shipping": 1.5,
+    "nexus_addresses": [
+      {
+        "id": "Main Location",
+        "country": "CA",
+        "zip": "V6G 3E2",
+        "state": "BC",
+        "city": "Vancouver",
+        "street": "845 Avison Way"
+      }
+    ],
+    "line_items": [
+      {
+        "id": "1",
+        "quantity": 1,
+        "unit_price": 15,
+        "discount": 0
+      }
+    ]
+  }'
+```
+
+> <span class="scenario">Request Scenario: Australia</span>
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.tax_for_order({
+  :from_country => 'AU',
+  :from_zip => 'NSW 2000',
+  :from_city => 'Sydney',
+  :from_street => '483 George St',
+  :to_country => 'AU',
+  :to_zip => 'VIC 3002',
+  :to_city => 'Richmond',
+  :to_street => 'Brunton Ave',
+  :amount => 15,
+  :shipping => 1.5,
+  :nexus_addresses => [
+    {
+      :id => 'Main Location',
+      :country => 'AU',
+      :zip => 'NSW 2000',
+      :city => 'Sydney',
+      :street => '483 George St',
+    }
+  ],
+  :line_items => [
+    {
+      :id => '1',
+      :quantity => 1,
+      :unit_price => 15,
+      :discount => 0
+    }
+  ]
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+order = client.tax_for_order({
+  'from_country': 'AU',
+  'from_zip': 'NSW 2000',
+  'from_city': 'Sydney',
+  'from_street': '483 George St',
+  'to_country': 'AU',
+  'to_zip': 'VIC 3002',
+  'to_city': 'Richmond',
+  'to_street': 'Brunton Ave',
+  'amount': 15,
+  'shipping': 1.5,
+  'nexus_addresses': [
+    {
+      'id': 'Main Location',
+      'country': 'AU',
+      'zip': 'NSW 2000',
+      'city': 'Sydney',
+      'street': '483 George St'
+    }
+  ],
+  'line_items': [
+    {
+      'id': '1',
+      'quantity': 1,
+      'unit_price': 15,
+      'discount': 0
+    }
+  ]
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.taxForOrder({
+  from_country: 'AU',
+  from_zip: 'NSW 2000',
+  from_city: 'Sydney',
+  from_street: '483 George St',
+  to_country: 'AU',
+  to_zip: 'VIC 3002',
+  to_city: 'Richmond',
+  to_street: 'Brunton Ave',
+  amount: 15,
+  shipping: 1.5,
+  nexus_addresses: [
+    {
+      id: 'Main Location',
+      country: 'AU',
+      zip: 'NSW 2000',
+      city: 'Sydney',
+      street: '483 George St'
+    }
+  ],
+  line_items: [
+    {
+      id: '1',
+      quantity: 1,
+      unit_price: 15,
+      discount: 0
+    }
+  ]
+}).then(function(res) {
+  res.tax; // Tax object
+  res.tax.amount_to_collect; // Amount to collect
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order_taxes = $client->taxForOrder([
+  'from_country' => 'AU',
+  'from_zip' => 'NSW 2000',
+  'from_city' => 'Sydney',
+  'from_street' => '483 George St',
+  'to_country' => 'AU',
+  'to_zip' => 'VIC 3002',
+  'to_city' => 'Richmond',
+  'to_street' => 'Brunton Ave',
+  'amount' => 15,
+  'shipping' => 1.5,
+  'nexus_addresses' => [
+    [
+      'id' => 'Main Location',
+      'country' => 'AU',
+      'zip' => 'NSW 2000',
+      'city' => 'Sydney',
+      'street' => '483 George St',
+    ]
+  ],
+  'line_items' => [
+    [
+      'id' => '1',
+      'quantity' => 1,
+      'unit_price' => 15,
+      'discount' => 0
+    ]
+  ]
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.TaxForOrder(new {
+  from_country = "AU",
+  from_zip = "NSW 2000",
+  from_city = "Sydney",
+  from_street = "483 George St",
+  to_country = "AU",
+  to_zip = "VIC 3002",
+  to_city = "Richmond",
+  to_street = "Brunton Ave",
+  amount = 15,
+  shipping = 1.5,
+  nexus_addresses = new[] {
+    new {
+      id = "Main Location",
+      country = "AU",
+      zip = "NSW 2000",
+      city = "Sydney",
+      street = "483 George St",
+    }
+  },
+  line_items = new[] {
+    new {
+      id = "1",
+      quantity = 1,
+      unit_price = 15,
+      discount = 0
+    }
+  }
+});
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/taxes \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "from_country": "AU",
+    "from_zip": "NSW 2000",
+    "from_city": "Sydney",
+    "from_street": "483 George St",
+    "to_country": "AU",
+    "to_zip": "VIC 3002",
+    "to_city": "Richmond",
+    "to_street": "Brunton Ave",
+    "amount": 15,
+    "shipping": 1.5,
+    "nexus_addresses": [
+      {
+        "id": "Main Location",
+        "country": "AU",
+        "zip": "NSW 2000",
+        "city": "Sydney",
+        "street": "483 George St"
+      }
+    ],
+    "line_items": [
+      {
+        "id": "1",
+        "quantity": 1,
+        "unit_price": 15,
+        "discount": 0
+      }
+    ]
+  }'
+```
+
+> <span class="scenario">Request Scenario: European Union</span>
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.tax_for_order({
+  :from_country => 'FR',
+  :from_zip => '75008',
+  :from_city => 'Paris',
+  :from_street => '55 Rue du Faubourg Saint-Honoré',
+  :to_country => 'FR',
+  :to_zip => '13281',
+  :to_city => 'Marseille',
+  :to_street => 'Rue Fort du Sanctuaire',
+  :amount => 15,
+  :shipping => 1.5,
+  :nexus_addresses => [
+    {
+      :id => 'Main Location',
+      :country => 'FR',
+      :zip => '75008',
+      :city => 'Paris',
+      :street => '55 Rue du Faubourg Saint-Honoré',
+    }
+  ],
+  :line_items => [
+    {
+      :id => '1',
+      :quantity => 1,
+      :unit_price => 15,
+      :discount => 0
+    }
+  ]
+})
+```
+
+```python
+# coding=utf-8
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+order = client.tax_for_order({
+  'from_country': 'FR',
+  'from_zip': '75008',
+  'from_city': 'Paris',
+  'from_street': '55 Rue du Faubourg Saint-Honoré',
+  'to_country': 'FR',
+  'to_zip': '13281',
+  'to_city': 'Marseille',
+  'to_street': 'Rue Fort du Sanctuaire',
+  'amount': 15,
+  'shipping': 1.5,
+  'nexus_addresses': [
+    {
+      'id': 'Main Location',
+      'country': 'FR',
+      'zip': '75008',
+      'city': 'Paris',
+      'street': '55 Rue du Faubourg Saint-Honoré'
+    }
+  ],
+  'line_items': [
+    {
+      'id': '1',
+      'quantity': 1,
+      'unit_price': 15,
+      'discount': 0
+    }
+  ]
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.taxForOrder({
+  from_country: 'FR',
+  from_zip: '75008',
+  from_city: 'Paris',
+  from_street: '55 Rue du Faubourg Saint-Honoré',
+  to_country: 'FR',
+  to_zip: '13281',
+  to_city: 'Marseille',
+  to_street: 'Rue Fort du Sanctuaire',
+  amount: 15,
+  shipping: 1.5,
+  nexus_addresses: [
+    {
+      id: 'Main Location',
+      country: 'CA',
+      zip: '75008',
+      city: 'Paris',
+      street: '55 Rue du Faubourg Saint-Honoré'
+    }
+  ],
+  line_items: [
+    {
+      id: '1',
+      quantity: 1,
+      unit_price: 15,
+      discount: 0
+    }
+  ]
+}).then(function(res) {
+  res.tax; // Tax object
+  res.tax.amount_to_collect; // Amount to collect
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order_taxes = $client->taxForOrder([
+  'from_country' => 'FR',
+  'from_zip' => '75008',
+  'from_city' => 'Paris',
+  'from_street' => '55 Rue du Faubourg Saint-Honoré',
+  'to_country' => 'FR',
+  'to_zip' => '13281',
+  'to_city' => 'Marseille',
+  'to_street' => 'Rue Fort du Sanctuaire',
+  'amount' => 15,
+  'shipping' => 1.5,
+  'nexus_addresses' => [
+    [
+      'id' => 'Main Location',
+      'country' => 'FR',
+      'zip' => '75008',
+      'city' => 'Paris',
+      'street' => '55 Rue du Faubourg Saint-Honoré',
+    ]
+  ],
+  'line_items' => [
+    [
+      'id' => '1',
+      'quantity' => 1,
+      'unit_price' => 15,
+      'discount' => 0
+    ]
+  ]
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.TaxForOrder(new {
+  from_country = "FR",
+  from_zip = "75008",
+  from_city = "Paris",
+  from_street = "55 Rue du Faubourg Saint-Honoré",
+  to_country = "FR",
+  to_zip = "13281",
+  to_city = "Marseille",
+  to_street = "Rue Fort du Sanctuaire",
+  amount = 15,
+  shipping = 1.5,
+  nexus_addresses = new[] {
+    new {
+      id = "Main Location",
+      country = "FR",
+      zip = "75008",
+      city = "Paris",
+      street = "55 Rue du Faubourg Saint-Honoré",
+    }
+  },
+  line_items = new[] {
+    new {
+      id = "1",
+      quantity = 1,
+      unit_price = 15,
+      discount = 0
+    }
+  }
+});
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/taxes \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "from_country": "FR",
+    "from_zip": "75008",
+    "from_city": "Paris",
+    "from_street": "55 Rue du Faubourg Saint-Honoré",
+    "to_country": "FR",
+    "to_zip": "13281",
+    "to_city": "Marseille",
+    "to_street": "Rue Fort du Sanctuaire",
+    "amount": 15,
+    "shipping": 1.5,
+    "nexus_addresses": [
+      {
+        "id": "Main Location",
+        "country": "FR",
+        "zip": "75008",
+        "city": "Paris",
+        "street": "55 Rue du Faubourg Saint-Honoré"
+      }
+    ],
+    "line_items": [
+      {
+        "id": "1",
+        "quantity": 1,
+        "unit_price": 15,
+        "discount": 0
+      }
+    ]
+  }'
+```
+
+> <span class="scenario">Request Scenario: Origin-Based Sourcing</span>
+<span class="scenario-desc">Calculate sales tax for <a href="https://blog.taxjar.com/charging-sales-tax-rates/" target="_blank">origin-based states</a> such as Texas. In origin-based states, sales tax should be collected based on where you, the seller, are located. If shipping from out of state, destination-based sourcing may apply. Review our <a href="https://www.taxjar.com/states/" target="_blank">state guides</a> to learn how to collect sales tax where you have nexus.</span>
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.tax_for_order({
+  :from_country => 'US',
+  :from_zip => '78701',
+  :from_state => 'TX',
+  :from_city => 'Austin',
+  :from_street => '1100 Congress Ave',
+  :to_country => 'US',
+  :to_zip => '77058',
+  :to_state => 'TX',
+  :to_city => 'Houston',
+  :to_street => '1601 E NASA Pkwy',
+  :amount => 15,
+  :shipping => 1.5,
+  :nexus_addresses => [
+    {
+      :id => 'Main Location',
+      :country => 'US',
+      :zip => '78701',
+      :state => 'TX',
+      :city => 'Austin',
+      :street => '1100 Congress Ave',
+    }
+  ],
+  :line_items => [
+    {
+      :id => '1',
+      :quantity => 1,
+      :unit_price => 15,
+      :discount => 0
+    }
+  ]
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+order = client.tax_for_order({
+  'from_country': 'US',
+  'from_zip': '78701',
+  'from_state': 'TX',
+  'from_city': 'Austin',
+  'from_street': '1100 Congress Ave',
+  'to_country': 'US',
+  'to_zip': '77058',
+  'to_state': 'TX',
+  'to_city': 'Houston',
+  'to_street': '1601 E NASA Pkwy',
+  'amount': 15,
+  'shipping': 1.5,
+  'nexus_addresses': [
+    {
+      'id': 'Main Location',
+      'country': 'US',
+      'zip': '78701',
+      'state': 'TX',
+      'city': 'Austin',
+      'street': '1100 Congress Ave'
+    }
+  ],
+  'line_items': [
+    {
+      'id': '1',
+      'quantity': 1,
+      'unit_price': 15,
+      'discount': 0
+    }
+  ]
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.taxForOrder({
+  from_country: 'US',
+  from_zip: '78701',
+  from_state: 'TX',
+  from_city: 'Austin',
+  from_street: '1100 Congress Ave',
+  to_country: 'US',
+  to_zip: '77058',
+  to_state: 'TX',
+  to_city: 'Houston',
+  to_street: '1601 E NASA Pkwy',
+  amount: 15,
+  shipping: 1.5,
+  nexus_addresses: [
+    {
+      id: 'Main Location',
+      country: 'US',
+      zip: '78701',
+      state: 'TX',
+      city: 'Austin',
+      street: '1100 Congress Ave'
+    }
+  ],
+  line_items: [
+    {
+      id: '1',
+      quantity: 1,
+      unit_price: 15,
+      discount: 0
+    }
+  ]
+}).then(function(res) {
+  res.tax; // Tax object
+  res.tax.amount_to_collect; // Amount to collect
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order_taxes = $client->taxForOrder([
+  'from_country' => 'US',
+  'from_zip' => '78701',
+  'from_state' => 'TX',
+  'from_city' => 'Austin',
+  'from_street' => '1100 Congress Ave',
+  'to_country' => 'US',
+  'to_zip' => '77058',
+  'to_state' => 'TX',
+  'to_city' => 'Houston',
+  'to_street' => '1601 E NASA Pkwy',
+  'amount' => 15,
+  'shipping' => 1.5,
+  'nexus_addresses' => [
+    [
+      'id' => 'Main Location',
+      'country' => 'US',
+      'zip' => '78701',
+      'state' => 'TX',
+      'city' => 'Austin',
+      'street' => '1100 Congress Ave',
+    ]
+  ],
+  'line_items' => [
+    [
+      'id' => '1',
+      'quantity' => 1,
+      'unit_price' => 15,
+      'discount' => 0
+    ]
+  ]
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.TaxForOrder(new {
+  from_country = "US",
+  from_zip = "78701",
+  from_state = "TX",
+  from_city = "Austin",
+  from_street = "1100 Congress Ave",
+  to_country = "US",
+  to_zip = "77058",
+  to_state = "TX",
+  to_city = "Houston",
+  to_street = "1601 E NASA Pkwy",
+  amount = 15,
+  shipping = 1.5,
+  nexus_addresses = new[] {
+    new {
+      id = "Main Location",
+      country = "US",
+      zip = "78701",
+      state = "TX",
+      city = "Austin",
+      street = "1100 Congress Ave",
+    }
+  },
+  line_items = new[] {
+    new {
+      id = "1",
+      quantity = 1,
+      unit_price = 15,
+      discount = 0
+    }
+  }
+});
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/taxes \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "from_country": "US",
+    "from_zip": "78701",
+    "from_state": "TX",
+    "from_city": "Austin",
+    "from_street": "1100 Congress Ave",
+    "to_country": "US",
+    "to_zip": "77058",
+    "to_state": "TX",
+    "to_city": "Houston",
+    "to_street": "1601 E NASA Pkwy",
+    "amount": 15,
+    "shipping": 1.5,
+    "nexus_addresses": [
+      {
+        "id": "Main Location",
+        "country": "US",
+        "zip": "78701",
+        "state": "TX",
+        "city": "Austin",
+        "street": "1100 Congress Ave"
+      }
+    ],
+    "line_items": [
+      {
+        "id": "1",
+        "quantity": 1,
+        "unit_price": 15,
+        "discount": 0
+      }
+    ]
+  }'
+```
+
+> <span class="scenario">Request Scenario: Shipping Exemptions</span>
+<span class="scenario-desc">If separately stated, <a href="https://blog.taxjar.com/sales-tax-and-shipping/" target="_blank">shipping charges</a> aren't taxable in states such as California and Massachusetts. They are taxable if you include the charge as part of the price of the item.</span>
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.tax_for_order({
+  :from_country => 'US',
+  :from_zip => '02110',
+  :from_state => 'MA',
+  :from_city => 'Boston',
+  :from_street => '1 Central Wharf',
+  :to_country => 'US',
+  :to_zip => '01608',
+  :to_state => 'MA',
+  :to_city => 'Worcester',
+  :to_street => '455 Main St',
+  :amount => 15,
+  :shipping => 1.5,
+  :nexus_addresses => [
+    {
+      :id => 'Main Location',
+      :country => 'US',
+      :zip => '02110',
+      :state => 'MA',
+      :city => 'Boston',
+      :street => '1 Central Wharf',
+    }
+  ],
+  :line_items => [
+    {
+      :id => '1',
+      :quantity => 1,
+      :unit_price => 15,
+      :discount => 0
+    }
+  ]
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+order = client.tax_for_order({
+  'from_country': 'US',
+  'from_zip': '02110',
+  'from_state': 'MA',
+  'from_city': 'Boston',
+  'from_street': '1 Central Wharf',
+  'to_country': 'US',
+  'to_zip': '01608',
+  'to_state': 'MA',
+  'to_city': 'Worcester',
+  'to_street': '455 Main St',
+  'amount': 15,
+  'shipping': 1.5,
+  'nexus_addresses': [
+    {
+      'id': 'Main Location',
+      'country': 'US',
+      'zip': '02110',
+      'state': 'MA',
+      'city': 'Boston',
+      'street': '1 Central Wharf'
+    }
+  ],
+  'line_items': [
+    {
+      'id': '1',
+      'quantity': 1,
+      'unit_price': 15,
+      'discount': 0
+    }
+  ]
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.taxForOrder({
+  from_country: 'US',
+  from_zip: '02110',
+  from_state: 'MA',
+  from_city: 'Boston',
+  from_street: '1 Central Wharf',
+  to_country: 'US',
+  to_zip: '01608',
+  to_state: 'MA',
+  to_city: 'Worcester',
+  to_street: '455 Main St',
+  amount: 15,
+  shipping: 1.5,
+  nexus_addresses: [
+    {
+      id: 'Main Location',
+      country: 'US',
+      zip: '02110',
+      state: 'MA',
+      city: 'Boston',
+      street: '1 Central Wharf'
+    }
+  ],
+  line_items: [
+    {
+      id: '1',
+      quantity: 1,
+      unit_price: 15,
+      discount: 0
+    }
+  ]
+}).then(function(res) {
+  res.tax; // Tax object
+  res.tax.amount_to_collect; // Amount to collect
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order_taxes = $client->taxForOrder([
+  'from_country' => 'US',
+  'from_zip' => '02110',
+  'from_state' => 'MA',
+  'from_city' => 'Boston',
+  'from_street' => '1 Central Wharf',
+  'to_country' => 'US',
+  'to_zip' => '01608',
+  'to_state' => 'MA',
+  'to_city' => 'Worcester',
+  'to_street' => '455 Main St',
+  'amount' => 15,
+  'shipping' => 1.5,
+  'nexus_addresses' => [
+    [
+      'id' => 'Main Location',
+      'country' => 'US',
+      'zip' => '02110',
+      'state' => 'MA',
+      'city' => 'Boston',
+      'street' => '1 Central Wharf',
+    ]
+  ],
+  'line_items' => [
+    [
+      'id' => '1',
+      'quantity' => 1,
+      'unit_price' => 15,
+      'discount' => 0
+    ]
+  ]
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.TaxForOrder(new {
+  from_country = "US",
+  from_zip = "02110",
+  from_state = "MA",
+  from_city = "Boston",
+  from_street = "1 Central Wharf",
+  to_country = "US",
+  to_zip = "01608",
+  to_state = "MA",
+  to_city = "Worcester",
+  to_street = "455 Main St",
+  amount = 15,
+  shipping = 1.5,
+  nexus_addresses = new[] {
+    new {
+      id = "Main Location",
+      country = "US",
+      zip = "02110",
+      state = "MA",
+      city = "Boston",
+      street = "1 Central Wharf",
+    }
+  },
+  line_items = new[] {
+    new {
+      id = "1",
+      quantity = 1,
+      unit_price = 15,
+      discount = 0
+    }
+  }
+});
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/taxes \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "from_country": "US",
+    "from_zip": "02110",
+    "from_state": "MA",
+    "from_city": "Boston",
+    "from_street": "1 Central Wharf",
+    "to_country": "US",
+    "to_zip": "01608",
+    "to_state": "MA",
+    "to_city": "Worcester",
+    "to_street": "455 Main St",
+    "amount": 15,
+    "shipping": 1.5,
+    "nexus_addresses": [
+      {
+        "id": "Main Location",
+        "country": "US",
+        "zip": "02110",
+        "state": "MA",
+        "city": "Boston",
+        "street": "1 Central Wharf"
+      }
+    ],
+    "line_items": [
+      {
+        "id": "1",
+        "quantity": 1,
+        "unit_price": 15,
+        "discount": 0
+      }
+    ]
+  }'
+```
+
+> <span class="scenario">Request Scenario: Clothing Exemptions</span>
+<span class="scenario-desc">Clothing items sold in New York under $110 are exempt from the state tax rate, but only exempt from county taxes in certain jurisdictions. We also handle <a href="https://blog.taxjar.com/sales-tax-on-clothing/" target="_blank">clothing exemptions</a> in states such as Pennsylvania and New Jersey.</span>
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.tax_for_order({
+  :from_country => 'US',
+  :from_zip => '12054',
+  :from_state => 'NY',
+  :from_city => 'Delmar',
+  :to_country => 'US',
+  :to_zip => '10541',
+  :to_state => 'NY',
+  :to_city => 'Mahopac',
+  :amount => 29.94,
+  :shipping => 7.99,
+  :line_items => [
+    {
+      :quantity => 1,
+      :unit_price => 19.99,
+      :product_tax_code => '20010'
+    },
+    {
+      :quantity => 1,
+      :unit_price => 9.95,
+      :product_tax_code => '20010'
+    }
+  ]
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+order = client.tax_for_order({
+  'from_country': 'US',
+  'from_zip': '12044',
+  'from_state': 'NY',
+  'from_city': 'Delmar',
+  'to_country': 'US',
+  'to_zip': '10541',
+  'to_state': 'NY',
+  'to_city': 'Mahopac',
+  'amount': 29.94,
+  'shipping': 7.99,
+  'line_items': [
+    {
+      'quantity': 1,
+      'unit_price': 19.99,
+      'product_tax_code': '20010'
+    },
+    {
+      'quantity': 1,
+      'unit_price': 9.95,
+      'product_tax_code': '20010'
+    }
+  ]
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.taxForOrder({
+  from_country: 'US',
+  from_zip: '12054',
+  from_state: 'NY',
+  from_city: 'Delmar',
+  to_country: 'US',
+  to_zip: '10541',
+  to_state: 'NY',
+  to_city: 'Mahopac',
+  amount: 29.94,
+  shipping: 7.99,
+  line_items: [
+    {
+      quantity: 1,
+      unit_price: 19.99,
+      product_tax_code: '20010'
+    },
+    {
+      quantity: 1,
+      unit_price: 9.95,
+      product_tax_code: '20010'
+    }
+  ]
+}).then(function(res) {
+  res.tax; // Tax object
+  res.tax.amount_to_collect; // Amount to collect
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order_taxes = $client->taxForOrder([
+  'from_country' => 'US',
+  'from_zip' => '12054',
+  'from_state' => 'NY',
+  'from_city' => 'Delmar',
+  'to_country' => 'US',
+  'to_zip' => '10541',
+  'to_state' => 'NY',
+  'to_city' => 'Mahopac',
+  'amount' => 29.94,
+  'shipping' => 7.99,
+  'line_items' => [
+    [
+      'quantity' => 1,
+      'unit_price' => 19.99,
+      'product_tax_code' => '20010'
+    ],
+    [
+      'quantity' => 1,
+      'unit_price' => 9.95,
+      'product_tax_code' => '20010'
+    ]
+  ]
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.TaxForOrder(new {
+  from_country = "US",
+  from_zip = "12054",
+  from_state = "NY",
+  from_city = "Delmar",
+  to_country = "US",
+  to_zip = "10541",
+  to_state = "NY",
+  to_city = "Mahopac",
+  amount = 29.94,
+  shipping = 7.99,
+  line_items = new[] {
+    new {
+      quantity = 1,
+      unit_price = 19.99,
+      product_tax_code = "20010"
+    },
+    new {
+      quantity = 1,
+      unit_price = 9.95,
+      product_tax_code = "20010"
+    }
+  }
+});
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/taxes \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "from_city": "Delmar",
+    "from_state": "NY",
+    "from_zip": "12054",
+    "from_country": "US",
+    "to_city": "Mahopac",
+    "to_state": "NY",
+    "to_zip": "10541",
+    "to_country": "US",
+    "amount": 29.94,
+    "shipping": 7.99,
+    "line_items": [
+      {
+        "quantity": 1,
+        "unit_price": 19.99,
+        "product_tax_code": "20010"
+      },
+      {
+        "quantity": 1,
+        "unit_price": 9.95,
+        "product_tax_code": "20010"
+      }
+    ]
+  }'
+```
+
+> <span class="scenario">Request Scenario: Food & Grocery Exemptions</span>
+<span class="scenario-desc">Food and grocery items are <a href="https://blog.taxjar.com/states-grocery-items-tax-exempt/" target="_blank">exempt from all sales tax</a> in states such as California, New York, and Texas.</span>
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.tax_for_order({
+  :from_country => 'US',
+  :from_zip => '94133',
+  :from_state => 'CA',
+  :from_city => 'San Francisco',
+  :to_country => 'US',
+  :to_zip => '90071',
+  :to_state => 'CA',
+  :to_city => 'Los Angeles',
+  :amount => 29.94,
+  :shipping => 7.99,
+  :line_items => [
+    {
+      :quantity => 1,
+      :unit_price => 19.99,
+      :product_tax_code => '40030'
+    },
+    {
+      :quantity => 1,
+      :unit_price => 9.95,
+      :product_tax_code => '40030'
+    }
+  ]
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+order = client.tax_for_order({
+  'from_country': 'US',
+  'from_zip': '94133',
+  'from_state': 'CA',
+  'from_city': 'San Francisco',
+  'to_country': 'US',
+  'to_zip': '90071',
+  'to_state': 'CA',
+  'to_city': 'Los Angeles',
+  'amount': 29.94,
+  'shipping': 7.99,
+  'line_items': [
+    {
+      'quantity': 1,
+      'unit_price': 19.99,
+      'product_tax_code': '40030'
+    },
+    {
+      'quantity': 1,
+      'unit_price': 9.95,
+      'product_tax_code': '40030'
+    }
+  ]
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.taxForOrder({
+  from_country: 'US',
+  from_zip: '94133',
+  from_state: 'CA',
+  from_city: 'San Francisco',
+  to_country: 'US',
+  to_zip: '90071',
+  to_state: 'CA',
+  to_city: 'Los Angeles',
+  amount: 29.94,
+  shipping: 7.99,
+  line_items: [
+    {
+      quantity: 1,
+      unit_price: 19.99,
+      product_tax_code: '40030'
+    },
+    {
+      quantity: 1,
+      unit_price: 9.95,
+      product_tax_code: '40030'
+    }
+  ]
+}).then(function(res) {
+  res.tax; // Tax object
+  res.tax.amount_to_collect; // Amount to collect
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order_taxes = $client->taxForOrder([
+  'from_country' => 'US',
+  'from_zip' => '94133',
+  'from_state' => 'CA',
+  'from_city' => 'San Francisco',
+  'to_country' => 'US',
+  'to_zip' => '90071',
+  'to_state' => 'CA',
+  'to_city' => 'Los Angeles',
+  'amount' => 29.94,
+  'shipping' => 7.99,
+  'line_items' => [
+    [
+      'quantity' => 1,
+      'unit_price' => 19.99,
+      'product_tax_code' => '40030'
+    ],
+    [
+      'quantity' => 1,
+      'unit_price' => 9.95,
+      'product_tax_code' => '40030'
+    ]
+  ]
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.TaxForOrder(new {
+  from_country = "US",
+  from_zip = "94133",
+  from_state = "CA",
+  from_city = "San Francisco",
+  to_country = "US",
+  to_zip = "90071",
+  to_state = "CA",
+  to_city = "Los Angeles",
+  amount = 29.94,
+  shipping = 7.99,
+  line_items = new[] {
+    new {
+      quantity = 1,
+      unit_price = 19.99,
+      product_tax_code = "40030"
+    },
+    new {
+      quantity = 1,
+      unit_price = 9.95,
+      product_tax_code = "40030"
+    }
+  }
+});
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/taxes \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "from_city": "San Francisco",
+    "from_state": "CA",
+    "from_zip": "94133",
+    "from_country": "US",
+    "to_city": "Los Angeles",
+    "to_state": "CA",
+    "to_zip": "90071",
+    "to_country": "US",
+    "amount": 29.94,
+    "shipping": 7.99,
+    "line_items": [
+      {
+        "quantity": 1,
+        "unit_price": 19.99,
+        "product_tax_code": "40030"
+      },
+      {
+        "quantity": 1,
+        "unit_price": 9.95,
+        "product_tax_code": "40030"
+      }
+    ]
+  }'
+```
+
+> <span class="scenario">Request Scenario: Other Exemptions</span>
+<span class="scenario-desc">Use the `99999` tax code to manually exempt products in categories we don't support yet.</span>
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.tax_for_order({
+  :from_country => 'US',
+  :from_zip => '98101',
+  :from_state => 'WA',
+  :from_city => 'Seattle',
+  :to_country => 'US',
+  :to_zip => '99201',
+  :to_state => 'WA',
+  :to_city => 'Spokane',
+  :amount => 29.94,
+  :shipping => 7.99,
+  :line_items => [
+    {
+      :quantity => 1,
+      :unit_price => 19.99,
+      :product_tax_code => '99999'
+    },
+    {
+      :quantity => 1,
+      :unit_price => 9.95
+    }
+  ]
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+order = client.tax_for_order({
+  'from_country': 'US',
+  'from_zip': '98101',
+  'from_state': 'WA',
+  'from_city': 'Seattle',
+  'to_country': 'US',
+  'to_zip': '99201',
+  'to_state': 'WA',
+  'to_city': 'Spokane',
+  'amount': 29.94,
+  'shipping': 7.99,
+  'line_items': [
+    {
+      'quantity': 1,
+      'unit_price': 19.99,
+      'product_tax_code': '99999'
+    },
+    {
+      'quantity': 1,
+      'unit_price': 9.95
+    }
+  ]
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.taxForOrder({
+  from_country: 'US',
+  from_zip: '98101',
+  from_state: 'WA',
+  from_city: 'Seattle',
+  to_country: 'US',
+  to_zip: '99201',
+  to_state: 'WA',
+  to_city: 'Spokane',
+  amount: 29.94,
+  shipping: 7.99,
+  line_items: [
+    {
+      quantity: 1,
+      unit_price: 19.99,
+      product_tax_code: '99999'
+    },
+    {
+      quantity: 1,
+      unit_price: 9.95
+    }
+  ]
+}).then(function(res) {
+  res.tax; // Tax object
+  res.tax.amount_to_collect; // Amount to collect
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order_taxes = $client->taxForOrder([
+  'from_country' => 'US',
+  'from_zip' => '98101',
+  'from_state' => 'WA',
+  'from_city' => 'Seattle',
+  'to_country' => 'US',
+  'to_zip' => '99201',
+  'to_state' => 'WA',
+  'to_city' => 'Spokane',
+  'amount' => 29.94,
+  'shipping' => 7.99,
+  'line_items' => [
+    [
+      'quantity' => 1,
+      'unit_price' => 19.99,
+      'product_tax_code' => '99999'
+    ],
+    [
+      'quantity' => 1,
+      'unit_price' => 9.95
+    ]
+  ]
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.TaxForOrder(new {
+  from_country = "US",
+  from_zip = "98101",
+  from_state = "WA",
+  from_city = "Seattle",
+  to_country = "US",
+  to_zip = "99201",
+  to_state = "WA",
+  to_city = "Spokane",
+  amount = 29.94,
+  shipping = 7.99,
+  line_items = new[] {
+    new {
+      quantity = 1,
+      unit_price = 19.99,
+      product_tax_code = "99999"
+    },
+    new {
+      quantity = 1,
+      unit_price = 9.95
+    }
+  }
+});
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/taxes \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "from_city": "Seattle",
+    "from_state": "WA",
+    "from_zip": "98101",
+    "from_country": "US",
+    "to_city": "Spokane",
+    "to_state": "WA",
+    "to_zip": "99201",
+    "to_country": "US",
+    "amount": 29.94,
+    "shipping": 7.99,
+    "line_items": [
+      {
+        "quantity": 1,
+        "unit_price": 19.99,
+        "product_tax_code": "99999"
+      },
+      {
+        "quantity": 1,
+        "unit_price": 9.95
+      }
+    ]
+  }'
+```
+
+> <span class="scenario">Request Scenario: No Nexus</span>
+<span class="scenario-desc">For interstate transactions, nexus won't trigger for the destination state unless you provide the destination state via `nexus_addresses[]` or have the destination state on file in your TaxJar account.</span>
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+order = client.tax_for_order({
+  :from_country => 'US',
+  :from_zip => '33018',
+  :from_state => 'FL',
+  :from_city => 'Miami',
+  :to_country => 'US',
+  :to_zip => '97035',
+  :to_state => 'OR',
+  :to_city => 'Portland',
+  :amount => 15,
+  :shipping => 1.5
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+order = client.tax_for_order({
+  'from_country': 'US',
+  'from_zip': '33018',
+  'from_state': 'FL',
+  'from_city': 'Miami',
+  'to_country': 'US',
+  'to_zip': '97035',
+  'to_state': 'OR',
+  'to_city': 'Portland',
+  'amount': 15,
+  'shipping': 1.5
+})
+```
+
+```javascript
+var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+
+client.taxForOrder({
+  from_country: 'US',
+  from_zip: '33018',
+  from_state: 'FL',
+  from_city: 'Miami',
+  to_country: 'US',
+  to_zip: '97035',
+  to_state: 'OR',
+  to_city: 'Portland',
+  amount: 15,
+  shipping: 1.5
+}).then(function(res) {
+  res.tax; // Tax object
+  res.tax.amount_to_collect; // Amount to collect
+});
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$order_taxes = $client->taxForOrder([
+  'from_country' => 'US',
+  'from_zip' => '33018',
+  'from_state' => 'FL',
+  'from_city' => 'Miami',
+  'to_country' => 'US',
+  'to_zip' => '97035',
+  'to_state' => 'OR',
+  'to_city' => 'Portland',
+  'amount' => 15,
+  'shipping' => 1.5
+]);
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var rates = client.TaxForOrder(new {
+  from_country = "US",
+  from_zip = "33018",
+  from_state = "FL",
+  from_city = "Miami",
+  to_country = "US",
+  to_zip = "97305",
+  to_state = "OR",
+  to_city = "Portland",
+  amount = 15,
+  shipping = 1.5
+});
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/taxes \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "from_city": "Miami",
+    "from_state": "FL",
+    "from_zip": "33018",
+    "from_country": "US",
+    "to_city": "Portland",
+    "to_state": "OR",
+    "to_zip": "97035",
+    "to_country": "US",
+    "amount": 15,
+    "shipping": 1.5
+  }'
+```
+
 > Response Example
 
 ```json
@@ -1411,6 +3204,1553 @@ $ curl https://api.taxjar.com/v2/taxes \
   'freight_taxable': False,
   'amount_to_collect': 1.31,
   'order_total_amount': 16.5
+}>
+```
+
+> Response Scenario: Canada
+
+```json
+{
+  "tax": {
+    "amount_to_collect": 2.15,
+    "breakdown": {
+      "combined_tax_rate": 0.13,
+      "gst": 0.83,
+      "gst_tax_rate": 0.05,
+      "gst_taxable_amount": 16.5,
+      "line_items": [
+        {
+          "combined_tax_rate": 0.13,
+          "gst": 0.75,
+          "gst_tax_rate": 0.05,
+          "gst_taxable_amount": 15,
+          "id": "1",
+          "pst": 1.2,
+          "pst_tax_rate": 0.08,
+          "pst_taxable_amount": 15,
+          "qst": 0,
+          "qst_tax_rate": 0,
+          "qst_taxable_amount": 0,
+          "tax_collectable": 1.95,
+          "taxable_amount": 15
+        }
+      ],
+      "pst": 1.32,
+      "pst_tax_rate": 0.08,
+      "pst_taxable_amount": 16.5,
+      "qst": 0,
+      "qst_tax_rate": 0,
+      "qst_taxable_amount": 0,
+      "shipping": {
+        "combined_tax_rate": 0.13,
+        "gst": 0.08,
+        "gst_tax_rate": 0.05,
+        "gst_taxable_amount": 1.5,
+        "pst": 0.12,
+        "pst_tax_rate": 0.08,
+        "pst_taxable_amount": 1.5,
+        "qst": 0,
+        "qst_tax_rate": 0,
+        "qst_taxable_amount": 0,
+        "tax_collectable": 0.2,
+        "taxable_amount": 1.5
+      },
+      "tax_collectable": 2.15,
+      "taxable_amount": 16.5
+    },
+    "freight_taxable": true,
+    "has_nexus": true,
+    "order_total_amount": 16.5,
+    "rate": 0.13,
+    "shipping": 1.5,
+    "tax_source": "destination",
+    "taxable_amount": 16.5
+  }
+}
+```
+
+```ruby
+#<Taxjar::Tax:0x00000a @attrs={
+  :order_total_amount => 16.5,
+  :shipping => 1.5,
+  :taxable_amount => 16.5,
+  :amount_to_collect => 2.15,
+  :rate => 0.13,
+  :has_nexus => true,
+  :freight_taxable => true,
+  :tax_source => "destination",
+  :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
+    :taxable_amount => 16.5,
+    :tax_collectable => 2.15,
+    :combined_tax_rate => 0.13,
+    :gst_taxable_amount => 16.5,
+    :gst_tax_rate => 0.05,
+    :gst => 0.83,
+    :pst_taxable_amount => 16.5,
+    :pst_tax_rate => 0.08,
+    :pst => 1.32,
+    :qst_taxable_amount => 0.0,
+    :qst_tax_rate => 0.0,
+    :qst => 0.0,
+    :shipping => {
+      :taxable_amount => 1.5,
+      :tax_collectable => 0.2,
+      :combined_tax_rate => 0.13,
+      :gst_taxable_amount => 1.5,
+      :gst_tax_rate => 0.05,
+      :gst => 0.08,
+      :pst_taxable_amount => 1.5,
+      :pst_tax_rate => 0.08,
+      :pst => 0.12,
+      :qst_taxable_amount => 0.0,
+      :qst_tax_rate => 0.0,
+      :qst => 0.0
+    },
+    :line_items => [
+      #<Taxjar::BreakdownLineItem:0x00000a @attrs={
+        :id => "1",
+        :taxable_amount => 15.0,
+        :tax_collectable => 1.95,
+        :combined_tax_rate => 0.13,
+        :gst_taxable_amount => 15.0,
+        :gst_tax_rate => 0.05,
+        :gst => 0.75,
+        :pst_taxable_amount => 15.0,
+        :pst_tax_rate => 0.08,
+        :pst => 1.2,
+        :qst_taxable_amount => 0.0,
+        :qst_tax_rate => 0.0,
+        :qst => 0.0
+      }>
+    ]
+  }>
+}>
+```
+
+```python
+<TaxJarTax {
+  'breakdown': <TaxJarBreakdown {
+    'line_items': [
+      <TaxJarBreakdownLineItem {
+        'gst': 0.75,
+        'pst_tax_rate': 0.08,
+        'gst_tax_rate': 0.05,
+        'taxable_amount': 15.0,
+        'gst_taxable_amount': 15.0,
+        'qst_taxable_amount': 0.0,
+        'pst_taxable_amount': 15.0,
+        'combined_tax_rate': 0.13,
+        'qst': 0.0,
+        'qst_tax_rate': 0.0,
+        'id': '1',
+        'pst': 1.2,
+        'tax_collectable': 1.95
+      }>
+    ],
+    'gst': 0.83,
+    'pst_tax_rate': 0.08,
+    'gst_tax_rate': 0.05,
+    'shipping': {
+      'gst': 0.08,
+      'pst_tax_rate': 0.08,
+      'gst_tax_rate': 0.05,
+      'taxable_amount': 1.5,
+      'gst_taxable_amount': 1.5,
+      'qst_taxable_amount': 0.0,
+      'pst_taxable_amount': 1.5,
+      'combined_tax_rate': 0.13,
+      'qst': 0.0,
+      'qst_tax_rate': 0.0,
+      'pst': 0.12,
+      'tax_collectable': 0.2
+    },
+    'taxable_amount': 16.5,
+    'gst_taxable_amount': 16.5,
+    'qst_taxable_amount': 0.0,
+    'pst_taxable_amount': 16.5,
+    'combined_tax_rate': 0.13,
+    'qst': 0.0,
+    'qst_tax_rate': 0.0,
+    'pst': 1.32,
+    'tax_collectable': 2.15
+  }>,
+  'has_nexus': True,
+  'tax_source': 'destination',
+  'shipping': 1.5,
+  'taxable_amount': 16.5,
+  'rate': 0.13,
+  'freight_taxable': True,
+  'amount_to_collect': 2.15,
+  'order_total_amount': 16.5
+}>
+```
+
+> Response Scenario: Australia
+
+```json
+{
+  "tax": {
+    "amount_to_collect": 1.65,
+    "breakdown": {
+      "combined_tax_rate": 0.1,
+      "country_tax_collectable": 1.65,
+      "country_tax_rate": 0.1,
+      "country_taxable_amount": 16.5,
+      "line_items": [
+        {
+          "combined_tax_rate": 0.1,
+          "country_tax_collectable": 1.5,
+          "country_tax_rate": 0.1,
+          "country_taxable_amount": 15,
+          "id": "1",
+          "tax_collectable": 1.5,
+          "taxable_amount": 15
+        }
+      ],
+      "shipping": {
+        "combined_tax_rate": 0.1,
+        "country_tax_collectable": 0.15,
+        "country_tax_rate": 0.1,
+        "country_taxable_amount": 1.5,
+        "tax_collectable": 0.15,
+        "taxable_amount": 1.5
+      },
+      "tax_collectable": 1.65,
+      "taxable_amount": 16.5
+    },
+    "freight_taxable": true,
+    "has_nexus": true,
+    "order_total_amount": 16.5,
+    "rate": 0.1,
+    "shipping": 1.5,
+    "tax_source": "destination",
+    "taxable_amount": 16.5
+  }
+}
+```
+
+```ruby
+#<Taxjar::Tax:0x00000a @attrs={
+  :order_total_amount => 16.5,
+  :shipping => 1.5,
+  :taxable_amount => 16.5,
+  :amount_to_collect => 1.65,
+  :rate => 0.1,
+  :has_nexus => true,
+  :freight_taxable => true,
+  :tax_source => "destination",
+  :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
+    :taxable_amount => 16.5,
+    :tax_collectable => 1.65,
+    :combined_tax_rate => 0.1,
+    :country_taxable_amount => 16.5,
+    :country_tax_rate => 0.1,
+    :country_tax_collectable => 1.65,
+    :shipping => {
+      :taxable_amount => 1.5,
+      :tax_collectable => 0.15,
+      :combined_tax_rate => 0.1,
+      :country_taxable_amount => 1.5,
+      :country_tax_rate => 0.1,
+      :country_tax_collectable => 0.15
+    },
+    :line_items => [
+      #<Taxjar::BreakdownLineItem:0x00000a @attrs={
+        :id => "1",
+        :taxable_amount => 15.0,
+        :tax_collectable => 1.5,
+        :combined_tax_rate => 0.1,
+        :country_taxable_amount => 15.0,
+        :country_tax_rate => 0.1,
+        :country_tax_collectable => 1.5
+      }>
+    ]
+  }>
+}>
+```
+
+```python
+<TaxJarTax {
+  'breakdown': <TaxJarBreakdown {
+    'line_items': [
+      <TaxJarBreakdownLineItem {
+        'country_tax_collectable': 1.5,
+        'country_taxable_amount': 15.0,
+        'taxable_amount': 15.0,
+        'combined_tax_rate': 0.1,
+        'id': '1',
+        'country_tax_rate': 0.1,
+        'tax_collectable': 1.5
+      }>
+    ],
+    'country_tax_collectable': 1.65,
+    'shipping': {
+      'country_tax_collectable': 0.15,
+      'country_tax_rate': 0.1,
+      'taxable_amount': 1.5,
+      'combined_tax_rate': 0.1,
+      'country_taxable_amount': 1.5,
+      'tax_collectable': 0.15
+    },
+    'country_tax_rate': 0.1,
+    'taxable_amount': 16.5,
+    'combined_tax_rate': 0.1,
+    'country_taxable_amount': 16.5,
+    'tax_collectable': 1.65
+  >},
+  'has_nexus': True,
+  'tax_source': 'destination',
+  'shipping': 1.5,
+  'taxable_amount': 16.5,
+  'rate': 0.1,
+  'freight_taxable': True,
+  'amount_to_collect': 1.65,
+  'order_total_amount': 16.5
+}>
+```
+
+> Response Scenario: European Union
+
+```json
+{
+  "tax": {
+    "amount_to_collect": 3.3,
+    "breakdown": {
+      "combined_tax_rate": 0.2,
+      "country_tax_collectable": 3.3,
+      "country_tax_rate": 0.2,
+      "country_taxable_amount": 16.5,
+      "line_items": [
+        {
+          "combined_tax_rate": 0.2,
+          "country_tax_collectable": 3,
+          "country_tax_rate": 0.2,
+          "country_taxable_amount": 15,
+          "id": "1",
+          "tax_collectable": 3,
+          "taxable_amount": 15
+        }
+      ],
+      "shipping": {
+        "combined_tax_rate": 0.2,
+        "country_tax_collectable": 0.3,
+        "country_tax_rate": 0.2,
+        "country_taxable_amount": 1.5,
+        "tax_collectable": 0.3,
+        "taxable_amount": 1.5
+      },
+      "tax_collectable": 3.3,
+      "taxable_amount": 16.5
+    },
+    "freight_taxable": true,
+    "has_nexus": true,
+    "order_total_amount": 16.5,
+    "rate": 0.2,
+    "shipping": 1.5,
+    "tax_source": "destination",
+    "taxable_amount": 16.5
+  }
+}
+```
+
+```ruby
+#<Taxjar::Tax:0x00000a @attrs={
+  :order_total_amount => 16.5,
+  :shipping => 1.5,
+  :taxable_amount => 16.5,
+  :amount_to_collect => 3.3,
+  :rate => 0.2,
+  :has_nexus => true,
+  :freight_taxable => true,
+  :tax_source => "destination",
+  :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
+    :taxable_amount => 16.5,
+    :tax_collectable => 3.3,
+    :combined_tax_rate => 0.2,
+    :country_taxable_amount => 16.5,
+    :country_tax_rate => 0.2,
+    :country_tax_collectable => 3.3,
+    :shipping => {
+      :taxable_amount => 1.5,
+      :tax_collectable => 0.3,
+      :combined_tax_rate => 0.2,
+      :country_taxable_amount => 1.5,
+      :country_tax_rate => 0.2,
+      :country_tax_collectable => 0.3
+    },
+    :line_items => [
+      #<Taxjar::BreakdownLineItem:0x00000a @attrs={
+        :id => "1",
+        :taxable_amount => 15.0,
+        :tax_collectable => 3.0,
+        :combined_tax_rate => 0.2,
+        :country_taxable_amount => 15.0,
+        :country_tax_rate => 0.2,
+        :country_tax_collectable => 3.0
+      }>
+    ]
+  }>
+}>
+```
+
+```python
+<TaxJarTax {
+  'breakdown': <TaxJarBreakdown {
+    'line_items': [
+      <TaxJarBreakdownLineItem {
+        'country_tax_collectable': 3.0,
+        'country_taxable_amount': 15.0,
+        'taxable_amount': 15.0,
+        'combined_tax_rate': 0.2,
+        'id': '1',
+        'country_tax_rate': 0.2,
+        'tax_collectable': 3.0
+      }>
+    ],
+    'country_tax_collectable': 3.3,
+    'shipping': {
+      'country_tax_collectable': 0.3,
+      'country_tax_rate': 0.2,
+      'taxable_amount': 1.5,
+      'combined_tax_rate': 0.2,
+      'country_taxable_amount': 1.5,
+      'tax_collectable': 0.3
+    },
+    'country_tax_rate': 0.2,
+    'taxable_amount': 16.5,
+    'combined_tax_rate': 0.2,
+    'country_taxable_amount': 16.5,
+    'tax_collectable': 3.3
+  }>,
+  'has_nexus': True,
+  'tax_source': 'destination',
+  'shipping': 1.5,
+  'taxable_amount': 16.5,
+  'rate': 0.2,
+  'freight_taxable': True,
+  'amount_to_collect': 3.3,
+  'order_total_amount': 16.5
+}>
+```
+
+> Response Scenario: Origin-Based Sourcing
+
+```json
+{
+  "tax": {
+    "amount_to_collect": 1.36,
+    "breakdown": {
+      "city_tax_collectable": 0.17,
+      "city_tax_rate": 0.01,
+      "city_taxable_amount": 16.5,
+      "combined_tax_rate": 0.0825,
+      "county_tax_collectable": 0,
+      "county_tax_rate": 0,
+      "county_taxable_amount": 0,
+      "line_items": [
+        {
+          "city_amount": 0.15,
+          "city_tax_rate": 0.01,
+          "city_taxable_amount": 15,
+          "combined_tax_rate": 0.0825,
+          "county_amount": 0,
+          "county_tax_rate": 0,
+          "county_taxable_amount": 0,
+          "id": "1",
+          "special_district_amount": 0.15,
+          "special_district_taxable_amount": 15,
+          "special_tax_rate": 0.01,
+          "state_amount": 0.94,
+          "state_sales_tax_rate": 0.0625,
+          "state_taxable_amount": 15,
+          "tax_collectable": 1.24,
+          "taxable_amount": 15
+        }
+      ],
+      "shipping": {
+        "city_amount": 0.02,
+        "city_tax_rate": 0.01,
+        "city_taxable_amount": 1.5,
+        "combined_tax_rate": 0.0825,
+        "county_amount": 0,
+        "county_tax_rate": 0,
+        "county_taxable_amount": 0,
+        "special_district_amount": 0.02,
+        "special_tax_rate": 0.01,
+        "special_taxable_amount": 1.5,
+        "state_amount": 0.09,
+        "state_sales_tax_rate": 0.0625,
+        "state_taxable_amount": 1.5,
+        "tax_collectable": 0.12,
+        "taxable_amount": 1.5
+      },
+      "special_district_tax_collectable": 0.17,
+      "special_district_taxable_amount": 16.5,
+      "special_tax_rate": 0.01,
+      "state_tax_collectable": 1.03,
+      "state_tax_rate": 0.0625,
+      "state_taxable_amount": 16.5,
+      "tax_collectable": 1.36,
+      "taxable_amount": 16.5
+    },
+    "freight_taxable": true,
+    "has_nexus": true,
+    "order_total_amount": 16.5,
+    "rate": 0.0825,
+    "shipping": 1.5,
+    "tax_source": "origin",
+    "taxable_amount": 16.5
+  }
+}
+```
+
+```ruby
+#<Taxjar::Tax:0x00000a @attrs={
+  :order_total_amount => 16.5,
+  :shipping => 1.5,
+  :taxable_amount => 16.5,
+  :amount_to_collect => 1.36,
+  :rate => 0.0825,
+  :has_nexus => true,
+  :freight_taxable => true,
+  :tax_source => "origin",
+  :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
+    :taxable_amount => 16.5,
+    :tax_collectable => 1.36,
+    :combined_tax_rate => 0.0825,
+    :state_taxable_amount => 16.5,
+    :state_tax_rate => 0.0625,
+    :state_tax_collectable => 1.03,
+    :county_taxable_amount => 0.0,
+    :county_tax_rate => 0.0,
+    :county_tax_collectable => 0.0,
+    :city_taxable_amount => 16.5,
+    :city_tax_rate => 0.01,
+    :city_tax_collectable => 0.17,
+    :special_district_taxable_amount => 16.5,
+    :special_tax_rate => 0.01,
+    :special_district_tax_collectable => 0.17,
+    :shipping => {
+      :taxable_amount => 1.5,
+      :tax_collectable => 0.12,
+      :combined_tax_rate => 0.0825,
+      :state_taxable_amount => 1.5,
+      :state_sales_tax_rate => 0.0625,
+      :state_amount => 0.09,
+      :county_taxable_amount => 0.0,
+      :county_tax_rate => 0.0,
+      :county_amount => 0.0,
+      :city_taxable_amount => 1.5,
+      :city_tax_rate => 0.01,
+      :city_amount => 0.02,
+      :special_taxable_amount => 1.5,
+      :special_tax_rate => 0.01,
+      :special_district_amount => 0.02
+    },
+    :line_items => [
+      #<Taxjar::BreakdownLineItem:0x00000a @attrs={
+        :id => "1",
+        :taxable_amount => 15.0,
+        :tax_collectable => 1.24,
+        :combined_tax_rate => 0.0825,
+        :state_taxable_amount => 15.0,
+        :state_sales_tax_rate => 0.0625,
+        :state_amount => 0.94,
+        :county_taxable_amount => 0.0,
+        :county_tax_rate => 0.0,
+        :county_amount => 0.0,
+        :city_taxable_amount => 15.0,
+        :city_tax_rate => 0.01,
+        :city_amount => 0.15,
+        :special_district_taxable_amount => 15.0,
+        :special_tax_rate => 0.01,
+        :special_district_amount => 0.15
+      }>
+    ]
+  }>
+}>
+```
+
+```python
+<TaxJarTax {
+  'breakdown': <TaxJarBreakdown {
+    'special_district_taxable_amount': 16.5,
+    'city_tax_rate': 0.01,
+    'county_tax_collectable': 0.0,
+    'county_taxable_amount': 0.0,
+    'special_district_tax_collectable': 0.17,
+    'line_items': [
+      <TaxJarBreakdownLineItem {
+        'special_district_taxable_amount': 15.0,
+        'city_tax_rate': 0.01,
+        'county_taxable_amount': 0.0,
+        'special_district_amount': 0.15,
+        'state_sales_tax_rate': 0.0625,
+        'state_amount': 0.94,
+        'city_taxable_amount': 15.0,
+        'taxable_amount': 15.0,
+        'special_tax_rate': 0.01,
+        'state_taxable_amount': 15.0,
+        'combined_tax_rate': 0.0825,
+        'county_tax_rate': 0.0,
+        'city_amount': 0.15,
+        'county_amount': 0.0,
+        'id': '1',
+        'tax_collectable': 1.24
+      }>
+    ],
+    'shipping': {
+      'city_tax_rate': 0.01,
+      'county_taxable_amount': 0.0,
+      'special_district_amount': 0.02,
+      'state_sales_tax_rate': 0.0625,
+      'state_amount': 0.09,
+      'special_taxable_amount': 1.5,
+      'city_amount': 0.02,
+      'taxable_amount': 1.5,
+      'state_taxable_amount': 1.5,
+      'combined_tax_rate': 0.0825,
+      'county_tax_rate': 0.0,
+      'special_tax_rate': 0.01,
+      'county_amount': 0.0,
+      'city_taxable_amount': 1.5,
+      'tax_collectable': 0.12
+    },
+    'taxable_amount': 16.5,
+    'state_taxable_amount': 16.5,
+    'combined_tax_rate': 0.0825,
+    'state_tax_collectable': 1.03,
+    'state_tax_rate': 0.0625,
+    'city_tax_collectable': 0.17,
+    'county_tax_rate': 0.0,
+    'special_tax_rate': 0.01,
+    'city_taxable_amount': 16.5,
+    'tax_collectable': 1.36
+  }>,
+  'has_nexus': True,
+  'tax_source': 'origin',
+  'shipping': 1.5,
+  'taxable_amount': 16.5,
+  'rate': 0.0825,
+  'freight_taxable': True,
+  'amount_to_collect': 1.36,
+  'order_total_amount': 16.5
+}>
+```
+
+> Response Scenario: Shipping Exemptions
+
+```json
+{
+  "tax": {
+    "amount_to_collect": 0.94,
+    "breakdown": {
+      "city_tax_collectable": 0,
+      "city_tax_rate": 0,
+      "city_taxable_amount": 0,
+      "combined_tax_rate": 0.0625,
+      "county_tax_collectable": 0,
+      "county_tax_rate": 0,
+      "county_taxable_amount": 0,
+      "line_items": [
+        {
+          "city_amount": 0,
+          "city_tax_rate": 0,
+          "city_taxable_amount": 0,
+          "combined_tax_rate": 0.0625,
+          "county_amount": 0,
+          "county_tax_rate": 0,
+          "county_taxable_amount": 0,
+          "id": "1",
+          "special_district_amount": 0,
+          "special_district_taxable_amount": 0,
+          "special_tax_rate": 0,
+          "state_amount": 0.94,
+          "state_sales_tax_rate": 0.0625,
+          "state_taxable_amount": 15,
+          "tax_collectable": 0.94,
+          "taxable_amount": 15
+        }
+      ],
+      "special_district_tax_collectable": 0,
+      "special_district_taxable_amount": 0,
+      "special_tax_rate": 0,
+      "state_tax_collectable": 0.94,
+      "state_tax_rate": 0.0625,
+      "state_taxable_amount": 15,
+      "tax_collectable": 0.94,
+      "taxable_amount": 15
+    },
+    "freight_taxable": false,
+    "has_nexus": true,
+    "order_total_amount": 16.5,
+    "rate": 0.0625,
+    "shipping": 1.5,
+    "tax_source": "destination",
+    "taxable_amount": 15
+  }
+}
+```
+
+```ruby
+#<Taxjar::Tax:0x00000a @attrs={
+  :order_total_amount => 16.5,
+  :shipping => 1.5,
+  :taxable_amount => 15.0,
+  :amount_to_collect => 0.94,
+  :rate => 0.0625,
+  :has_nexus => true,
+  :freight_taxable => false,
+  :tax_source => "destination",
+  :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
+    :taxable_amount => 15.0,
+    :tax_collectable => 0.94,
+    :combined_tax_rate => 0.0625,
+    :state_taxable_amount => 15.0,
+    :state_tax_rate => 0.0625,
+    :state_tax_collectable => 0.94,
+    :county_taxable_amount => 0.0,
+    :county_tax_rate => 0.0,
+    :county_tax_collectable => 0.0,
+    :city_taxable_amount => 0.0,
+    :city_tax_rate => 0.0,
+    :city_tax_collectable => 0.0,
+    :special_district_taxable_amount => 0.0,
+    :special_tax_rate => 0.0,
+    :special_district_tax_collectable => 0.0,
+    :line_items => [
+      #<Taxjar::BreakdownLineItem:0x00000a @attrs={
+        :id => "1",
+        :taxable_amount => 15.0,
+        :tax_collectable => 0.94,
+        :combined_tax_rate => 0.0625,
+        :state_taxable_amount => 15.0,
+        :state_sales_tax_rate => 0.0625,
+        :state_amount => 0.94,
+        :county_taxable_amount => 0.0,
+        :county_tax_rate => 0.0,
+        :county_amount => 0.0,
+        :city_taxable_amount => 0.0,
+        :city_tax_rate => 0.0,
+        :city_amount => 0.0,
+        :special_district_taxable_amount => 0.0,
+        :special_tax_rate => 0.0,
+        :special_district_amount => 0.0
+      }>
+    ]
+  }>
+}>
+```
+
+```python
+<TaxJarTax {
+  'breakdown': <TaxJarBreakdown {
+    'special_district_taxable_amount': 0.0,
+    'city_tax_rate': 0.0,
+    'county_tax_collectable': 0.0,
+    'county_taxable_amount': 0.0,
+    'special_district_tax_collectable': 0.0,
+    'line_items': [
+      <TaxJarBreakdownLineItem {
+        'special_district_taxable_amount': 0.0,
+        'city_tax_rate': 0.0,
+        'county_taxable_amount': 0.0,
+        'special_district_amount': 0.0,
+        'state_sales_tax_rate': 0.0625,
+        'state_amount': 0.94,
+        'city_taxable_amount': 0.0,
+        'taxable_amount': 15.0,
+        'special_tax_rate': 0.0,
+        'state_taxable_amount': 15.0,
+        'combined_tax_rate': 0.0625,
+        'county_tax_rate': 0.0,
+        'city_amount': 0.0,
+        'county_amount': 0.0,
+        'id': '1',
+        'tax_collectable': 0.94
+      }>
+    ],
+    'taxable_amount': 15.0,
+    'state_taxable_amount': 15.0,
+    'combined_tax_rate': 0.0625,
+    'state_tax_collectable': 0.94,
+    'state_tax_rate': 0.0625,
+    'city_tax_collectable': 0.0,
+    'county_tax_rate': 0.0,
+    'special_tax_rate': 0.0,
+    'city_taxable_amount': 0.0,
+    'tax_collectable': 0.94
+  }>,
+  'has_nexus': True,
+  'tax_source': 'destination',
+  'shipping': 1.5,
+  'taxable_amount': 15.0,
+  'rate': 0.0625,
+  'freight_taxable': False,
+  'amount_to_collect': 0.94,
+  'order_total_amount': 16.5
+}>
+```
+
+> Response Scenario: Clothing Exemptions
+
+```json
+{
+  "tax": {
+    "amount_to_collect": 1.98,
+    "breakdown": {
+      "city_tax_collectable": 0,
+      "city_tax_rate": 0,
+      "city_taxable_amount": 0,
+      "combined_tax_rate": 0.05218,
+      "county_tax_collectable": 1.52,
+      "county_tax_rate": 0.04,
+      "county_taxable_amount": 37.93,
+      "line_items": [
+        {
+          "city_amount": 0,
+          "city_tax_rate": 0,
+          "city_taxable_amount": 0,
+          "combined_tax_rate": 0.04375,
+          "county_amount": 0.8,
+          "county_tax_rate": 0.04,
+          "county_taxable_amount": 19.99,
+          "id": "1",
+          "special_district_amount": 0.07,
+          "special_district_taxable_amount": 19.99,
+          "special_tax_rate": 0.00375,
+          "state_amount": 0,
+          "state_sales_tax_rate": 0,
+          "state_taxable_amount": 0,
+          "tax_collectable": 0.87,
+          "taxable_amount": 19.99
+        },
+        {
+          "city_amount": 0,
+          "city_tax_rate": 0,
+          "city_taxable_amount": 0,
+          "combined_tax_rate": 0.04375,
+          "county_amount": 0.4,
+          "county_tax_rate": 0.04,
+          "county_taxable_amount": 9.95,
+          "id": "2",
+          "special_district_amount": 0.04,
+          "special_district_taxable_amount": 9.95,
+          "special_tax_rate": 0.00375,
+          "state_amount": 0,
+          "state_sales_tax_rate": 0,
+          "state_taxable_amount": 0,
+          "tax_collectable": 0.44,
+          "taxable_amount": 9.95
+        }
+      ],
+      "shipping": {
+        "city_amount": 0,
+        "city_tax_rate": 0,
+        "city_taxable_amount": 0,
+        "combined_tax_rate": 0.08375,
+        "county_amount": 0.32,
+        "county_tax_rate": 0.04,
+        "county_taxable_amount": 7.99,
+        "special_district_amount": 0.03,
+        "special_tax_rate": 0.00375,
+        "special_taxable_amount": 7.99,
+        "state_amount": 0.32,
+        "state_sales_tax_rate": 0.04,
+        "state_taxable_amount": 7.99,
+        "tax_collectable": 0.67,
+        "taxable_amount": 7.99
+      },
+      "special_district_tax_collectable": 0.14,
+      "special_district_taxable_amount": 37.93,
+      "special_tax_rate": 0.00375,
+      "state_tax_collectable": 0.32,
+      "state_tax_rate": 0.04,
+      "state_taxable_amount": 7.99,
+      "tax_collectable": 1.98,
+      "taxable_amount": 37.93
+    },
+    "freight_taxable": true,
+    "has_nexus": true,
+    "order_total_amount": 37.93,
+    "rate": 0.05218,
+    "shipping": 7.99,
+    "tax_source": "destination",
+    "taxable_amount": 37.93
+  }
+}
+```
+
+```ruby
+#<Taxjar::Tax:0x00000a @attrs={
+  :order_total_amount => 37.93,
+  :shipping => 7.99,
+  :taxable_amount => 37.93,
+  :amount_to_collect => 1.98,
+  :rate => 0.05218,
+  :has_nexus => true,
+  :freight_taxable => true,
+  :tax_source => "destination",
+  :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
+    :taxable_amount => 37.93,
+    :tax_collectable => 1.98,
+    :combined_tax_rate => 0.05218,
+    :state_taxable_amount => 7.99,
+    :state_tax_rate => 0.04,
+    :state_tax_collectable => 0.32,
+    :county_taxable_amount => 37.93,
+    :county_tax_rate => 0.04,
+    :county_tax_collectable => 1.52,
+    :city_taxable_amount => 0.0,
+    :city_tax_rate => 0.0,
+    :city_tax_collectable => 0.0,
+    :special_district_taxable_amount => 37.93,
+    :special_tax_rate => 0.00375,
+    :special_district_tax_collectable => 0.14,
+    :shipping => {
+      :taxable_amount => 7.99,
+      :tax_collectable => 0.67,
+      :combined_tax_rate => 0.08375,
+      :state_taxable_amount => 7.99,
+      :state_sales_tax_rate => 0.04,
+      :state_amount => 0.32,
+      :county_taxable_amount => 7.99,
+      :county_tax_rate => 0.04,
+      :county_amount => 0.32,
+      :city_taxable_amount => 0.0,
+      :city_tax_rate => 0.0,
+      :city_amount => 0.0,
+      :special_taxable_amount => 7.99,
+      :special_tax_rate => 0.00375,
+      :special_district_amount => 0.03
+    },
+    :line_items => [
+      #<Taxjar::BreakdownLineItem:0x00000a @attrs={
+        :id => "1",
+        :taxable_amount => 19.99,
+        :tax_collectable => 0.87,
+        :combined_tax_rate => 0.04375,
+        :state_taxable_amount => 0.0,
+        :state_sales_tax_rate => 0.0,
+        :state_amount => 0.0,
+        :county_taxable_amount => 19.99,
+        :county_tax_rate => 0.04,
+        :county_amount => 0.8,
+        :city_taxable_amount => 0.0,
+        :city_tax_rate => 0.0,
+        :city_amount => 0.0,
+        :special_district_taxable_amount => 19.99,
+        :special_tax_rate => 0.00375,
+        :special_district_amount => 0.07
+      }>,
+      #<Taxjar::BreakdownLineItem:0x00000a @attrs={
+        :id => "2",
+        :taxable_amount => 9.95,
+        :tax_collectable => 0.44,
+        :combined_tax_rate => 0.04375,
+        :state_taxable_amount => 0.0,
+        :state_sales_tax_rate => 0.0,
+        :state_amount => 0.0,
+        :county_taxable_amount => 9.95,
+        :county_tax_rate => 0.04,
+        :county_amount => 0.4,
+        :city_taxable_amount => 0.0,
+        :city_tax_rate => 0.0,
+        :city_amount => 0.0,
+        :special_district_taxable_amount => 9.95,
+        :special_tax_rate => 0.00375,
+        :special_district_amount => 0.04
+      }>
+    ]
+  }>
+}>
+```
+
+```python
+<TaxJarTax {
+  'breakdown': <TaxJarBreakdown {
+    'special_district_taxable_amount': 37.93,
+    'city_tax_rate': 0.0,
+    'county_tax_collectable': 1.52,
+    'county_taxable_amount': 37.93,
+    'special_district_tax_collectable': 0.14,
+    'line_items': [
+      <TaxJarBreakdownLineItem {
+        'special_district_taxable_amount': 19.99,
+        'city_tax_rate': 0.0,
+        'county_taxable_amount': 19.99,
+        'special_district_amount': 0.07,
+        'state_sales_tax_rate': 0.0,
+        'state_amount': 0.0,
+        'city_taxable_amount': 0.0,
+        'taxable_amount': 19.99,
+        'special_tax_rate': 0.00375,
+        'state_taxable_amount': 0.0,
+        'combined_tax_rate': 0.04375,
+        'county_tax_rate': 0.04,
+        'city_amount': 0.0,
+        'county_amount': 0.8,
+        'id': '1',
+        'tax_collectable': 0.87
+      }>,
+      <TaxJarBreakdownLineItem {
+        'special_district_taxable_amount': 9.95,
+        'city_tax_rate': 0.0,
+        'county_taxable_amount': 9.95,
+        'special_district_amount': 0.04,
+        'state_sales_tax_rate': 0.0,
+        'state_amount': 0.0,
+        'city_taxable_amount': 0.0,
+        'taxable_amount': 9.95,
+        'special_tax_rate': 0.00375,
+        'state_taxable_amount': 0.0,
+        'combined_tax_rate': 0.04375,
+        'county_tax_rate': 0.04,
+        'city_amount': 0.0,
+        'county_amount': 0.4,
+        'id': '2',
+        'tax_collectable': 0.44
+      }>
+    ],
+    'shipping': {
+      'city_tax_rate': 0.0,
+      'county_taxable_amount': 7.99,
+      'special_district_amount': 0.03,
+      'state_sales_tax_rate': 0.04,
+      'state_amount': 0.32,
+      'special_taxable_amount': 7.99,
+      'city_amount': 0.0,
+      'taxable_amount': 7.99,
+      'state_taxable_amount': 7.99,
+      'combined_tax_rate': 0.08375,
+      'county_tax_rate': 0.04,
+      'special_tax_rate': 0.00375,
+      'county_amount': 0.32,
+      'city_taxable_amount': 0.0,
+      'tax_collectable': 0.67
+    },
+    'taxable_amount': 37.93,
+    'state_taxable_amount': 7.99,
+    'combined_tax_rate': 0.05218,
+    'state_tax_collectable': 0.32,
+    'state_tax_rate': 0.04,
+    'city_tax_collectable': 0.0,
+    'county_tax_rate': 0.04,
+    'special_tax_rate': 0.00375,
+    'city_taxable_amount': 0.0,
+    'tax_collectable': 1.98
+  }>,
+  'has_nexus': True,
+  'tax_source': 'destination',
+  'shipping': 7.99,
+  'taxable_amount': 37.93,
+  'rate': 0.05218,
+  'freight_taxable': True,
+  'amount_to_collect': 1.98,
+  'order_total_amount': 37.93
+}>
+```
+
+> Response Scenario: Food & Grocery Exemptions
+
+```json
+{
+  "tax": {
+    "amount_to_collect": 0,
+    "breakdown": {
+      "city_tax_collectable": 0,
+      "city_tax_rate": 0,
+      "city_taxable_amount": 0,
+      "combined_tax_rate": 0,
+      "county_tax_collectable": 0,
+      "county_tax_rate": 0,
+      "county_taxable_amount": 0,
+      "line_items": [
+        {
+          "city_amount": 0,
+          "city_tax_rate": 0,
+          "city_taxable_amount": 0,
+          "combined_tax_rate": 0,
+          "county_amount": 0,
+          "county_tax_rate": 0,
+          "county_taxable_amount": 0,
+          "id": "1",
+          "special_district_amount": 0,
+          "special_district_taxable_amount": 0,
+          "special_tax_rate": 0,
+          "state_amount": 0,
+          "state_sales_tax_rate": 0,
+          "state_taxable_amount": 0,
+          "tax_collectable": 0,
+          "taxable_amount": 0
+        },
+        {
+          "city_amount": 0,
+          "city_tax_rate": 0,
+          "city_taxable_amount": 0,
+          "combined_tax_rate": 0,
+          "county_amount": 0,
+          "county_tax_rate": 0,
+          "county_taxable_amount": 0,
+          "id": "2",
+          "special_district_amount": 0,
+          "special_district_taxable_amount": 0,
+          "special_tax_rate": 0,
+          "state_amount": 0,
+          "state_sales_tax_rate": 0,
+          "state_taxable_amount": 0,
+          "tax_collectable": 0,
+          "taxable_amount": 0
+        }
+      ],
+      "special_district_tax_collectable": 0,
+      "special_district_taxable_amount": 0,
+      "special_tax_rate": 0,
+      "state_tax_collectable": 0,
+      "state_tax_rate": 0,
+      "state_taxable_amount": 0,
+      "tax_collectable": 0,
+      "taxable_amount": 0
+    },
+    "freight_taxable": false,
+    "has_nexus": true,
+    "order_total_amount": 37.93,
+    "rate": 0,
+    "shipping": 7.99,
+    "tax_source": "destination",
+    "taxable_amount": 0
+  }
+}
+```
+
+```ruby
+#<Taxjar::Tax:0x00000a @attrs={
+  :order_total_amount => 37.93,
+  :shipping => 7.99,
+  :taxable_amount => 0.0,
+  :amount_to_collect => 0.0,
+  :rate => 0.0,
+  :has_nexus => true,
+  :freight_taxable => false,
+  :tax_source => "destination",
+  :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
+    :taxable_amount => 0.0,
+    :tax_collectable => 0.0,
+    :combined_tax_rate => 0.0,
+    :state_taxable_amount => 0.0,
+    :state_tax_rate => 0.0,
+    :state_tax_collectable => 0.0,
+    :county_taxable_amount => 0.0,
+    :county_tax_rate => 0.0,
+    :county_tax_collectable => 0.0,
+    :city_taxable_amount => 0.0,
+    :city_tax_rate => 0.0,
+    :city_tax_collectable => 0.0,
+    :special_district_taxable_amount => 0.0,
+    :special_tax_rate => 0.0,
+    :special_district_tax_collectable => 0.0,
+    :line_items => [
+      #<Taxjar::BreakdownLineItem:0x00000a @attrs={
+        :id => "1",
+        :taxable_amount => 0.0,
+        :tax_collectable => 0.0,
+        :combined_tax_rate => 0.0,
+        :state_taxable_amount => 0.0,
+        :state_sales_tax_rate => 0.0,
+        :state_amount => 0.0,
+        :county_taxable_amount => 0.0,
+        :county_tax_rate => 0.0,
+        :county_amount => 0.0,
+        :city_taxable_amount => 0.0,
+        :city_tax_rate => 0.0,
+        :city_amount => 0.0,
+        :special_district_taxable_amount => 0.0,
+        :special_tax_rate => 0.0,
+        :special_district_amount => 0.0
+      }>,
+      #<Taxjar::BreakdownLineItem:0x00000a @attrs={
+        :id => "2",
+        :taxable_amount => 0.0,
+        :tax_collectable => 0.0,
+        :combined_tax_rate => 0.0,
+        :state_taxable_amount => 0.0,
+        :state_sales_tax_rate => 0.0,
+        :state_amount => 0.0,
+        :county_taxable_amount => 0.0,
+        :county_tax_rate => 0.0,
+        :county_amount => 0.0,
+        :city_taxable_amount => 0.0,
+        :city_tax_rate => 0.0,
+        :city_amount => 0.0,
+        :special_district_taxable_amount => 0.0,
+        :special_tax_rate => 0.0,
+        :special_district_amount => 0.0
+      }>
+    ]
+  }>
+}>
+```
+
+```python
+<TaxJarTax {
+  'breakdown': <TaxJarBreakdown {
+    'special_district_taxable_amount': 0.0,
+    'city_tax_rate': 0.0,
+    'county_tax_collectable': 0.0,
+    'county_taxable_amount': 0.0,
+    'special_district_tax_collectable': 0.0,
+    'line_items': [
+      <TaxJarBreakdownLineItem {
+        'special_district_taxable_amount': 0.0,
+        'city_tax_rate': 0.0,
+        'county_taxable_amount': 0.0,
+        'special_district_amount': 0.0,
+        'state_sales_tax_rate': 0.0,
+        'state_amount': 0.0,
+        'city_taxable_amount': 0.0,
+        'taxable_amount': 0.0,
+        'special_tax_rate': 0.0,
+        'state_taxable_amount': 0.0,
+        'combined_tax_rate': 0.0,
+        'county_tax_rate': 0.0,
+        'city_amount': 0.0,
+        'county_amount': 0.0,
+        'id': '1',
+        'tax_collectable': 0.0
+      }>,
+      <TaxJarBreakdownLineItem {
+        'special_district_taxable_amount': 0.0,
+        'city_tax_rate': 0.0,
+        'county_taxable_amount': 0.0,
+        'special_district_amount': 0.0,
+        'state_sales_tax_rate': 0.0,
+        'state_amount': 0.0,
+        'city_taxable_amount': 0.0,
+        'taxable_amount': 0.0,
+        'special_tax_rate': 0.0,
+        'state_taxable_amount': 0.0,
+        'combined_tax_rate': 0.0,
+        'county_tax_rate': 0.0,
+        'city_amount': 0.0,
+        'county_amount': 0.0,
+        'id': '2',
+        'tax_collectable': 0.0
+      }>
+    ],
+    'taxable_amount': 0.0,
+    'state_taxable_amount': 0.0,
+    'combined_tax_rate': 0.0,
+    'state_tax_collectable': 0.0,
+    'state_tax_rate': 0.0,
+    'city_tax_collectable': 0.0,
+    'county_tax_rate': 0.0,
+    'special_tax_rate': 0.0,
+    'city_taxable_amount': 0.0,
+    'tax_collectable': 0.0
+  }>,
+  'has_nexus': True,
+  'tax_source': 'destination',
+  'shipping': 7.99,
+  'taxable_amount': 0.0,
+  'rate': 0.0,
+  'freight_taxable': False,
+  'amount_to_collect': 0.0,
+  'order_total_amount': 37.93
+}>
+```
+
+> Response Scenario: Other Exemptions
+
+```json
+{
+  "tax": {
+    "amount_to_collect": 1.58,
+    "breakdown": {
+      "city_tax_collectable": 0.41,
+      "city_tax_rate": 0.023,
+      "city_taxable_amount": 17.94,
+      "combined_tax_rate": 0.088,
+      "county_tax_collectable": 0,
+      "county_tax_rate": 0,
+      "county_taxable_amount": 0,
+      "line_items": [
+        {
+          "city_amount": 0,
+          "city_tax_rate": 0,
+          "city_taxable_amount": 0,
+          "combined_tax_rate": 0,
+          "county_amount": 0,
+          "county_tax_rate": 0,
+          "county_taxable_amount": 0,
+          "id": "1",
+          "special_district_amount": 0,
+          "special_district_taxable_amount": 0,
+          "special_tax_rate": 0,
+          "state_amount": 0,
+          "state_sales_tax_rate": 0,
+          "state_taxable_amount": 0,
+          "tax_collectable": 0,
+          "taxable_amount": 0
+        },
+        {
+          "city_amount": 0.23,
+          "city_tax_rate": 0.023,
+          "city_taxable_amount": 9.95,
+          "combined_tax_rate": 0.088,
+          "county_amount": 0,
+          "county_tax_rate": 0,
+          "county_taxable_amount": 0,
+          "id": "2",
+          "special_district_amount": 0,
+          "special_district_taxable_amount": 0,
+          "special_tax_rate": 0,
+          "state_amount": 0.65,
+          "state_sales_tax_rate": 0.065,
+          "state_taxable_amount": 9.95,
+          "tax_collectable": 0.88,
+          "taxable_amount": 9.95
+        }
+      ],
+      "shipping": {
+        "city_amount": 0.18,
+        "city_tax_rate": 0.023,
+        "city_taxable_amount": 7.99,
+        "combined_tax_rate": 0.088,
+        "county_amount": 0,
+        "county_tax_rate": 0,
+        "county_taxable_amount": 0,
+        "special_district_amount": 0,
+        "special_tax_rate": 0,
+        "special_taxable_amount": 0,
+        "state_amount": 0.52,
+        "state_sales_tax_rate": 0.065,
+        "state_taxable_amount": 7.99,
+        "tax_collectable": 0.7,
+        "taxable_amount": 7.99
+      },
+      "special_district_tax_collectable": 0,
+      "special_district_taxable_amount": 0,
+      "special_tax_rate": 0,
+      "state_tax_collectable": 1.17,
+      "state_tax_rate": 0.065,
+      "state_taxable_amount": 17.94,
+      "tax_collectable": 1.58,
+      "taxable_amount": 17.94
+    },
+    "freight_taxable": true,
+    "has_nexus": true,
+    "order_total_amount": 37.93,
+    "rate": 0.088,
+    "shipping": 7.99,
+    "tax_source": "destination",
+    "taxable_amount": 17.94
+  }
+}
+```
+
+```ruby
+#<Taxjar::Tax:0x00000a @attrs={
+  :order_total_amount => 37.93,
+  :shipping => 7.99,
+  :taxable_amount => 17.94,
+  :amount_to_collect => 1.58,
+  :rate => 0.088,
+  :has_nexus => true,
+  :freight_taxable => true,
+  :tax_source => "destination",
+  :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
+    :taxable_amount => 17.94,
+    :tax_collectable => 1.58,
+    :combined_tax_rate => 0.088,
+    :state_taxable_amount => 17.94,
+    :state_tax_rate => 0.065,
+    :state_tax_collectable => 1.17,
+    :county_taxable_amount => 0.0,
+    :county_tax_rate => 0.0,
+    :county_tax_collectable => 0.0,
+    :city_taxable_amount => 17.94,
+    :city_tax_rate => 0.023,
+    :city_tax_collectable => 0.41,
+    :special_district_taxable_amount => 0.0,
+    :special_tax_rate => 0.0,
+    :special_district_tax_collectable => 0.0,
+    :shipping => {
+      :taxable_amount => 7.99,
+      :tax_collectable => 0.7,
+      :combined_tax_rate => 0.088,
+      :state_taxable_amount => 7.99,
+      :state_sales_tax_rate => 0.065,
+      :state_amount => 0.52,
+      :county_taxable_amount => 0.0,
+      :county_tax_rate => 0.0,
+      :county_amount => 0.0,
+      :city_taxable_amount => 7.99,
+      :city_tax_rate => 0.023,
+      :city_amount => 0.18,
+      :special_taxable_amount => 0.0,
+      :special_tax_rate => 0.0,
+      :special_district_amount => 0.0
+    },
+    :line_items => [
+      #<Taxjar::BreakdownLineItem:0x00000a @attrs={
+        :id => "1",
+        :taxable_amount => 0.0,
+        :tax_collectable => 0.0,
+        :combined_tax_rate => 0.0,
+        :state_taxable_amount => 0.0,
+        :state_sales_tax_rate => 0.0,
+        :state_amount => 0.0,
+        :county_taxable_amount => 0.0,
+        :county_tax_rate => 0.0,
+        :county_amount => 0.0,
+        :city_taxable_amount => 0.0,
+        :city_tax_rate => 0.0,
+        :city_amount => 0.0,
+        :special_district_taxable_amount => 0.0,
+        :special_tax_rate => 0.0,
+        :special_district_amount => 0.0
+      }>,
+      #<Taxjar::BreakdownLineItem:0x00000a @attrs={
+        :id => "2",
+        :taxable_amount => 9.95,
+        :tax_collectable => 0.88,
+        :combined_tax_rate => 0.088,
+        :state_taxable_amount => 9.95,
+        :state_sales_tax_rate => 0.065,
+        :state_amount => 0.65,
+        :county_taxable_amount => 0.0,
+        :county_tax_rate => 0.0,
+        :county_amount => 0.0,
+        :city_taxable_amount => 9.95,
+        :city_tax_rate => 0.023,
+        :city_amount => 0.23,
+        :special_district_taxable_amount => 0.0,
+        :special_tax_rate => 0.0,
+        :special_district_amount => 0.0
+      }>
+    ]
+  }>
+}>
+```
+
+```python
+<TaxJarTax {
+  'breakdown': <TaxJarBreakdown {
+    'special_district_taxable_amount': 0.0,
+    'city_tax_rate': 0.023,
+    'county_tax_collectable': 0.0,
+    'county_taxable_amount': 0.0,
+    'special_district_tax_collectable': 0.0,
+    'line_items': [
+      <TaxJarBreakdownLineItem {
+        'special_district_taxable_amount': 0.0,
+        'city_tax_rate': 0.0,
+        'county_taxable_amount': 0.0,
+        'special_district_amount': 0.0,
+        'state_sales_tax_rate': 0.0,
+        'state_amount': 0.0,
+        'city_taxable_amount': 0.0,
+        'taxable_amount': 0.0,
+        'special_tax_rate': 0.0,
+        'state_taxable_amount': 0.0,
+        'combined_tax_rate': 0.0,
+        'county_tax_rate': 0.0,
+        'city_amount': 0.0,
+        'county_amount': 0.0,
+        'id': '1',
+        'tax_collectable': 0.0
+      }>,
+      <TaxJarBreakdownLineItem {
+        'special_district_taxable_amount': 0.0,
+        'city_tax_rate': 0.023,
+        'county_taxable_amount': 0.0,
+        'special_district_amount': 0.0,
+        'state_sales_tax_rate': 0.065,
+        'state_amount': 0.65,
+        'city_taxable_amount': 9.95,
+        'taxable_amount': 9.95,
+        'special_tax_rate': 0.0,
+        'state_taxable_amount': 9.95,
+        'combined_tax_rate': 0.088,
+        'county_tax_rate': 0.0,
+        'city_amount': 0.23,
+        'county_amount': 0.0,
+        'id': '2',
+        'tax_collectable': 0.88
+      }>
+    ],
+    'shipping': {
+      'city_tax_rate': 0.023,
+      'county_taxable_amount': 0.0,
+      'special_district_amount': 0.0,
+      'state_sales_tax_rate': 0.065,
+      'state_amount': 0.52,
+      'special_taxable_amount': 0.0,
+      'city_amount': 0.18,
+      'taxable_amount': 7.99,
+      'state_taxable_amount': 7.99,
+      'combined_tax_rate': 0.088,
+      'county_tax_rate': 0.0,
+      'special_tax_rate': 0.0,
+      'county_amount': 0.0,
+      'city_taxable_amount': 7.99,
+      'tax_collectable': 0.7
+    },
+    'taxable_amount': 17.94,
+    'state_taxable_amount': 17.94,
+    'combined_tax_rate': 0.088,
+    'state_tax_collectable': 1.17,
+    'state_tax_rate': 0.065,
+    'city_tax_collectable': 0.41,
+    'county_tax_rate': 0.0,
+    'special_tax_rate': 0.0,
+    'city_taxable_amount': 17.94,
+    'tax_collectable': 1.58
+  }>,
+  'has_nexus': True,
+  'tax_source': 'destination',
+  'shipping': 7.99,
+  'taxable_amount': 17.94,
+  'rate': 0.088,
+  'freight_taxable': True,
+  'amount_to_collect': 1.58,
+  'order_total_amount': 37.93
+}>
+```
+
+> Response Scenario: No Nexus
+
+```json
+{
+  "tax": {
+    "amount_to_collect": 0,
+    "freight_taxable": false,
+    "has_nexus": false,
+    "rate": 0,
+    "tax_source": null,
+    "taxable_amount": 0
+  }
+}
+```
+
+```ruby
+#<Taxjar::Tax:0x00000a @attrs={
+  :taxable_amount => 0.0,
+  :amount_to_collect => 0.0,
+  :rate => 0.0,
+  :has_nexus => false,
+  :freight_taxable => false,
+  :tax_source => nil
+}>
+```
+
+```python
+<TaxJarTax {
+  'has_nexus': False,
+  'taxable_amount': 0.0,
+  'rate': 0.0,
+  'freight_taxable': False,
+  'amount_to_collect': 0.0
 }>
 ```
 
@@ -1907,13 +5247,15 @@ order = client.create_order({
   'amount': 16.5,
   'shipping': 1.5,
   'sales_tax': 0.95,
-  'line_items': [{
-    'quantity': 1,
-    'product_identifier': '12-34243-9',
-    'description': 'Fuzzy Widget',
-    'unit_price': 15,
-    'sales_tax': 0.95
-  }]
+  'line_items': [
+    {
+      'quantity': 1,
+      'product_identifier': '12-34243-9',
+      'description': 'Fuzzy Widget',
+      'unit_price': 15,
+      'sales_tax': 0.95
+    }
+  ]
 })
 ```
 
@@ -2221,14 +5563,16 @@ order = client.update_order('123', {
   'transaction_id': '123',
   'amount': 17,
   'shipping': 2,
-  'line_items': [{
-    'quantity': 1,
-    'product_identifier': '12-34243-0',
-    'description': 'Heavy Widget',
-    'unit_price': 15,
-    'discount': 0,
-    'sales_tax': 0.95
-  }]
+  'line_items': [
+    {
+      'quantity': 1,
+      'product_identifier': '12-34243-0',
+      'description': 'Heavy Widget',
+      'unit_price': 15,
+      'discount': 0,
+      'sales_tax': 0.95
+    }
+  ]
 })
 ```
 
@@ -2998,13 +6342,15 @@ refund = client.create_refund({
   'amount': 16.5,
   'shipping': 1.5,
   'sales_tax': 0.95,
-  'line_items': [{
-    'quantity': 1,
-    'product_identifier': '12-34243-9',
-    'description': 'Fuzzy Widget',
-    'unit_price': 15,
-    'sales_tax': 0.95
-  }]
+  'line_items': [
+    {
+      'quantity': 1,
+      'product_identifier': '12-34243-9',
+      'description': 'Fuzzy Widget',
+      'unit_price': 15,
+      'sales_tax': 0.95
+    }
+  ]
 })
 ```
 
@@ -3320,13 +6666,15 @@ refund = client.update_refund('321', {
   'amount': 17,
   'shipping': 2,
   'sales_tax': 0.95,
-  'line_items': [{
-    'quantity': 1,
-    'product_identifier': '12-34243-0',
-    'description': 'Heavy Widget',
-    'unit_price': 15,
-    'sales_tax': 0.95
-  }]
+  'line_items': [
+    {
+      'quantity': 1,
+      'product_identifier': '12-34243-0',
+      'description': 'Heavy Widget',
+      'unit_price': 15,
+      'sales_tax': 0.95
+    }
+  ]
 })
 ```
 
