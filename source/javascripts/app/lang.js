@@ -49,6 +49,9 @@ under the License.
       $(this).find('option:first').prop('selected', true);
     });
 
+    // Remove scenario descriptions
+    $('blockquote.request-description').remove();
+
     global.toc.calculateHeights();
 
     // scroll to the new location of the position
