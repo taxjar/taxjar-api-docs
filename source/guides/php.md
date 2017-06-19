@@ -34,8 +34,8 @@ Boom! You now have the TaxJar PHP client inside your project. You'll also notice
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-$taxjar = TaxJar\Client::withApiKey('YOUR API TOKEN'); // Useful for quick testing
-$taxjar = TaxJar\Client::withApiKey($_ENV['TAXJAR_API_KEY']); // Recommended
+$client = TaxJar\Client::withApiKey('YOUR API TOKEN'); // Useful for quick testing
+$client = TaxJar\Client::withApiKey($_ENV['TAXJAR_API_KEY']); // Recommended
 ```
 
 Using Composer's [autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading) functionality, we can automatically include the TaxJar client anywhere. If you're using a PHP framework such as [Laravel](https://laravel.com), `vendor/autoload.php` should already be included.
@@ -52,9 +52,9 @@ We recommend using a `.env` file with a library such as [PHP dotenv](https://git
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-$taxjar = TaxJar\Client::withApiKey($_ENV['TAXJAR_API_KEY']);
+$client = TaxJar\Client::withApiKey($_ENV['TAXJAR_API_KEY']);
 
-$tax = $taxjar->taxForOrder([
+$tax = $client->taxForOrder([
   'from_country' => 'US',
   'from_zip' => '07102',
   'from_state' => 'NJ',
@@ -117,7 +117,7 @@ If you just need the rate for a given location, use the [/v2/rates](/api/referen
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-$taxjar = TaxJar\Client::withApiKey($_ENV['TAXJAR_API_KEY']);
+$client = TaxJar\Client::withApiKey($_ENV['TAXJAR_API_KEY']);
 
 $order = $client->createOrder([
   'transaction_id' => '123',
@@ -183,7 +183,7 @@ A successful response will return back the imported order transaction. Nifty!
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-$taxjar = TaxJar\Client::withApiKey($_ENV['TAXJAR_API_KEY']);
+$client = TaxJar\Client::withApiKey($_ENV['TAXJAR_API_KEY']);
 
 try {
   // Invalid request
