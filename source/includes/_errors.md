@@ -83,6 +83,9 @@ try {
 } catch (TaxJar\Exception $e) {
   // 406 Not Acceptable – transaction_id is missing
   echo $e->getMessage();
+
+  // 406
+  echo $e->getStatusCode();
 }
 ```
 
