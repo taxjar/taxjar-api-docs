@@ -59,42 +59,44 @@
       });
     },
     switchScenario: function(e, dom) {
-        var currentLanguage = localStorage.getItem('language');
-        var selectedOption = $(e.target).find('option:selected').text();
-        var selectedRequestScenario = this.getNextHeader(dom.requestHeader, 'Request Scenario: ' + selectedOption);
-        var selectedResponseScenario = this.getNextHeader(dom.responseHeader, 'Response Scenario: ' + selectedOption);
-        var selectedDescription = this.getScenarioDescription(selectedRequestScenario);
+      var currentLanguage = localStorage.getItem('language');
+      var selectedOption = $(e.target).find('option:selected').text();
+      var selectedRequestScenario = this.getNextHeader(dom.requestHeader, 'Request Scenario: ' + selectedOption);
+      var selectedResponseScenario = this.getNextHeader(dom.responseHeader, 'Response Scenario: ' + selectedOption);
+      var selectedDescription = this.getScenarioDescription(selectedRequestScenario);
 
-        // Hide all request examples
-        dom.requestExamples.hide();
-        dom.responseExamples.hide();
+      // Hide all request examples
+      dom.requestExamples.hide();
+      dom.responseExamples.hide();
 
-        // Remove existing scenario descriptions
-        $('blockquote.request-description').remove();
+      // Remove existing scenario descriptions
+      $('blockquote.request-description').remove();
 
-        // Show scenario example in current language
-        if (selectedRequestScenario.length) {
-          selectedRequestScenario.nextUntil('blockquote').filter('.highlight.' + currentLanguage).show();
-          selectedResponseScenario.nextUntil('blockquote').filter('.highlight.' + currentLanguage).show();
+      // Show scenario example in current language
+      if (selectedRequestScenario.length) {
+        selectedRequestScenario.nextUntil('blockquote').filter('.highlight.' + currentLanguage).show();
+        selectedResponseScenario.nextUntil('blockquote').filter('.highlight.' + currentLanguage).show();
 
-          // Show JSON response examples for non-custom languages
-          if (this.customResponseLanguages.indexOf(currentLanguage) == -1) {
-            selectedResponseScenario.nextAll('.highlight.json:first').show();
-          }
-
-          // Show description of scenario if available
-          if (selectedDescription) {
-            selectedRequestScenario.before('<blockquote class="request-description">' + selectedDescription + '</blockquote>');
-          }
-        } else {
-          dom.requestHeader.nextAll('.highlight.' + currentLanguage + ':first').show();
-          dom.responseHeader.nextAll('.highlight.' + currentLanguage + ':first').show();
-
-          // Show JSON response examples for non-custom languages
-          if (this.customResponseLanguages.indexOf(currentLanguage) == -1) {
-            dom.responseHeader.nextAll('.highlight.json:first').show();
-          }
+        // Show JSON response examples for non-custom languages
+        if (this.customResponseLanguages.indexOf(currentLanguage) == -1) {
+          selectedResponseScenario.nextAll('.highlight.json:first').show();
         }
+
+        // Show description of scenario if available
+        if (selectedDescription) {
+          selectedRequestScenario.before('<blockquote class="request-description">' + selectedDescription + '</blockquote>');
+        }
+      } else {
+        dom.requestHeader.nextAll('.highlight.' + currentLanguage + ':first').show();
+        dom.responseHeader.nextAll('.highlight.' + currentLanguage + ':first').show();
+
+        // Show JSON response examples for non-custom languages
+        if (this.customResponseLanguages.indexOf(currentLanguage) == -1) {
+          dom.responseHeader.nextAll('.highlight.json:first').show();
+        }
+      }
+
+      global.toc.calculateHeights();
     }
   };
 

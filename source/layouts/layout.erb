@@ -137,6 +137,9 @@ under the License.
       <script>
         $(function() {
           setupLanguages(<%= language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>);
+          setTimeout(function() {
+            toc.calculateHeights();
+          }, 1);
         });
       </script>
     <% end %>
