@@ -10,6 +10,7 @@ language_tabs:
   - php: PHP
   - javascript: Node
   - csharp: .NET
+  - java: Java
 
 toc_footers:
   - <a href='https://www.taxjar.com/api/docs/'>v1 Documentation</a>
@@ -37,6 +38,7 @@ We currently provide API clients for the following languages:
 - <img class="client-icon" src="../images/clients/php-logo.png" width="16"> [PHP Sales Tax API](https://github.com/taxjar/taxjar-php) *via Composer as `taxjar/taxjar-php`*
 - <img class="client-icon" src="../images/clients/node-logo.png" width="16"> [Node Sales Tax API](https://github.com/taxjar/taxjar-node) *via NPM as `taxjar`*
 - <img class="client-icon" src="../images/clients/csharp-logo.svg" width="16"> [C# / .NET Sales Tax API](https://github.com/taxjar/taxjar.net) *via NuGet as `TaxJar`*
+- <img class="client-icon" src="../images/clients/java-logo.svg" width="16"> [Java Sales Tax API](https://github.com/taxjar/taxjar-java) *via Maven & Gradle as `com.taxjar:taxjar-java`*
 
 Before getting started, you'll need to [sign up for TaxJar](https://app.taxjar.com/api_sign_up/basic/) and get an API key. If you have any questions or would like to request support for a new client language, feel free to [contact us](mailto:support@taxjar.com).
 
@@ -66,6 +68,19 @@ $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 ```csharp
 using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+
+public class AuthenticationExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+    }
+
+}
 ```
 
 ```shell
@@ -187,6 +202,10 @@ $client->categories();
 client.Categories();
 ```
 
+```java
+client.categories();
+```
+
 ```shell
 GET https://api.taxjar.com/v2/categories
 ```
@@ -227,6 +246,26 @@ using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
 var categories = client.Categories();
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.categories.CategoryResponse;
+
+public class CategoryExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            CategoryResponse res = client.categories();
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -402,6 +441,10 @@ $client->ratesForLocation();
 client.RatesForLocation();
 ```
 
+```java
+client.ratesForLocation();
+```
+
 ```shell
 GET https://api.taxjar.com/v2/rates/:zip
 ```
@@ -518,6 +561,39 @@ var rates = client.RatesForLocation("05495-2086", new {
 });
 ```
 
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.rates.RateResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+public class RatesExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            RateResponse res = client.ratesForLocation("90404-3370");
+
+            Map<String, String> params = new HashMap<>();
+            params.put("city", "Santa Monica");
+            params.put("country", "US");
+            RateResponse res = client.ratesForLocation("90404", params);
+
+            Map<String, String> params = new HashMap<>();
+            params.put("street", "312 Hurricane Lane");
+            params.put("city", "Williston");
+            params.put("country", "US");
+            RateResponse res = client.ratesForLocation("05495-2086", params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
 ```shell
 # United States (ZIP+4)
 $ curl https://api.taxjar.com/v2/rates/90404-3370 \
@@ -590,6 +666,31 @@ var rates = client.RatesForLocation("V5K0A1", new {
 });
 ```
 
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.rates.RateResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+public class CanadaRatesExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, String> params = new HashMap<>();
+            params.put("city", "Vancouver");
+            params.put("country", "CA");
+            RateResponse res = client.ratesForLocation("V5K0A1", params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
 ```shell
 $ curl -G https://api.taxjar.com/v2/rates/V5K0A1 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -650,6 +751,31 @@ var rates = client.RatesForLocation("2060", new {
 });
 ```
 
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.rates.RateResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+public class AustraliaRatesExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, String> params = new HashMap<>();
+            params.put("city", "Sydney");
+            params.put("country", "AU");
+            RateResponse res = client.ratesForLocation("2060", params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
 ```shell
 $ curl -G https://api.taxjar.com/v2/rates/2060 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -708,6 +834,31 @@ var rates = client.RatesForLocation("00150", new {
   city = "Helsinki",
   country = "FI"
 });
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.rates.RateResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+public class EuropeanUnionRatesExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, String> params = new HashMap<>();
+            params.put("city", "Helsinki");
+            params.put("country", "FI");
+            RateResponse res = client.ratesForLocation("00150", params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -1024,6 +1175,10 @@ $client->taxForOrder();
 client.TaxForOrder();
 ```
 
+```java
+client.taxForOrder();
+```
+
 ```shell
 POST https://api.taxjar.com/v2/taxes
 ```
@@ -1225,6 +1380,65 @@ var rates = client.TaxForOrder(new {
     }
   }
 });
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.taxes.TaxResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class TaxExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("from_country", "US");
+            params.put("from_zip", "92093");
+            params.put("from_state", "CA");
+            params.put("from_city", "La Jolla");
+            params.put("from_street", "9500 Gilman Drive");
+            params.put("to_country", "US");
+            params.put("to_zip", "90002");
+            params.put("to_state", "CA");
+            params.put("to_city", "Los Angeles");
+            params.put("to_street", "1335 E 103rd St");
+            params.put("amount", 15);
+            params.put("shipping", 1.5);
+
+            List<Map> nexusAddresses = new ArrayList();
+            Map<String, Object> nexusAddress = new HashMap<>();
+            nexusAddress.put("country", "US");
+            nexusAddress.put("zip", "92093");
+            nexusAddress.put("state", "CA");
+            nexusAddress.put("city", "La Jolla");
+            nexusAddress.put("street", "9500 Gilman Drive");
+            nexusAddresses.add(nexusAddress);
+
+            List<Map> lineItems = new ArrayList();
+            Map<String, Object> lineItem = new HashMap<>();
+            lineItem.put("id", 1);
+            lineItem.put("quantity", 1);
+            lineItem.put("product_tax_code", "20010");
+            lineItem.put("unit_price", 15);
+            lineItem.put("discount", 0);
+            lineItems.add(lineItem);
+
+            params.put("nexus_addresses", nexusAddresses);
+            params.put("line_items", lineItems);
+
+            TaxResponse res = client.taxForOrder(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -1460,6 +1674,64 @@ var rates = client.TaxForOrder(new {
 });
 ```
 
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.taxes.TaxResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class CanadaTaxExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("from_country", "CA");
+            params.put("from_zip", "V6G 3E2");
+            params.put("from_state", "BC");
+            params.put("from_city", "Vancouver");
+            params.put("from_street", "845 Avison Way");
+            params.put("to_country", "CA");
+            params.put("to_zip", "M5V 2T6");
+            params.put("to_state", "ON");
+            params.put("to_city", "Toronto");
+            params.put("to_street", "301 Front St W");
+            params.put("amount", 15);
+            params.put("shipping", 1.5);
+
+            List<Map> nexusAddresses = new ArrayList();
+            Map<String, Object> nexusAddress = new HashMap<>();
+            nexusAddress.put("country", "US");
+            nexusAddress.put("zip", "V6G 3E2");
+            nexusAddress.put("state", "BC");
+            nexusAddress.put("city", "Vancouver");
+            nexusAddress.put("street", "845 Avison Way");
+            nexusAddresses.add(nexusAddress);
+
+            List<Map> lineItems = new ArrayList();
+            Map<String, Object> lineItem = new HashMap<>();
+            lineItem.put("id", 1);
+            lineItem.put("quantity", 1);
+            lineItem.put("unit_price", 15);
+            lineItem.put("discount", 0);
+            lineItems.add(lineItem);
+
+            params.put("nexus_addresses", nexusAddresses);
+            params.put("line_items", lineItems);
+
+            TaxResponse res = client.taxForOrder(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -1677,6 +1949,61 @@ var rates = client.TaxForOrder(new {
 });
 ```
 
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.taxes.TaxResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class AustraliaTaxExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("from_country", "AU");
+            params.put("from_zip", "NSW 2000");
+            params.put("from_city", "Sydney");
+            params.put("from_street", "483 George St");
+            params.put("to_country", "AU");
+            params.put("to_zip", "VIC 3002");
+            params.put("to_city", "Richmond");
+            params.put("to_street", "Brunton Ave");
+            params.put("amount", 15);
+            params.put("shipping", 1.5);
+
+            List<Map> nexusAddresses = new ArrayList();
+            Map<String, Object> nexusAddress = new HashMap<>();
+            nexusAddress.put("country", "AU");
+            nexusAddress.put("zip", "NSW 2000");
+            nexusAddress.put("city", "Sydney");
+            nexusAddress.put("street", "483 George St");
+            nexusAddresses.add(nexusAddress);
+
+            List<Map> lineItems = new ArrayList();
+            Map<String, Object> lineItem = new HashMap<>();
+            lineItem.put("id", 1);
+            lineItem.put("quantity", 1);
+            lineItem.put("unit_price", 15);
+            lineItem.put("discount", 0);
+            lineItems.add(lineItem);
+
+            params.put("nexus_addresses", nexusAddresses);
+            params.put("line_items", lineItems);
+
+            TaxResponse res = client.taxForOrder(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -1890,6 +2217,61 @@ var rates = client.TaxForOrder(new {
     }
   }
 });
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.taxes.TaxResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class EuropeanUnionTaxExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("from_country", "FR");
+            params.put("from_zip", "75008");
+            params.put("from_city", "Paris");
+            params.put("from_street", "55 Rue du Faubourg Saint-Honoré");
+            params.put("to_country", "FR");
+            params.put("to_zip", "13281");
+            params.put("to_city", "Marseille");
+            params.put("to_street", "Rue Fort du Sanctuaire");
+            params.put("amount", 15);
+            params.put("shipping", 1.5);
+
+            List<Map> nexusAddresses = new ArrayList();
+            Map<String, Object> nexusAddress = new HashMap<>();
+            nexusAddress.put("country", "FR");
+            nexusAddress.put("zip", "75008");
+            nexusAddress.put("city", "Paris");
+            nexusAddress.put("street", "55 Rue du Faubourg Saint-Honoré");
+            nexusAddresses.add(nexusAddress);
+
+            List<Map> lineItems = new ArrayList();
+            Map<String, Object> lineItem = new HashMap<>();
+            lineItem.put("id", 1);
+            lineItem.put("quantity", 1);
+            lineItem.put("unit_price", 15);
+            lineItem.put("discount", 0);
+            lineItems.add(lineItem);
+
+            params.put("nexus_addresses", nexusAddresses);
+            params.put("line_items", lineItems);
+
+            TaxResponse res = client.taxForOrder(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -2120,6 +2502,64 @@ var rates = client.TaxForOrder(new {
     }
   }
 });
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.taxes.TaxResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class OriginBasedSourcingTaxExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("from_country", "US");
+            params.put("from_zip", "78701");
+            params.put("from_state", "TX");
+            params.put("from_city", "Austin");
+            params.put("from_street", "1100 Congress Ave");
+            params.put("to_country", "US");
+            params.put("to_zip", "77058");
+            params.put("to_state", "TX");
+            params.put("to_city", "Houston");
+            params.put("to_street", "1601 E NASA Pkwy");
+            params.put("amount", 15);
+            params.put("shipping", 1.5);
+
+            List<Map> nexusAddresses = new ArrayList();
+            Map<String, Object> nexusAddress = new HashMap<>();
+            nexusAddress.put("country", "US");
+            nexusAddress.put("zip", "78701");
+            nexusAddress.put("state", "TX");
+            nexusAddress.put("city", "Austin");
+            nexusAddress.put("street", "1100 Congress Ave");
+            nexusAddresses.add(nexusAddress);
+
+            List<Map> lineItems = new ArrayList();
+            Map<String, Object> lineItem = new HashMap<>();
+            lineItem.put("id", 1);
+            lineItem.put("quantity", 1);
+            lineItem.put("unit_price", 15);
+            lineItem.put("discount", 0);
+            lineItems.add(lineItem);
+
+            params.put("nexus_addresses", nexusAddresses);
+            params.put("line_items", lineItems);
+
+            TaxResponse res = client.taxForOrder(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -2355,6 +2795,64 @@ var rates = client.TaxForOrder(new {
 });
 ```
 
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.taxes.TaxResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class ShippingExemptionTaxExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("from_country", "US");
+            params.put("from_zip", "02110");
+            params.put("from_state", "MA");
+            params.put("from_city", "Boston");
+            params.put("from_street", "1 Central Wharf");
+            params.put("to_country", "US");
+            params.put("to_zip", "01608");
+            params.put("to_state", "MA");
+            params.put("to_city", "Worcester");
+            params.put("to_street", "455 Main St");
+            params.put("amount", 15);
+            params.put("shipping", 1.5);
+
+            List<Map> nexusAddresses = new ArrayList();
+            Map<String, Object> nexusAddress = new HashMap<>();
+            nexusAddress.put("country", "US");
+            nexusAddress.put("zip", "02110");
+            nexusAddress.put("state", "MA");
+            nexusAddress.put("city", "Boston");
+            nexusAddress.put("street", "1 Central Wharf");
+            nexusAddresses.add(nexusAddress);
+
+            List<Map> lineItems = new ArrayList();
+            Map<String, Object> lineItem = new HashMap<>();
+            lineItem.put("id", 1);
+            lineItem.put("quantity", 1);
+            lineItem.put("unit_price", 15);
+            lineItem.put("discount", 0);
+            lineItems.add(lineItem);
+
+            params.put("nexus_addresses", nexusAddresses);
+            params.put("line_items", lineItems);
+
+            TaxResponse res = client.taxForOrder(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -2548,6 +3046,56 @@ var rates = client.TaxForOrder(new {
 });
 ```
 
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.taxes.TaxResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class ClothingExemptionTaxExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("from_country", "US");
+            params.put("from_zip", "12054");
+            params.put("from_state", "NY");
+            params.put("from_city", "Delmar");
+            params.put("to_country", "US");
+            params.put("to_zip", "10541");
+            params.put("to_state", "NY");
+            params.put("to_city", "Mahopac");
+            params.put("amount", 29.94);
+            params.put("shipping", 7.99);
+
+            List<Map> lineItems = new ArrayList();
+            Map<String, Object> lineItem = new HashMap<>();
+            lineItem.put("quantity", 1);
+            lineItem.put("unit_price", 19.99);
+            lineItem.put("product_tax_code", "20010");
+            lineItems.add(lineItem);
+            Map<String, Object> lineItem2 = new HashMap<>();
+            lineItem.put("quantity", 1);
+            lineItem.put("unit_price", 9.95);
+            lineItem.put("product_tax_code", "20010");
+            lineItems.add(lineItem2);
+
+            params.put("line_items", lineItems);
+
+            TaxResponse res = client.taxForOrder(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -2733,6 +3281,56 @@ var rates = client.TaxForOrder(new {
 });
 ```
 
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.taxes.TaxResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class FoodGroceryExemptionTaxExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("from_country", "US");
+            params.put("from_zip", "94133");
+            params.put("from_state", "CA");
+            params.put("from_city", "San Francisco");
+            params.put("to_country", "US");
+            params.put("to_zip", "90071");
+            params.put("to_state", "CA");
+            params.put("to_city", "Los Angeles");
+            params.put("amount", 29.94);
+            params.put("shipping", 7.99);
+
+            List<Map> lineItems = new ArrayList();
+            Map<String, Object> lineItem = new HashMap<>();
+            lineItem.put("quantity", 1);
+            lineItem.put("unit_price", 19.99);
+            lineItem.put("product_tax_code", "20010");
+            lineItems.add(lineItem);
+            Map<String, Object> lineItem2 = new HashMap<>();
+            lineItem.put("quantity", 1);
+            lineItem.put("unit_price", 9.95);
+            lineItem.put("product_tax_code", "20010");
+            lineItems.add(lineItem2);
+
+            params.put("line_items", lineItems);
+
+            TaxResponse res = client.taxForOrder(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -2913,6 +3511,55 @@ var rates = client.TaxForOrder(new {
 });
 ```
 
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.taxes.TaxResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class OtherExemptionTaxExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("from_country", "US");
+            params.put("from_zip", "98101");
+            params.put("from_state", "WA");
+            params.put("from_city", "Seattle");
+            params.put("to_country", "US");
+            params.put("to_zip", "99201");
+            params.put("to_state", "WA");
+            params.put("to_city", "Spokane");
+            params.put("amount", 29.94);
+            params.put("shipping", 7.99);
+
+            List<Map> lineItems = new ArrayList();
+            Map<String, Object> lineItem = new HashMap<>();
+            lineItem.put("quantity", 1);
+            lineItem.put("unit_price", 19.99);
+            lineItem.put("product_tax_code", "99999");
+            lineItems.add(lineItem);
+            Map<String, Object> lineItem2 = new HashMap<>();
+            lineItem.put("quantity", 1);
+            lineItem.put("unit_price", 9.95);
+            lineItems.add(lineItem2);
+
+            params.put("line_items", lineItems);
+
+            TaxResponse res = client.taxForOrder(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/taxes \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -3035,6 +3682,42 @@ var rates = client.TaxForOrder(new {
   amount = 15,
   shipping = 1.5
 });
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.taxes.TaxResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class NoNexusTaxExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("from_country", "US");
+            params.put("from_zip", "33018");
+            params.put("from_state", "FL");
+            params.put("from_city", "Miami");
+            params.put("to_country", "US");
+            params.put("to_zip", "97305");
+            params.put("to_state", "OR");
+            params.put("to_city", "Portland");
+            params.put("amount", 15);
+            params.put("shipping", 1.5);
+
+            TaxResponse res = client.taxForOrder(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -4894,6 +5577,10 @@ $client->listOrders();
 client.ListOrders();
 ```
 
+```java
+client.listOrders();
+```
+
 ```shell
 GET https://api.taxjar.com/v2/transactions/orders
 ```
@@ -4949,6 +5636,31 @@ var orders = client.ListOrders(new {
     from_transaction_date = "2015/05/01",
     to_transaction_date = "2015/05/31"
 });
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.OrdersResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ListOrdersExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, String> params = new HashMap<>();
+            params.put("from_transaction_date", "2015/05/01");
+            params.put("to_transaction_date", "2015/05/31");
+            OrdersResponse res = client.listOrders(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -5019,6 +5731,10 @@ $client->showOrder();
 client.ShowOrder();
 ```
 
+```java
+client.showOrder();
+```
+
 ```shell
 GET https://api.taxjar.com/v2/transactions/orders/:transaction_id
 ```
@@ -5059,6 +5775,26 @@ using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
 var order = client.ShowOrder("123");
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.OrderResponse;
+
+public class ShowOrderExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            OrderResponse res = client.showOrder("123");
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -5197,6 +5933,10 @@ $client->createOrder();
 
 ```csharp
 client.CreateOrder();
+```
+
+```java
+client.createOrder();
 ```
 
 ```shell
@@ -5338,6 +6078,52 @@ var order = client.CreateOrder(new {
     }
   }
 });
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.OrderResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class CreateOrderExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("transaction_id", "123");
+            params.put("transaction_date", "2015/05/04");
+            params.put("to_country", "US");
+            params.put("to_zip", "90002");
+            params.put("to_city", "Los Angeles");
+            params.put("to_street", "123 Palm Grove Ln");
+            params.put("amount", 16.5);
+            params.put("shipping", 1.5);
+            params.put("sales_tax", 0.95);
+
+            List<Map> lineItems = new ArrayList();
+            Map<String, Object> lineItem = new HashMap<>();
+            lineItem.put("quantity", 1);
+            lineItem.put("product_identifier", "12-34243-0");
+            lineItem.put("description", "Heavy Widget");
+            lineItem.put("unit_price", 15);
+            lineItem.put("sales_tax", 0.95);
+            lineItems.add(lineItem);
+
+            params.put("line_items", lineItems);
+
+            OrderResponse res = client.createOrder(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -5528,6 +6314,10 @@ $client->updateOrder();
 client.UpdateOrder();
 ```
 
+```java
+client.updateOrder();
+```
+
 ```shell
 PUT https://api.taxjar.com/v2/transactions/orders/:transaction_id
 ```
@@ -5639,6 +6429,47 @@ var order = client.UpdateOrder(new
     }
   }
 });
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.OrderResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class UpdateOrderExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("transaction_id", "123");
+            params.put("amount", 17);
+            params.put("shipping", 2);
+
+            List<Map> lineItems = new ArrayList();
+            Map<String, Object> lineItem = new HashMap<>();
+            lineItem.put("quantity", 1);
+            lineItem.put("product_identifier", "12-34243-0");
+            lineItem.put("description", "Heavy Widget");
+            lineItem.put("unit_price", 15);
+            lineItem.put("discount", 0);
+            lineItem.put("sales_tax", 0.95);
+            lineItems.add(lineItem);
+
+            params.put("line_items", lineItems);
+
+            OrderResponse res = client.updateOrder("123", params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -5823,6 +6654,10 @@ $client->deleteOrder();
 client.DeleteOrder();
 ```
 
+```java
+client.deleteOrder();
+```
+
 ```shell
 DELETE https://api.taxjar.com/v2/transactions/orders/:transaction_id
 ```
@@ -5863,6 +6698,26 @@ using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
 var order = client.DeleteOrder("123");
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.OrderResponse;
+
+public class DeleteOrderExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            OrderResponse res = client.deleteOrder("123");
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -5980,6 +6835,10 @@ $client->listRefunds();
 client.ListRefunds();
 ```
 
+```java
+client.listRefunds();
+```
+
 ```shell
 GET https://api.taxjar.com/v2/transactions/refunds
 ```
@@ -6036,6 +6895,31 @@ var refunds = client.ListRefunds(new
   from_transaction_date = "2015/05/01",
   to_transaction_date = "2015/05/31"
 });
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.RefundsResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ListRefundsExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, String> params = new HashMap<>();
+            params.put("from_transaction_date", "2015/05/01");
+            params.put("to_transaction_date", "2015/05/31");
+            RefundsResponse res = client.listRefunds(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -6106,6 +6990,10 @@ $client->showRefund();
 client.ShowRefund();
 ```
 
+```java
+client.showRefund();
+```
+
 ```shell
 GET https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 ```
@@ -6146,6 +7034,26 @@ using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
 var refund = client.ShowRefund("321");
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.RefundResponse;
+
+public class ShowRefundExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            RefundResponse res = client.showRefund("321");
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -6285,6 +7193,10 @@ $client->createRefund();
 
 ```csharp
 client.CreateRefund();
+```
+
+```java
+client.createRefund();
 ```
 
 ```shell
@@ -6437,6 +7349,52 @@ var refund = client.CreateRefund(new
     }
   }
 });
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.RefundResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class CreateRefundExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("transaction_id", "321");
+            params.put("transaction_date", "2015/05/04");
+            params.put("to_country", "US");
+            params.put("to_zip", "90002");
+            params.put("to_city", "Los Angeles");
+            params.put("to_street", "123 Palm Grove Ln");
+            params.put("amount", 16.5);
+            params.put("shipping", 1.5);
+            params.put("sales_tax", 0.95);
+
+            List<Map> lineItems = new ArrayList();
+            Map<String, Object> lineItem = new HashMap<>();
+            lineItem.put("quantity", 1);
+            lineItem.put("product_identifier", "12-34243-0");
+            lineItem.put("description", "Heavy Widget");
+            lineItem.put("unit_price", 15);
+            lineItem.put("sales_tax", 0.95);
+            lineItems.add(lineItem);
+
+            params.put("line_items", lineItems);
+
+            RefundResponse res = client.createRefund(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -6630,6 +7588,10 @@ $client->updateRefund();
 client.UpdateRefund();
 ```
 
+```java
+client.updateRefund();
+```
+
 ```shell
 PUT https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 ```
@@ -6739,6 +7701,47 @@ var refund = client.UpdateRefund(new
     }
   }
 });
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.RefundResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class UpdateRefundExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("transaction_id", "321");
+            params.put("amount", 17);
+            params.put("shipping", 2);
+
+            List<Map> lineItems = new ArrayList();
+            Map<String, Object> lineItem = new HashMap<>();
+            lineItem.put("quantity", 1);
+            lineItem.put("product_identifier", "12-34243-0");
+            lineItem.put("description", "Heavy Widget");
+            lineItem.put("unit_price", 15);
+            lineItem.put("discount", 0);
+            lineItem.put("sales_tax", 0.95);
+            lineItems.add(lineItem);
+
+            params.put("line_items", lineItems);
+
+            RefundResponse res = client.updateRefund("321", params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -6926,6 +7929,10 @@ $client->deleteRefund();
 client.DeleteRefund();
 ```
 
+```java
+client.deleteRefund();
+```
+
 ```shell
 DELETE https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 ```
@@ -6966,6 +7973,26 @@ using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
 var refund = client.DeleteRefund("321");
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.RefundResponse;
+
+public class DeleteOrderExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            OrderResponse res = client.deleteRefund("321");
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -7085,6 +8112,10 @@ $client->nexusRegions();
 client.NexusRegions();
 ```
 
+```java
+client.nexusRegions();
+```
+
 ```shell
 GET https://api.taxjar.com/v2/nexus/regions
 ```
@@ -7125,6 +8156,26 @@ using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
 var nexusRegions = client.NexusRegions();
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.nexus.RegionResponse;
+
+public class NexusRegionsExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            RegionResponse res = client.nexusRegions();
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -7252,6 +8303,10 @@ $client->validate();
 client.Validate();
 ```
 
+```java
+client.validate();
+```
+
 ```shell
 GET https://api.taxjar.com/v2/validation
 ```
@@ -7302,6 +8357,31 @@ var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 var validation = client.Validate(new {
   vat = "FR40303265045"
 });
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.validations.ValidationResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ValidateExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, String> params = new HashMap<>();
+            params.put("vat", "FR40303265045");
+
+            ValidationResponse res = client.validate(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
@@ -7413,6 +8493,10 @@ $client->summaryRates();
 client.SummaryRates();
 ```
 
+```java
+client.summaryRates();
+```
+
 ```shell
 GET https://api.taxjar.com/v2/summary_rates
 ```
@@ -7453,6 +8537,26 @@ using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
 var summaryRates = client.SummaryRates();
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.summarized_rates.SummaryRateResponse;
+
+public class SummarizedRatesExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            SummaryRateResponse res = client.summaryRates();
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
 ```
 
 ```shell
