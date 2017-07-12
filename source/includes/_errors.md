@@ -115,6 +115,40 @@ catch(TaxjarException e)
 }
 ```
 
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.OrderResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ErrorHandlingExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("transaction_date", "2015/05/04");
+            params.put("to_country", "US");
+            params.put("to_zip", "90002");
+            params.put("to_state", "CA");
+            params.put("amount", 17.45);
+            params.put("shipping", 1.5);
+            params.put("sales_tax", 0.95);
+
+            OrderResponse res = client.createOrder(params);
+        } catch (TaxjarException e) {
+            // 406 Not Acceptable – transaction_id is missing
+            e.getMessage();
+            e.getStatusCode();
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
 The TaxJar API uses the following error codes:
 
 Error Code | Meaning
