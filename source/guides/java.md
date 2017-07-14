@@ -238,7 +238,7 @@ import java.util.Map;
 public class ErrorHandlingExample {
 
     public static void main(String[] args) {
-        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+        Taxjar client = new Taxjar(System.getenv("TAXJAR_API_KEY"));
 
         try {
             Map<String, Object> params = new HashMap<>();
