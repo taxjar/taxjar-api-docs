@@ -5707,6 +5707,10 @@ to_transaction_date | date | optional | End date of a range for which the transa
 
 *Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates.*
 
+#### Response
+
+Returns an `orders` JSON object with an array of order IDs created through the API.
+
 ### <span class="badge badge--get">get</span> Show an order transaction
 
 > Definition
@@ -5910,6 +5914,39 @@ GET https://api.taxjar.com/v2/transactions/orders/:transaction_id
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given order transaction.
+
+#### Response
+
+Returns an `order` JSON object with details of a given order transaction created through the API.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+transaction_id | string | Unique identifier of the given order transaction.
+user_id | integer | Unique identifier of the user who created the order transaction.
+transaction_date | datetime | The date/time the transaction was originally recorded.
+from_country | string | Two-letter ISO country code of the country where the order shipped from.
+from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
+from_state | string | Two-letter ISO state code where the order shipped from.
+from_city | string | City where the order shipped from.
+from_street | string | Street address where the order shipped from.
+to_country | string | Two-letter ISO country code of the country where the order shipped to.
+to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
+to_state | string | Two-letter ISO state code where the order shipped to.
+to_city | string | City where the order shipped to.
+to_street | string | Street address where the order shipped to.
+amount | long | Total amount of the order with shipping, **excluding sales tax**.
+shipping | long | Total amount of shipping for the order.
+sales_tax | long | Total amount of sales tax collected for the order.
+line_items[][id] | string | Unique identifier of the given line item.
+line_items[][quantity] | integer | Quantity for the item.
+line_items[][product_identifier] | string | Product identifier for the item.
+line_items[][description] | string  | Description of the line item (up to 255 characters).
+line_items[][product_tax_code] | string | Product tax code for the item.
+line_items[][unit_price] | long | Unit price for the item in dollars.
+line_items[][discount] | long | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | long | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--post">post</span> Create an order transaction
 
@@ -6290,6 +6327,39 @@ line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit)
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
+#### Response
+
+Returns an `order` JSON object with details of the new order transaction.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+transaction_id | string | Unique identifier of the given order transaction.
+user_id | integer | Unique identifier of the user who created the order transaction.
+transaction_date | datetime | The date/time the transaction was originally recorded.
+from_country | string | Two-letter ISO country code of the country where the order shipped from.
+from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
+from_state | string | Two-letter ISO state code where the order shipped from.
+from_city | string | City where the order shipped from.
+from_street | string | Street address where the order shipped from.
+to_country | string | Two-letter ISO country code of the country where the order shipped to.
+to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
+to_state | string | Two-letter ISO state code where the order shipped to.
+to_city | string | City where the order shipped to.
+to_street | string | Street address where the order shipped to.
+amount | long | Total amount of the order with shipping, **excluding sales tax**.
+shipping | long | Total amount of shipping for the order.
+sales_tax | long | Total amount of sales tax collected for the order.
+line_items[][id] | string | Unique identifier of the given line item.
+line_items[][quantity] | integer | Quantity for the item.
+line_items[][product_identifier] | string | Product identifier for the item.
+line_items[][description] | string  | Description of the line item (up to 255 characters).
+line_items[][product_tax_code] | string | Product tax code for the item.
+line_items[][unit_price] | long | Unit price for the item in dollars.
+line_items[][discount] | long | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | long | Total sales tax collected (non-unit) for the item in dollars.
+
 ### <span class="badge badge--put">put</span> Update an order transaction
 
 > Definition
@@ -6630,6 +6700,39 @@ line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit)
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
+#### Response
+
+Returns an `order` JSON object with details of the updated order transaction.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+transaction_id | string | Unique identifier of the given order transaction.
+user_id | integer | Unique identifier of the user who created the order transaction.
+transaction_date | datetime | The date/time the transaction was originally recorded.
+from_country | string | Two-letter ISO country code of the country where the order shipped from.
+from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
+from_state | string | Two-letter ISO state code where the order shipped from.
+from_city | string | City where the order shipped from.
+from_street | string | Street address where the order shipped from.
+to_country | string | Two-letter ISO country code of the country where the order shipped to.
+to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
+to_state | string | Two-letter ISO state code where the order shipped to.
+to_city | string | City where the order shipped to.
+to_street | string | Street address where the order shipped to.
+amount | long | Total amount of the order with shipping, **excluding sales tax**.
+shipping | long | Total amount of shipping for the order.
+sales_tax | long | Total amount of sales tax collected for the order.
+line_items[][id] | string | Unique identifier of the given line item.
+line_items[][quantity] | integer | Quantity for the item.
+line_items[][product_identifier] | string | Product identifier for the item.
+line_items[][description] | string  | Description of the line item (up to 255 characters).
+line_items[][product_tax_code] | string | Product tax code for the item.
+line_items[][unit_price] | long | Unit price for the item in dollars.
+line_items[][discount] | long | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | long | Total sales tax collected (non-unit) for the item in dollars.
+
 ### <span class="badge badge--delete">delete</span> Delete an order transaction
 
 > Definition
@@ -6811,6 +6914,17 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given order transaction.
 
+#### Response
+
+Returns an `order` JSON object with the deleted order transaction identifiers.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+transaction_id | string | Unique identifier of the given order transaction.
+user_id | integer | Unique identifier of the user who created the order transaction.
+
 ### <span class="badge badge--get">get</span> List refund transactions
 
 > Definition
@@ -6965,6 +7079,10 @@ to_transaction_date | date | optional | The end date of a range for which the tr
 #### Notes
 
 *Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates.*
+
+#### Response
+
+Returns a `refunds` JSON object with an array of refund IDs created through the API.
 
 ### <span class="badge badge--get">get</span> Show a refund transaction
 
@@ -7170,6 +7288,39 @@ GET https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given refund transaction.
+
+#### Response
+
+Returns a `refund` JSON object with details of a given refund transaction created through the API.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+transaction_id | string | Unique identifier of the given refund transaction.
+user_id | integer | Unique identifier of the user who created the refund transaction.
+transaction_date | datetime | The date/time the transaction was originally recorded.
+from_country | string | Two-letter ISO country code of the country where the order shipped from.
+from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
+from_state | string | Two-letter ISO state code where the order shipped from.
+from_city | string | City where the order shipped from.
+from_street | string | Street address where the order shipped from.
+to_country | string | Two-letter ISO country code of the country where the order shipped to.
+to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
+to_state | string | Two-letter ISO state code where the order shipped to.
+to_city | string | City where the order shipped to.
+to_street | string | Street address where the order shipped to.
+amount | long | Total amount of the refunded order with shipping, **excluding sales tax**.
+shipping | long | Total amount of shipping for the refunded order.
+sales_tax | long | Total amount of sales tax collected for the refunded order.
+line_items[][id] | string | Unique identifier of the given line item.
+line_items[][quantity] | integer | Quantity for the item.
+line_items[][product_identifier] | string | Product identifier for the item.
+line_items[][description] | string  | Description of the line item (up to 255 characters).
+line_items[][product_tax_code] | string | Product tax code for the item.
+line_items[][unit_price] | long | Unit price for the item in dollars.
+line_items[][discount] | long | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | long | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--post">post</span> Create a refund transaction
 
@@ -7564,6 +7715,39 @@ line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit)
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
+#### Response
+
+Returns a `refund` JSON object with details of the new refund transaction.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+transaction_id | string | Unique identifier of the given refund transaction.
+user_id | integer | Unique identifier of the user who created the refund transaction.
+transaction_date | datetime | The date/time the transaction was originally recorded.
+from_country | string | Two-letter ISO country code of the country where the order shipped from.
+from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
+from_state | string | Two-letter ISO state code where the order shipped from.
+from_city | string | City where the order shipped from.
+from_street | string | Street address where the order shipped from.
+to_country | string | Two-letter ISO country code of the country where the order shipped to.
+to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
+to_state | string | Two-letter ISO state code where the order shipped to.
+to_city | string | City where the order shipped to.
+to_street | string | Street address where the order shipped to.
+amount | long | Total amount of the refunded order with shipping, **excluding sales tax**.
+shipping | long | Total amount of shipping for the refunded order.
+sales_tax | long | Total amount of sales tax collected for the refunded order.
+line_items[][id] | string | Unique identifier of the given line item.
+line_items[][quantity] | integer | Quantity for the item.
+line_items[][product_identifier] | string | Product identifier for the item.
+line_items[][description] | string  | Description of the line item (up to 255 characters).
+line_items[][product_tax_code] | string | Product tax code for the item.
+line_items[][unit_price] | long | Unit price for the item in dollars.
+line_items[][discount] | long | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | long | Total sales tax collected (non-unit) for the item in dollars.
+
 ### <span class="badge badge--put">put</span> Update a refund transaction
 
 > Definition
@@ -7905,6 +8089,39 @@ line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit)
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
+#### Response
+
+Returns a `refund` JSON object with details of the updated refund transaction.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+transaction_id | string | Unique identifier of the given refund transaction.
+user_id | integer | Unique identifier of the user who created the refund transaction.
+transaction_date | datetime | The date/time the transaction was originally recorded.
+from_country | string | Two-letter ISO country code of the country where the order shipped from.
+from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
+from_state | string | Two-letter ISO state code where the order shipped from.
+from_city | string | City where the order shipped from.
+from_street | string | Street address where the order shipped from.
+to_country | string | Two-letter ISO country code of the country where the order shipped to.
+to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
+to_state | string | Two-letter ISO state code where the order shipped to.
+to_city | string | City where the order shipped to.
+to_street | string | Street address where the order shipped to.
+amount | long | Total amount of the refunded order with shipping, **excluding sales tax**.
+shipping | long | Total amount of shipping for the refunded order.
+sales_tax | long | Total amount of sales tax collected for the refunded order.
+line_items[][id] | string | Unique identifier of the given line item.
+line_items[][quantity] | integer | Quantity for the item.
+line_items[][product_identifier] | string | Product identifier for the item.
+line_items[][description] | string  | Description of the line item (up to 255 characters).
+line_items[][product_tax_code] | string | Product tax code for the item.
+line_items[][unit_price] | long | Unit price for the item in dollars.
+line_items[][discount] | long | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | long | Total sales tax collected (non-unit) for the item in dollars.
+
 ### <span class="badge badge--delete">delete</span> Delete a refund transaction
 
 > Definition
@@ -8085,6 +8302,17 @@ DELETE https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given refund transaction.
+
+#### Response
+
+Returns a `refund` JSON object with the deleted refund transaction identifiers.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+transaction_id | string | Unique identifier of the given refund transaction.
+user_id | integer | Unique identifier of the user who created the refund transaction.
 
 ## Nexus
 
