@@ -390,7 +390,7 @@ GET https://api.taxjar.com/v2/categories
 
 #### Response
 
-Returns a JSON object with an array of product categories and corresponding tax codes. The following categories are currently supported:
+Returns a `categories` JSON object with an array of product categories and corresponding tax codes. The following categories are currently supported:
 
 | Category                  | Code  |                                                                                                                                                              Countries                                                                                                                                                              | Description                                                                                                                |
 |:--------------------------|:------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------|
@@ -1096,7 +1096,7 @@ street | string | optional | Street address for given location. <span class="usa
 
 #### Response
 
-Returns a JSON object with rates for a given location broken down by state, county, city, and district. For international requests, returns standard and reduced rates.
+Returns a `rate` JSON object with rates for a given location broken down by state, county, city, and district. For international requests, returns standard and reduced rates.
 
 <h4 id="us-rate-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; United States Attributes</h4>
 
@@ -5483,7 +5483,7 @@ line_items[][discount] | long | optional | Total discount (non-unit) for the ite
 
 #### Response
 
-Returns a JSON object with sales tax for a given order. If available, returns a breakdown of rates by jurisdiction.
+Returns a `tax` JSON object with sales tax for a given order. If available, returns a breakdown of rates by jurisdiction at the order, shipping, and line item level.
 
 #### Attributes
 
@@ -8264,7 +8264,7 @@ GET https://api.taxjar.com/v2/nexus/regions
 
 #### Response
 
-Returns a JSON object with an array of nexus regions sorted alphabetically.
+Returns a `regions` JSON object with an array of nexus regions sorted alphabetically.
 
 #### Attributes
 
@@ -8454,7 +8454,7 @@ vat | string | required | VAT identification number to validate. Country code sh
 
 #### Response
 
-Returns a JSON object declaring if the VAT number is valid and exists along with data returned by VIES.
+Returns a `validation` JSON object declaring if the VAT number is valid and exists along with data returned by VIES.
 
 #### Attributes
 
@@ -8716,7 +8716,7 @@ GET https://api.taxjar.com/v2/summary_rates
 
 #### Response
 
-Returns a JSON object with an array of summarized rates for each region/state.
+Returns a `summary_rates` JSON object with an array of summarized rates for each region/state.
 
 #### Attributes
 
