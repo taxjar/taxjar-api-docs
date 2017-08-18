@@ -461,6 +461,7 @@ rates = client.rates_for_location('90404-3370')
 # United States (ZIP w/ Optional Params)
 rates = client.rates_for_location('90404', {
   :city => 'Santa Monica',
+  :state => 'CA',
   :country => 'US'
 })
 
@@ -468,6 +469,7 @@ rates = client.rates_for_location('90404', {
 rates = client.rates_for_location('05495-2086', {
   :street => '312 Hurricane Lane',
   :city => 'Williston',
+  :state => 'VT',
   :country => 'US'
 })
 ```
@@ -482,6 +484,7 @@ rates = client.rates_for_location('90404-3370')
 # United States (ZIP w/ Optional Params)
 rates = client.rates_for_location('90404', {
   'city': 'Santa Monica',
+  'state': 'CA',
   'country': 'US'
 })
 
@@ -489,6 +492,7 @@ rates = client.rates_for_location('90404', {
 rates = client.rates_for_location('05495-2086', {
   'street': '312 Hurricane Lane',
   'city': 'Williston',
+  'state': 'VT',
   'country': 'US'
 })
 ```
@@ -504,6 +508,7 @@ client.ratesForLocation('90404-3370').then(function(res) {
 // United States (ZIP w/ Optional Params)
 client.ratesForLocation('90404', {
   city: 'Santa Monica',
+  state: 'CA',
   country: 'US'
 }).then(function(res) {
   res.rate; // Rate object
@@ -513,6 +518,7 @@ client.ratesForLocation('90404', {
 client.ratesForLocation('05495-2086', {
   street: '312 Hurricane Lane',
   city: 'Williston',
+  state: 'VT',
   country: 'US'
 }).then(function(res) {
   res.rate; // Rate object
@@ -529,6 +535,7 @@ $rates = $client->ratesForLocation('90404-3370');
 // United States (ZIP w/ Optional Params)
 $rates = $client->ratesForLocation('90404', [
   'city' => 'Santa Monica',
+  'state' => 'CA',
   'country' => 'US'
 ]);
 
@@ -536,6 +543,7 @@ $rates = $client->ratesForLocation('90404', [
 $rates = $client->ratesForLocation('05495-2086', [
   'street' => '312 Hurricane Lane',
   'city' => 'Williston',
+  'state' => 'VT',
   'country' => 'US'
 ]);
 ```
@@ -550,6 +558,7 @@ var rates = client.RatesForLocation("90404-3370");
 // United States (ZIP w/ Optional Params)
 var rates = client.RatesForLocation("90404", new {
   city = "Santa Monica",
+  state = "CA",
   country = "US"
 });
 
@@ -557,6 +566,7 @@ var rates = client.RatesForLocation("90404", new {
 var rates = client.RatesForLocation("05495-2086", new {
   street = "312 Hurricane Lane",
   city = "Williston",
+  state = "VT",
   country = "US"
 });
 ```
@@ -578,12 +588,14 @@ public class RatesExample {
 
             Map<String, String> params = new HashMap<>();
             params.put("city", "Santa Monica");
+            params.put("state", "CA");
             params.put("country", "US");
             RateResponse res = client.ratesForLocation("90404", params);
 
             Map<String, String> params = new HashMap<>();
             params.put("street", "312 Hurricane Lane");
             params.put("city", "Williston");
+            params.put("state", "VT");
             params.put("country", "US");
             RateResponse res = client.ratesForLocation("05495-2086", params);
         } catch (TaxjarException e) {
@@ -603,6 +615,7 @@ $ curl https://api.taxjar.com/v2/rates/90404-3370 \
 $ curl -G https://api.taxjar.com/v2/rates/90404 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d city="Santa%20Monica" \
+  -d state="CA" \
   -d country="US"
 
 # United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
@@ -610,6 +623,7 @@ $ curl -G https://api.taxjar.com/v2/rates/05495-2086 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d street="312 Hurricane Lane" \
   -d city="Williston" \
+  -d state="VT" \
   -d country="US"
 ```
 
@@ -621,6 +635,7 @@ client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 rates = client.rates_for_location('V5K0A1', {
   :city => 'Vancouver',
+  :state => 'BC',
   :country => 'CA'
 })
 ```
@@ -631,6 +646,7 @@ client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 
 rates = client.rates_for_location('V5K0A1', {
   'city': 'Vancouver',
+  'state': 'BC',
   'country': 'CA'
 })
 ```
@@ -640,6 +656,7 @@ var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
 
 client.ratesForLocation('V5K0A1', {
   city: 'Vancouver',
+  state: 'BC',
   country: 'CA'
 }).then(function(res) {
   res.rate; // Rate object
@@ -652,6 +669,7 @@ $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
 $rates = $client->ratesForLocation('V5K0A1', [
   'city' => 'Vancouver',
+  'state' => 'BC',
   'country' => 'CA'
 ]);
 ```
@@ -662,6 +680,7 @@ var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
 var rates = client.RatesForLocation("V5K0A1", new {
   city = "Vancouver",
+  state = "BC",
   country = "CA"
 });
 ```
@@ -681,6 +700,7 @@ public class CanadaRatesExample {
         try {
             Map<String, String> params = new HashMap<>();
             params.put("city", "Vancouver");
+            params.put("state", "BC");
             params.put("country", "CA");
             RateResponse res = client.ratesForLocation("V5K0A1", params);
         } catch (TaxjarException e) {
@@ -695,6 +715,7 @@ public class CanadaRatesExample {
 $ curl -G https://api.taxjar.com/v2/rates/V5K0A1 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -d city="Vancouver" \
+  -d state="BC" \
   -d country="CA"
 ```
 
@@ -1091,6 +1112,7 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 country | string | <span class="conditional" data-tooltip="For international locations outside of US, `country` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code of the country for given location.
 zip | string | required | Postal code for given location (5-Digit ZIP or ZIP+4).
+state | string | optional | Two-letter ISO state code for given location.
 city | string | <span class="conditional" data-tooltip="For international locations outside of US, `city` is required." data-tooltip-position="top center">conditional</span> | City for given location.
 street | string | optional | Street address for given location. <span class="usage-note" data-tooltip="Street address provides more accurate calculations for the following states: AR, CT, GA, IA, IN, KS, KY, MD, MI, MN, NC, ND, NE, NJ, NV, OH, OK, RI, SD, TN, UT, VT, WA, WI, WV, WY" data-tooltip-position="top center">View Note</span>
 
