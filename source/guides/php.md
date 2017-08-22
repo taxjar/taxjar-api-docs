@@ -15,7 +15,7 @@ Ready to dive into our sales tax API with PHP? In this guide we'll show you how 
 ```
 {
   "require": {
-    "taxjar/taxjar-php": "^1.4"
+    "taxjar/taxjar-php": "^1.5"
   }
 }
 ```
