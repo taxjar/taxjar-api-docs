@@ -332,6 +332,17 @@ a {
     }
   }
 
+  h6 {
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+    font-size: 0.8rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #999;
+    margin: 0 0 10px;
+    padding: 0 20px;
+    letter-spacing: 1px;
+  }
+
   .tocify-item {
     margin: 0 10px;
     border-radius: 3px;
@@ -371,7 +382,7 @@ a {
 
   // This is the currently selected ToC entry
   .tocify-focus {
-    // @include box-shadow(0px 1px 0px $nav-active-shadow);
+    box-shadow: rgba(0, 0, 0, 0.04) 1px 3px 7px;
     font-weight: bold;
     background: $nav-active-bg;
     color: $nav-active-text;
@@ -429,6 +440,44 @@ a {
     }
   }
 
+}
+
+.tocify-wrapper-footer {
+  position: absolute;
+  bottom: 10px;
+  padding: 10px 20px;
+  font-weight: normal;
+  line-height: 1.5;
+  background: #efefef;
+  z-index: 2;
+
+  p {
+    color: #666;
+    padding: 0 20px 0 0;
+  }
+
+  .divider {
+    display: block;
+    width: 20px;
+    height: 1px;
+    margin: 20px 0;
+    background: #ccc;
+  }
+
+  small {
+    display: block;
+    font-size: 0.8rem;
+    color: #999;
+  }
+
+  a {
+    color: #666;
+    text-decoration: none;
+
+    &:hover {
+      color: #3FAE2A;
+    }
+  }
 }
 
 // button to show navigation on mobile devices
