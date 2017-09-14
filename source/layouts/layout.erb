@@ -88,7 +88,9 @@ under the License.
             </div>
             <ul class="search-results"></ul>
           <% end %>
-          <h6>API Reference</h6>
+          <% if current_page.data.toc_header %>
+            <h6><%= current_page.data.toc_header %></h6>
+          <% end %>
           <div id="toc">
           </div>
           <% if current_page.data.toc_footers %>

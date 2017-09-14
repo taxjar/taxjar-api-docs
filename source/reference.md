@@ -12,6 +12,8 @@ language_tabs:
   - csharp: .NET
   - java: Java
 
+toc_header: "API Reference"
+
 toc_footers:
   - <a href='https://www.taxjar.com/api/docs/'>v1 Documentation</a>
 

@@ -2,6 +2,7 @@
 title: TaxJar API Guides
 description: "Tips and tricks on how to use SmartCalcs, TaxJar's sales tax API."
 preferred_url: https://developers.taxjar.com/api/guides/
+toc_header: "API Guides"
 ---
 
 # Quickstart Guides
