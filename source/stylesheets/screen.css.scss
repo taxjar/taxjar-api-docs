@@ -1027,7 +1027,7 @@ a {
   }
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1446px) {
   .logo .long {
     display: none;
   }
@@ -1038,6 +1038,16 @@ a {
 
   .menu--main {
     margin-left: 55px;
+  }
+
+  .menu--main li a span {
+    display: none;
+  }
+}
+
+@media (max-width: 1280px) {
+  .menu--actions ul li:first-child {
+    display: none;
   }
 }
 
@@ -1050,7 +1060,12 @@ a {
     display: none;
   }
 
+  .menu--actions ul li:first-child {
+    display: block;
+  }
+
   .menu--actions .navbar-responsive {
     display: block;
   }
 }
+
