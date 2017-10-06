@@ -175,7 +175,7 @@ Additionally, we provide specific 400 error messages for invalid data:
 
 ### Transactions
 
-- `amount` param does not equal sum of `line_items` + `shipping`
+- `amount` param does not equal sum of `line_items` excluding `shipping`
 - `line_items[][description]` param exceeds limit of 255 characters
 
 ## 401 Unauthorized
