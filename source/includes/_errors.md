@@ -175,6 +175,8 @@ Additionally, we provide specific 400 error messages for invalid data:
 
 ### Transactions
 
+When using the `/v2/transactions` endpoints, we return the following error messages:
+
 - `amount` param does not equal sum of `line_items` + `shipping`
 - `line_items[][description]` param exceeds limit of 255 characters
 
