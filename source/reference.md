@@ -296,6 +296,11 @@ $ curl https://api.taxjar.com/v2/categories \
       "description": "Digital products transferred electronically, meaning obtained by the purchaser by means other than tangible storage media."
     },
     {
+      "name": "Candy",
+      "product_tax_code": "40010",
+      "description": "Candy and similar items"
+    },
+    {
       "name": "Supplements",
       "product_tax_code": "40020",
       "description": "Non-food dietary supplements"
@@ -304,6 +309,21 @@ $ curl https://api.taxjar.com/v2/categories \
       "name": "Food & Groceries",
       "product_tax_code": "40030",
       "description": "Food for humans consumption, unprepared"
+    },
+    {
+      "name": "Soft Drinks",
+      "product_tax_code": "40050",
+      "description": "Soft drinks, soda, and other similar beverages. Does not include fruit juices and water."
+    },
+    {
+      "name": "Bottled Water",
+      "product_tax_code": "40060",
+      "description": "Bottled, drinkable water for human consumption."
+    },
+    {
+      "name": "Prepared Foods",
+      "product_tax_code": "41000",
+      "description": "Foods intended for on-site consumption. Ex. Restaurant meals."
     },
     {
       "name": "Non-Prescription",
@@ -404,8 +424,12 @@ Returns a `categories` JSON object with an array of product categories and corre
 | Clothing                  | 20010 |                                                                                                            <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                             | All human wearing apparel suitable for general use.                                                                        |
 | Software as a Service     | 30070 |                                                                                                            <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                             | Pre-written software, delivered electronically, but access remotely.                                                       |
 | Digital Goods             | 31000 |                                                     <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span>                                                      | Digital products transferred electronically, meaning obtained by the purchaser by means other than tangible storage media. |
-| Supplements               | 40020 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                                                                                                                                        | Non-food dietary supplements.
+| Candy                     | 40010 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                                                                                                                                        | Candy and similar items                                                                                                    |
+| Supplements               | 40020 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                                                                                                                                        | Non-food dietary supplements.                                                                                              |
 | Food & Groceries          | 40030 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-au" data-tooltip="Australia" data-tooltip-position="top center"></span> | Food for humans consumption, unprepared.                                                                                   |
+| Soft Drinks               | 40050 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                                                                                                                                        | Soft drinks, soda, and other similar beverages. Does not include fruit juices and water.                                   |
+| Bottled Water             | 40060 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                                                                                                                                        | Bottled, drinkable water for human consumption.                                                                            |
+| Prepared Foods            | 41000 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                                                                                                                                        | Foods intended for on-site consumption. Ex. Restaurant meals.                                                              |
 | Non-Prescription          | 51010 |                                                     <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span>                                                      | Drugs for human use without a prescription.                                                                                |
 | Prescription              | 51020 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-au" data-tooltip="Australia" data-tooltip-position="top center"></span> | Drugs for human use with a prescription.                                                                                   |
 | Books                     | 81100 |                                                     <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span>                                                      | Books, printed.                                                                                                            |
