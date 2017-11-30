@@ -197,3 +197,5 @@ Additionally, a 406 response will be returned if you provide blank values for re
 ## 422 Unprocessable Entity
 
 If you attempt to create an order or refund transaction that already exists in TaxJar, you'll receive a 422 error. As a fallback, make a PUT request instead and [update the existing transaction](#put-update-an-order-transaction).
+
+Note that when creating a refund transaction, the `transaction_id` must be a unique identifier for the refund and different from the original order `transaction_id`. The `transaction_reference_id` is used to reference the original order transaction.
