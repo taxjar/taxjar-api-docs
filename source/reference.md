@@ -18,6 +18,7 @@ toc_footers:
   - <a href='https://www.taxjar.com/api/docs/'>v1 Documentation</a>
 
 includes:
+  - rate-limiting
   - errors
 
 search: false
