@@ -7248,9 +7248,9 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "17.0",
-    "shipping": "2.0",
-    "sales_tax": "0.95",
+    "amount": "-17.0",
+    "shipping": "-2.0",
+    "sales_tax": "-0.95",
     "line_items": [
       {
         "id": "1",
@@ -7282,9 +7282,9 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   :to_state => "CA",
   :to_city => "LOS ANGELES",
   :to_street => "123 Palm Grove Ln",
-  :amount => 17.0,
-  :shipping => 2.0,
-  :sales_tax => 0.95,
+  :amount => -17.0,
+  :shipping => -2.0,
+  :sales_tax => -0.95,
   :line_items => [
     {
       :id => "1",
@@ -7319,14 +7319,14 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'from_city': 'SANTA BARBARA',
   'from_zip': 93107,
   'to_country': 'US',
-  'shipping': 2,
+  'shipping': -2,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2015-06-14T00:00:00Z',
   'transaction_reference_id': '123',
-  'sales_tax': 0.95,
-  'amount': 17,
+  'sales_tax': -0.95,
+  'amount': -17,
   'transaction_id': '321',
   'to_state': 'CA'
 }>
@@ -7645,9 +7645,9 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "16.5",
-    "shipping": "1.5",
-    "sales_tax": "0.95",
+    "amount": "-16.5",
+    "shipping": "-1.5",
+    "sales_tax": "-0.95",
     "line_items": [
       {
         "id": "1",
@@ -7679,9 +7679,9 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
   :to_state => "CA",
   :to_city => "LOS ANGELES",
   :to_street => "123 Palm Grove Ln",
-  :amount => 16.5,
-  :shipping => 1.5,
-  :sales_tax => 0.95,
+  :amount => -16.5,
+  :shipping => -1.5,
+  :sales_tax => -0.95,
   :line_items => [
     {
       :id => "1",
@@ -7716,14 +7716,14 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
   'from_city': 'SANTA BARBARA',
   'from_zip': 93107,
   'to_country': 'US',
-  'shipping': 1.5,
+  'shipping': -1.5,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2015-06-14T00:00:00Z',
   'transaction_reference_id': '123',
-  'sales_tax': 0.95,
-  'amount': 16.5,
+  'sales_tax': -0.95,
+  'amount': -16.5,
   'transaction_id': '321',
   'to_state': 'CA'
 }>
@@ -8019,9 +8019,9 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     "to_state": "CA",
     "to_city": "LOS ANGELES",
     "to_street": "123 Palm Grove Ln",
-    "amount": "17.0",
-    "shipping": "2.0",
-    "sales_tax": "0.95",
+    "amount": "-17.0",
+    "shipping": "-2.0",
+    "sales_tax": "-0.95",
     "line_items": [
       {
         "id": "1",
@@ -8053,9 +8053,9 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   :to_state => "CA",
   :to_city => "LOS ANGELES",
   :to_street => "123 Palm Grove Ln",
-  :amount => 17.0,
-  :shipping => 2.0,
-  :sales_tax => 0.95,
+  :amount => -17.0,
+  :shipping => -2.0,
+  :sales_tax => -0.95,
   :line_items => [
     {
       :id => "1",
@@ -8090,14 +8090,14 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'from_city': 'SANTA BARBARA',
   'from_zip': 93107,
   'to_country': 'US',
-  'shipping': 2,
+  'shipping': -2,
   'from_country': 'US',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
   'transaction_date': '2016-03-10T00:00:00.000Z',
   'transaction_reference_id': '123',
-  'sales_tax': 0.95,
-  'amount': 17,
+  'sales_tax': -0.95,
+  'amount': -17,
   'transaction_id': '321',
   'to_state': 'CA'
 }>
