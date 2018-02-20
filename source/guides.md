@@ -304,8 +304,8 @@ We currently provide API-driven cart integrations for the following platforms:
 
 ## Magento
 
-Our Magento sales tax extensions currently support Magento CE 1.7.x - 1.9.x and Magento CE 2.0.x - 2.1.x. SmartCalcs is fully integrated for free checkout calculations and zip-based rate imports as a fallback.
+Our Magento sales tax extensions currently support Magento 1.7.x - 1.9.x and Magento 2.0+. SmartCalcs is fully integrated for free checkout calculations and zip-based rate imports as a fallback.
 
-- Install the extension from [Magento Connect](https://www.magentocommerce.com/magento-connect/sales-tax-automation-by-taxjar.html)
+- Install our [Magento 2](https://marketplace.magento.com/taxjar-module-taxjar.html) or [Magento 1](https://marketplace.magento.com/taxjar-taxjar-salestaxautomation.html) extension from Magento Marketplace
 - Get started and learn how it works with our [Extension Guide](https://www.taxjar.com/guides/integrations/magento/)
 - Browse the code in our [GitHub Repository](https://github.com/taxjar/taxjar-magento-extension)
