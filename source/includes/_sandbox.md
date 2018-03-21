@@ -33,6 +33,13 @@ $client = TaxJar\Client::withApiKey($_ENV['TAXJAR_SANDBOX_API_KEY']);
 $client->setApiConfig('api_url', TaxJar\Client::SANDBOX_API_URL);
 ```
 
+```csharp
+using Taxjar;
+var client = new TaxjarApi("YOUR_SANDBOX_API_KEY", new {
+  apiUrl = "https://api.sandbox.taxjar.com/v2/"
+});
+```
+
 TaxJar provides a sandbox environment for automated testing and development on all [TaxJar Plus](https://www.taxjar.com/plus/) plans. After generating a sandbox API token, point your API client to the sandbox environment:
 
 `https://api.sandbox.taxjar.com`
