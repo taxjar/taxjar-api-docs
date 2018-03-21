@@ -1,6 +1,6 @@
 # Sandbox Environment
 
-> Configuring Your API Client for Sandbox
+> Sandbox Example
 
 ```ruby
 require 'taxjar'
