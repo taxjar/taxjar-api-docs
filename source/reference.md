@@ -18,6 +18,7 @@ toc_footers:
   - <a href='https://www.taxjar.com/api/docs/'>v1 Documentation</a>
 
 includes:
+  - sandbox
   - rate-limiting
   - errors
 
@@ -30,6 +31,12 @@ search: false
 
 ```
 https://api.taxjar.com/v2/
+```
+
+> [Sandbox](#sandbox-environment) API Endpoint
+
+```
+https://api.sandbox.taxjar.com/v2/
 ```
 
 Welcome to the TaxJar Sales Tax API! You can use our API to get information on sales tax rates, categories or upload transactions.
