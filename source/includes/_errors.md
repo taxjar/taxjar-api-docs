@@ -46,10 +46,14 @@ except taxjar.exceptions.TaxJarResponseError as err:
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 // Invalid request
-taxjar.createOrder({
+client.createOrder({
   transaction_date: '2015/05/14',
   to_country: 'US',
   to_state: 'CA',
@@ -57,9 +61,9 @@ taxjar.createOrder({
   amount: 17.45,
   shipping: 1.5,
   sales_tax: 0.95
-}).then(function(res) {
+}).then(res => {
   res.order; // Order object
-}).catch(function(err) {
+}).catch(err => {
   err.detail; // Error detail
   err.status; // Error status code
 });

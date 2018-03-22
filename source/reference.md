@@ -60,7 +60,11 @@ client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 ```
 
 ```php?start_inline=1
@@ -230,9 +234,13 @@ categories = client.categories()
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
 
-client.categories().then(function(res) {
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
+
+client.categories().then(res => {
   res.categories; // Array of categories
 });
 ```
@@ -531,10 +539,14 @@ rates = client.rates_for_location('05495-2086', {
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 // United States (ZIP+4)
-client.ratesForLocation('90404-3370').then(function(res) {
+client.ratesForLocation('90404-3370').then(res => {
   res.rate; // Rate object
 });
 
@@ -543,7 +555,7 @@ client.ratesForLocation('90404', {
   city: 'Santa Monica',
   state: 'CA',
   country: 'US'
-}).then(function(res) {
+}).then(res => {
   res.rate; // Rate object
 });
 
@@ -553,7 +565,7 @@ client.ratesForLocation('05495-2086', {
   city: 'Williston',
   state: 'VT',
   country: 'US'
-}).then(function(res) {
+}).then(res => {
   res.rate; // Rate object
 });
 ```
@@ -685,13 +697,17 @@ rates = client.rates_for_location('V5K0A1', {
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.ratesForLocation('V5K0A1', {
   city: 'Vancouver',
   state: 'BC',
   country: 'CA'
-}).then(function(res) {
+}).then(res => {
   res.rate; // Rate object
 });
 ```
@@ -775,12 +791,16 @@ rates = client.rates_for_location('2060', {
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.ratesForLocation('2060', {
   city: 'Sydney',
   country: 'AU'
-}).then(function(res) {
+}).then(res => {
   res.rate; // Rate object
 });
 ```
@@ -860,12 +880,16 @@ rates = client.rates_for_location('00150', {
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.ratesForLocation('00150', {
   city: 'Helsinki',
   country: 'FI'
-}).then(function(res) {
+}).then(res => {
   res.rate; // Rate object
 });
 ```
@@ -1319,7 +1343,11 @@ order = client.tax_for_order({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.taxForOrder({
   from_country: 'US',
@@ -1353,7 +1381,7 @@ client.taxForOrder({
       discount: 0
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.tax; // Tax object
   res.tax.amount_to_collect; // Amount to collect
 });
@@ -1614,7 +1642,11 @@ order = client.tax_for_order({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.taxForOrder({
   from_country: 'CA',
@@ -1647,7 +1679,7 @@ client.taxForOrder({
       discount: 0
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.tax; // Tax object
   res.tax.amount_to_collect; // Amount to collect
 });
@@ -1898,7 +1930,11 @@ order = client.tax_for_order({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.taxForOrder({
   from_country: 'AU',
@@ -1928,7 +1964,7 @@ client.taxForOrder({
       discount: 0
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.tax; // Tax object
   res.tax.amount_to_collect; // Amount to collect
 });
@@ -2168,7 +2204,11 @@ order = client.tax_for_order({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.taxForOrder({
   from_country: 'FR',
@@ -2198,7 +2238,7 @@ client.taxForOrder({
       discount: 0
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.tax; // Tax object
   res.tax.amount_to_collect; // Amount to collect
 });
@@ -2444,7 +2484,11 @@ order = client.tax_for_order({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.taxForOrder({
   from_country: 'US',
@@ -2477,7 +2521,7 @@ client.taxForOrder({
       discount: 0
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.tax; // Tax object
   res.tax.amount_to_collect; // Amount to collect
 });
@@ -2735,7 +2779,11 @@ order = client.tax_for_order({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.taxForOrder({
   from_country: 'US',
@@ -2768,7 +2816,7 @@ client.taxForOrder({
       discount: 0
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.tax; // Tax object
   res.tax.amount_to_collect; // Amount to collect
 });
@@ -3010,7 +3058,11 @@ order = client.tax_for_order({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.taxForOrder({
   from_country: 'US',
@@ -3035,7 +3087,7 @@ client.taxForOrder({
       product_tax_code: '20010'
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.tax; // Tax object
   res.tax.amount_to_collect; // Amount to collect
 });
@@ -3245,7 +3297,11 @@ order = client.tax_for_order({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.taxForOrder({
   from_country: 'US',
@@ -3270,7 +3326,7 @@ client.taxForOrder({
       product_tax_code: '40030'
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.tax; // Tax object
   res.tax.amount_to_collect; // Amount to collect
 });
@@ -3478,7 +3534,11 @@ order = client.tax_for_order({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.taxForOrder({
   from_country: 'US',
@@ -3502,7 +3562,7 @@ client.taxForOrder({
       unit_price: 9.95
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.tax; // Tax object
   res.tax.amount_to_collect; // Amount to collect
 });
@@ -3684,7 +3744,11 @@ order = client.tax_for_order({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.taxForOrder({
   from_country: 'US',
@@ -3697,7 +3761,7 @@ client.taxForOrder({
   to_city: 'Portland',
   amount: 15,
   shipping: 1.5
-}).then(function(res) {
+}).then(res => {
   res.tax; // Tax object
   res.tax.amount_to_collect; // Amount to collect
 });
@@ -5663,12 +5727,16 @@ orders = client.list_orders({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.listOrders({
   from_transaction_date: '2015/05/01',
   to_transaction_date: '2015/05/31'
-}).then(function(res) {
+}).then(res => {
   res.orders; // Array of orders
 });
 ```
@@ -5815,9 +5883,13 @@ order = client.show_order('123')
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
 
-client.showOrder('123').then(function(res) {
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
+
+client.showOrder('123').then(res => {
   res.order;
 });
 ```
@@ -6092,7 +6164,11 @@ order = client.create_order({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.createOrder({
   transaction_id: '123',
@@ -6114,7 +6190,7 @@ client.createOrder({
       sales_tax: 0.95
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.order; // Order object
 });
 ```
@@ -6492,7 +6568,11 @@ order = client.update_order('123', {
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.updateOrder({
   transaction_id: '123',
@@ -6508,7 +6588,7 @@ client.updateOrder({
       sales_tax: 0.95
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.order; // Order object
 });
 ```
@@ -6837,10 +6917,14 @@ client.delete_order('123')
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
 
-client.deleteOrder('123').then(function(res) {
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
+client.deleteOrder('123').then(res => {
+  res.order; // Order object
 });
 ```
 
@@ -7035,12 +7119,16 @@ refunds = client.list_refunds({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.listRefunds({
   from_transaction_date: '2015/05/01',
   to_transaction_date: '2015/05/31'
-}).then(function(res) {
+}).then(res => {
   res.refunds; // Array of refunds
 });
 ```
@@ -7188,9 +7276,13 @@ refund = client.show_refund('321')
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
 
-client.showRefund('321').then(function(res) {
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
+
+client.showRefund('321').then(res => {
   res.refund;
 });
 ```
@@ -7473,7 +7565,11 @@ refund = client.create_refund({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.createRefund({
   transaction_id: '123',
@@ -7496,7 +7592,7 @@ client.createRefund({
       sales_tax: 0.95
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.refund; // Refund object
 });
 ```
@@ -7880,7 +7976,11 @@ refund = client.update_refund('321', {
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.updateRefund({
   transaction_id: '123',
@@ -7895,7 +7995,7 @@ client.updateRefund({
       sales_tax: 0.95
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.refund; // Refund object
 });
 ```
@@ -8226,9 +8326,13 @@ client.delete_refund('321')
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
 
-client.deleteRefund('321').then(function(res) {
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
+
+client.deleteRefund('321').then(res => {
 
 });
 ```
@@ -8420,9 +8524,13 @@ nexus_regions = client.nexus_regions()
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
 
-client.nexusRegions().then(function(res) {
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
+
+client.nexusRegions().then(res => {
   res.regions; // Array of nexus regions
 });
 ```
@@ -8615,11 +8723,15 @@ validation = client.validate({
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
 
 client.validate({
   vat: 'FR40303265045'
-}).then(function(res) {
+}).then(res => {
   res.validation; // Validation object
 });
 ```
@@ -8801,9 +8913,13 @@ summarized_rates = client.summary_rates()
 ```
 
 ```javascript
-var client = require("taxjar")("9e0cd62a22f451701f29c3bde214");
+const Taxjar = require('taxjar');
 
-client.summaryRates().then(function(res) {
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
+
+client.summaryRates().then(res => {
   res.summary_rates; // Array of summarized rates
 });
 ```
