@@ -15,7 +15,7 @@ Ready to dive into our sales tax API with Node? In this guide we'll show you how
 ```javascript
 {
   "dependencies": {
-    "taxjar": "^1.4.0"
+    "taxjar": "^2.0.0"
   }
 }
 ```
@@ -29,12 +29,21 @@ Shazam! You now have the TaxJar Node client inside your project. The `--save` fl
 ## Authentication
 
 ```javascript
-var taxjar = require('taxjar')('48ceecccc8af930bd02597aec0f84a78'); // Useful for quick testing
-var taxjar = require('taxjar')(process.env.TAXJAR_API_KEY); // Recommended
+// ES5 Import
+const Taxjar = require('taxjar');
 
-// ES6 Example
-import Taxjar from 'taxjar'
-const taxjar = Taxjar(process.env.TAXJAR_API_KEY)
+// ES6/7 Import
+import Taxjar from 'taxjar';
+
+// Useful for quick testing
+const client = new Taxjar({
+  apiKey: '48ceecccc8af930bd02597aec0f84a78'
+});
+
+// Recommended
+const client = new Taxjar({
+  apiKey: process.env.TAXJAR_API_KEY
+});
 ```
 
 In order to make requests to our [sales tax API](https://www.taxjar.com/smartcalcs/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
@@ -46,9 +55,13 @@ We recommend using a `.env` file with a package such as [dotenv](https://github.
 # Sales Tax Calculations
 
 ```javascript
-var taxjar = require('taxjar')(process.env.TAXJAR_API_KEY);
+const Taxjar = require('taxjar');
 
-taxjar.taxForOrder({
+const client = new Taxjar({
+  apiKey: process.env.TAXJAR_API_KEY
+});
+
+client.taxForOrder({
   from_country: 'US',
   from_zip: '07001',
   from_state: 'NJ',
@@ -64,7 +77,7 @@ taxjar.taxForOrder({
       product_tax_code: 31000
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.tax; // Tax object
   res.tax.amount_to_collect; // Amount to collect
 });
@@ -102,9 +115,13 @@ If you just need the rate for a given location, use the [/v2/rates](/api/referen
 # Sales Tax Reporting
 
 ```javascript
-var taxjar = require('taxjar')(process.env.TAXJAR_API_KEY);
+const Taxjar = require('taxjar');
 
-taxjar.createOrder({
+const client = new Taxjar({
+  apiKey: process.env.TAXJAR_API_KEY
+});
+
+client.createOrder({
   transaction_id: '123',
   transaction_date: '2015/05/14',
   to_country: 'US',
@@ -124,7 +141,7 @@ taxjar.createOrder({
       sales_tax: 0.95
     }
   ]
-}).then(function(res) {
+}).then(res => {
   res.order; // Order object
 });
 ```
@@ -176,9 +193,13 @@ A successful response will return back the imported order transaction. Nifty!
 # Error Handling
 
 ```javascript
-var taxjar = require('taxjar')(process.env.TAXJAR_API_KEY);
+const Taxjar = require('taxjar');
 
-taxjar.createOrder({
+const client = new Taxjar({
+  apiKey: process.env.TAXJAR_API_KEY
+});
+
+client.createOrder({
   transaction_date: '2015/05/14',
   to_country: 'US',
   to_state: 'CA',
@@ -186,9 +207,9 @@ taxjar.createOrder({
   amount: 17.45,
   shipping: 1.5,
   sales_tax: 0.95
-}).then(function(res) {
+}).then(res => {
   res.order; // Order object
-}).catch(function(err) {
+}).catch(err => {
   err.detail; // Error detail
   err.status; // Error status code
 });
