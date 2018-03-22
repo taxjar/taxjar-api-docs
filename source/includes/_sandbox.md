@@ -6,7 +6,7 @@
 require 'taxjar'
 client = Taxjar::Client.new(
   api_key: 'YOUR_SANDBOX_API_KEY',
-  api_url: 'https://api.sandbox.taxjar.com'
+  api_url: Taxjar::API::Request::SANDBOX_API_URL
 )
 ```
 
@@ -14,7 +14,7 @@ client = Taxjar::Client.new(
 import taxjar
 client = taxjar.Client(
   api_key='YOUR_SANDBOX_API_KEY',
-  api_url='https://api.sandbox.taxjar.com'
+  api_url=taxjar.SANDBOX_API_URL
 )
 ```
 
@@ -23,7 +23,7 @@ const Taxjar = require('taxjar');
 
 const client = new Taxjar({
   apiKey: process.env.TAXJAR_SANDBOX_API_KEY,
-  apiUrl: 'https://api.sandbox.taxjar.com'
+  apiUrl: Taxjar.SANDBOX_API_URL
 });
 ```
 
@@ -38,6 +38,10 @@ using Taxjar;
 var client = new TaxjarApi("YOUR_SANDBOX_API_KEY", new {
   apiUrl = "https://api.sandbox.taxjar.com/v2/"
 });
+```
+
+```java
+// Sandbox support for Java coming soon
 ```
 
 TaxJar provides a sandbox environment for automated testing and development on all [TaxJar Plus](https://www.taxjar.com/plus/) plans. After generating a sandbox API token, point your API client to the sandbox environment:
