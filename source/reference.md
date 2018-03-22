@@ -5642,7 +5642,7 @@ city_taxable_amount | long | Amount of the order to be taxed at the city tax rat
 city_tax_rate | long | City sales tax rate for given location.
 city_tax_collectable | long | Amount of sales tax to collect for the city.
 special_district_taxable_amount | long | Amount of the order to be taxed at the special district tax rate.
-special_district_tax_rate | long | Special district sales tax rate for given location.
+special_tax_rate | long | Special district sales tax rate for given location.
 special_district_tax_collectable | long | Amount of sales tax to collect for the special district.
 shipping | object | Breakdown of shipping rates if applicable.
 line_items | object | Breakdown of rates by line item if applicable.
