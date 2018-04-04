@@ -5585,6 +5585,7 @@ to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
 amount | long | optional | Total amount of the order, **excluding shipping**. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 shipping | long | required | Total amount of shipping for the order.
+customer_id | string | optional | Unique identifier of the given customer for exemptions.
 nexus_addresses[][id] | string | optional | Unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 nexus_addresses[][country] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, country is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code of the country for the nexus address.
 nexus_addresses[][zip] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, zip is required." data-tooltip-position="top center">conditional</span> | Postal code for the nexus address.
@@ -6450,6 +6451,7 @@ to_street | string | optional | Street address where the order shipped to.
 amount | long | required | Total amount of the order with shipping, **excluding sales tax** in dollars.
 shipping | long | required | Total amount of shipping for the order in dollars.
 sales_tax | long | required | Total amount of sales tax collected for the order in dollars.
+customer_id | string | optional | Unique identifier of the given customer for exemptions.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
@@ -6827,6 +6829,7 @@ to_street | string | optional | Street address where the order shipped to.
 amount | long | optional | Total amount of the order with shipping, **excluding sales tax** in dollars.
 shipping | long | optional | Total amount of shipping for the order in dollars.
 sales_tax | long | optional | Total amount of sales tax collected for the order in dollars.
+customer_id | string | optional | Unique identifier of the given customer for exemptions.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
@@ -7858,6 +7861,7 @@ to_street | string | optional | Street address where the order shipped to.
 amount | long | required | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
 shipping | long | required | Total amount of shipping for the refunded order in dollars.
 sales_tax | long | required | Total amount of sales tax collected for the refunded order in dollars.
+customer_id | string | optional | Unique identifier of the given customer for exemptions.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
@@ -8236,6 +8240,7 @@ to_street | string | optional | Street address where the refunded order shipped 
 amount | long | optional | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
 shipping | long | optional | Total amount of shipping for the refunded order in dollars.
 sales_tax | long | optional | Total amount of sales tax collected for the refunded order in dollars.
+customer_id | string | optional | Unique identifier of the given customer for exemptions.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
@@ -8479,6 +8484,308 @@ Parameter | Type | Description
 --------- | ------- | -----------
 transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
+
+## Customers
+
+Manage your exempt customers (wholesale, government, etc) for sales tax calculations, reporting, and filing in TaxJar.
+
+### <span class="badge badge--get">get</span> List customers
+
+> Definition
+
+```ruby
+client.list_customers
+```
+
+```python
+client.list_customers
+```
+
+```javascript
+client.listCustomers();
+```
+
+```php?start_inline=1
+$client->listCustomers();
+```
+
+```csharp
+client.ListCustomers();
+```
+
+```java
+client.listCustomers();
+```
+
+```shell
+GET https://api.taxjar.com/v2/exemptions/customers
+```
+
+Lists existing customers created through the API.
+
+#### Request
+
+GET https://api.taxjar.com/v2/exemptions/customers
+
+#### Response
+
+Returns a `customers` JSON object with an array of customer IDs created through the API.
+
+### <span class="badge badge--get">get</span> Show a customer
+
+> Definition
+
+```ruby
+client.show_customer
+```
+
+```python
+client.show_customer
+```
+
+```javascript
+client.showCustomer();
+```
+
+```php?start_inline=1
+$client->showCustomer();
+```
+
+```csharp
+client.ShowCustomer();
+```
+
+```java
+client.showCustomer();
+```
+
+```shell
+GET https://api.taxjar.com/v2/exemptions/customers/:customer_id
+```
+
+Shows an existing customer created through the API.
+
+#### Request
+
+GET https://api.taxjar.com/v2/exemptions/customers/:customer_id
+
+#### Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+customer_id | string | required | Unique identifier of the given customer.
+
+#### Response
+
+Returns a `customer` JSON object with details of a customer created through the API.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+customer_id | string | Unique identifier of the given customer.
+name | string | Name of the customer.
+exemption_type | string | Type of customer exemption: `wholesale`, `government`, `other`, or `non_exempt`.
+exempt_regions[][country] | string | Two-letter ISO country code where the customer is exempt.
+exempt_regions[][state] | string | Two-letter ISO state code where the customer is exempt.
+country | string | Two-letter ISO country code of the customer's primary address.
+state | string | Two-letter ISO state code of the customer's primary address.
+city | string | City of the customer's primary address.
+street | string | Street address of the customer's primary address.
+
+### <span class="badge badge--get">post</span> Create a customer
+
+> Definition
+
+```ruby
+client.create_customer
+```
+
+```python
+client.create_customer
+```
+
+```javascript
+client.createCustomer();
+```
+
+```php?start_inline=1
+$client->createCustomer();
+```
+
+```csharp
+client.CreateCustomer();
+```
+
+```java
+client.createCustomer();
+```
+
+```shell
+POST https://api.taxjar.com/v2/exemptions/customers
+```
+
+Creates a new customer.
+
+#### Request
+
+POST https://api.taxjar.com/v2/exemptions/customers
+
+#### Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+customer_id | string | required | Unique identifier of the given customer.
+name | string | required | Name of the customer.
+exemption_type | string | required | Type of customer exemption: `wholesale`, `government`, `other`, or `non_exempt`.
+exempt_regions[][country] | string | required | Two-letter ISO country code where the customer is exempt.
+exempt_regions[][state] | string | required | Two-letter ISO state code where the customer is exempt.
+country | string | optional | Two-letter ISO country code of the customer's primary address.
+state | string | optional | Two-letter ISO state code of the customer's primary address.
+city | string | optional | City of the customer's primary address.
+street | string | optional | Street address of the customer's primary address.
+
+#### Response
+
+Returns a `customer` JSON object with details of the new customer.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+customer_id | string | Unique identifier of the given customer.
+name | string | Name of the customer.
+exemption_type | string | Type of customer exemption: `wholesale`, `government`, `other`, or `non_exempt`.
+exempt_regions[][country] | string | Two-letter ISO country code where the customer is exempt.
+exempt_regions[][state] | string | Two-letter ISO state code where the customer is exempt.
+country | string | Two-letter ISO country code of the customer's primary address.
+state | string | Two-letter ISO state code of the customer's primary address.
+city | string | City of the customer's primary address.
+street | string | Street address of the customer's primary address.
+
+### <span class="badge badge--put">put</span> Update a customer
+
+> Definition
+
+```ruby
+client.update_customer
+```
+
+```python
+client.update_customer
+```
+
+```javascript
+client.updateCustomer();
+```
+
+```php?start_inline=1
+$client->updateCustomer();
+```
+
+```csharp
+client.UpdateCustomer();
+```
+
+```java
+client.updateCustomer();
+```
+
+```shell
+PUT https://api.taxjar.com/v2/exemptions/customers/:customer_id
+```
+
+Updates an existing customer created through the API.
+
+#### Request
+
+PUT https://api.taxjar.com/v2/exemptions/customers/:customer_id
+
+#### Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+customer_id | string | required | Unique identifier of the given customer.
+name | string | required | Name of the customer.
+exemption_type | string | required | Type of customer exemption: `wholesale`, `government`, `other`, or `non_exempt`.
+exempt_regions[][country] | string | required | Two-letter ISO country code where the customer is exempt.
+exempt_regions[][state] | string | required | Two-letter ISO state code where the customer is exempt.
+country | string | optional | Two-letter ISO country code of the customer's primary address.
+state | string | optional | Two-letter ISO state code of the customer's primary address.
+city | string | optional | City of the customer's primary address.
+street | string | optional | Street address of the customer's primary address.
+
+#### Response
+
+Returns a `customer` JSON object with details of the updated customer.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+customer_id | string | Unique identifier of the given customer.
+name | string | Name of the customer.
+exemption_type | string | Type of customer exemption: `wholesale`, `government`, `other`, or `non_exempt`.
+exempt_regions[][country] | string | Two-letter ISO country code where the customer is exempt.
+exempt_regions[][state] | string | Two-letter ISO state code where the customer is exempt.
+country | string | Two-letter ISO country code of the customer's primary address.
+state | string | Two-letter ISO state code of the customer's primary address.
+city | string | City of the customer's primary address.
+street | string | Street address of the customer's primary address.
+
+### <span class="badge badge--delete">delete</span> Delete a customer
+
+> Definition
+
+```ruby
+client.delete_customer
+```
+
+```python
+client.delete_customer
+```
+
+```javascript
+client.deleteCustomer();
+```
+
+```php?start_inline=1
+$client->deleteCustomer();
+```
+
+```csharp
+client.DeleteCustomer();
+```
+
+```java
+client.deleteCustomer();
+```
+
+```shell
+DELETE https://api.taxjar.com/v2/exemptions/customers/:customer_id
+```
+
+Deletes an existing customer created through the API.
+
+#### Request
+
+DELETE https://api.taxjar.com/v2/exemptions/customers/:customer_id
+
+#### Parameters
+
+Parameter | Type | Required | Description
+--------- | ------- | ------- | -----------
+customer_id | string | required | Unique identifier of the given customer.
+
+#### Response
+
+Returns a `customer` JSON object with the deleted customer identifiers.
+
+#### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+customer_id | string | Unique identifier of the given customer.
 
 ## Nexus
 
