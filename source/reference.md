@@ -8520,6 +8520,85 @@ client.listCustomers();
 ```shell
 GET https://api.taxjar.com/v2/customers
 ```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+customers = client.list_customers
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+customers = client.list_customers()
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$customers = $client->listCustomers();
+```
+
+```javascript
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
+
+client.listCustomers().then(res => {
+  res.customers; // Array of customers
+});
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var customers = client.ListCustomers();
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.OrdersResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ListCustomersExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            CustomersResponse res = client.listCustomers();
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/customers \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
+```
+
+> Response Example
+
+```json
+{
+  "customers": [
+    "123",
+    "456"
+  ]
+}
 ```
 
 Lists existing customers created through the API.
@@ -8563,6 +8642,101 @@ client.showCustomer();
 ```shell
 GET https://api.taxjar.com/v2/customers/:customer_id
 ```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+customer = client.show_customer('123')
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+customer = client.show_customer('123')
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$customer = $client->showCustomer('123');
+```
+
+```javascript
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
+
+client.showCustomer('123').then(res => {
+  res.customer;
+});
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var customer = client.ShowCustomer("123");
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.OrdersResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ShowCustomerExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            CustomerResponse res = client.showCustomer("123");
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/customers/123 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
+```
+
+> Response Example
+
+```json
+{
+  "customer": {
+    "customer_id": "123",
+    "exemption_type": "wholesale",
+    "exempt_regions": [
+      {
+        "country": "US",
+        "state": "FL"
+      },
+      {
+        "country": "US",
+        "state": "PA"
+      }
+    ],
+    "name": "Dunder Mifflin Paper Company",
+    "country": "US",
+    "state": "PA",
+    "zip": "18504",
+    "city": "Scranton",
+    "street": "1725 Slough Avenue"
+  }
+}
 ```
 
 Shows an existing customer created through the API.
@@ -8627,6 +8801,241 @@ client.createCustomer();
 ```shell
 POST https://api.taxjar.com/v2/customers
 ```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+customer = client.create_customer({
+  :customer_id => '123',
+  :exemption_type => 'wholesale',
+  :name => 'Dunder Mifflin Paper Company',
+  :exempt_regions => [
+    {
+      :country => 'US',
+      :state => 'FL'
+    },
+    {
+      :country => 'US',
+      :state => 'PA'
+    }
+  ],
+  :country => 'US',
+  :state => 'PA',
+  :zip => '18504',
+  :city => 'Scranton',
+  :street => '1725 Slough Avenue'
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+customer = client.create_customer({
+  'customer_id': '123',
+  'exemption_type': 'wholesale',
+  'name': 'Dunder Mifflin Paper Company',
+  'exempt_regions': [
+    {
+      'country': 'US',
+      'state': 'FL'
+    },
+    {
+      'country': 'US',
+      'state': 'PA'
+    }
+  ],
+  'country': 'US',
+  'state': 'PA',
+  'zip': '18504',
+  'city': 'Scranton',
+  'street': '1725 Slough Avenue'
+})
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$customer = $client->createCustomer([
+  'customer_id' => '123',
+  'exemption_type' => 'wholesale',
+  'name' => 'Dunder Mifflin Paper Company',
+  'exempt_regions' => [
+    [
+      'country' => 'US',
+      'state' => 'FL'
+    ],
+    [
+      'country' => 'US',
+      'state' => 'PA'
+    ]
+  ],
+  'country' => 'US',
+  'state' => 'PA',
+  'zip' => '18504',
+  'city' => 'Scranton',
+  'street' => '1725 Slough Avenue'
+]);
+```
+
+```javascript
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
+
+client.createCustomer({
+  customer_id: '123',
+  exemption_type: 'wholesale',
+  name: 'Dunder Mifflin Paper Company',
+  exempt_regions: [
+    {
+      country: 'US',
+      state: 'FL'
+    },
+    {
+      country: 'US',
+      state: 'PA'
+    }
+  ],
+  country: 'US',
+  state: 'PA',
+  zip: '18504',
+  city: 'Scranton',
+  street: '1725 Slough Avenue'
+}).then(res => {
+  res.customer;
+});
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var customer = client.CreateCustomer(new {
+  customer_id = "123",
+  exemption_type = "wholesale",
+  name = "Dunder Mifflin Paper Company",
+  exempt_regions = new[] {
+    new {
+      country = "US",
+      state = "FL"
+    },
+    new {
+      country = "US",
+      state = "PA"
+    }
+  },
+  country = "US",
+  state = "PA",
+  zip = "18504",
+  city = "Scranton",
+  street = "1725 Slough Avenue"
+});
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.OrdersResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+public class CreateCustomerExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("customer_id", "123");
+            params.put("exemption_type", "wholesale");
+            params.put("name", "Dunder Mifflin Paper Company");
+            params.put("country", "US");
+            params.put("state", "PA");
+            params.put("zip", "18504");
+            params.put("city", "Scranton");
+            params.put("street", "1725 Slough Avenue");
+
+            List<Map> exemptRegions = new ArrayList();
+            Map<String, Object> exemptRegion = new HashMap<>();
+            Map<String, Object> exemptRegion2 = new HashMap<>();
+
+            exemptRegion.put("country", "US");
+            exemptRegion.put("state", "FL");
+            exemptRegions.add(exemptRegion);
+
+            exemptRegion.put("country", "US");
+            exemptRegion.put("state", "PA");
+            exemptRegions.add(exemptRegion2);
+
+            params.put("exempt_regions", exemptRegions);
+
+            CustomerResponse res = client.createCustomer(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/customers \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "customer_id": "123",
+    "exemption_type": "wholesale",
+    "name": "Dunder Mifflin Paper Company",
+    "exempt_regions": [
+      {
+        "country": "US",
+        "state": "FL"
+      },
+      {
+        "country": "US",
+        "state": "PA"
+      }
+    ],
+    "country": "US",
+    "state": "PA",
+    "zip": "18504",
+    "city": "Scranton",
+    "street": "1725 Slough Avenue"
+  }'
+```
+
+> Response Example
+
+```json
+{
+  "customer": {
+    "customer_id": "123",
+    "exemption_type": "wholesale",
+    "exempt_regions": [
+      {
+        "country": "US",
+        "state": "FL"
+      },
+      {
+        "country": "US",
+        "state": "PA"
+      }
+    ],
+    "name": "Dunder Mifflin Paper Company",
+    "country": "US",
+    "state": "PA",
+    "zip": "18504",
+    "city": "Scranton",
+    "street": "1725 Slough Avenue"
+  }
+}
 ```
 
 Creates a new customer.
@@ -8700,6 +9109,209 @@ client.updateCustomer();
 ```shell
 PUT https://api.taxjar.com/v2/customers/:customer_id
 ```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+customer = client.update_customer({
+  :customer_id => '123',
+  :exemption_type => 'wholesale',
+  :name => 'Sterling Cooper',
+  :exempt_regions => [
+    {
+      :country => 'US',
+      :state => 'NY'
+    }
+  ],
+  :country => 'US',
+  :state => 'NY',
+  :zip => '10010',
+  :city => 'New York',
+  :street => '405 Madison Ave'
+})
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+customer = client.update_customer({
+  'customer_id': '123',
+  'exemption_type': 'wholesale',
+  'name': 'Sterling Cooper',
+  'exempt_regions': [
+    {
+      'country': 'US',
+      'state': 'NY'
+    }
+  ],
+  'country': 'US',
+  'state': 'NY',
+  'zip': '10010',
+  'city': 'New York',
+  'street': '405 Madison Ave'
+})
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$customer = $client->updateCustomer([
+  'customer_id' => '123',
+  'exemption_type' => 'wholesale',
+  'name' => 'Sterling Cooper',
+  'exempt_regions' => [
+    [
+      'country' => 'US',
+      'state' => 'NY'
+    ]
+  ],
+  'country' => 'US',
+  'state' => 'NY',
+  'zip' => '10010',
+  'city' => 'New York',
+  'street' => '405 Madison Ave'
+]);
+```
+
+```javascript
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
+
+client.updateCustomer({
+  customer_id: '123',
+  exemption_type: 'wholesale',
+  name: 'Sterling Cooper',
+  exempt_regions: [
+    {
+      country: 'US',
+      state: 'NY'
+    }
+  ],
+  country: 'US',
+  state: 'NY',
+  zip: '10010',
+  city: 'New York',
+  street: '405 Madison Ave'
+}).then(res => {
+  res.customer;
+});
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var customer = client.UpdateCustomer(new {
+  customer_id = "123",
+  exemption_type = "wholesale",
+  name = "Sterling Cooper",
+  exempt_regions = new[] {
+    new {
+      country = "US",
+      state = "NY"
+    }
+  },
+  country = "US",
+  state = "NY",
+  zip = "10010",
+  city = "New York",
+  street = "405 Madison Ave"
+});
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.OrdersResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+public class UpdateCustomerExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("customer_id", "123");
+            params.put("exemption_type", "wholesale");
+            params.put("name", "Sterling Cooper");
+            params.put("country", "US");
+            params.put("state", "NY");
+            params.put("zip", "10010");
+            params.put("city", "New York");
+            params.put("street", "405 Madison Ave");
+
+            List<Map> exemptRegions = new ArrayList();
+            Map<String, Object> exemptRegion = new HashMap<>();
+
+            exemptRegion.put("country", "US");
+            exemptRegion.put("state", "NY");
+            exemptRegions.add(exemptRegion);
+
+            params.put("exempt_regions", exemptRegions);
+
+            CustomerResponse res = client.updateCustomer(params);
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/customers/123 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "customer_id": "123",
+    "exemption_type": "wholesale",
+    "name": "Sterling Cooper",
+    "exempt_regions": [
+      {
+        "country": "US",
+        "state": "NY"
+      }
+    ],
+    "country": "US",
+    "state": "NY",
+    "zip": "10010",
+    "city": "New York",
+    "street": "405 Madison Ave"
+  }' \
+  -X PUT
+```
+
+> Response Example
+
+```json
+{
+  "customer": {
+    "customer_id": "123",
+    "exemption_type": "wholesale",
+    "exempt_regions": [
+      {
+        "country": "US",
+        "state": "NY"
+      }
+    ],
+    "name": "Sterling Cooper",
+    "country": "US",
+    "state": "NY",
+    "zip": "10010",
+    "city": "New York",
+    "street": "405 Madison Ave"
+  }
+}
 ```
 
 Updates an existing customer created through the API.
@@ -8773,6 +9385,100 @@ client.deleteCustomer();
 ```shell
 DELETE https://api.taxjar.com/v2/customers/:customer_id
 ```
+
+> Request Example
+
+```ruby
+require "taxjar"
+client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
+
+customer = client.delete_customer('123')
+```
+
+```python
+import taxjar
+client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
+
+customer = client.delete_customer('123')
+```
+
+```php?start_inline=1
+require __DIR__ . '/vendor/autoload.php';
+$client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
+
+$customer = $client->deleteCustomer('123');
+```
+
+```javascript
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '9e0cd62a22f451701f29c3bde214'
+});
+
+client.deleteCustomer('123').then(res => {
+  res.customer;
+});
+```
+
+```csharp
+using Taxjar;
+var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
+
+var customer = client.DeleteCustomer("123");
+```
+
+```java
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import com.taxjar.model.transactions.OrderResponse;
+
+public class DeleteCustomerExample {
+
+    public static void main(String[] args) {
+        Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
+
+        try {
+            CustomerResponse res = client.deleteCustomer("123");
+        } catch (TaxjarException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+```
+
+```shell
+$ curl https://api.taxjar.com/v2/customers/123 \
+  -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
+  -X DELETE
+```
+
+> Response Example
+
+```json
+{
+  "customer": {
+    "customer_id": "123",
+    "exemption_type": "wholesale",
+    "exempt_regions": [
+      {
+        "country": "US",
+        "state": "FL"
+      },
+      {
+        "country": "US",
+        "state": "PA"
+      }
+    ],
+    "name": "Dunder Mifflin Paper Company",
+    "country": "US",
+    "state": "PA",
+    "zip": "18504",
+    "city": "Scranton",
+    "street": "1725 Slough Avenue"
+  }
+}
 ```
 
 Deletes an existing customer created through the API.
