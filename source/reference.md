@@ -8487,7 +8487,7 @@ user_id | integer | Unique identifier of the user who created the refund transac
 
 ## Customers
 
-Manage your exempt customers (wholesale, government, etc) for sales tax calculations, reporting, and filing in TaxJar.
+Manage your exempt customers (wholesale, government, etc) for sales tax calculations, reporting, and filing in TaxJar. After creating a new customer, pass in the `customer_id` to our [tax](#taxes) and [transaction](#transactions) endpoints to fully exempt them from sales tax.
 
 ### <span class="badge badge--get">get</span> List customers
 
