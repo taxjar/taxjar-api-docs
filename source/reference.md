@@ -8770,7 +8770,7 @@ zip | string | Postal code of the customer's primary address.
 city | string | City of the customer's primary address.
 street | string | Street address of the customer's primary address.
 
-### <span class="badge badge--get">post</span> Create a customer
+### <span class="badge badge--post">post</span> Create a customer
 
 > Definition
 
