@@ -8518,14 +8518,15 @@ client.listCustomers();
 ```
 
 ```shell
-GET https://api.taxjar.com/v2/exemptions/customers
+GET https://api.taxjar.com/v2/customers
+```
 ```
 
 Lists existing customers created through the API.
 
 #### Request
 
-GET https://api.taxjar.com/v2/exemptions/customers
+GET https://api.taxjar.com/v2/customers
 
 #### Response
 
@@ -8560,14 +8561,15 @@ client.showCustomer();
 ```
 
 ```shell
-GET https://api.taxjar.com/v2/exemptions/customers/:customer_id
+GET https://api.taxjar.com/v2/customers/:customer_id
+```
 ```
 
 Shows an existing customer created through the API.
 
 #### Request
 
-GET https://api.taxjar.com/v2/exemptions/customers/:customer_id
+GET https://api.taxjar.com/v2/customers/:customer_id
 
 #### Parameters
 
@@ -8584,12 +8586,13 @@ Returns a `customer` JSON object with details of a customer created through the 
 Parameter | Type | Description
 --------- | ------- | -----------
 customer_id | string | Unique identifier of the given customer.
-name | string | Name of the customer.
 exemption_type | string | Type of customer exemption: `wholesale`, `government`, `other`, or `non_exempt`.
 exempt_regions[][country] | string | Two-letter ISO country code where the customer is exempt.
 exempt_regions[][state] | string | Two-letter ISO state code where the customer is exempt.
+name | string | Name of the customer.
 country | string | Two-letter ISO country code of the customer's primary address.
 state | string | Two-letter ISO state code of the customer's primary address.
+zip | string | Postal code of the customer's primary address.
 city | string | City of the customer's primary address.
 street | string | Street address of the customer's primary address.
 
@@ -8622,26 +8625,28 @@ client.createCustomer();
 ```
 
 ```shell
-POST https://api.taxjar.com/v2/exemptions/customers
+POST https://api.taxjar.com/v2/customers
+```
 ```
 
 Creates a new customer.
 
 #### Request
 
-POST https://api.taxjar.com/v2/exemptions/customers
+POST https://api.taxjar.com/v2/customers
 
 #### Parameters
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 customer_id | string | required | Unique identifier of the given customer.
-name | string | required | Name of the customer.
 exemption_type | string | required | Type of customer exemption: `wholesale`, `government`, `other`, or `non_exempt`.
 exempt_regions[][country] | string | required | Two-letter ISO country code where the customer is exempt.
 exempt_regions[][state] | string | required | Two-letter ISO state code where the customer is exempt.
+name | string | required | Name of the customer.
 country | string | optional | Two-letter ISO country code of the customer's primary address.
 state | string | optional | Two-letter ISO state code of the customer's primary address.
+zip | string | optional | Postal code of the customer's primary address.
 city | string | optional | City of the customer's primary address.
 street | string | optional | Street address of the customer's primary address.
 
@@ -8654,12 +8659,13 @@ Returns a `customer` JSON object with details of the new customer.
 Parameter | Type | Description
 --------- | ------- | -----------
 customer_id | string | Unique identifier of the given customer.
-name | string | Name of the customer.
 exemption_type | string | Type of customer exemption: `wholesale`, `government`, `other`, or `non_exempt`.
 exempt_regions[][country] | string | Two-letter ISO country code where the customer is exempt.
 exempt_regions[][state] | string | Two-letter ISO state code where the customer is exempt.
+name | string | Name of the customer.
 country | string | Two-letter ISO country code of the customer's primary address.
 state | string | Two-letter ISO state code of the customer's primary address.
+zip | string | Postal code of the customer's primary address.
 city | string | City of the customer's primary address.
 street | string | Street address of the customer's primary address.
 
@@ -8692,26 +8698,28 @@ client.updateCustomer();
 ```
 
 ```shell
-PUT https://api.taxjar.com/v2/exemptions/customers/:customer_id
+PUT https://api.taxjar.com/v2/customers/:customer_id
+```
 ```
 
 Updates an existing customer created through the API.
 
 #### Request
 
-PUT https://api.taxjar.com/v2/exemptions/customers/:customer_id
+PUT https://api.taxjar.com/v2/customers/:customer_id
 
 #### Parameters
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 customer_id | string | required | Unique identifier of the given customer.
-name | string | required | Name of the customer.
 exemption_type | string | required | Type of customer exemption: `wholesale`, `government`, `other`, or `non_exempt`.
 exempt_regions[][country] | string | required | Two-letter ISO country code where the customer is exempt.
 exempt_regions[][state] | string | required | Two-letter ISO state code where the customer is exempt.
+name | string | required | Name of the customer.
 country | string | optional | Two-letter ISO country code of the customer's primary address.
 state | string | optional | Two-letter ISO state code of the customer's primary address.
+zip | string | optional | Postal code of the customer's primary address.
 city | string | optional | City of the customer's primary address.
 street | string | optional | Street address of the customer's primary address.
 
@@ -8724,12 +8732,13 @@ Returns a `customer` JSON object with details of the updated customer.
 Parameter | Type | Description
 --------- | ------- | -----------
 customer_id | string | Unique identifier of the given customer.
-name | string | Name of the customer.
 exemption_type | string | Type of customer exemption: `wholesale`, `government`, `other`, or `non_exempt`.
 exempt_regions[][country] | string | Two-letter ISO country code where the customer is exempt.
 exempt_regions[][state] | string | Two-letter ISO state code where the customer is exempt.
+name | string | Name of the customer.
 country | string | Two-letter ISO country code of the customer's primary address.
 state | string | Two-letter ISO state code of the customer's primary address.
+zip | string | Postal code of the customer's primary address.
 city | string | City of the customer's primary address.
 street | string | Street address of the customer's primary address.
 
@@ -8762,14 +8771,15 @@ client.deleteCustomer();
 ```
 
 ```shell
-DELETE https://api.taxjar.com/v2/exemptions/customers/:customer_id
+DELETE https://api.taxjar.com/v2/customers/:customer_id
+```
 ```
 
 Deletes an existing customer created through the API.
 
 #### Request
 
-DELETE https://api.taxjar.com/v2/exemptions/customers/:customer_id
+DELETE https://api.taxjar.com/v2/customers/:customer_id
 
 #### Parameters
 
