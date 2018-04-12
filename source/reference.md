@@ -8596,6 +8596,10 @@ $ curl https://api.taxjar.com/v2/customers \
 ["123", "124", "125"]
 ```
 
+```python
+['123', '124', '125']
+```
+
 ```json
 {
   "customers": [
@@ -8738,6 +8742,26 @@ $ curl https://api.taxjar.com/v2/customers/123 \
   :zip => "18504",
   :city => "Scranton",
   :street => "1725 Slough Avenue"
+}>
+```
+
+```python
+<TaxJarCustomer {
+  'customer_id': '123',
+  'exemption_type': 'wholesale',
+  'exempt_regions': [<TaxJarExemptRegion {
+    'country': 'US',
+    'state': 'FL'
+  }>, <TaxJarExemptRegion {
+    'country': 'US',
+    'state': 'PA'
+  }>],
+  'name': 'Dunder Mifflin Paper Company',
+  'country': 'US',
+  'state': 'PA',
+  'zip': '18504',
+  'city': 'Scranton',
+  'street': '1725 Slough Avenue'
 }>
 ```
 
@@ -9063,6 +9087,26 @@ $ curl https://api.taxjar.com/v2/customers \
 }>
 ```
 
+```python
+<TaxJarCustomer {
+  'customer_id': '123',
+  'exemption_type': 'wholesale',
+  'exempt_regions': [<TaxJarExemptRegion {
+    'country': 'US',
+    'state': 'FL'
+  }>, <TaxJarExemptRegion {
+    'country': 'US',
+    'state': 'PA'
+  }>],
+  'name': 'Dunder Mifflin Paper Company',
+  'country': 'US',
+  'state': 'PA',
+  'zip': '18504',
+  'city': 'Scranton',
+  'street': '1725 Slough Avenue'
+}>
+```
+
 ```json
 {
   "customer": {
@@ -9362,6 +9406,23 @@ $ curl https://api.taxjar.com/v2/customers/123 \
 }>
 ```
 
+```python
+<TaxJarCustomer {
+  'customer_id': '123',
+  'exemption_type': 'wholesale',
+  'exempt_regions': [<TaxJarExemptRegion {
+    'country': 'US',
+    'state': 'NY'
+  }>],
+  'name': 'Sterling Cooper',
+  'country': 'US',
+  'state': 'NY',
+  'zip': '10010',
+  'city': 'New York',
+  'street': '405 Madison Ave'
+}>
+```
+
 ```json
 {
   "customer": {
@@ -9545,6 +9606,26 @@ $ curl https://api.taxjar.com/v2/customers/123 \
   :zip => "18504",
   :city => "Scranton",
   :street => "1725 Slough Avenue"
+}>
+```
+
+```python
+<TaxJarCustomer {
+  'customer_id': '123',
+  'exemption_type': 'wholesale',
+  'exempt_regions': [<TaxJarExemptRegion {
+    'country': 'US',
+    'state': 'FL'
+  }>, <TaxJarExemptRegion {
+    'country': 'US',
+    'state': 'PA'
+  }>],
+  'name': 'Dunder Mifflin Paper Company',
+  'country': 'US',
+  'state': 'PA',
+  'zip': '18504',
+  'city': 'Scranton',
+  'street': '1725 Slough Avenue'
 }>
 ```
 
