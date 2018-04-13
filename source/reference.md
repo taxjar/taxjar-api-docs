@@ -4021,7 +4021,14 @@ $ curl https://api.taxjar.com/v2/taxes \
 ```json
 {
   "tax": {
+    "order_total_amount": 16.5,
+    "shipping": 1.5,
+    "taxable_amount": 16.5,
     "amount_to_collect": 2.15,
+    "rate": 0.13,
+    "has_nexus": true,
+    "freight_taxable": true,
+    "tax_source": "destination",
     "breakdown": {
       "combined_tax_rate": 0.13,
       "gst": 0.83,
@@ -4066,14 +4073,7 @@ $ curl https://api.taxjar.com/v2/taxes \
       },
       "tax_collectable": 2.15,
       "taxable_amount": 16.5
-    },
-    "freight_taxable": true,
-    "has_nexus": true,
-    "order_total_amount": 16.5,
-    "rate": 0.13,
-    "shipping": 1.5,
-    "tax_source": "destination",
-    "taxable_amount": 16.5
+    }
   }
 }
 ```
@@ -4199,7 +4199,14 @@ $ curl https://api.taxjar.com/v2/taxes \
 ```json
 {
   "tax": {
+    "order_total_amount": 16.5,
+    "shipping": 1.5,
+    "taxable_amount": 16.5,
     "amount_to_collect": 1.65,
+    "rate": 0.1,
+    "has_nexus": true,
+    "freight_taxable": true,
+    "tax_source": "destination",
     "breakdown": {
       "combined_tax_rate": 0.1,
       "country_tax_collectable": 1.65,
@@ -4226,14 +4233,7 @@ $ curl https://api.taxjar.com/v2/taxes \
       },
       "tax_collectable": 1.65,
       "taxable_amount": 16.5
-    },
-    "freight_taxable": true,
-    "has_nexus": true,
-    "order_total_amount": 16.5,
-    "rate": 0.1,
-    "shipping": 1.5,
-    "tax_source": "destination",
-    "taxable_amount": 16.5
+    }
   }
 }
 ```
@@ -4323,7 +4323,14 @@ $ curl https://api.taxjar.com/v2/taxes \
 ```json
 {
   "tax": {
+    "order_total_amount": 16.5,
+    "shipping": 1.5,
+    "taxable_amount": 16.5,
     "amount_to_collect": 3.3,
+    "rate": 0.2,
+    "has_nexus": true,
+    "freight_taxable": true,
+    "tax_source": "destination",
     "breakdown": {
       "combined_tax_rate": 0.2,
       "country_tax_collectable": 3.3,
@@ -4350,14 +4357,7 @@ $ curl https://api.taxjar.com/v2/taxes \
       },
       "tax_collectable": 3.3,
       "taxable_amount": 16.5
-    },
-    "freight_taxable": true,
-    "has_nexus": true,
-    "order_total_amount": 16.5,
-    "rate": 0.2,
-    "shipping": 1.5,
-    "tax_source": "destination",
-    "taxable_amount": 16.5
+    }
   }
 }
 ```
@@ -4447,7 +4447,14 @@ $ curl https://api.taxjar.com/v2/taxes \
 ```json
 {
   "tax": {
+    "order_total_amount": 16.5,
+    "shipping": 1.5,
+    "taxable_amount": 16.5,
     "amount_to_collect": 1.36,
+    "rate": 0.0825,
+    "has_nexus": true,
+    "freight_taxable": true,
+    "tax_source": "origin",
     "breakdown": {
       "city_tax_collectable": 0.17,
       "city_tax_rate": 0.01,
@@ -4501,14 +4508,7 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 16.5,
       "tax_collectable": 1.36,
       "taxable_amount": 16.5
-    },
-    "freight_taxable": true,
-    "has_nexus": true,
-    "order_total_amount": 16.5,
-    "rate": 0.0825,
-    "shipping": 1.5,
-    "tax_source": "origin",
-    "taxable_amount": 16.5
+    }
   }
 }
 ```
@@ -4652,7 +4652,14 @@ $ curl https://api.taxjar.com/v2/taxes \
 ```json
 {
   "tax": {
+    "order_total_amount": 16.5,
+    "shipping": 1.5,
+    "taxable_amount": 15,
     "amount_to_collect": 0.94,
+    "rate": 0.0625,
+    "has_nexus": true,
+    "freight_taxable": false,
+    "tax_source": "destination",
     "breakdown": {
       "city_tax_collectable": 0,
       "city_tax_rate": 0,
@@ -4689,14 +4696,7 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 15,
       "tax_collectable": 0.94,
       "taxable_amount": 15
-    },
-    "freight_taxable": false,
-    "has_nexus": true,
-    "order_total_amount": 16.5,
-    "rate": 0.0625,
-    "shipping": 1.5,
-    "tax_source": "destination",
-    "taxable_amount": 15
+    }
   }
 }
 ```
@@ -4806,7 +4806,14 @@ $ curl https://api.taxjar.com/v2/taxes \
 ```json
 {
   "tax": {
+    "order_total_amount": 37.93,
+    "shipping": 7.99,
+    "taxable_amount": 37.93,
     "amount_to_collect": 1.98,
+    "rate": 0.05218,
+    "has_nexus": true,
+    "freight_taxable": true,
+    "tax_source": "destination",
     "breakdown": {
       "city_tax_collectable": 0,
       "city_tax_rate": 0,
@@ -4878,14 +4885,7 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 7.99,
       "tax_collectable": 1.98,
       "taxable_amount": 37.93
-    },
-    "freight_taxable": true,
-    "has_nexus": true,
-    "order_total_amount": 37.93,
-    "rate": 0.05218,
-    "shipping": 7.99,
-    "tax_source": "destination",
-    "taxable_amount": 37.93
+    }
   }
 }
 ```
@@ -5065,7 +5065,14 @@ $ curl https://api.taxjar.com/v2/taxes \
 ```json
 {
   "tax": {
+    "order_total_amount": 37.93,
+    "shipping": 7.99,
+    "taxable_amount": 0,
     "amount_to_collect": 0,
+    "rate": 0,
+    "has_nexus": true,
+    "freight_taxable": false,
+    "tax_source": "destination",
     "breakdown": {
       "city_tax_collectable": 0,
       "city_tax_rate": 0,
@@ -5120,14 +5127,7 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 0,
       "tax_collectable": 0,
       "taxable_amount": 0
-    },
-    "freight_taxable": false,
-    "has_nexus": true,
-    "order_total_amount": 37.93,
-    "rate": 0,
-    "shipping": 7.99,
-    "tax_source": "destination",
-    "taxable_amount": 0
+    }
   }
 }
 ```
@@ -5273,7 +5273,14 @@ $ curl https://api.taxjar.com/v2/taxes \
 ```json
 {
   "tax": {
+    "order_total_amount": 37.93,
+    "shipping": 7.99,
+    "taxable_amount": 17.94,
     "amount_to_collect": 1.58,
+    "rate": 0.088,
+    "has_nexus": true,
+    "freight_taxable": true,
+    "tax_source": "destination",
     "breakdown": {
       "city_tax_collectable": 0.41,
       "city_tax_rate": 0.023,
@@ -5345,14 +5352,7 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 17.94,
       "tax_collectable": 1.58,
       "taxable_amount": 17.94
-    },
-    "freight_taxable": true,
-    "has_nexus": true,
-    "order_total_amount": 37.93,
-    "rate": 0.088,
-    "shipping": 7.99,
-    "tax_source": "destination",
-    "taxable_amount": 17.94
+    }
   }
 }
 ```
