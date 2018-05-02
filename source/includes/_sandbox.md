@@ -36,7 +36,7 @@ $client->setApiConfig('api_url', TaxJar\Client::SANDBOX_API_URL);
 ```csharp
 using Taxjar;
 var client = new TaxjarApi("YOUR_SANDBOX_API_KEY", new {
-  apiUrl = "https://api.sandbox.taxjar.com/v2/"
+  apiUrl = "https://api.sandbox.taxjar.com"
 });
 ```
 
