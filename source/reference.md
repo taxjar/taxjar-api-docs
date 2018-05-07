@@ -8566,7 +8566,7 @@ var customers = client.ListCustomers();
 ```java
 import com.taxjar.Taxjar;
 import com.taxjar.exception.TaxjarException;
-import com.taxjar.model.transactions.OrdersResponse;
+import com.taxjar.model.transactions.CustomersResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8696,7 +8696,7 @@ var customer = client.ShowCustomer("123");
 ```java
 import com.taxjar.Taxjar;
 import com.taxjar.exception.TaxjarException;
-import com.taxjar.model.transactions.OrdersResponse;
+import com.taxjar.model.transactions.CustomerResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8993,8 +8993,10 @@ var customer = client.CreateCustomer(new {
 ```java
 import com.taxjar.Taxjar;
 import com.taxjar.exception.TaxjarException;
-import com.taxjar.model.transactions.OrdersResponse;
+import com.taxjar.model.customers.CustomerResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CreateCustomerExample {
@@ -9014,15 +9016,16 @@ public class CreateCustomerExample {
             params.put("street", "1725 Slough Avenue");
 
             List<Map> exemptRegions = new ArrayList();
-            Map<String, Object> exemptRegion = new HashMap<>();
-            Map<String, Object> exemptRegion2 = new HashMap<>();
 
+            Map<String, String> exemptRegion = new HashMap<>();
             exemptRegion.put("country", "US");
             exemptRegion.put("state", "FL");
-            exemptRegions.add(exemptRegion);
 
+            Map<String, String> exemptRegion2 = new HashMap<>();
             exemptRegion.put("country", "US");
             exemptRegion.put("state", "PA");
+
+            exemptRegions.add(exemptRegion);
             exemptRegions.add(exemptRegion2);
 
             params.put("exempt_regions", exemptRegions);
@@ -9324,8 +9327,10 @@ var customer = client.UpdateCustomer(new {
 ```java
 import com.taxjar.Taxjar;
 import com.taxjar.exception.TaxjarException;
-import com.taxjar.model.transactions.OrdersResponse;
+import com.taxjar.model.customers.CustomerResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UpdateCustomerExample {
@@ -9345,15 +9350,16 @@ public class UpdateCustomerExample {
             params.put("street", "405 Madison Ave");
 
             List<Map> exemptRegions = new ArrayList();
-            Map<String, Object> exemptRegion = new HashMap<>();
 
+            Map<String, String> exemptRegion = new HashMap<>();
             exemptRegion.put("country", "US");
             exemptRegion.put("state", "NY");
+
             exemptRegions.add(exemptRegion);
 
             params.put("exempt_regions", exemptRegions);
 
-            CustomerResponse res = client.updateCustomer(params);
+            CustomerResponse res = client.updateCustomer("123", params);
         } catch (TaxjarException e) {
             e.printStackTrace();
         }
@@ -9561,7 +9567,7 @@ var customer = client.DeleteCustomer("123");
 ```java
 import com.taxjar.Taxjar;
 import com.taxjar.exception.TaxjarException;
-import com.taxjar.model.transactions.OrderResponse;
+import com.taxjar.model.customers.CustomerResponse;
 
 public class DeleteCustomerExample {
 
