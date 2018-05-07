@@ -8697,8 +8697,6 @@ var customer = client.ShowCustomer("123");
 import com.taxjar.Taxjar;
 import com.taxjar.exception.TaxjarException;
 import com.taxjar.model.transactions.CustomerResponse;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ShowCustomerExample {
 
