@@ -41,7 +41,21 @@ var client = new TaxjarApi("YOUR_SANDBOX_API_KEY", new {
 ```
 
 ```java
-// Sandbox support for Java coming soon
+import com.taxjar.Taxjar;
+import com.taxjar.exception.TaxjarException;
+import java.util.HashMap;
+import java.util.Map;
+
+public class SandboxExample {
+
+    public static void main(String[] args) {
+        Map<String, String> params = new HashMap<>();
+        params.put("apiUrl", Taxjar.SANDBOX_API_URL);
+
+        Taxjar client = new Taxjar("YOUR SANDBOX API TOKEN", params);
+    }
+
+}
 ```
 
 ```shell
