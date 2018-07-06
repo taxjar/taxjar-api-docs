@@ -954,6 +954,11 @@ a {
     margin-top: 0;
     padding-top: 0;
   }
+
+  #changelog ~ ul {
+    padding-left: 28px;
+    list-style: none;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
