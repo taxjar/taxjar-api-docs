@@ -74,3 +74,12 @@ Stay on top of new developer-facing features, accuracy improvements, and bug fix
 #### 2018-01-04
 
 * <span class="badge badge--get">Accuracy</span> Updated sourcing rules for Tennessee (TN).
+
+<h2 class="toc-ignore">Stay Informed with the Latest Developer News</h2>
+
+<p>Get notified about important sales tax API updates as soon as they happen. Subscribe below for the latest developer news from TaxJar:</p>
+
+<form class="form" action="https://taxjar1.createsend.com/t/i/s/huttjk/" method="post">
+  <input class="form__input" type="email" name="cm-huttjk-huttjk" placeholder="me@example.com" required>
+  <button type="submit" class="btn cta">Keep me up to date</button>
+</form>
