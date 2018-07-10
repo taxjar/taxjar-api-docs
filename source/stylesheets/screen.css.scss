@@ -579,7 +579,7 @@ a {
     clear: both;
   }
 
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl, &>form {
     margin-right: $examples-width;
     padding: 0 $main-padding;
     @include box-sizing(border-box);
@@ -954,6 +954,33 @@ a {
     margin-top: 0;
     padding-top: 0;
   }
+
+  #changelog ~ ul {
+    padding-left: 28px;
+    list-style: none;
+  }
+
+  .form__input {
+    box-sizing: border-box;
+    margin-right: 0.5rem;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 172ms ease-out;
+    vertical-align: -1px;
+
+    &:focus {
+      border-color: #3FAE2A;
+      box-shadow: 0 0 0 3px rgba(63, 174, 42, 0.35);
+      outline: none;
+    }
+  }
+
+  .form__input--block {
+    display: block;
+    width: 100%;
+    margin: 0 0 1.5rem;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1071,6 +1098,12 @@ a {
 
   .menu--actions .navbar-responsive {
     display: block;
+  }
+
+  .content .form__input {
+    display: block;
+    width: 100%;
+    margin: 0 0 1.5rem;
   }
 }
 

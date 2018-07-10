@@ -21,6 +21,7 @@ includes:
   - sandbox
   - rate-limiting
   - errors
+  - changelog
 
 search: false
 ---
