@@ -2,6 +2,13 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### July 2018
+
+#### 2018-07-27
+
+* <span class="badge badge--get">Accuracy</span> Louisiana (LA) now rooftop accurate for street-level calculations.
+* <span class="badge badge--get">Accuracy</span> Wyoming (WY) now rooftop accurate for street-level calculations.
+
 ### June 2018
 
 #### 2018-06-28
