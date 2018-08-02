@@ -1179,7 +1179,7 @@ country | string | <span class="conditional" data-tooltip="For international loc
 zip | string | required | Postal code for given location (5-Digit ZIP or ZIP+4).
 state | string | optional | Two-letter ISO state code for given location.
 city | string | optional | City for given location.
-street | string | optional | Street address for given location. <span class="usage-note" data-tooltip="Street address provides more accurate calculations for the following states: AR, CA, CT, DC, FL, GA, IA, IN, KS, KY, MA, MD, ME, MI, MN, MS, NC, ND, NE, NJ, NV, OH, OK, RI, SD, TN, TX, UT, VT, WA, WI, WV, WY" data-tooltip-position="top center">View Note</span>
+street | string | optional | Street address for given location. <span class="usage-note" data-tooltip="Street address provides more accurate calculations for the following states: AR, CA, CO, CT, DC, FL, GA, IA, IN, KS, KY, LA, MA, MD, ME, MI, MN, MS, NC, ND, NE, NJ, NV, NY, OH, OK, RI, SC, SD, TN, TX, UT, VT, WA, WI, WV, WY" data-tooltip-position="top center">View Note</span>
 
 #### Response
 
