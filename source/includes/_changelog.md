@@ -2,6 +2,12 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### August 2018
+
+#### 2018-08-02
+
+* <span class="badge badge--get">Accuracy</span> New York (NY) now rooftop accurate for street-level calculations.
+
 ### July 2018
 
 #### 2018-07-27
