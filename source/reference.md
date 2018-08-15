@@ -1233,7 +1233,7 @@ standard_rate | long | [Standard rate](https://en.wikipedia.org/wiki/European_Un
 reduced_rate | long | [Reduced rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
 super_reduced_rate | long | Super reduced rate for given location.
 parking_rate | long | Parking rate for given location.
-distance_sale_threshold | long | [Distance selling threshold](https://en.wikipedia.org/wiki/European_Union_value_added_tax#Distance_sales) for given location.
+distance_sale_threshold | BigDecimal | [Distance selling threshold](https://en.wikipedia.org/wiki/European_Union_value_added_tax#Distance_sales) for given location.
 freight_taxable | bool | Freight taxability for given location.
 
 ## Taxes
@@ -5584,8 +5584,8 @@ to_zip | string | <span class="conditional" data-tooltip="If `to_country` is 'US
 to_state | string | <span class="conditional" data-tooltip="If `to_country` is 'US' or 'CA', `to_state` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | long | optional | Total amount of the order, **excluding shipping**. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
-shipping | long | required | Total amount of shipping for the order.
+amount | BigDecimal | optional | Total amount of the order, **excluding shipping**. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+shipping | BigDecimal | required | Total amount of shipping for the order.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
 nexus_addresses[][id] | string | optional | Unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 nexus_addresses[][country] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, country is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code of the country for the nexus address.
@@ -5596,8 +5596,8 @@ nexus_addresses[][street] | string | optional | Street address for the nexus add
 line_items[][id] | string | optional | Unique identifier of the given line item. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | long | optional | Unit price for the item.
-line_items[][discount] | long | optional | Total discount (non-unit) for the item.
+line_items[][unit_price] | BigDecimal | optional | Unit price for the item.
+line_items[][discount] | BigDecimal | optional | Total discount (non-unit) for the item.
 
 #### Notes
 
@@ -5617,10 +5617,10 @@ Returns a `tax` JSON object with sales tax for a given order. If available, retu
 
 Parameter | Type | Description
 --------- | ------- | -----------
-order_total_amount | long | Total amount of the order.
-shipping | long | Total amount of shipping for the order.
-taxable_amount | long | Amount of the order to be taxed.
-amount_to_collect | long | Amount of sales tax to collect.
+order_total_amount | BigDecimal | Total amount of the order.
+shipping | BigDecimal | Total amount of shipping for the order.
+taxable_amount | BigDecimal | Amount of the order to be taxed.
+amount_to_collect | BigDecimal | Amount of sales tax to collect.
 rate | long | Overall sales tax rate of the order (`amount_to_collect` &divide; `taxable_amount`).
 has_nexus | bool | Whether or not you have [nexus](https://blog.taxjar.com/sales-tax-nexus-definition/) for the order based on an address on file, `nexus_addresses` parameter, or `from_` parameters.
 freight_taxable | bool | Freight taxability for the order.
@@ -5631,21 +5631,21 @@ breakdown | object | Breakdown of rates by jurisdiction for the order, shipping,
 
 Parameter | Type | Description
 --------- | ------- | -----------
-taxable_amount | long | Total amount of the order to be taxed.
-tax_collectable | long | Total amount of sales tax to collect.
+taxable_amount | BigDecimal | Total amount of the order to be taxed.
+tax_collectable | BigDecimal | Total amount of sales tax to collect.
 combined_tax_rate | long | Overall sales tax rate of the breakdown which includes state, county, city and district tax for the order and shipping if applicable.
-state_taxable_amount | long | Amount of the order to be taxed at the state tax rate.
+state_taxable_amount | BigDecimal | Amount of the order to be taxed at the state tax rate.
 state_tax_rate | long | State sales tax rate for given location.
-state_tax_collectable | long | Amount of sales tax to collect for the state.
-county_taxable_amount | long | Amount of the order to be taxed at the county tax rate.
+state_tax_collectable | BigDecimal | Amount of sales tax to collect for the state.
+county_taxable_amount | BigDecimal | Amount of the order to be taxed at the county tax rate.
 county_tax_rate | long | County sales tax rate for given location.
-county_tax_collectable | long | Amount of sales tax to collect for the county.
-city_taxable_amount | long | Amount of the order to be taxed at the city tax rate.
+county_tax_collectable | BigDecimal | Amount of sales tax to collect for the county.
+city_taxable_amount | BigDecimal | Amount of the order to be taxed at the city tax rate.
 city_tax_rate | long | City sales tax rate for given location.
-city_tax_collectable | long | Amount of sales tax to collect for the city.
-special_district_taxable_amount | long | Amount of the order to be taxed at the special district tax rate.
+city_tax_collectable | BigDecimal | Amount of sales tax to collect for the city.
+special_district_taxable_amount | BigDecimal | Amount of the order to be taxed at the special district tax rate.
 special_tax_rate | long | Special district sales tax rate for given location.
-special_district_tax_collectable | long | Amount of sales tax to collect for the special district.
+special_district_tax_collectable | BigDecimal | Amount of sales tax to collect for the special district.
 shipping | object | Breakdown of shipping rates if applicable.
 line_items | object | Breakdown of rates by line item if applicable.
 
@@ -5653,15 +5653,15 @@ line_items | object | Breakdown of rates by line item if applicable.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-gst_taxable_amount | long | Amount of the order to be taxed at the GST rate.
+gst_taxable_amount | BigDecimal | Amount of the order to be taxed at the GST rate.
 gst_tax_rate | long | Goods and services tax rate for given location.
-gst | long | Amount of goods and services tax to collect for given location.
-pst_taxable_amount | long | Amount of the order to be taxed at the PST rate.
+gst | BigDecimal | Amount of goods and services tax to collect for given location.
+pst_taxable_amount | BigDecimal | Amount of the order to be taxed at the PST rate.
 pst_tax_rate | long | Provincial sales tax rate for given location.
-pst | long | Amount of provincial sales tax to collect for given location.
-qst_taxable_amount | long | Amount of the order to be taxed at the QST rate.
+pst | BigDecimal | Amount of provincial sales tax to collect for given location.
+qst_taxable_amount | BigDecimal | Amount of the order to be taxed at the QST rate.
 qst_tax_rate | long | Quebec sales tax rate for given location.
-qst | long | Amount of Quebec sales tax to collect for given location.
+qst | BigDecimal | Amount of Quebec sales tax to collect for given location.
 shipping | object | Breakdown of shipping rates if applicable.
 line_items | object | Breakdown of rates by line item if applicable.
 
@@ -5669,9 +5669,9 @@ line_items | object | Breakdown of rates by line item if applicable.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-country_taxable_amount | long | Amount of the order to be taxed at the country tax rate.
+country_taxable_amount | BigDecimal | Amount of the order to be taxed at the country tax rate.
 country_tax_rate | long | Country sales tax rate for given location
-country_tax_collectable | long | Amount of sales tax to collect for the country.
+country_tax_collectable | BigDecimal | Amount of sales tax to collect for the country.
 shipping | object | Breakdown of shipping rates if applicable.
 line_items | object | Breakdown of rates by line item if applicable.
 
@@ -6072,17 +6072,17 @@ to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | Two-letter ISO state code where the order shipped to.
 to_city | string | City where the order shipped to.
 to_street | string | Street address where the order shipped to.
-amount | long | Total amount of the order with shipping, **excluding sales tax**.
-shipping | long | Total amount of shipping for the order.
-sales_tax | long | Total amount of sales tax collected for the order.
+amount | BigDecimal | Total amount of the order with shipping, **excluding sales tax**.
+shipping | BigDecimal | Total amount of shipping for the order.
+sales_tax | BigDecimal | Total amount of sales tax collected for the order.
 line_items[][id] | string | Unique identifier of the given line item.
 line_items[][quantity] | integer | Quantity for the item.
 line_items[][product_identifier] | string | Product identifier for the item.
 line_items[][description] | string  | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | Product tax code for the item.
-line_items[][unit_price] | long | Unit price for the item in dollars.
-line_items[][discount] | long | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | long | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | BigDecimal | Unit price for the item in dollars.
+line_items[][discount] | BigDecimal | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | BigDecimal | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--post">post</span> Create an order transaction
 
@@ -6449,18 +6449,18 @@ to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | required | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | long | required | Total amount of the order with shipping, **excluding sales tax** in dollars.
-shipping | long | required | Total amount of shipping for the order in dollars.
-sales_tax | long | required | Total amount of sales tax collected for the order in dollars.
+amount | BigDecimal | required | Total amount of the order with shipping, **excluding sales tax** in dollars.
+shipping | BigDecimal | required | Total amount of shipping for the order in dollars.
+sales_tax | BigDecimal | required | Total amount of sales tax collected for the order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | long | optional | Unit price for the item in dollars.
-line_items[][discount] | long | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | BigDecimal | optional | Unit price for the item in dollars.
+line_items[][discount] | BigDecimal | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | BigDecimal | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -6489,17 +6489,17 @@ to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | Two-letter ISO state code where the order shipped to.
 to_city | string | City where the order shipped to.
 to_street | string | Street address where the order shipped to.
-amount | long | Total amount of the order with shipping, **excluding sales tax**.
-shipping | long | Total amount of shipping for the order.
-sales_tax | long | Total amount of sales tax collected for the order.
+amount | BigDecimal | Total amount of the order with shipping, **excluding sales tax**.
+shipping | BigDecimal | Total amount of shipping for the order.
+sales_tax | BigDecimal | Total amount of sales tax collected for the order.
 line_items[][id] | string | Unique identifier of the given line item.
 line_items[][quantity] | integer | Quantity for the item.
 line_items[][product_identifier] | string | Product identifier for the item.
 line_items[][description] | string  | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | Product tax code for the item.
-line_items[][unit_price] | long | Unit price for the item in dollars.
-line_items[][discount] | long | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | long | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | BigDecimal | Unit price for the item in dollars.
+line_items[][discount] | BigDecimal | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | BigDecimal | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--put">put</span> Update an order transaction
 
@@ -6827,18 +6827,18 @@ to_zip | string | optional | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | optional | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | long | optional | Total amount of the order with shipping, **excluding sales tax** in dollars.
-shipping | long | optional | Total amount of shipping for the order in dollars.
-sales_tax | long | optional | Total amount of sales tax collected for the order in dollars.
+amount | BigDecimal | optional | Total amount of the order with shipping, **excluding sales tax** in dollars.
+shipping | BigDecimal | optional | Total amount of shipping for the order in dollars.
+sales_tax | BigDecimal | optional | Total amount of sales tax collected for the order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | long | optional | Unit price for the item in dollars.
-line_items[][discount] | long | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | BigDecimal | optional | Unit price for the item in dollars.
+line_items[][discount] | BigDecimal | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | BigDecimal | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -6867,17 +6867,17 @@ to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | Two-letter ISO state code where the order shipped to.
 to_city | string | City where the order shipped to.
 to_street | string | Street address where the order shipped to.
-amount | long | Total amount of the order with shipping, **excluding sales tax**.
-shipping | long | Total amount of shipping for the order.
-sales_tax | long | Total amount of sales tax collected for the order.
+amount | BigDecimal | Total amount of the order with shipping, **excluding sales tax**.
+shipping | BigDecimal | Total amount of shipping for the order.
+sales_tax | BigDecimal | Total amount of sales tax collected for the order.
 line_items[][id] | string | Unique identifier of the given line item.
 line_items[][quantity] | integer | Quantity for the item.
 line_items[][product_identifier] | string | Product identifier for the item.
 line_items[][description] | string  | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | Product tax code for the item.
-line_items[][unit_price] | long | Unit price for the item in dollars.
-line_items[][discount] | long | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | long | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | BigDecimal | Unit price for the item in dollars.
+line_items[][discount] | BigDecimal | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | BigDecimal | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--delete">delete</span> Delete an order transaction
 
@@ -7468,17 +7468,17 @@ to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | Two-letter ISO state code where the order shipped to.
 to_city | string | City where the order shipped to.
 to_street | string | Street address where the order shipped to.
-amount | long | Total amount of the refunded order with shipping, **excluding sales tax**.
-shipping | long | Total amount of shipping for the refunded order.
-sales_tax | long | Total amount of sales tax collected for the refunded order.
+amount | BigDecimal | Total amount of the refunded order with shipping, **excluding sales tax**.
+shipping | BigDecimal | Total amount of shipping for the refunded order.
+sales_tax | BigDecimal | Total amount of sales tax collected for the refunded order.
 line_items[][id] | string | Unique identifier of the given line item.
 line_items[][quantity] | integer | Quantity for the item.
 line_items[][product_identifier] | string | Product identifier for the item.
 line_items[][description] | string  | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | Product tax code for the item.
-line_items[][unit_price] | long | Unit price for the item in dollars.
-line_items[][discount] | long | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | long | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | BigDecimal | Unit price for the item in dollars.
+line_items[][discount] | BigDecimal | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | BigDecimal | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--post">post</span> Create a refund transaction
 
@@ -7859,18 +7859,18 @@ to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | required | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | long | required | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
-shipping | long | required | Total amount of shipping for the refunded order in dollars.
-sales_tax | long | required | Total amount of sales tax collected for the refunded order in dollars.
+amount | BigDecimal | required | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
+shipping | BigDecimal | required | Total amount of shipping for the refunded order in dollars.
+sales_tax | BigDecimal | required | Total amount of sales tax collected for the refunded order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | long | optional | Unit price for the item in dollars.
-line_items[][discount] | long | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | BigDecimal | optional | Unit price for the item in dollars.
+line_items[][discount] | BigDecimal | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | BigDecimal | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -7899,17 +7899,17 @@ to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | Two-letter ISO state code where the order shipped to.
 to_city | string | City where the order shipped to.
 to_street | string | Street address where the order shipped to.
-amount | long | Total amount of the refunded order with shipping, **excluding sales tax**.
-shipping | long | Total amount of shipping for the refunded order.
-sales_tax | long | Total amount of sales tax collected for the refunded order.
+amount | BigDecimal | Total amount of the refunded order with shipping, **excluding sales tax**.
+shipping | BigDecimal | Total amount of shipping for the refunded order.
+sales_tax | BigDecimal | Total amount of sales tax collected for the refunded order.
 line_items[][id] | string | Unique identifier of the given line item.
 line_items[][quantity] | integer | Quantity for the item.
 line_items[][product_identifier] | string | Product identifier for the item.
 line_items[][description] | string  | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | Product tax code for the item.
-line_items[][unit_price] | long | Unit price for the item in dollars.
-line_items[][discount] | long | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | long | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | BigDecimal | Unit price for the item in dollars.
+line_items[][discount] | BigDecimal | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | BigDecimal | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--put">put</span> Update a refund transaction
 
@@ -8238,18 +8238,18 @@ to_zip | string | optional | Postal code where the refunded order shipped to (5-
 to_state | string | optional | Two-letter ISO state code where the refunded order shipped to.
 to_city | string | optional | City where the refunded order shipped to.
 to_street | string | optional | Street address where the refunded order shipped to.
-amount | long | optional | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
-shipping | long | optional | Total amount of shipping for the refunded order in dollars.
-sales_tax | long | optional | Total amount of sales tax collected for the refunded order in dollars.
+amount | BigDecimal | optional | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
+shipping | BigDecimal | optional | Total amount of shipping for the refunded order in dollars.
+sales_tax | BigDecimal | optional | Total amount of sales tax collected for the refunded order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | long | optional | Unit price for the item in dollars.
-line_items[][discount] | long | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | long | optional | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | BigDecimal | optional | Unit price for the item in dollars.
+line_items[][discount] | BigDecimal | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | BigDecimal | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -8278,17 +8278,17 @@ to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | Two-letter ISO state code where the order shipped to.
 to_city | string | City where the order shipped to.
 to_street | string | Street address where the order shipped to.
-amount | long | Total amount of the refunded order with shipping, **excluding sales tax**.
-shipping | long | Total amount of shipping for the refunded order.
-sales_tax | long | Total amount of sales tax collected for the refunded order.
+amount | BigDecimal | Total amount of the refunded order with shipping, **excluding sales tax**.
+shipping | BigDecimal | Total amount of shipping for the refunded order.
+sales_tax | BigDecimal | Total amount of sales tax collected for the refunded order.
 line_items[][id] | string | Unique identifier of the given line item.
 line_items[][quantity] | integer | Quantity for the item.
 line_items[][product_identifier] | string | Product identifier for the item.
 line_items[][description] | string  | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | Product tax code for the item.
-line_items[][unit_price] | long | Unit price for the item in dollars.
-line_items[][discount] | long | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | long | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | BigDecimal | Unit price for the item in dollars.
+line_items[][discount] | BigDecimal | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | BigDecimal | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--delete">delete</span> Delete a refund transaction
 
