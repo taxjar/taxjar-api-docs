@@ -713,6 +713,11 @@ a {
       border-bottom: 0;
     }
 
+    .type-hint {
+      border-bottom: 1px dotted #999;
+      cursor: help;
+    }
+
     .conditional {
       color: #78649f;
       border-bottom: 1px dotted #78649f;

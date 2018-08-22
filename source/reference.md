@@ -5584,8 +5584,8 @@ to_zip | string | <span class="conditional" data-tooltip="If `to_country` is 'US
 to_state | string | <span class="conditional" data-tooltip="If `to_country` is 'US' or 'CA', `to_state` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | BigDecimal | optional | Total amount of the order, **excluding shipping**. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
-shipping | BigDecimal | required | Total amount of shipping for the order.
+amount | float | optional | Total amount of the order, **excluding shipping**. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+shipping | float | required | Total amount of shipping for the order.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
 nexus_addresses[][id] | string | optional | Unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 nexus_addresses[][country] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, country is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code of the country for the nexus address.
@@ -5596,8 +5596,8 @@ nexus_addresses[][street] | string | optional | Street address for the nexus add
 line_items[][id] | string | optional | Unique identifier of the given line item. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | BigDecimal | optional | Unit price for the item.
-line_items[][discount] | BigDecimal | optional | Total discount (non-unit) for the item.
+line_items[][unit_price] | float | optional | Unit price for the item.
+line_items[][discount] | float | optional | Total discount (non-unit) for the item.
 
 #### Notes
 
@@ -6449,18 +6449,18 @@ to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | required | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | BigDecimal | required | Total amount of the order with shipping, **excluding sales tax** in dollars.
-shipping | BigDecimal | required | Total amount of shipping for the order in dollars.
-sales_tax | BigDecimal | required | Total amount of sales tax collected for the order in dollars.
+amount | float | required | Total amount of the order with shipping, **excluding sales tax** in dollars.
+shipping | float | required | Total amount of shipping for the order in dollars.
+sales_tax | float | required | Total amount of sales tax collected for the order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | BigDecimal | optional | Unit price for the item in dollars.
-line_items[][discount] | BigDecimal | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | BigDecimal | optional | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | optional | Unit price for the item in dollars.
+line_items[][discount] | float | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -6827,18 +6827,18 @@ to_zip | string | optional | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | optional | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | BigDecimal | optional | Total amount of the order with shipping, **excluding sales tax** in dollars.
-shipping | BigDecimal | optional | Total amount of shipping for the order in dollars.
-sales_tax | BigDecimal | optional | Total amount of sales tax collected for the order in dollars.
+amount | float | optional | Total amount of the order with shipping, **excluding sales tax** in dollars.
+shipping | float | optional | Total amount of shipping for the order in dollars.
+sales_tax | float | optional | Total amount of sales tax collected for the order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | BigDecimal | optional | Unit price for the item in dollars.
-line_items[][discount] | BigDecimal | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | BigDecimal | optional | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | optional | Unit price for the item in dollars.
+line_items[][discount] | float | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -7859,18 +7859,18 @@ to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | required | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | BigDecimal | required | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
-shipping | BigDecimal | required | Total amount of shipping for the refunded order in dollars.
-sales_tax | BigDecimal | required | Total amount of sales tax collected for the refunded order in dollars.
+amount | float | required | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
+shipping | float | required | Total amount of shipping for the refunded order in dollars.
+sales_tax | float | required | Total amount of sales tax collected for the refunded order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | BigDecimal | optional | Unit price for the item in dollars.
-line_items[][discount] | BigDecimal | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | BigDecimal | optional | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | optional | Unit price for the item in dollars.
+line_items[][discount] | float | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -8238,18 +8238,18 @@ to_zip | string | optional | Postal code where the refunded order shipped to (5-
 to_state | string | optional | Two-letter ISO state code where the refunded order shipped to.
 to_city | string | optional | City where the refunded order shipped to.
 to_street | string | optional | Street address where the refunded order shipped to.
-amount | BigDecimal | optional | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
-shipping | BigDecimal | optional | Total amount of shipping for the refunded order in dollars.
-sales_tax | BigDecimal | optional | Total amount of sales tax collected for the refunded order in dollars.
+amount | float | optional | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
+shipping | float | optional | Total amount of shipping for the refunded order in dollars.
+sales_tax | float | optional | Total amount of sales tax collected for the refunded order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | BigDecimal | optional | Unit price for the item in dollars.
-line_items[][discount] | BigDecimal | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | BigDecimal | optional | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | optional | Unit price for the item in dollars.
+line_items[][discount] | float | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
