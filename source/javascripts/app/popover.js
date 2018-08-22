@@ -13,13 +13,13 @@
         });
       });
 
-      $('h4[id="parameters"] + table td:contains("float")').each(function() {
+      $('h4[id="parameters"] + table td:contains("decimal")').each(function() {
         $(this).html('<span class="type-hint">' + $(this).text() + '</span>');
         new Drop({
           target: $(this).find('> span').get(0),
           classes: 'drop-theme-taxjar-popovers',
-          content: 'When passing float values to our API, we will convert them to BigDecimal for internal processing. ' +
-                   'BigDecimal provides arbitrary-precision floating point decimal arithmetic for accurately calculating monetary values.',
+          content: 'When passing monetary values to our API, we will convert them to high-precision decimals. ' +
+                   'SmartCalcs performs arbitrary-precision decimal arithmetic for accurately calculating sales tax.',
           position: 'top center',
           openOn: 'hover'
         });
