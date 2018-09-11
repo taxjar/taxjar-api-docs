@@ -2,11 +2,13 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### September 2018
+
+#### 2018-09-11
+
+* <span class="badge badge--post">Feature</span> Exempt regions now optional for customer endpoints. Exempt customers with no explicit regions will be treated as exempt everywhere.
+
 ### August 2018
-
-#### 2018-08-23
-
-* <span class="badge badge--post">Feature</span> Exempt regions now optional for Customer creation/updates. Exempt customers with no explicit regions will be treated as exempt everywhere.
 
 #### 2018-08-05
 
