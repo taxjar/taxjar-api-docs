@@ -9146,9 +9146,9 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 customer_id | string | required | Unique identifier of the given customer.
 exemption_type | string | required | Type of customer exemption: `wholesale`, `government`, `other`, or `non_exempt`.
+name | string | required | Name of the customer.
 exempt_regions[][country] | string | optional | Two-letter ISO country code where the customer is exempt.
 exempt_regions[][state] | string | optional | Two-letter ISO state code where the customer is exempt.
-name | string | required | Name of the customer.
 country | string | optional | Two-letter ISO country code of the customer's primary address.
 state | string | optional | Two-letter ISO state code of the customer's primary address.
 zip | string | optional | Postal code of the customer's primary address.
@@ -9461,9 +9461,9 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 customer_id | string | required | Unique identifier of the given customer.
 exemption_type | string | required | Type of customer exemption: `wholesale`, `government`, `other`, or `non_exempt`.
+name | string | required | Name of the customer.
 exempt_regions[][country] | string | optional | Two-letter ISO country code where the customer is exempt.
 exempt_regions[][state] | string | optional | Two-letter ISO state code where the customer is exempt.
-name | string | required | Name of the customer.
 country | string | optional | Two-letter ISO country code of the customer's primary address.
 state | string | optional | Two-letter ISO state code of the customer's primary address.
 zip | string | optional | Postal code of the customer's primary address.
