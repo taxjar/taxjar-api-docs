@@ -2,6 +2,12 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### September 2018
+
+#### 2018-09-12
+
+* <span class="badge badge--put">Platform</span> Added jurisdiction information to taxes endpoint.
+
 ### August 2018
 
 #### 2018-08-05

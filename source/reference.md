@@ -3914,6 +3914,12 @@ $ curl https://api.taxjar.com/v2/taxes \
           "special_district_amount": 0.38
         }
       ]
+    },
+    "jurisdictions": {
+      "country": "US",
+      "state": "CA",
+      "county": "LOS ANGELES",
+      "city": "LOS ANGELES"
     }
   }
 }
@@ -4074,6 +4080,11 @@ $ curl https://api.taxjar.com/v2/taxes \
       },
       "tax_collectable": 2.15,
       "taxable_amount": 16.5
+    },
+    "jurisdictions": {
+      "country": "CA",
+      "state": "ON",
+      "city": "TORONTO"
     }
   }
 }
@@ -4358,6 +4369,10 @@ $ curl https://api.taxjar.com/v2/taxes \
       },
       "tax_collectable": 3.3,
       "taxable_amount": 16.5
+    },
+    "jurisdictions": {
+      "country": "FR",
+      "city": "MARSEILLE"
     }
   }
 }
@@ -4509,6 +4524,12 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 16.5,
       "tax_collectable": 1.36,
       "taxable_amount": 16.5
+    },
+    "jurisdictions": {
+      "country": "US",
+      "state": "TX",
+      "county": "TRAVIS",
+      "city": "AUSTIN"
     }
   }
 }
@@ -4697,6 +4718,12 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 15,
       "tax_collectable": 0.94,
       "taxable_amount": 15
+    },
+    "jurisdictions": {
+      "country": "US",
+      "state": "MA",
+      "county": "WORCESTER",
+      "city": "WORCESTER"
     }
   }
 }
@@ -4886,6 +4913,12 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 7.99,
       "tax_collectable": 1.98,
       "taxable_amount": 37.93
+    },
+    "jurisdictions": {
+      "country": "US",
+      "state": "NY",
+      "county": "PUTNAM",
+      "city": "MAHOPAC"
     }
   }
 }
@@ -5128,6 +5161,12 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 0,
       "tax_collectable": 0,
       "taxable_amount": 0
+    },
+    "jurisdictions": {
+      "country": "US",
+      "state": "CA",
+      "county": "LOS ANGELES",
+      "city": "LOS ANGELES"
     }
   }
 }
@@ -5353,6 +5392,12 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 17.94,
       "tax_collectable": 1.58,
       "taxable_amount": 17.94
+    },
+    "jurisdictions": {
+      "country": "US",
+      "state": "WA",
+      "county": "SPOKANE",
+      "city": "SPOKANE"
     }
   }
 }
@@ -5626,6 +5671,7 @@ has_nexus | bool | Whether or not you have [nexus](https://blog.taxjar.com/sales
 freight_taxable | bool | Freight taxability for the order.
 tax_source | string | [Origin-based or destination-based](https://blog.taxjar.com/charging-sales-tax-rates/) sales tax collection.
 breakdown | object | Breakdown of rates by jurisdiction for the order, shipping, and individual line items. If `has_nexus` is false or no line items are provided, no breakdown is returned in the response.
+jurisdictions | object | Relevant jurisdictions.
 
 <h4 id="us-taxes-breakdown-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; United States Breakdown Attributes</h4>
 
@@ -5648,6 +5694,7 @@ special_tax_rate | decimal | Special district sales tax rate for given location.
 special_district_tax_collectable | decimal | Amount of sales tax to collect for the special district.
 shipping | object | Breakdown of shipping rates if applicable.
 line_items | object | Breakdown of rates by line item if applicable.
+jurisdictions | object | Relevant jurisdictions.
 
 <h4 id="canada-taxes-breakdown-attributes"><span class="flag-icon flag-icon-ca"></span>&nbsp; Canada Breakdown Attributes</h4>
 
@@ -5664,6 +5711,7 @@ qst_tax_rate | decimal | Quebec sales tax rate for given location.
 qst | decimal | Amount of Quebec sales tax to collect for given location.
 shipping | object | Breakdown of shipping rates if applicable.
 line_items | object | Breakdown of rates by line item if applicable.
+jurisdictions | object | Relevant jurisdictions.
 
 <h4 id="international-taxes-breakdown-attributes"><span class="flag-icon flag-icon-eu"></span> <span class="flag-icon flag-icon-au"></span>&nbsp; International Breakdown Attributes</h4>
 
@@ -5674,6 +5722,7 @@ country_tax_rate | decimal | Country sales tax rate for given location
 country_tax_collectable | decimal | Amount of sales tax to collect for the country.
 shipping | object | Breakdown of shipping rates if applicable.
 line_items | object | Breakdown of rates by line item if applicable.
+jurisdictions | object | Relevant jurisdictions.
 
 ## Transactions
 
