@@ -8,6 +8,10 @@ Stay on top of new developer-facing features, accuracy improvements, and bug fix
 
 * <span class="badge badge--post">Feature</span> Exempt regions now optional for customer endpoints. Exempt customers with no explicit regions will be treated as exempt everywhere.
 
+#### 2018-09-04
+
+* <span class="badge badge--get">Accuracy</span> Nevada (NV) now rooftop accurate for street-level calculations.
+
 ### August 2018
 
 #### 2018-08-05
