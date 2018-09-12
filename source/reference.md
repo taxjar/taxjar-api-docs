@@ -5673,6 +5673,29 @@ tax_source | string | [Origin-based or destination-based](https://blog.taxjar.co
 jurisdictions | object | Jurisdiction names for the order.
 breakdown | object | Breakdown of rates by jurisdiction for the order, shipping, and individual line items. If `has_nexus` is false or no line items are provided, no breakdown is returned in the response.
 
+<h4 id="us-taxes-jurisdiction-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; United States Jurisdiction Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+country | string | Two-letter ISO country code for given location.
+state | string | Postal abbreviated state name for given location.
+county | string | County name for given location.
+city | string | City name for given location.
+
+<h4 id="canada-taxes-jurisdiction-attributes"><span class="flag-icon flag-icon-ca"></span>&nbsp; Canada Jurisdiction Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+country | string | Two-letter ISO country code for given location.
+state | string | Postal abbreviated state name for given location.
+city | string | City name for given location.
+
+<h4 id="international-taxes-jurisdiction-attributes"><span class="flag-icon flag-icon-eu"></span> <span class="flag-icon flag-icon-au"></span>&nbsp; International Jurisdiction Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+country | string | Two-letter ISO country code for given location.
+
 <h4 id="us-taxes-breakdown-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; United States Breakdown Attributes</h4>
 
 Parameter | Type | Description
