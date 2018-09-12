@@ -6,7 +6,15 @@ Stay on top of new developer-facing features, accuracy improvements, and bug fix
 
 #### 2018-09-12
 
-* <span class="badge badge--put">Platform</span> Added jurisdiction information to taxes endpoint.
+* <span class="badge badge--post">Feature</span> Jurisdiction names now available for [taxes](#taxes) endpoint.
+
+#### 2018-09-11
+
+* <span class="badge badge--post">Feature</span> Exempt regions now optional for customer endpoints. Exempt customers with no explicit regions will be treated as exempt everywhere.
+
+#### 2018-09-04
+
+* <span class="badge badge--get">Accuracy</span> Nevada (NV) now rooftop accurate for street-level calculations.
 
 ### August 2018
 
