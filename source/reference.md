@@ -5670,8 +5670,8 @@ rate | decimal | Overall sales tax rate of the order (`amount_to_collect` &divid
 has_nexus | bool | Whether or not you have [nexus](https://blog.taxjar.com/sales-tax-nexus-definition/) for the order based on an address on file, `nexus_addresses` parameter, or `from_` parameters.
 freight_taxable | bool | Freight taxability for the order.
 tax_source | string | [Origin-based or destination-based](https://blog.taxjar.com/charging-sales-tax-rates/) sales tax collection.
+jurisdictions | object | Jurisdiction names for the order.
 breakdown | object | Breakdown of rates by jurisdiction for the order, shipping, and individual line items. If `has_nexus` is false or no line items are provided, no breakdown is returned in the response.
-jurisdictions | object | Relevant jurisdictions.
 
 <h4 id="us-taxes-breakdown-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; United States Breakdown Attributes</h4>
 
@@ -5694,7 +5694,6 @@ special_tax_rate | decimal | Special district sales tax rate for given location.
 special_district_tax_collectable | decimal | Amount of sales tax to collect for the special district.
 shipping | object | Breakdown of shipping rates if applicable.
 line_items | object | Breakdown of rates by line item if applicable.
-jurisdictions | object | Relevant jurisdictions.
 
 <h4 id="canada-taxes-breakdown-attributes"><span class="flag-icon flag-icon-ca"></span>&nbsp; Canada Breakdown Attributes</h4>
 
@@ -5711,7 +5710,6 @@ qst_tax_rate | decimal | Quebec sales tax rate for given location.
 qst | decimal | Amount of Quebec sales tax to collect for given location.
 shipping | object | Breakdown of shipping rates if applicable.
 line_items | object | Breakdown of rates by line item if applicable.
-jurisdictions | object | Relevant jurisdictions.
 
 <h4 id="international-taxes-breakdown-attributes"><span class="flag-icon flag-icon-eu"></span> <span class="flag-icon flag-icon-au"></span>&nbsp; International Breakdown Attributes</h4>
 
@@ -5722,7 +5720,6 @@ country_tax_rate | decimal | Country sales tax rate for given location
 country_tax_collectable | decimal | Amount of sales tax to collect for the country.
 shipping | object | Breakdown of shipping rates if applicable.
 line_items | object | Breakdown of rates by line item if applicable.
-jurisdictions | object | Relevant jurisdictions.
 
 ## Transactions
 
