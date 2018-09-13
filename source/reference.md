@@ -3878,6 +3878,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": false,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "US",
+      "state": "CA",
+      "county": "LOS ANGELES",
+      "city": "LOS ANGELES"
+    },
     "breakdown": {
       "taxable_amount": 15,
       "tax_collectable": 1.35,
@@ -4030,6 +4036,11 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "CA",
+      "state": "ON",
+      "city": "TORONTO"
+    },
     "breakdown": {
       "combined_tax_rate": 0.13,
       "gst": 0.83,
@@ -4208,6 +4219,9 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "AU"
+    },
     "breakdown": {
       "combined_tax_rate": 0.1,
       "country_tax_collectable": 1.65,
@@ -4332,6 +4346,10 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "FR",
+      "city": "MARSEILLE"
+    },
     "breakdown": {
       "combined_tax_rate": 0.2,
       "country_tax_collectable": 3.3,
@@ -4456,6 +4474,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "origin",
+    "jurisdictions": {
+      "country": "US",
+      "state": "TX",
+      "county": "TRAVIS",
+      "city": "AUSTIN"
+    },
     "breakdown": {
       "city_tax_collectable": 0.17,
       "city_tax_rate": 0.01,
@@ -4661,6 +4685,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": false,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "US",
+      "state": "MA",
+      "county": "WORCESTER",
+      "city": "WORCESTER"
+    },
     "breakdown": {
       "city_tax_collectable": 0,
       "city_tax_rate": 0,
@@ -4815,6 +4845,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "US",
+      "state": "NY",
+      "county": "PUTNAM",
+      "city": "MAHOPAC"
+    },
     "breakdown": {
       "city_tax_collectable": 0,
       "city_tax_rate": 0,
@@ -5074,6 +5110,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": false,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "US",
+      "state": "CA",
+      "county": "LOS ANGELES",
+      "city": "LOS ANGELES"
+    },
     "breakdown": {
       "city_tax_collectable": 0,
       "city_tax_rate": 0,
@@ -5282,6 +5324,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "US",
+      "state": "WA",
+      "county": "SPOKANE",
+      "city": "SPOKANE"
+    },
     "breakdown": {
       "city_tax_collectable": 0.41,
       "city_tax_rate": 0.023,
@@ -5625,7 +5673,38 @@ rate | decimal | Overall sales tax rate of the order (`amount_to_collect` &divid
 has_nexus | bool | Whether or not you have [nexus](https://blog.taxjar.com/sales-tax-nexus-definition/) for the order based on an address on file, `nexus_addresses` parameter, or `from_` parameters.
 freight_taxable | bool | Freight taxability for the order.
 tax_source | string | [Origin-based or destination-based](https://blog.taxjar.com/charging-sales-tax-rates/) sales tax collection.
+jurisdictions | object | Jurisdiction names for the order.
 breakdown | object | Breakdown of rates by jurisdiction for the order, shipping, and individual line items. If `has_nexus` is false or no line items are provided, no breakdown is returned in the response.
+
+<h4 id="us-taxes-jurisdiction-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; United States Jurisdiction Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+country | string | Two-letter ISO country code for given location.
+state | string | Postal abbreviated state name for given location.
+county | string | County name for given location.
+city | string | City name for given location.
+
+<h4 id="canada-taxes-jurisdiction-attributes"><span class="flag-icon flag-icon-ca"></span>&nbsp; Canada Jurisdiction Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+country | string | Two-letter ISO country code for given location.
+state | string | Postal abbreviated state name for given location.
+city | string | City name for given location.
+
+<h4 id="au-taxes-jurisdiction-attributes"><span class="flag-icon flag-icon-au"></span>&nbsp; Australia Jurisdiction Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+country | string | Two-letter ISO country code for given location.
+
+<h4 id="eu-taxes-jurisdiction-attributes"><span class="flag-icon flag-icon-eu"></span>&nbsp; European Union Jurisdiction Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+country | string | Two-letter ISO country code for given location.
+city | string | City name for given location.
 
 <h4 id="us-taxes-breakdown-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; United States Breakdown Attributes</h4>
 

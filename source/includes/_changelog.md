@@ -4,6 +4,10 @@ Stay on top of new developer-facing features, accuracy improvements, and bug fix
 
 ### September 2018
 
+#### 2018-09-13
+
+* <span class="badge badge--post">Feature</span> Jurisdiction names now available for [taxes](#taxes) endpoint.
+
 #### 2018-09-11
 
 * <span class="badge badge--post">Feature</span> Exempt regions now optional for customer endpoints. Exempt customers with no explicit regions will be treated as exempt everywhere.
