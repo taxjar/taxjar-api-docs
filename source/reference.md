@@ -5693,11 +5693,18 @@ country | string | Two-letter ISO country code for given location.
 state | string | Postal abbreviated state name for given location.
 city | string | City name for given location.
 
-<h4 id="international-taxes-jurisdiction-attributes"><span class="flag-icon flag-icon-eu"></span> <span class="flag-icon flag-icon-au"></span>&nbsp; International Jurisdiction Attributes</h4>
+<h4 id="au-taxes-jurisdiction-attributes"><span class="flag-icon flag-icon-au"></span>&nbsp; Australia Jurisdiction Attributes</h4>
 
 Parameter | Type | Description
 --------- | ------- | -----------
 country | string | Two-letter ISO country code for given location.
+
+<h4 id="eu-taxes-jurisdiction-attributes"><span class="flag-icon flag-icon-eu"></span>&nbsp; European Union Jurisdiction Attributes</h4>
+
+Parameter | Type | Description
+--------- | ------- | -----------
+country | string | Two-letter ISO country code for given location.
+city | string | City name for given location.
 
 <h4 id="us-taxes-breakdown-attributes"><span class="flag-icon flag-icon-us"></span>&nbsp; United States Breakdown Attributes</h4>
 
