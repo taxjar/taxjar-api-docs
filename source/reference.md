@@ -3878,6 +3878,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": false,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "US",
+      "state": "CA",
+      "county": "LOS ANGELES",
+      "city": "LOS ANGELES"
+    },
     "breakdown": {
       "taxable_amount": 15,
       "tax_collectable": 1.35,
@@ -3914,12 +3920,6 @@ $ curl https://api.taxjar.com/v2/taxes \
           "special_district_amount": 0.38
         }
       ]
-    },
-    "jurisdictions": {
-      "country": "US",
-      "state": "CA",
-      "county": "LOS ANGELES",
-      "city": "LOS ANGELES"
     }
   }
 }
@@ -4036,6 +4036,11 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "CA",
+      "state": "ON",
+      "city": "TORONTO"
+    },
     "breakdown": {
       "combined_tax_rate": 0.13,
       "gst": 0.83,
@@ -4080,11 +4085,6 @@ $ curl https://api.taxjar.com/v2/taxes \
       },
       "tax_collectable": 2.15,
       "taxable_amount": 16.5
-    },
-    "jurisdictions": {
-      "country": "CA",
-      "state": "ON",
-      "city": "TORONTO"
     }
   }
 }
@@ -4219,6 +4219,9 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "AU"
+    },
     "breakdown": {
       "combined_tax_rate": 0.1,
       "country_tax_collectable": 1.65,
@@ -4343,6 +4346,10 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "FR",
+      "city": "MARSEILLE"
+    },
     "breakdown": {
       "combined_tax_rate": 0.2,
       "country_tax_collectable": 3.3,
@@ -4369,10 +4376,6 @@ $ curl https://api.taxjar.com/v2/taxes \
       },
       "tax_collectable": 3.3,
       "taxable_amount": 16.5
-    },
-    "jurisdictions": {
-      "country": "FR",
-      "city": "MARSEILLE"
     }
   }
 }
@@ -4471,6 +4474,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "origin",
+    "jurisdictions": {
+      "country": "US",
+      "state": "TX",
+      "county": "TRAVIS",
+      "city": "AUSTIN"
+    },
     "breakdown": {
       "city_tax_collectable": 0.17,
       "city_tax_rate": 0.01,
@@ -4524,12 +4533,6 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 16.5,
       "tax_collectable": 1.36,
       "taxable_amount": 16.5
-    },
-    "jurisdictions": {
-      "country": "US",
-      "state": "TX",
-      "county": "TRAVIS",
-      "city": "AUSTIN"
     }
   }
 }
@@ -4682,6 +4685,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": false,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "US",
+      "state": "MA",
+      "county": "WORCESTER",
+      "city": "WORCESTER"
+    },
     "breakdown": {
       "city_tax_collectable": 0,
       "city_tax_rate": 0,
@@ -4718,12 +4727,6 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 15,
       "tax_collectable": 0.94,
       "taxable_amount": 15
-    },
-    "jurisdictions": {
-      "country": "US",
-      "state": "MA",
-      "county": "WORCESTER",
-      "city": "WORCESTER"
     }
   }
 }
@@ -4842,6 +4845,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "US",
+      "state": "NY",
+      "county": "PUTNAM",
+      "city": "MAHOPAC"
+    },
     "breakdown": {
       "city_tax_collectable": 0,
       "city_tax_rate": 0,
@@ -4913,12 +4922,6 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 7.99,
       "tax_collectable": 1.98,
       "taxable_amount": 37.93
-    },
-    "jurisdictions": {
-      "country": "US",
-      "state": "NY",
-      "county": "PUTNAM",
-      "city": "MAHOPAC"
     }
   }
 }
@@ -5107,6 +5110,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": false,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "US",
+      "state": "CA",
+      "county": "LOS ANGELES",
+      "city": "LOS ANGELES"
+    },
     "breakdown": {
       "city_tax_collectable": 0,
       "city_tax_rate": 0,
@@ -5161,12 +5170,6 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 0,
       "tax_collectable": 0,
       "taxable_amount": 0
-    },
-    "jurisdictions": {
-      "country": "US",
-      "state": "CA",
-      "county": "LOS ANGELES",
-      "city": "LOS ANGELES"
     }
   }
 }
@@ -5321,6 +5324,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     "has_nexus": true,
     "freight_taxable": true,
     "tax_source": "destination",
+    "jurisdictions": {
+      "country": "US",
+      "state": "WA",
+      "county": "SPOKANE",
+      "city": "SPOKANE"
+    },
     "breakdown": {
       "city_tax_collectable": 0.41,
       "city_tax_rate": 0.023,
@@ -5392,12 +5401,6 @@ $ curl https://api.taxjar.com/v2/taxes \
       "state_taxable_amount": 17.94,
       "tax_collectable": 1.58,
       "taxable_amount": 17.94
-    },
-    "jurisdictions": {
-      "country": "US",
-      "state": "WA",
-      "county": "SPOKANE",
-      "city": "SPOKANE"
     }
   }
 }
