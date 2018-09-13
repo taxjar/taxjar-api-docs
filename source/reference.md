@@ -1175,7 +1175,7 @@ GET https://api.taxjar.com/v2/rates/:zip
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-country | string | <span class="conditional" data-tooltip="For international locations outside of US, `country` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code of the country for given location.
+country | string | <span class="conditional" data-tooltip="For international locations outside of US, `country` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code for given location.
 zip | string | required | Postal code for given location (5-Digit ZIP or ZIP+4).
 state | string | optional | Two-letter ISO state code for given location.
 city | string | optional | City for given location.
@@ -1209,7 +1209,7 @@ Parameter | Type | Description
 zip | string | Postal code for given location.
 city | string | City name for given location.
 state | string | Postal abbreviated state name for given location.
-country | string | Two-letter ISO country code of the country for given location.
+country | string | Two-letter ISO country code for given location.
 combined_rate | decimal | Overall sales tax rate. This rate should be used to determine how much sales tax to collect for an order.
 freight_taxable | bool | Freight taxability for given location.
 
@@ -1218,7 +1218,7 @@ freight_taxable | bool | Freight taxability for given location.
 Parameter | Type | Description
 --------- | ------- | -----------
 zip | string | Postal code for given location.
-country | string | Two-letter ISO country code of the country for given location.
+country | string | Two-letter ISO country code for given location.
 country_rate | decimal | Country sales tax rate for given location.
 combined_rate | decimal | Overall sales tax rate. This rate should be used to determine how much sales tax to collect for an order.
 freight_taxable | bool | Freight taxability for given location.
@@ -1227,7 +1227,7 @@ freight_taxable | bool | Freight taxability for given location.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-country | string | Two-letter ISO country code of the country for given location.
+country | string | Two-letter ISO country code for given location.
 name | string | Country name for given location.
 standard_rate | decimal | [Standard rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
 reduced_rate | decimal | [Reduced rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
@@ -5636,7 +5636,7 @@ amount | decimal | optional | Total amount of the order, **excluding shipping**.
 shipping | decimal | required | Total amount of shipping for the order.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
 nexus_addresses[][id] | string | optional | Unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
-nexus_addresses[][country] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, country is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code of the country for the nexus address.
+nexus_addresses[][country] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, country is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code for the nexus address.
 nexus_addresses[][zip] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, zip is required." data-tooltip-position="top center">conditional</span> | Postal code for the nexus address.
 nexus_addresses[][state] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, state is required." data-tooltip-position="top center">conditional</span> | State for the nexus address.
 nexus_addresses[][city] | string | optional | City for the nexus address.
