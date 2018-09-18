@@ -3935,6 +3935,12 @@ $ curl https://api.taxjar.com/v2/taxes \
   :has_nexus => true,
   :freight_taxable => false,
   :tax_source => "destination",
+  :jurisdictions => #<Taxjar::Jurisdictions:0x00000a @attrs={
+    :country => 'US',
+    :state => 'CA',
+    :county => 'LOS ANGELES',
+    :city => 'LOS ANGELES'
+  }>,
   :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
     :taxable_amount => 15.0,
     :tax_collectable => 1.35,
@@ -4011,6 +4017,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     'special_tax_rate': 0.015,
     'city_taxable_amount': 0.0,
     'tax_collectable': 1.31
+  }>,
+  'jurisdictions': <TaxJarJurisdictions {
+    'country': 'US',
+    'state': 'CA',
+    'county': 'LOS ANGELES',
+    'city': 'LOS ANGELES'
   }>,
   'has_nexus': True,
   'tax_source': 'destination',
@@ -4100,6 +4112,11 @@ $ curl https://api.taxjar.com/v2/taxes \
   :has_nexus => true,
   :freight_taxable => true,
   :tax_source => "destination",
+  :jurisdictions => #<Taxjar::Jurisdictions:0x00000a @attrs={
+    :country => 'CA',
+    :state => 'ON',
+    :city => 'TORONTO'
+  }>,
   :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
     :taxable_amount => 16.5,
     :tax_collectable => 2.15,
@@ -4195,6 +4212,11 @@ $ curl https://api.taxjar.com/v2/taxes \
     'pst': 1.32,
     'tax_collectable': 2.15
   }>,
+  'jurisdictions': <TaxJarJurisdictions {
+    'country': 'CA',
+    'state': 'ON',
+    'city': 'TORONTO'
+  }>,
   'has_nexus': True,
   'tax_source': 'destination',
   'shipping': 1.5,
@@ -4263,6 +4285,9 @@ $ curl https://api.taxjar.com/v2/taxes \
   :has_nexus => true,
   :freight_taxable => true,
   :tax_source => "destination",
+  :jurisdictions => #<Taxjar::Jurisdictions:0x00000a @attrs={
+    :country => 'AU'
+  }>,
   :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
     :taxable_amount => 16.5,
     :tax_collectable => 1.65,
@@ -4322,6 +4347,9 @@ $ curl https://api.taxjar.com/v2/taxes \
     'country_taxable_amount': 16.5,
     'tax_collectable': 1.65
   >},
+  'jurisdictions': <TaxJarJurisdictions {
+    'country': 'AU'
+  }>,
   'has_nexus': True,
   'tax_source': 'destination',
   'shipping': 1.5,
@@ -4391,6 +4419,10 @@ $ curl https://api.taxjar.com/v2/taxes \
   :has_nexus => true,
   :freight_taxable => true,
   :tax_source => "destination",
+  :jurisdictions => #<Taxjar::Jurisdictions:0x00000a @attrs={
+    :country => 'FR',
+    :city => 'MARSEILLE'
+  }>,
   :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
     :taxable_amount => 16.5,
     :tax_collectable => 3.3,
@@ -4449,6 +4481,10 @@ $ curl https://api.taxjar.com/v2/taxes \
     'combined_tax_rate': 0.2,
     'country_taxable_amount': 16.5,
     'tax_collectable': 3.3
+  }>,
+  'jurisdictions': <TaxJarJurisdictions {
+    'country': 'FR',
+    'city': 'MARSEILLE'
   }>,
   'has_nexus': True,
   'tax_source': 'destination',
@@ -4548,6 +4584,12 @@ $ curl https://api.taxjar.com/v2/taxes \
   :has_nexus => true,
   :freight_taxable => true,
   :tax_source => "origin",
+  :jurisdictions => #<Taxjar::Jurisdictions:0x00000a @attrs={
+    :country => 'US',
+    :state => 'TX',
+    :county => 'TRAVIS',
+    :city => 'AUSTIN'
+  }>,
   :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
     :taxable_amount => 16.5,
     :tax_collectable => 1.36,
@@ -4661,6 +4703,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     'city_taxable_amount': 16.5,
     'tax_collectable': 1.36
   }>,
+  'jurisdictions': <TaxJarJurisdictions {
+    'country': 'US',
+    'state': 'TX',
+    'county': 'TRAVIS',
+    'city': 'AUSTIN'
+  }>,
   'has_nexus': True,
   'tax_source': 'origin',
   'shipping': 1.5,
@@ -4742,6 +4790,12 @@ $ curl https://api.taxjar.com/v2/taxes \
   :has_nexus => true,
   :freight_taxable => false,
   :tax_source => "destination",
+  :jurisdictions => #<Taxjar::Jurisdictions:0x00000a @attrs={
+    :country => 'US',
+    :state => 'MA',
+    :county => 'WORCESTER',
+    :city => 'WORCESTER'
+  }>,
   :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
     :taxable_amount => 15.0,
     :tax_collectable => 0.94,
@@ -4820,6 +4874,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     'special_tax_rate': 0.0,
     'city_taxable_amount': 0.0,
     'tax_collectable': 0.94
+  }>,
+  'jurisdictions': <TaxJarJurisdictions {
+    'country': 'US',
+    'state': 'MA',
+    'county': 'WORCESTER',
+    'city': 'WORCESTER'
   }>,
   'has_nexus': True,
   'tax_source': 'destination',
@@ -4937,6 +4997,12 @@ $ curl https://api.taxjar.com/v2/taxes \
   :has_nexus => true,
   :freight_taxable => true,
   :tax_source => "destination",
+  :jurisdictions => #<Taxjar::Jurisdictions:0x00000a @attrs={
+    :country => 'US',
+    :state => 'NY',
+    :county => 'PUTNAM',
+    :city => 'MAHOPAC'
+  }>,
   :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
     :taxable_amount => 37.93,
     :tax_collectable => 1.98,
@@ -5086,6 +5152,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     'city_taxable_amount': 0.0,
     'tax_collectable': 1.98
   }>,
+  'jurisdictions': <TaxJarJurisdictions {
+    'country': 'US',
+    'state': 'NY',
+    'county': 'PUTNAM',
+    'city': 'MAHOPAC'
+  }>,
   'has_nexus': True,
   'tax_source': 'destination',
   'shipping': 7.99,
@@ -5185,6 +5257,12 @@ $ curl https://api.taxjar.com/v2/taxes \
   :has_nexus => true,
   :freight_taxable => false,
   :tax_source => "destination",
+  :jurisdictions => #<Taxjar::Jurisdictions:0x00000a @attrs={
+    :country => 'US',
+    :state => 'CA',
+    :county => 'LOS ANGELES',
+    :city => 'LOS ANGELES'
+  }>,
   :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
     :taxable_amount => 0.0,
     :tax_collectable => 0.0,
@@ -5299,6 +5377,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     'special_tax_rate': 0.0,
     'city_taxable_amount': 0.0,
     'tax_collectable': 0.0
+  }>,
+  'jurisdictions': <TaxJarJurisdictions {
+    'country': 'US',
+    'state': 'CA',
+    'county': 'LOS ANGELES',
+    'city': 'LOS ANGELES'
   }>,
   'has_nexus': True,
   'tax_source': 'destination',
@@ -5416,6 +5500,12 @@ $ curl https://api.taxjar.com/v2/taxes \
   :has_nexus => true,
   :freight_taxable => true,
   :tax_source => "destination",
+  :jurisdictions => #<Taxjar::Jurisdictions:0x00000a @attrs={
+    :country => 'US',
+    :state => 'WA',
+    :county => 'SPOKANE',
+    :city => 'SPOKANE'
+  }>,
   :breakdown => #<Taxjar::Breakdown:0x00000a @attrs={
     :taxable_amount => 17.94,
     :tax_collectable => 1.58,
@@ -5564,6 +5654,12 @@ $ curl https://api.taxjar.com/v2/taxes \
     'special_tax_rate': 0.0,
     'city_taxable_amount': 17.94,
     'tax_collectable': 1.58
+  }>,
+  'jurisdictions': <TaxJarJurisdictions {
+    'country': 'US',
+    'state': 'WA',
+    'county': 'SPOKANE',
+    'city': 'SPOKANE'
   }>,
   'has_nexus': True,
   'tax_source': 'destination',
