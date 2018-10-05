@@ -2,7 +2,18 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### October 2018
+
+#### 2018-10-04
+
+* <span class="badge badge--get">Accuracy</span> Pennsylvania (PA) now rooftop accurate for street-level calculations.
+* <span class="badge badge--get">Accuracy</span> West Virginia (WV) now rooftop accurate for street-level calculations.
+
 ### September 2018
+
+#### 2018-09-19
+
+* <span class="badge badge--get">Accuracy</span> Improved Software as a Service (SaaS) exemptions for Texas (TX).
 
 #### 2018-09-13
 
