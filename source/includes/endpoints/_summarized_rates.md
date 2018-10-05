@@ -2,8 +2,6 @@
 
 ### <span class="badge badge--get">get</span> Summarize tax rates for all regions
 
-Retrieve minimum and average sales tax rates by region as a backup.
-
 > Definition
 
 ```ruby
@@ -246,6 +244,8 @@ $ curl https://api.taxjar.com/v2/summary_rates \
   }>
 ]
 ```
+
+Retrieve minimum and average sales tax rates by region as a backup.
 
 #### Request
 
