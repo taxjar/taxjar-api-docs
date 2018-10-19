@@ -117,7 +117,7 @@ public class ValidateAddressExample {
         Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
 
         try {
-            Map<String, String> params = new HashMap<>();
+            Map<String, Object> params = new HashMap<>();
             params.put("country", "US");
             params.put("state", "AZ");
             params.put("zip", "85297");
@@ -221,7 +221,7 @@ public class ValidateAddressExample {
         Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
 
         try {
-            Map<String, String> params = new HashMap<>();
+            Map<String, Object> params = new HashMap<>();
             params.put("state", "AZ");
             params.put("city", "Phoenix");
             params.put("street", "1109 9th");
@@ -311,7 +311,7 @@ public class ValidateAddressExample {
         Taxjar client = new Taxjar("9e0cd62a22f451701f29c3bde214");
 
         try {
-            Map<String, String> params = new HashMap<>();
+            Map<String, Object> params = new HashMap<>();
             params.put("zip", "98122");
 
             AddressResponse res = client.validateAddress(params);
