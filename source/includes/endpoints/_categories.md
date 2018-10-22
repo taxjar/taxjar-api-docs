@@ -109,9 +109,69 @@ $ curl https://api.taxjar.com/v2/categories \
 {
   "categories": [
     {
+      "name": "Installation Services",
+      "product_tax_code": "10040",
+      "description": "Installation services separately stated from sales of tangible personal property."
+    },
+    {
+      "name": "General Services",
+      "product_tax_code": "19000",
+      "description": "Miscellaneous services which are not subject to a service-specific tax levy. This category will only treat services as taxable if the jurisdiction taxes services generally."
+    },
+    {
+      "name": "Advertising Services",
+      "product_tax_code": "19001",
+      "description": "Services rendered for advertising which do not include the exchange of tangible personal property."
+    },
+    {
+      "name": "Parking Services",
+      "product_tax_code": "19002",
+      "description": "Service of providing usage of a parking space."
+    },
+    {
+      "name": "Admission Services",
+      "product_tax_code": "19003",
+      "description": "Admission charges associated with entry to an event."
+    },
+    {
+      "name": "Training Services",
+      "product_tax_code": "19004",
+      "description": "Services provided to educate users on the proper use of a product."
+    },
+    {
+      "name": "Professional Services",
+      "product_tax_code": "19005",
+      "description": "Professional services which are not subject to a service-specific tax levy."
+    },
+    {
+      "name": "Dry Cleaning Services",
+      "product_tax_code": "19006",
+      "description": "Services provided in the cleaning of clothing and/or fabrics."
+    },
+    {
+      "name": "Repair Services",
+      "product_tax_code": "19007",
+      "description": "Services provided to restore tangible personal property to working order or optimal functionality."
+    },
+    {
+      "name": "Hairdressing Services",
+      "product_tax_code": "19008",
+      "description": "Services provided to cut and style human hair."
+    },
+    {
+      "name": "Printing Services",
+      "product_tax_code": "19009",
+      "description": "Services provided to apply graphics and/or text to paper or other substrates which do not involve an exchange of tangible personal property."
+    },
+    {
       "name": "Clothing",
       "product_tax_code": "20010",
-      "description": " All human wearing apparel suitable for general use"
+      "description": "All human wearing apparel suitable for general use"
+    },
+    {
+      "name": "Swimwear",
+      "product_tax_code": "20041",
+      "description": "Bathing suits and swim suits"
     },
     {
       "name": "Software as a Service",
@@ -247,25 +307,37 @@ GET https://api.taxjar.com/v2/categories
 
 Returns a `categories` JSON object with an array of product categories and corresponding tax codes. The following categories are currently supported:
 
-| Category                  | Code  |                                                                                                                                                              Countries                                                                                                                                                              | Description                                                                                                                |
-|:--------------------------|:------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------|
-| Clothing                  | 20010 |                                                                                                            <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                             | All human wearing apparel suitable for general use.                                                                        |
-| Software as a Service     | 30070 |                                                                                                            <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                             | Pre-written software, delivered electronically, but access remotely.                                                       |
-| Digital Goods             | 31000 |                                                     <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span>                                                      | Digital products transferred electronically, meaning obtained by the purchaser by means other than tangible storage media. |
-| Candy                     | 40010 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                                                                                                                                        | Candy and similar items                                                                                                    |
-| Supplements               | 40020 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                                                                                                                                        | Non-food dietary supplements.                                                                                              |
-| Food & Groceries          | 40030 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-au" data-tooltip="Australia" data-tooltip-position="top center"></span> | Food for humans consumption, unprepared.                                                                                   |
-| Soft Drinks               | 40050 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                                                                                                                                        | Soft drinks, soda, and other similar beverages. Does not include fruit juices and water.                                   |
-| Bottled Water             | 40060 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                                                                                                                                        | Bottled, drinkable water for human consumption.                                                                            |
-| Prepared Foods            | 41000 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                                                                                                                                        | Foods intended for on-site consumption. Ex. Restaurant meals.                                                              |
-| Non-Prescription          | 51010 |                                                     <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span>                                                      | Drugs for human use without a prescription.                                                                                |
-| Prescription              | 51020 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-au" data-tooltip="Australia" data-tooltip-position="top center"></span> | Drugs for human use with a prescription.                                                                                   |
-| Books                     | 81100 |                                                     <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span>                                                      | Books, printed.                                                                                                            |
-| Textbooks                 | 81110 |                                                                                                            <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                             | Textbooks, printed.                                                                                                        |
-| Religious Books           | 81120 |                                                                                                            <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span>                                                                                                             | Religious books and manuals, printed.                                                                                      |
-| Magazines & Subscriptions | 81300 |                                                     <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span>                                                      | Periodicals, printed, sold by subscription.                                                                                |
-| Magazine                  | 81310 |                                                     <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span>                                                      | Periodicals, printed, sold individually.                                                                                   |
-| Other Exempt              | 99999 |                                                                                                                                                                 All                                                                                                                                                                 | Item is exempt.                                                                                                            |
+| Category | Code | Countries | Description |
+|---------------------------|-------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------------------------------------------------------------------------|
+| Installation Services | 10040 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Installation services separately stated from sales of tangible personal property. |
+| General Services | 19000 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Miscellaneous services which are not subject to a service-specific tax levy. This category will only treat services as taxable if the jurisdiction taxes services generally. |
+| Advertising Services | 19001 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Services rendered for advertising which do not include the exchange of tangible personal property. |
+| Parking Services | 19002 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Service of providing usage of a parking space. |
+| Admission Services | 19003 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Admission charges associated with entry to an event. |
+| Training Services | 19004 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Services provided to educate users on the proper use of a product. |
+| Professional Services | 19005 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Professional services which are not subject to a service-specific tax levy. |
+| Dry Cleaning Services | 19006 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Services provided in the cleaning of clothing and/or fabrics. |
+| Repair Services | 19007 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Services provided to restore tangible personal property to working order or optimal functionality. |
+| Hairdressing Services | 19008 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Services provided to cut and style human hair. |
+| Printing Services | 19009 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Services provided to apply graphics and/or text to paper or other substrates which do not involve an exchange of tangible personal property. |
+| Clothing | 20010 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | All human wearing apparel suitable for general use. |
+| Swimwear | 20041 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Bathing suits and swim suits. |
+| Software as a Service | 30070 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Pre-written software, delivered electronically, but access remotely. |
+| Digital Goods | 31000 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> | Digital products transferred electronically, meaning obtained by the purchaser by means other than tangible storage media. |
+| Candy | 40010 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Candy and similar items |
+| Supplements | 40020 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Non-food dietary supplements. |
+| Food & Groceries | 40030 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-au" data-tooltip="Australia" data-tooltip-position="top center"></span> | Food for humans consumption, unprepared. |
+| Soft Drinks | 40050 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Soft drinks, soda, and other similar beverages. Does not include fruit juices and water. |
+| Bottled Water | 40060 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Bottled, drinkable water for human consumption. |
+| Prepared Foods | 41000 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Foods intended for on-site consumption. Ex. Restaurant meals. |
+| Non-Prescription | 51010 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> | Drugs for human use without a prescription. |
+| Prescription | 51020 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-au" data-tooltip="Australia" data-tooltip-position="top center"></span> | Drugs for human use with a prescription. |
+| Books | 81100 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> | Books, printed. |
+| Textbooks | 81110 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Textbooks, printed. |
+| Religious Books | 81120 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Religious books and manuals, printed. |
+| Magazines & Subscriptions | 81300 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> | Periodicals, printed, sold by subscription. |
+| Magazine | 81310 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> | Periodicals, printed, sold individually. |
+| Other Exempt | 99999 | All | Item is exempt. |
 
 #### Attributes
 
