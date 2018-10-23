@@ -4,6 +4,11 @@ Stay on top of new developer-facing features, accuracy improvements, and bug fix
 
 ### October 2018
 
+#### 2018-10-23
+
+* <span class="badge badge--get">Accuracy</span> 11 tax categories for services now available: Installation, General, Advertising, Parking, Admission, Training, Professional, Dry Cleaning, Repair, Hairdressing, and Printing.
+* <span class="badge badge--get">Accuracy</span> Swimwear tax category for clothing now available.
+
 #### 2018-10-04
 
 * <span class="badge badge--get">Accuracy</span> Pennsylvania (PA) now rooftop accurate for street-level calculations.
