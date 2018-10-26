@@ -9,7 +9,7 @@ client.validate_address
 ```
 
 ```python
-client.validateAddress
+client.validate_address
 ```
 
 ```javascript
@@ -51,7 +51,7 @@ addresses = client.validate_address({
 import taxjar
 client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 
-addresses = client.validateAddress({
+addresses = client.validate_address({
   'country': 'US',
   'state': 'AZ',
   'zip': '85297',
@@ -163,7 +163,7 @@ addresses = client.validate_address({
 import taxjar
 client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 
-addresses = client.validateAddress({
+addresses = client.validate_address({
   'state': 'AZ',
   'city': 'Phoenix',
   'street': '1109 9th'
@@ -261,7 +261,7 @@ addresses = client.validate_address({
 import taxjar
 client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 
-addresses = client.validateAddress({
+addresses = client.validate_address({
   'zip': '98122'
 })
 ```
