@@ -518,27 +518,27 @@ Validates an existing VAT identification number against [VIES](http://ec.europa.
 > Definition
 
 ```ruby
-client.validateVat
+client.validate
 ```
 
 ```python
-client.validateVat
+client.validate
 ```
 
 ```javascript
-client.validateVat();
+client.validate();
 ```
 
 ```php?start_inline=1
-$client->validateVat();
+$client->validate();
 ```
 
 ```csharp
-client.ValidateVat();
+client.Validate();
 ```
 
 ```java
-client.validateVat();
+client.validate();
 ```
 
 ```shell
@@ -551,7 +551,7 @@ GET https://api.taxjar.com/v2/validation
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
-validation = client.validateVat({
+validation = client.validate({
   :vat => 'FR40303265045'
 })
 ```
@@ -560,7 +560,7 @@ validation = client.validateVat({
 import taxjar
 client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 
-validation = client.validateVat({
+validation = client.validate({
   'vat': 'FR40303265045'
 })
 ```
@@ -572,7 +572,7 @@ const client = new Taxjar({
   apiKey: '9e0cd62a22f451701f29c3bde214'
 });
 
-client.validateVat({
+client.validate({
   vat: 'FR40303265045'
 }).then(res => {
   res.validation; // Validation object
@@ -583,7 +583,7 @@ client.validateVat({
 require __DIR__ . '/vendor/autoload.php';
 $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
-$validation = $client->validateVat([
+$validation = $client->validate([
   'vat' => 'FR40303265045'
 ]);
 ```
@@ -592,7 +592,7 @@ $validation = $client->validateVat([
 using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
-var validation = client.ValidateVat(new {
+var validation = client.Validate(new {
   vat = "FR40303265045"
 });
 ```
@@ -613,7 +613,7 @@ public class ValidateExample {
             Map<String, String> params = new HashMap<>();
             params.put("vat", "FR40303265045");
 
-            ValidationResponse res = client.validateVat(params);
+            ValidationResponse res = client.validate(params);
         } catch (TaxjarException e) {
             e.printStackTrace();
         }
