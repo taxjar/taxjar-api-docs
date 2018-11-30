@@ -23,7 +23,7 @@ $client->validate();
 ```
 
 ```csharp
-client.Validate();
+client.ValidateVat();
 ```
 
 ```java
@@ -81,7 +81,7 @@ $validation = $client->validate([
 using Taxjar;
 var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 
-var validation = client.Validate(new {
+var validation = client.ValidateVat(new {
   vat = "FR40303265045"
 });
 ```
