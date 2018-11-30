@@ -2,6 +2,15 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### November 2018
+
+#### 2018-11-07
+
+* <span class="badge badge--get">Accuracy</span> Arizona (AZ) now rooftop accurate for street-level calculations.
+* <span class="badge badge--get">Accuracy</span> Hawaii (HI) now rooftop accurate for street-level calculations.
+* <span class="badge badge--get">Accuracy</span> Idaho (ID) now rooftop accurate for street-level calculations.
+* <span class="badge badge--get">Accuracy</span> Utah (UT) now rooftop accurate for street-level calculations.
+
 ### October 2018
 
 #### 2018-10-23
