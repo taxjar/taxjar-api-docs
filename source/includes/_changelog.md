@@ -2,6 +2,15 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### December 2018
+
+#### 2018-12-03
+
+* <span class="badge badge--get">Accuracy</span> Missouri (MO) now rooftop accurate for street-level calculations.
+* <span class="badge badge--get">Accuracy</span> New Mexico (NM) now rooftop accurate for street-level calculations.
+* <span class="badge badge--get">Accuracy</span> Virginia (VA) now rooftop accurate for street-level calculations.
+
+
 ### November 2018
 
 #### 2018-11-07
