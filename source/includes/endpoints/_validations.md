@@ -470,9 +470,7 @@ $ curl https://api.taxjar.com/v2/addresses/validate \
 ]
 ```
 
-Validates a customer address and returns back a collection of address matches. Address validation requires a [TaxJar Plus](https://www.taxjar.com/plus/) subscription.
-
-⚠️ **This endpoint is currently in beta and may be subject to change.**
+Validates a customer address and returns back a collection of address matches. **Address validation requires a [TaxJar Plus](https://www.taxjar.com/plus/) subscription.**
 
 #### Request
 
