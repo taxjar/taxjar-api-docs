@@ -235,11 +235,11 @@ You should see a response similar to the one on the right.
 
 TaxJar has no knowledge of your nexus, and because no nexus information was passed into SmartCalcs, we interpret it as a non-taxable sale.
 
-Now, send the same order in, but with the optional nexus_address parameters filled in.
+Now, send the same order in, but with the optional `nexus_addresses[]` parameters filled in.
 
 You should now see the same result as shown in the [Product Exemption example](#product-exemptions).
 
-**Important:** While nexus_addresses parameters are optional, if you do use them, you must, as minimum send in Country and State parameters. Otherwise, we can’t return a value.
+**Important:** While `nexus_addresses[]` parameters are optional, if you do use them, you must at a minimum send in `country` and `state` parameters. Otherwise, we can’t return a value.
 
 ### When to Use `from_` Address Information
 
