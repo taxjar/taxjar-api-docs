@@ -157,6 +157,7 @@ Parameter | Type | Required | Description
 transaction_date | date | optional | The date the transactions were originally recorded. <span class="usage-note" data-tooltip="Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates." data-tooltip-position="top center">View Note</span>
 from_transaction_date | date | optional | Start date of a range for which the transactions were originally recorded.
 to_transaction_date | date | optional | End date of a range for which the transactions were originally recorded.
+provider | string | optional | Source of where the transactions were originally recorded. Defaults to "api".
 
 #### Notes
 
@@ -273,6 +274,7 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
     "transaction_id": "123",
     "user_id": 10649,
     "transaction_date": "2015-05-14T00:00:00Z",
+    "provider": "api",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
@@ -302,6 +304,7 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
   :user_id => 11836,
   :transaction_date => "2015-05-14T00:00:00Z",
   :transaction_reference_id => nil,
+  :provider => "api",
   :from_country => "US",
   :from_zip => 93107,
   :from_state => "CA",
@@ -358,7 +361,8 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
   'sales_tax': 0.95,
   'amount': 17,
   'transaction_id': '123',
-  'to_state': 'CA'
+  'to_state': 'CA',
+  'provider': 'api'
 }>
 ```
 
@@ -385,6 +389,7 @@ Parameter | Type | Description
 transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
+provider | string | Source of where the transaction was originally recorded.
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -661,6 +666,7 @@ $ curl https://api.taxjar.com/v2/transactions/orders \
     "transaction_id": "123",
     "user_id": 10649,
     "transaction_date": "2015-05-14T00:00:00Z",
+    "provider": "api",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
@@ -690,6 +696,7 @@ $ curl https://api.taxjar.com/v2/transactions/orders \
   :user_id => 11836,
   :transaction_date => "2015-05-14T00:00:00Z",
   :transaction_reference_id => nil,
+  :provider => "api",
   :from_country => "US",
   :from_zip => 93101,
   :from_state => "CA",
@@ -746,7 +753,8 @@ $ curl https://api.taxjar.com/v2/transactions/orders \
   'sales_tax': 0.95,
   'amount': 16.5,
   'transaction_id': '20',
-  'to_state': 'CA'
+  'to_state': 'CA',
+  'provider': 'api'
 }>
 ```
 
@@ -762,6 +770,7 @@ Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given order transaction.
 transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
+provider | string | optional | Source of where the transaction was originally recorded. Defaults to "api". <span class="usage-note" data-tooltip="Use this parameter to exempt marketplace transactions or identify transactions across multiple channels. TaxJar currently supports marketplace exemptions for 'amazon', 'ebay', 'etsy', and 'walmart' transactions." data-tooltip-position="top center">View Note</span>
 from_country | string | optional | Two-letter ISO country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to create order transactions." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | Two-letter ISO state code where the order shipped from.
@@ -802,6 +811,7 @@ Parameter | Type | Description
 transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
+provider | string | Source of where the transaction was originally recorded.
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -1039,6 +1049,7 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
     "transaction_id": "123",
     "user_id": 10649,
     "transaction_date": "2015-05-14T00:00:00Z",
+    "provider": "api",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
@@ -1068,6 +1079,7 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
   :user_id => 11836,
   :transaction_date => "2015-05-14T00:00:00Z",
   :transaction_reference_id => nil,
+  :provider => 'api',
   :from_country => "US",
   :from_zip => 93101,
   :from_state => "CA",
@@ -1124,7 +1136,8 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
   'sales_tax': 0.95,
   'amount': 17,
   'transaction_id': '123',
-  'to_state': 'CA'
+  'to_state': 'CA',
+  'provider': 'api'
 }>
 ```
 
@@ -1180,6 +1193,7 @@ Parameter | Type | Description
 transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
+provider | string | Source of where the transaction was originally recorded.
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -1311,6 +1325,7 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
     "user_id": 10649,
     "transaction_date": null,
     "transaction_reference_id": null,
+    "provider": "api",
     "from_country": null,
     "from_zip": null,
     "from_state": null,
@@ -1335,6 +1350,7 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
   :user_id => 10649,
   :transaction_date => nil,
   :transaction_reference_id => nil,
+  :provider => "api",
   :from_country => nil,
   :from_zip => nil,
   :from_state => nil,
@@ -1371,7 +1387,8 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
   'sales_tax': None,
   'amount': None,
   'transaction_id': '123',
-  'to_state': None
+  'to_state': None,
+  'provider': 'api'
 }>
 ```
 
@@ -1552,6 +1569,7 @@ Parameter | Type | Required | Description
 transaction_date | date | optional | The date the transactions were originally recorded. <span class="usage-note" data-tooltip="Use `transaction_date` to list transactions for a specific date. Otherwise, use `from_transaction_date` and `to_transaction_date` for a range of dates." data-tooltip-position="top center">View Note</span>
 from_transaction_date | date | optional | The start date of a range for which the transactions were originally recorded.
 to_transaction_date | date | optional | The end date of a range for which the transactions were originally recorded.
+provider | string | optional | Source of where the transactions were originally recorded. Defaults to "api".
 
 #### Notes
 
@@ -1669,6 +1687,7 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     "user_id": 10649,
     "transaction_date": "2015-05-14T00:00:00Z",
     "transaction_reference_id": "123",
+    "provider": "api",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
@@ -1698,6 +1717,7 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   :user_id => 11836,
   :transaction_date => "2015-06-14T00:00:00Z",
   :transaction_reference_id => "123",
+  :provider => "api",
   :from_country => "US",
   :from_zip => 93107,
   :from_state => "CA",
@@ -1754,7 +1774,8 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'sales_tax': -0.95,
   'amount': -17,
   'transaction_id': '321',
-  'to_state': 'CA'
+  'to_state': 'CA',
+  'provider': 'api'
 }>
 ```
 
@@ -1781,6 +1802,7 @@ Parameter | Type | Description
 transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
+provider | string | Source of where the transaction was originally recorded.
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -2070,6 +2092,7 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
     "user_id": 10649,
     "transaction_date": "2015-05-14T00:00:00Z",
     "transaction_reference_id": "123",
+    "provider": "api",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
@@ -2099,6 +2122,7 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
   :user_id => 11836,
   :transaction_date => "2015-06-14T00:00:00Z",
   :transaction_reference_id => "123",
+  :provider => "api",
   :from_country => "US",
   :from_zip => 93107,
   :from_state => "CA",
@@ -2155,7 +2179,8 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
   'sales_tax': -0.95,
   'amount': -16.5,
   'transaction_id': '321',
-  'to_state': 'CA'
+  'to_state': 'CA',
+  'provider': 'api'
 }>
 ```
 
@@ -2172,6 +2197,7 @@ Parameter | Type | Required | Description
 transaction_id | string | required | Unique identifier of the given refund transaction.
 transaction_reference_id | string | required | Unique identifier of the corresponding order transaction for the refund.
 transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
+provider | string | optional | Source of where the transaction was originally recorded. Defaults to "api". <span class="usage-note" data-tooltip="Use this parameter to exempt marketplace transactions or identify transactions across multiple channels. TaxJar currently supports marketplace exemptions for 'amazon', 'ebay', 'etsy', and 'walmart' transactions." data-tooltip-position="top center">View Note</span>
 from_country | string | optional | Two-letter ISO country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to create refund transactions." data-tooltip-position="top center">View Note</span>
 from_zip | string | optional | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | optional | Two-letter ISO state code where the order shipped from.
@@ -2212,6 +2238,7 @@ Parameter | Type | Description
 transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
+provider | string | Source of where the transaction was originally recorded.
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -2449,6 +2476,7 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     "user_id": 10649,
     "transaction_date": "2015-05-14T00:00:00Z",
     "transaction_reference_id": "123",
+    "provider": "api",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
@@ -2478,6 +2506,7 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   :user_id => 11836,
   :transaction_date => "2015-06-14T00:00:00Z",
   :transaction_reference_id => "123",
+  :provider => "api",
   :from_country => "US",
   :from_zip => 93107,
   :from_state => "CA",
@@ -2534,7 +2563,8 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'sales_tax': -0.95,
   'amount': -17,
   'transaction_id': '321',
-  'to_state': 'CA'
+  'to_state': 'CA',
+  'provider': 'api'
 }>
 ```
 
@@ -2591,6 +2621,7 @@ Parameter | Type | Description
 transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
+provider | string | Source of where the transaction was originally recorded.
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -2722,6 +2753,7 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     "user_id": 10649,
     "transaction_date": null,
     "transaction_reference_id": null,
+    "provider": "api",
     "from_country": null,
     "from_zip": null,
     "from_state": null,
@@ -2746,6 +2778,7 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   :user_id => 11836,
   :transaction_date => nil,
   :transaction_reference_id => nil,
+  :provider => "api",
   :from_country => nil,
   :from_zip => nil,
   :from_state => nil,
@@ -2782,7 +2815,8 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'sales_tax': None,
   'amount': None,
   'transaction_id': '321',
-  'to_state': None
+  'to_state': None,
+  'provider': 'api'
 }>
 ```
 
