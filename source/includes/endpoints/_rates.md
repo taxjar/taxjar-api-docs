@@ -698,8 +698,8 @@ $ curl -G https://api.taxjar.com/v2/rates/00150 \
   'freight_taxable': True
 }>
 ```
-
-Shows the sales tax rates for a given location.
+Shows the sales tax rates for a given location.</br>
+*Please note that this only returns the full combined rate for a given location. During an actual sales tax calculation, you may see differences. Please use our <a href='https://developers.taxjar.com/api/reference/#post-calculate-sales-tax-for-an-order'>/v2/taxes endpoint </a> for actual calculations.*
 
 #### Request
 
