@@ -4499,7 +4499,7 @@ nexus_addresses[][zip] | string | optional | Postal code for the nexus address.
 nexus_addresses[][state] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, state is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO state code for the nexus address.
 nexus_addresses[][city] | string | optional | City for the nexus address.
 nexus_addresses[][street] | string | optional | Street address for the nexus address.
-line_items[][id] | string | optional | Unique identifier of the given line item. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+line_items[][id] | string | optional | Unique identifier of the given line item. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations. The ID needs to be unique to the line items in this order." data-tooltip-position="top center">View Note</span>
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
 line_items[][unit_price] | decimal | optional | Unit price for the item.
