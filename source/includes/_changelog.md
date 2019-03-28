@@ -2,6 +2,12 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### March 2019
+
+#### 2019-03-28
+
+* <span class="badge badge--post">Feature</span> Marketplace exemption support now available for Amazon, eBay, Etsy, and Walmart transactions submitted through the API via new `provider` param.
+
 ### December 2018
 
 #### 2018-12-03
