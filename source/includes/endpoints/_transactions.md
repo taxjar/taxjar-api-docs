@@ -377,6 +377,7 @@ GET https://api.taxjar.com/v2/transactions/orders/:transaction_id
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given order transaction.
+provider | string | optional | Source of where the transaction was originally recorded. Defaults to "api".
 
 #### Response
 
@@ -1403,6 +1404,7 @@ DELETE https://api.taxjar.com/v2/transactions/orders/:transaction_id
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given order transaction.
+provider | string | optional | Source of where the transaction was originally recorded. Defaults to "api".
 
 #### Response
 
@@ -1414,6 +1416,7 @@ Parameter | Type | Description
 --------- | ------- | -----------
 transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
+provider | string | Source of where the transaction was originally recorded.
 
 ### <span class="badge badge--get">get</span> List refund transactions
 
@@ -1790,6 +1793,7 @@ GET https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given refund transaction.
+provider | string | optional | Source of where the transaction was originally recorded. Defaults to "api".
 
 #### Response
 
@@ -2831,6 +2835,7 @@ DELETE https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
 transaction_id | string | required | Unique identifier of the given refund transaction.
+provider | string | optional | Source of where the transaction was originally recorded. Defaults to "api".
 
 #### Response
 
@@ -2842,3 +2847,4 @@ Parameter | Type | Description
 --------- | ------- | -----------
 transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
+provider | string | Source of where the transaction was originally recorded.
