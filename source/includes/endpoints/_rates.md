@@ -698,6 +698,7 @@ $ curl -G https://api.taxjar.com/v2/rates/00150 \
   'freight_taxable': True
 }>
 ```
+
 Shows the sales tax rates for a given location.
 
 **Please note this endpoint only returns the full combined rate for a given location.** It does not support nexus determination, sourcing based on a ship from and ship to address, shipping taxability, product exemptions, customer exemptions, or sales tax holidays. We recommend using our [taxes endpoint](#post-calculate-sales-tax-for-an-order) to accurately calculate sales tax for an order.
