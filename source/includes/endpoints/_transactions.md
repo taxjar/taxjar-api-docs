@@ -791,6 +791,8 @@ line_items[][sales_tax] | decimal | optional | Total sales tax collected (non-un
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
+- *We recommend passing **positive** values for monetary amounts when creating or updating order transactions. Values will be signed automatically regardless of what you send in. Do not update existing orders with negative amounts to indicate a refund. Instead, [create a refund transaction](#post-create-a-refund-transaction).*
+
 #### Response
 
 Returns an `order` JSON object with details of the new order transaction.
@@ -1683,9 +1685,9 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
         "quantity": 1,
         "product_identifier": "12-34243-0",
         "description": "Heavy Widget",
-        "unit_price": "15.0",
+        "unit_price": "-15.0",
         "discount": "0.0",
-        "sales_tax": "0.95"
+        "sales_tax": "-0.95"
       }
     ]
   }
@@ -1718,9 +1720,9 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
       :description => "Heavy Widget",
-      :unit_price => 15,
+      :unit_price => -15,
       :discount => 0,
-      :sales_tax => 0.95
+      :sales_tax => -0.95
     }
   ]
 }>
@@ -1731,10 +1733,10 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
-    'unit_price': 15,
+    'unit_price': -15,
     'discount': 0,
     'product_identifier': '12-34243-0',
-    'sales_tax': 0.95,
+    'sales_tax': -0.95,
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
@@ -1850,16 +1852,16 @@ order = client.create_refund({
   :to_state => 'CA',
   :to_city => 'Los Angeles',
   :to_street => '123 Palm Grove Ln',
-  :amount => 16.5,
-  :shipping => 1.5,
-  :sales_tax => 0.95,
+  :amount => -16.5,
+  :shipping => -1.5,
+  :sales_tax => -0.95,
   :line_items => [
     {
       :quantity => 1,
       :product_identifier => '12-34243-9',
       :description => 'Fuzzy Widget',
-      :unit_price => 15,
-      :sales_tax => 0.95
+      :unit_price => -15,
+      :sales_tax => -0.95
     }
   ]
 })
@@ -1883,16 +1885,16 @@ refund = client.create_refund({
   'to_city': 'Los Angeles',
   'to_street': '123 Palm Grove Ln',
   'to_zip': '90002',
-  'amount': 16.5,
-  'shipping': 1.5,
-  'sales_tax': 0.95,
+  'amount': -16.5,
+  'shipping': -1.5,
+  'sales_tax': -0.95,
   'line_items': [
     {
       'quantity': 1,
       'product_identifier': '12-34243-9',
       'description': 'Fuzzy Widget',
-      'unit_price': 15,
-      'sales_tax': 0.95
+      'unit_price': -15,
+      'sales_tax': -0.95
     }
   ]
 })
@@ -1914,16 +1916,16 @@ client.createRefund({
   to_state: 'CA',
   to_city: 'Los Angeles',
   to_street: '123 Palm Grove Ln',
-  amount: 16.5,
-  shipping: 1.5,
-  sales_tax: 0.95,
+  amount: -16.5,
+  shipping: -1.5,
+  sales_tax: -0.95,
   line_items: [
     {
       quantity: 1,
       product_identifier: '12-34243-9',
       description: 'Fuzzy Widget',
-      unit_price: 15,
-      sales_tax: 0.95
+      unit_price: -15,
+      sales_tax: -0.95
     }
   ]
 }).then(res => {
@@ -1944,16 +1946,16 @@ $refund = $client->createRefund([
   'to_state' => 'CA',
   'to_city' => 'Los Angeles',
   'to_street' => '123 Palm Grove Ln',
-  'amount' => 16.5,
-  'shipping' => 1.5,
-  'sales_tax' => 0.95,
+  'amount' => -16.5,
+  'shipping' => -1.5,
+  'sales_tax' => -0.95,
   'line_items' => [
     [
       'quantity' => 1,
       'product_identifier' => '12-34243-9',
       'description' => 'Fuzzy Widget',
-      'unit_price' => 15,
-      'sales_tax' => 0.95
+      'unit_price' => -15,
+      'sales_tax' => -0.95
     ]
   ]
 ]);
@@ -1972,16 +1974,16 @@ var refund = client.CreateRefund(new
   to_zip = "90002",
   to_city = "Los Angeles",
   to_street = "123 Palm Grove Ln",
-  amount = 16.5,
-  shipping = 1.5,
-  sales_tax = 0.95,
+  amount = -16.5,
+  shipping = -1.5,
+  sales_tax = -0.95,
   line_items = new[] {
     new {
       quantity = 1,
       product_identifier = "12-34243-0",
       description = "Heavy Widget",
-      unit_price = 15,
-      sales_tax = 0.95
+      unit_price = -15,
+      sales_tax = -0.95
     }
   }
 });
@@ -2009,17 +2011,17 @@ public class CreateRefundExample {
             params.put("to_zip", "90002");
             params.put("to_city", "Los Angeles");
             params.put("to_street", "123 Palm Grove Ln");
-            params.put("amount", 16.5);
-            params.put("shipping", 1.5);
-            params.put("sales_tax", 0.95);
+            params.put("amount", -16.5);
+            params.put("shipping", -1.5);
+            params.put("sales_tax", -0.95);
 
             List<Map> lineItems = new ArrayList();
             Map<String, Object> lineItem = new HashMap<>();
             lineItem.put("quantity", 1);
             lineItem.put("product_identifier", "12-34243-0");
             lineItem.put("description", "Heavy Widget");
-            lineItem.put("unit_price", 15);
-            lineItem.put("sales_tax", 0.95);
+            lineItem.put("unit_price", -15);
+            lineItem.put("sales_tax", -0.95);
             lineItems.add(lineItem);
 
             params.put("line_items", lineItems);
@@ -2046,16 +2048,16 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
     "to_state": "CA",
     "to_zip": "90002",
     "to_country": "US",
-    "amount": 16.5,
-    "shipping": 1.5,
-    "sales_tax": 0.95,
+    "amount": -16.5,
+    "shipping": -1.5,
+    "sales_tax": -0.95,
     "line_items": [
       {
         "quantity": 1,
         "product_identifier": "12-34234-9",
         "description": "Fuzzy Widget",
-        "unit_price": 15,
-        "sales_tax": 0.95
+        "unit_price": -15,
+        "sales_tax": -0.95
       }
     ]
   }'
@@ -2084,9 +2086,9 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
         "quantity": 1,
         "product_identifier": "12-34243-9",
         "description": "Fuzzy Widget",
-        "unit_price": "15.0",
+        "unit_price": "-15.0",
         "discount": "0.0",
-        "sales_tax": "0.95"
+        "sales_tax": "-0.95"
       }
     ]
   }
@@ -2119,9 +2121,9 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
       :product_identifier => "12-34243-0",
       :product_tax_code => nil,
       :description => "Heavy Widget",
-      :unit_price => 15,
+      :unit_price => -15,
       :discount => 0,
-      :sales_tax => 0.95
+      :sales_tax => -0.95
     }
   ]
 }>
@@ -2132,10 +2134,10 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
-    'unit_price': 15,
+    'unit_price': -15,
     'discount': 0,
     'product_identifier': '12-34243-0',
-    'sales_tax': 0.95,
+    'sales_tax': -0.95,
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
@@ -2200,6 +2202,8 @@ line_items[][sales_tax] | decimal | optional | Total sales tax collected (non-un
 - *Either an address on file or `from_` parameters are required to create refund transactions.*
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
+
+- *We recommend passing **negative** values for monetary amounts when creating or updating refund transactions. Values will be signed automatically regardless of what you send in.*
 
 #### Response
 
@@ -2274,16 +2278,16 @@ client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 order = client.update_refund({
   :transaction_id => '321',
-  :amount => 17,
-  :shipping => 2,
-  :sales_tax => 0.95,
+  :amount => -17,
+  :shipping => -2,
+  :sales_tax => -0.95,
   :line_items => [
     {
       :quantity => 1,
       :product_identifier => '12-34243-0',
       :description => 'Heavy Widget',
-      :unit_price => 15,
-      :sales_tax => 0.95
+      :unit_price => -15,
+      :sales_tax => -0.95
     }
   ]
 })
@@ -2295,16 +2299,16 @@ client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 
 refund = client.update_refund('321', {
   'transaction_id': '321',
-  'amount': 17,
-  'shipping': 2,
-  'sales_tax': 0.95,
+  'amount': -17,
+  'shipping': -2,
+  'sales_tax': -0.95,
   'line_items': [
     {
       'quantity': 1,
       'product_identifier': '12-34243-0',
       'description': 'Heavy Widget',
-      'unit_price': 15,
-      'sales_tax': 0.95
+      'unit_price': -15,
+      'sales_tax': -0.95
     }
   ]
 })
@@ -2319,15 +2323,15 @@ const client = new Taxjar({
 
 client.updateRefund({
   transaction_id: '123',
-  amount: 17,
-  shipping: 2,
+  amount: -17,
+  shipping: -2,
   line_items: [
     {
       quantity: 1,
       product_identifier: '12-34243-0',
       description: 'Heavy Widget',
-      unit_price: 15,
-      sales_tax: 0.95
+      unit_price: -15,
+      sales_tax: -0.95
     }
   ]
 }).then(res => {
@@ -2341,15 +2345,15 @@ $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 
 $refund = $client->updateRefund([
   'transaction_id' => '321',
-  'amount' => 17,
-  'shipping' => 2,
+  'amount' => -17,
+  'shipping' => -2,
   'line_items' => [
     [
       'quantity' => 1,
       'product_identifier' => '12-34243-0',
       'description' => 'Heavy Widget',
-      'unit_price' => 15,
-      'sales_tax' => 0.95
+      'unit_price' => -15,
+      'sales_tax' => -0.95
     ]
   ]
 ]);
@@ -2362,16 +2366,16 @@ var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 var refund = client.UpdateRefund(new
 {
   transaction_id = "321",
-  amount = 17,
-  shipping = 2,
+  amount = -17,
+  shipping = -2,
   line_items = new[] {
     new {
       quantity = 1,
       product_identifier = "12-34243-0",
       description = "Heavy Widget",
-      unit_price = 15,
+      unit_price = -15,
       discount = 0,
-      sales_tax = 0.95
+      sales_tax = -0.95
     }
   }
 });
@@ -2394,17 +2398,17 @@ public class UpdateRefundExample {
         try {
             Map<String, Object> params = new HashMap<>();
             params.put("transaction_id", "321");
-            params.put("amount", 17);
-            params.put("shipping", 2);
+            params.put("amount", -17);
+            params.put("shipping", -2);
 
             List<Map> lineItems = new ArrayList();
             Map<String, Object> lineItem = new HashMap<>();
             lineItem.put("quantity", 1);
             lineItem.put("product_identifier", "12-34243-0");
             lineItem.put("description", "Heavy Widget");
-            lineItem.put("unit_price", 15);
+            lineItem.put("unit_price", -15);
             lineItem.put("discount", 0);
-            lineItem.put("sales_tax", 0.95);
+            lineItem.put("sales_tax", -0.95);
             lineItems.add(lineItem);
 
             params.put("line_items", lineItems);
@@ -2424,16 +2428,16 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -H "Content-Type: application/json" \
   -d '{
     "transaction_id": "321",
-    "amount": 17,
-    "shipping": 2,
-    "sales_tax": 0.95,
+    "amount": -17,
+    "shipping": -2,
+    "sales_tax": -0.95,
     "line_items": [
       {
         "quantity": 1,
         "product_identifier": "12-34234-0",
         "description": "Heavy Widget",
-        "unit_price": 15,
-        "sales_tax": 0.95
+        "unit_price": -15,
+        "sales_tax": -0.95
       }
     ]
   }' \
@@ -2463,9 +2467,9 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
         "quantity": 1,
         "product_identifier": "12-34243-0",
         "description": "Heavy Widget",
-        "unit_price": 15,
+        "unit_price": -15,
         "discount": 0,
-        "sales_tax": 0.95
+        "sales_tax": -0.95
       }
     ]
   }
@@ -2498,9 +2502,9 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
       :product_identifier => "12-34243-9",
       :product_tax_code => nil,
       :description => "Heavy Widget",
-      :unit_price => 15,
+      :unit_price => -15,
       :discount => 0,
-      :sales_tax => 0.95
+      :sales_tax => -0.95
     }
   ]
 }>
@@ -2511,10 +2515,10 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'from_state': 'CA',
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
-    'unit_price': 15,
+    'unit_price': -15,
     'discount': 0,
     'product_identifier': '12-34243-9',
-    'sales_tax': 0.95,
+    'sales_tax': -0.95,
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
