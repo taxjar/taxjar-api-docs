@@ -14,6 +14,10 @@
         var responseHeader = that.getNextHeader(this, 'Response Example');
         var responseScenarioHeader = that.getNextHeader(this, 'Response Scenario: ' + scenarioName);
 
+        if (requestHeader.find('[data-default]').length) {
+          that.defaultOption = '<option>' + requestHeader.find('span').data('default') + '</option>';
+        }
+
         // Add select dropdown if none
         if (!requestHeader.find('.scenarios').length) {
           that.createPicker(requestHeader, responseHeader);

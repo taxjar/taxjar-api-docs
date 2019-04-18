@@ -23,10 +23,10 @@ includes:
   - countries
   - sales_tax_api
   - endpoints/categories
-  - endpoints/rates
   - endpoints/taxes
   - endpoints/transactions
   - endpoints/customers
+  - endpoints/rates
   - endpoints/nexus
   - endpoints/validations
   - endpoints/summarized_rates
