@@ -791,7 +791,7 @@ line_items[][sales_tax] | decimal | optional | Total sales tax collected (non-un
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
-- *We recommend passing **positive** values for monetary amounts when creating or updating order transactions. Values will be signed automatically regardless of what you send in. Do not update existing orders with negative amounts to indicate a refund. Instead, [create a refund transaction](#post-create-a-refund-transaction).*
+- _We recommend passing **positive** values for monetary amounts when creating or updating order transactions. Values will be signed automatically regardless of what you send in. Do not update existing orders with negative amounts to indicate a refund. Instead, [create a refund transaction](#post-create-a-refund-transaction)._
 
 #### Response
 
@@ -2203,7 +2203,7 @@ line_items[][sales_tax] | decimal | optional | Total sales tax collected (non-un
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
-- *We recommend passing **negative** values for monetary amounts when creating or updating refund transactions. Values will be signed automatically regardless of what you send in.*
+- _We recommend passing **negative** values for monetary amounts when creating or updating refund transactions. Values will be signed automatically regardless of what you send in._
 
 #### Response
 
