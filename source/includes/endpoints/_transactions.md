@@ -1163,7 +1163,7 @@ line_items[][description] | string | optional | Description of the line item (up
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
 line_items[][unit_price] | decimal | optional | Unit price for the item in dollars.
 line_items[][discount] | decimal | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | decimal | <span class="conditional" data-tooltip="If providing `line_items`, `sales_tax` is required." data-tooltip-position="top center">conditional</span> | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][sales_tax] | decimal | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -2576,7 +2576,7 @@ line_items[][description] | string | optional | Description of the line item (up
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
 line_items[][unit_price] | decimal | optional | Unit price for the item in dollars.
 line_items[][discount] | decimal | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | decimal | <span class="conditional" data-tooltip="If providing `line_items`, `sales_tax` is required." data-tooltip-position="top center">conditional</span> | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][sales_tax] | decimal | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
