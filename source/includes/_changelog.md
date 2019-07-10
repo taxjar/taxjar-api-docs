@@ -4,6 +4,10 @@ Stay on top of new developer-facing features, accuracy improvements, and bug fix
 
 ### March 2019
 
+#### 2019-03-28
+
+* <span class="badge badge--post">Feature</span> Marketplace exemption support now available for Amazon, eBay, Etsy, and Walmart transactions submitted through the API via new `provider` param.
+
 #### 2019-03-15
 
 * <span class="badge badge--post">Feature</span> Address validation endpoint for [TaxJar Plus](https://www.taxjar.com/plus/) customers now available.
