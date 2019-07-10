@@ -391,6 +391,7 @@ transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -786,6 +787,7 @@ amount | decimal | required | Total amount of the order with shipping, **excludi
 shipping | decimal | required | Total amount of shipping for the order in dollars.
 sales_tax | decimal | required | Total amount of sales tax collected for the order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
+exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
@@ -815,6 +817,7 @@ transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -1170,6 +1173,7 @@ amount | decimal | optional | Total amount of the order with shipping, **excludi
 shipping | decimal | optional | Total amount of shipping for the order in dollars.
 sales_tax | decimal | optional | Total amount of sales tax collected for the order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
+exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
@@ -1197,6 +1201,7 @@ transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -1809,6 +1814,7 @@ transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -2218,6 +2224,7 @@ amount | decimal | required | Total amount of the refunded order with shipping, 
 shipping | decimal | required | Total amount of shipping for the refunded order in dollars.
 sales_tax | decimal | required | Total amount of sales tax collected for the refunded order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
+exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
@@ -2247,6 +2254,7 @@ transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -2603,6 +2611,7 @@ amount | decimal | optional | Total amount of the refunded order with shipping, 
 shipping | decimal | optional | Total amount of shipping for the refunded order in dollars.
 sales_tax | decimal | optional | Total amount of sales tax collected for the refunded order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
+exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
@@ -2630,6 +2639,7 @@ transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
