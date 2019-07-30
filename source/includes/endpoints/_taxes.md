@@ -4261,6 +4261,7 @@ to_street | string | optional | Street address where the order shipped to. <span
 amount | decimal | optional | Total amount of the order, **excluding shipping**. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 shipping | decimal | required | Total amount of shipping for the order.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
+exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
 nexus_addresses[][id] | string | optional | Unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 nexus_addresses[][country] | string | <span class="conditional" data-tooltip="If providing `nexus_addresses`, country is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO country code for the nexus address.
 nexus_addresses[][zip] | string | optional | Postal code for the nexus address.
@@ -4299,6 +4300,7 @@ rate | decimal | Overall sales tax rate of the order (`amount_to_collect` &divid
 has_nexus | bool | Whether or not you have [nexus](https://blog.taxjar.com/sales-tax-nexus-definition/) for the order based on an address on file, `nexus_addresses` parameter, or `from_` parameters.
 freight_taxable | bool | Freight taxability for the order.
 tax_source | string | [Origin-based or destination-based](https://blog.taxjar.com/charging-sales-tax-rates/) sales tax collection.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`. If no `customer_id` or `exemption_type` is provided, no `exemption_type` is returned in the response.
 jurisdictions | object | Jurisdiction names for the order.
 breakdown | object | Breakdown of rates by jurisdiction for the order, shipping, and individual line items. If `has_nexus` is false or no line items are provided, no breakdown is returned in the response.
 
