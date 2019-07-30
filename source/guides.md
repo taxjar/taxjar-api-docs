@@ -291,15 +291,15 @@ Want a simple way to reduce the number of SmartCalcs calls you need to make? Com
 
 Furthermore, many carts estimate taxes in the cart or preview pages prior to checkout. You could consider eliminating this estimate or at least delaying it until the shopper is closer to completing the purchase. During checkout make sure you wait to call SmartCalcs tax calculations until the shipping address is complete. Many customers use an [address validation service](https://developers.taxjar.com/blog/address-validation-apis-and-plugins/) to ensure a valid shipping address prior to calling SmartCalcs with the final order totals and shipping `from` and `to` addresses.
 
-# Cart Integrations
+# API Integrations
 
-At TaxJar, we provide integrations for popular eCommerce platforms such as WooCommerce and Magento. All of our plugins and extensions are **built and maintained in-house** by eCommerce experts.
+At TaxJar, we provide official integrations for popular eCommerce platforms such as WooCommerce and Magento. All of our official integrations are **built and maintained in-house** by eCommerce experts.
 
-We currently provide API-driven cart integrations for the following platforms:
+We currently provide official integrations for the following platforms:
 
 - <img class="client-icon" src="../images/integrations/magento.png" width="16"> [Magento](https://github.com/taxjar/taxjar-magento-extension)
 - <img class="client-icon" src="../images/integrations/magento.png" width="16"> [Magento 2](https://github.com/taxjar/taxjar-magento2-extension)
-- <img class="client-icon" src="../images/integrations/stripe.png" width="16"> [Stripe](https://stripe.com/docs/relay/taxjar)
+- <img class="client-icon" src="../images/integrations/netsuite.png" width="16"> [NetSuite](https://www.taxjar.com/guides/integrations/netsuite/)
 - <img class="client-icon" src="../images/integrations/woocommerce.png" width="16"> [WooCommerce](https://github.com/taxjar/taxjar-woocommerce-plugin)
 
 ## Magento
@@ -309,3 +309,21 @@ Our Magento sales tax extensions currently support Magento 1.7.x - 1.9.x and Mag
 - Install our [Magento 2](https://marketplace.magento.com/taxjar-module-taxjar.html) or [Magento 1](https://marketplace.magento.com/taxjar-taxjar-salestaxautomation.html) extension from Magento Marketplace
 - Get started and learn how it works with our [Extension Guide](https://www.taxjar.com/guides/integrations/magento/)
 - Browse the code in our [GitHub Repository](https://github.com/taxjar/taxjar-magento-extension)
+
+## NetSuite
+
+Our NetSuite integration requires a [TaxJar Plus](https://www.taxjar.com/plus/) subscription and your NetSuite account must have SuiteTax enabled.
+
+- Learn how to install and configure the integration with our [NetSuite Guide](https://www.taxjar.com/guides/integrations/netsuite/)
+
+## WooCommerce
+
+Our WooCommerce plugin is compatible with WooCommerce 2.6+ and WordPress 4.2+.
+
+- Install our [WooCommerce](https://wordpress.org/plugins/taxjar-simplified-taxes-for-woocommerce/#installation) plugin from the WordPress Plugin Directory
+- Learn more or get started right away with the [TaxJar for WooCommerce](https://docs.woocommerce.com/document/taxjar/) docs
+- Check out the code or contribute on [GitHub](https://github.com/taxjar/taxjar-woocommerce-plugin)
+
+## Certified Integrations
+
+Dozens of certified integrations are available for other popular marketplaces and eCommerce, ERP, POS, accounting, inventory management, and order management platforms as well. These integrations are built and maintained by third-party developers and tested and certified by the TaxJar team. See the [full list of integrations built by our partners](https://www.taxjar.com/sales-tax-integrations/).
