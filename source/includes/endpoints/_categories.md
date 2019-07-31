@@ -247,11 +247,6 @@ $ curl https://api.taxjar.com/v2/categories \
       "name": "Magazine",
       "product_tax_code": "81310",
       "description": "Periodicals, printed, sold individually"
-    },
-    {
-      "name": "Other Exempt",
-      "product_tax_code": "99999",
-      "description": "Item is exempt"
     }
   ]
 }
@@ -337,7 +332,6 @@ Returns a `categories` JSON object with an array of product categories and corre
 | Religious Books | 81120 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Religious books and manuals, printed. |
 | Magazines & Subscriptions | 81300 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> | Periodicals, printed, sold by subscription. |
 | Magazine | 81310 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> | Periodicals, printed, sold individually. |
-| Other Exempt | 99999 | All | Item is exempt. **Important Note: Other Exempt is currently <a href="https://support.taxjar.com/article/362-smartcalcs-product-categories" target="_blank">not supported in AutoFile</a>.** |
 
 #### Attributes
 

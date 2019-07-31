@@ -153,10 +153,6 @@ As you can see in the response, SmartCalcs figures out the taxability by item, b
 
 To obtain the current list of supported product_tax_codes, they are always available via our [Categories endpoint](https://developers.taxjar.com/api/#categories).
 
-#### Helpful Tip
-
-If you have an item that you believe should be “exempt” from sales tax, but it does not fall under on of our supported product codes, you may use the default exempt code of **99999**.
-
 #### Additional Reminder
 
 If no `product_tax_code` is submitted with a `line_item`, then that item is deemed to be fully taxable. You do not need to send any information to tell SmartCalcs that something is taxable. It assumes that, unless told otherwise through the existence of a `product_tax_code`.
