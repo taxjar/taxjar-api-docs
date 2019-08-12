@@ -727,15 +727,15 @@ Parameter | Type | Description
 --------- | ------- | -----------
 zip | string | Postal code for given location.
 country | string | Country for given location if SST state. <span class="usage-note" data-tooltip="Streamlined sales tax project member states include: AR, GA, IN, IA, KS, KY, MI, MN, NE, NV, NJ, NC, ND, OK, RI, SD, UT, VT, WA, WV, WI, WY" data-tooltip-position="top center">View Note</span>
-country_rate | decimal | Country sales tax rate for given location if SST state. <span class="usage-note" data-tooltip="Streamlined sales tax project member states include: AR, GA, IN, IA, KS, KY, MI, MN, NE, NV, NJ, NC, ND, OK, RI, SD, UT, VT, WA, WV, WI, WY" data-tooltip-position="top center">View Note</span>
+country_rate | float | Country sales tax rate for given location if SST state. <span class="usage-note" data-tooltip="Streamlined sales tax project member states include: AR, GA, IN, IA, KS, KY, MI, MN, NE, NV, NJ, NC, ND, OK, RI, SD, UT, VT, WA, WV, WI, WY" data-tooltip-position="top center">View Note</span>
 state | string | Postal abbreviated state name for given location.
-state_rate | decimal | State sales tax rate for given location.
+state_rate | float | State sales tax rate for given location.
 county | string | County name for given location.
-county_rate | decimal | County sales tax rate for given location.
+county_rate | float | County sales tax rate for given location.
 city | string | City name for given location.
-city_rate | decimal | City sales tax rate for given location.
-combined_district_rate | decimal | Aggregate rate for all city and county sales tax districts effective at the location.
-combined_rate | decimal | Overall sales tax rate which includes state, county, city and district tax. This rate should be used to determine how much sales tax to collect for an order.
+city_rate | float | City sales tax rate for given location.
+combined_district_rate | float | Aggregate rate for all city and county sales tax districts effective at the location.
+combined_rate | float | Overall sales tax rate which includes state, county, city and district tax. This rate should be used to determine how much sales tax to collect for an order.
 freight_taxable | bool | Freight taxability for given location.
 
 <h4 id="ca-rate-attributes"><span class="flag-icon flag-icon-ca"></span>&nbsp; Canada Attributes</h4>
@@ -746,7 +746,7 @@ zip | string | Postal code for given location.
 city | string | City name for given location.
 state | string | Postal abbreviated state name for given location.
 country | string | Two-letter ISO country code for given location.
-combined_rate | decimal | Overall sales tax rate. This rate should be used to determine how much sales tax to collect for an order.
+combined_rate | float | Overall sales tax rate. This rate should be used to determine how much sales tax to collect for an order.
 freight_taxable | bool | Freight taxability for given location.
 
 <h4 id="au-rate-attributes"><span class="flag-icon flag-icon-au"></span>&nbsp; Australia Attributes</h4>
@@ -755,8 +755,8 @@ Parameter | Type | Description
 --------- | ------- | -----------
 zip | string | Postal code for given location.
 country | string | Two-letter ISO country code for given location.
-country_rate | decimal | Country sales tax rate for given location.
-combined_rate | decimal | Overall sales tax rate. This rate should be used to determine how much sales tax to collect for an order.
+country_rate | float | Country sales tax rate for given location.
+combined_rate | float | Overall sales tax rate. This rate should be used to determine how much sales tax to collect for an order.
 freight_taxable | bool | Freight taxability for given location.
 
 <h4 id="eu-rate-attributes"><span class="flag-icon flag-icon-eu"></span>&nbsp; European Union Attributes</h4>
@@ -765,9 +765,9 @@ Parameter | Type | Description
 --------- | ------- | -----------
 country | string | Two-letter ISO country code for given location.
 name | string | Country name for given location.
-standard_rate | decimal | [Standard rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
-reduced_rate | decimal | [Reduced rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
-super_reduced_rate | decimal | Super reduced rate for given location.
-parking_rate | decimal | Parking rate for given location.
-distance_sale_threshold | decimal | [Distance selling threshold](https://en.wikipedia.org/wiki/European_Union_value_added_tax#Distance_sales) for given location.
+standard_rate | float | [Standard rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
+reduced_rate | float | [Reduced rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
+super_reduced_rate | float | Super reduced rate for given location.
+parking_rate | float | Parking rate for given location.
+distance_sale_threshold | float | [Distance selling threshold](https://en.wikipedia.org/wiki/European_Union_value_added_tax#Distance_sales) for given location.
 freight_taxable | bool | Freight taxability for given location.
