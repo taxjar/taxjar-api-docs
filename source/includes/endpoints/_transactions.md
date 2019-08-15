@@ -770,7 +770,7 @@ POST https://api.taxjar.com/v2/transactions/orders
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_id | string | required | Unique identifier of the given order transaction.
+transaction_id | string | required | Unique identifier of the given order transaction. <span class="usage-note" data-tooltip="The 'transaction_id' should only include alphanumeric characters, underscores, and dashes." data-tooltip-position="top center">View Note</span>
 transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
 provider | string | optional | Source of where the transaction was originally recorded. Defaults to "api". <span class="usage-note" data-tooltip="Use this parameter to exempt marketplace transactions or identify transactions across multiple channels. TaxJar currently supports marketplace exemptions for 'amazon', 'ebay', 'etsy', and 'walmart' transactions." data-tooltip-position="top center">View Note</span>
 from_country | string | optional | Two-letter ISO country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to create order transactions." data-tooltip-position="top center">View Note</span>
@@ -804,6 +804,8 @@ line_items[][sales_tax] | decimal | <span class="conditional" data-tooltip="If p
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
 - _We recommend passing **positive** values for monetary amounts when creating or updating order transactions. Values will be signed automatically regardless of what you send in. Do not update existing orders with negative amounts to indicate a refund. Instead, [create a refund transaction](#post-create-a-refund-transaction)._
+
+- *The `transaction_id` should only include alphanumeric characters, underscores, and dashes.*
 
 #### Response
 
@@ -2206,7 +2208,7 @@ POST https://api.taxjar.com/v2/transactions/refunds
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_id | string | required | Unique identifier of the given refund transaction.
+transaction_id | string | required | Unique identifier of the given refund transaction. <span class="usage-note" data-tooltip="The 'transaction_id' should only include alphanumeric characters, underscores, and dashes." data-tooltip-position="top center">View Note</span>
 transaction_reference_id | string | required | Unique identifier of the corresponding order transaction for the refund.
 transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
 provider | string | optional | Source of where the transaction was originally recorded. Defaults to "api". <span class="usage-note" data-tooltip="Use this parameter to exempt marketplace transactions or identify transactions across multiple channels. TaxJar currently supports marketplace exemptions for 'amazon', 'ebay', 'etsy', and 'walmart' transactions." data-tooltip-position="top center">View Note</span>
@@ -2241,6 +2243,8 @@ line_items[][sales_tax] | decimal | <span class="conditional" data-tooltip="If p
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
 - _We recommend passing **negative** values for monetary amounts when creating or updating refund transactions. Values will be signed automatically regardless of what you send in._
+
+- *The `transaction_id` should only include alphanumeric characters, underscores, and dashes.*
 
 #### Response
 
