@@ -4258,8 +4258,8 @@ to_zip | string | <span class="conditional" data-tooltip="If `to_country` is 'US
 to_state | string | <span class="conditional" data-tooltip="If `to_country` is 'US' or 'CA', `to_state` is required." data-tooltip-position="top center">conditional</span> | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to. <span class="usage-note" data-tooltip="Street address provides more accurate calculations for the following states: AR, AZ, CA, CO, CT, DC, FL, GA, HI, IA, ID, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MS, NC, ND, NE, NJ, NM, NV, NY, OH, OK, PA, RI, SC, SD, TN, TX, UT, VA, VT, WA, WI, WV, WY" data-tooltip-position="top center">View Note</span>
-amount | decimal | optional | Total amount of the order, **excluding shipping**. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
-shipping | decimal | required | Total amount of shipping for the order.
+amount | float | optional | Total amount of the order, **excluding shipping**. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
+shipping | float | required | Total amount of shipping for the order.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
 exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
 nexus_addresses[][id] | string | optional | Unique identifier of the given nexus address. <span class="usage-note" data-tooltip="Either an address on file, `nexus_addresses` parameter, or `from_` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
@@ -4271,8 +4271,8 @@ nexus_addresses[][street] | string | optional | Street address for the nexus add
 line_items[][id] | string | optional | Unique identifier of the given line item. Duplicate item IDs within `line_items[]` will be ignored. <span class="usage-note" data-tooltip="Either `amount` or `line_items` parameters are required to perform tax calculations." data-tooltip-position="top center">View Note</span>
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | decimal | optional | Unit price for the item.
-line_items[][discount] | decimal | optional | Total discount (non-unit) for the item.
+line_items[][unit_price] | float | optional | Unit price for the item.
+line_items[][discount] | float | optional | Total discount (non-unit) for the item.
 
 #### Notes
 
@@ -4292,11 +4292,11 @@ Returns a `tax` JSON object with sales tax for a given order. If available, retu
 
 Parameter | Type | Description
 --------- | ------- | -----------
-order_total_amount | decimal | Total amount of the order.
-shipping | decimal | Total amount of shipping for the order.
-taxable_amount | decimal | Amount of the order to be taxed.
-amount_to_collect | decimal | Amount of sales tax to collect.
-rate | decimal | Overall sales tax rate of the order (`amount_to_collect` &divide; `taxable_amount`).
+order_total_amount | float | Total amount of the order.
+shipping | float | Total amount of shipping for the order.
+taxable_amount | float | Amount of the order to be taxed.
+amount_to_collect | float | Amount of sales tax to collect.
+rate | float | Overall sales tax rate of the order (`amount_to_collect` &divide; `taxable_amount`).
 has_nexus | bool | Whether or not you have [nexus](https://blog.taxjar.com/sales-tax-nexus-definition/) for the order based on an address on file, `nexus_addresses` parameter, or `from_` parameters.
 freight_taxable | bool | Freight taxability for the order.
 tax_source | string | [Origin-based or destination-based](https://blog.taxjar.com/charging-sales-tax-rates/) sales tax collection.
@@ -4338,21 +4338,21 @@ city | string | City name for given location.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-taxable_amount | decimal | Total amount of the order to be taxed.
-tax_collectable | decimal | Total amount of sales tax to collect.
-combined_tax_rate | decimal | Overall sales tax rate of the breakdown which includes state, county, city and district tax for the order and shipping if applicable.
-state_taxable_amount | decimal | Amount of the order to be taxed at the state tax rate.
-state_tax_rate | decimal | State sales tax rate for given location.
-state_tax_collectable | decimal | Amount of sales tax to collect for the state.
-county_taxable_amount | decimal | Amount of the order to be taxed at the county tax rate.
-county_tax_rate | decimal | County sales tax rate for given location.
-county_tax_collectable | decimal | Amount of sales tax to collect for the county.
-city_taxable_amount | decimal | Amount of the order to be taxed at the city tax rate.
-city_tax_rate | decimal | City sales tax rate for given location.
-city_tax_collectable | decimal | Amount of sales tax to collect for the city.
-special_district_taxable_amount | decimal | Amount of the order to be taxed at the special district tax rate.
-special_tax_rate | decimal | Special district sales tax rate for given location.
-special_district_tax_collectable | decimal | Amount of sales tax to collect for the special district.
+taxable_amount | float | Total amount of the order to be taxed.
+tax_collectable | float | Total amount of sales tax to collect.
+combined_tax_rate | float | Overall sales tax rate of the breakdown which includes state, county, city and district tax for the order and shipping if applicable.
+state_taxable_amount | float | Amount of the order to be taxed at the state tax rate.
+state_tax_rate | float | State sales tax rate for given location.
+state_tax_collectable | float | Amount of sales tax to collect for the state.
+county_taxable_amount | float | Amount of the order to be taxed at the county tax rate.
+county_tax_rate | float | County sales tax rate for given location.
+county_tax_collectable | float | Amount of sales tax to collect for the county.
+city_taxable_amount | float | Amount of the order to be taxed at the city tax rate.
+city_tax_rate | float | City sales tax rate for given location.
+city_tax_collectable | float | Amount of sales tax to collect for the city.
+special_district_taxable_amount | float | Amount of the order to be taxed at the special district tax rate.
+special_tax_rate | float | Special district sales tax rate for given location.
+special_district_tax_collectable | float | Amount of sales tax to collect for the special district.
 shipping | object | Breakdown of shipping rates if applicable.
 line_items | object | Breakdown of rates by line item if applicable.
 
@@ -4360,15 +4360,15 @@ line_items | object | Breakdown of rates by line item if applicable.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-gst_taxable_amount | decimal | Amount of the order to be taxed at the GST rate.
-gst_tax_rate | decimal | Goods and services tax rate for given location.
-gst | decimal | Amount of goods and services tax to collect for given location.
-pst_taxable_amount | decimal | Amount of the order to be taxed at the PST rate.
-pst_tax_rate | decimal | Provincial sales tax rate for given location.
-pst | decimal | Amount of provincial sales tax to collect for given location.
-qst_taxable_amount | decimal | Amount of the order to be taxed at the QST rate.
-qst_tax_rate | decimal | Quebec sales tax rate for given location.
-qst | decimal | Amount of Quebec sales tax to collect for given location.
+gst_taxable_amount | float | Amount of the order to be taxed at the GST rate.
+gst_tax_rate | float | Goods and services tax rate for given location.
+gst | float | Amount of goods and services tax to collect for given location.
+pst_taxable_amount | float | Amount of the order to be taxed at the PST rate.
+pst_tax_rate | float | Provincial sales tax rate for given location.
+pst | float | Amount of provincial sales tax to collect for given location.
+qst_taxable_amount | float | Amount of the order to be taxed at the QST rate.
+qst_tax_rate | float | Quebec sales tax rate for given location.
+qst | float | Amount of Quebec sales tax to collect for given location.
 shipping | object | Breakdown of shipping rates if applicable.
 line_items | object | Breakdown of rates by line item if applicable.
 
@@ -4376,8 +4376,8 @@ line_items | object | Breakdown of rates by line item if applicable.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-country_taxable_amount | decimal | Amount of the order to be taxed at the country tax rate.
-country_tax_rate | decimal | Country sales tax rate for given location
-country_tax_collectable | decimal | Amount of sales tax to collect for the country.
+country_taxable_amount | float | Amount of the order to be taxed at the country tax rate.
+country_tax_rate | float | Country sales tax rate for given location
+country_tax_collectable | float | Amount of sales tax to collect for the country.
 shipping | object | Breakdown of shipping rates if applicable.
 line_items | object | Breakdown of rates by line item if applicable.
