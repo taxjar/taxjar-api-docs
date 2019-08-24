@@ -391,7 +391,7 @@ transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`. A `null` value may be returned if the transaction does not have an exemption type.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or, if `marketplace` is passed to the `exemption_type` param, but the order's `to_state` does not have a marketplace facilitator law or the `transaction_date` is before the law took effect in that state." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -787,7 +787,7 @@ amount | float | required | Total amount of the order with shipping, **excluding
 shipping | float | required | Total amount of shipping for the order in dollars.
 sales_tax | float | required | Total amount of sales tax collected for the order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
-exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
+exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, or `non_exempt`. <span class="usage-note" data-tooltip="If exemption_type is set to `wholesale`, `government`, or `other`, any order-level or line item `sales_tax` present in the order must be zero." data-tooltip-position="top center">View Note</span>
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
@@ -817,7 +817,7 @@ transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`. A `null` value may be returned if the transaction does not have an exemption type.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or, if `marketplace` is passed to the `exemption_type` param, but the order's `to_state` does not have a marketplace facilitator law or the `transaction_date` is before the law took effect in that state." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -1173,7 +1173,7 @@ amount | float | optional | Total amount of the order with shipping, **excluding
 shipping | float | optional | Total amount of shipping for the order in dollars.
 sales_tax | float | optional | Total amount of sales tax collected for the order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
-exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
+exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, or `non_exempt`. <span class="usage-note" data-tooltip="If exemption_type is set to `wholesale`, `government`, or `other`, any order-level or line item `sales_tax` present in the order must be zero." data-tooltip-position="top center">View Note</span>
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
@@ -1201,7 +1201,7 @@ transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`. A `null` value may be returned if the transaction does not have an exemption type.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or, if `marketplace` is passed to the `exemption_type` param, but the order's `to_state` does not have a marketplace facilitator law or the `transaction_date` is before the law took effect in that state." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -1814,7 +1814,7 @@ transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`. A `null` value may be returned if the transaction does not have an exemption type.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or, if `marketplace` is passed to the `exemption_type` param, but the order's `to_state` does not have a marketplace facilitator law or the `transaction_date` is before the law took effect in that state." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -2224,7 +2224,7 @@ amount | float | required | Total amount of the refunded order with shipping, **
 shipping | float | required | Total amount of shipping for the refunded order in dollars.
 sales_tax | float | required | Total amount of sales tax collected for the refunded order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
-exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
+exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, or `non_exempt`. <span class="usage-note" data-tooltip="If exemption_type is set to `wholesale`, `government`, or `other`, any order-level or line item `sales_tax` present in the refund must be zero." data-tooltip-position="top center">View Note</span>
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
@@ -2254,7 +2254,7 @@ transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`. A `null` value may be returned if the transaction does not have an exemption type.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or, if `marketplace` is passed to the `exemption_type` param, but the order's `to_state` does not have a marketplace facilitator law or the `transaction_date` is before the law took effect in that state." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -2611,7 +2611,7 @@ amount | float | optional | Total amount of the refunded order with shipping, **
 shipping | float | optional | Total amount of shipping for the refunded order in dollars.
 sales_tax | float | optional | Total amount of sales tax collected for the refunded order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
-exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
+exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, or `non_exempt`. <span class="usage-note" data-tooltip="If exemption_type is set to `wholesale`, `government`, or `other`, any order-level or line item `sales_tax` present in the refund must be zero." data-tooltip-position="top center">View Note</span>
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
@@ -2639,7 +2639,7 @@ transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`. A `null` value may be returned if the transaction does not have an exemption type.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or, if `marketplace` is passed to the `exemption_type` param, but the order's `to_state` does not have a marketplace facilitator law or the `transaction_date` is before the law took effect in that state." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
