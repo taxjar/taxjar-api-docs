@@ -391,7 +391,7 @@ transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or, if `marketplace` is passed to the `exemption_type` param, but the order's `to_state` does not have a marketplace facilitator law or the `transaction_date` is before the law took effect in that state." data-tooltip-position="top center">View Note</span>
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or if `marketplace` is passed and a marketplace facilitator law does not apply in `to_state` as of the `transaction_date`." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -817,7 +817,7 @@ transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or, if `marketplace` is passed to the `exemption_type` param, but the order's `to_state` does not have a marketplace facilitator law or the `transaction_date` is before the law took effect in that state." data-tooltip-position="top center">View Note</span>
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or if `marketplace` is passed and a marketplace facilitator law does not apply in `to_state` as of the `transaction_date`." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -1201,7 +1201,7 @@ transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or, if `marketplace` is passed to the `exemption_type` param, but the order's `to_state` does not have a marketplace facilitator law or the `transaction_date` is before the law took effect in that state." data-tooltip-position="top center">View Note</span>
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or if `marketplace` is passed and a marketplace facilitator law does not apply in `to_state` as of the `transaction_date`." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -1814,7 +1814,7 @@ transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or, if `marketplace` is passed to the `exemption_type` param, but the order's `to_state` does not have a marketplace facilitator law or the `transaction_date` is before the law took effect in that state." data-tooltip-position="top center">View Note</span>
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or if `marketplace` is passed and a marketplace facilitator law does not apply in `to_state` as of the `transaction_date`." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -2254,7 +2254,7 @@ transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or, if `marketplace` is passed to the `exemption_type` param, but the order's `to_state` does not have a marketplace facilitator law or the `transaction_date` is before the law took effect in that state." data-tooltip-position="top center">View Note</span>
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or if `marketplace` is passed and a marketplace facilitator law does not apply in `to_state` as of the `transaction_date`." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -2639,7 +2639,7 @@ transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or, if `marketplace` is passed to the `exemption_type` param, but the order's `to_state` does not have a marketplace facilitator law or the `transaction_date` is before the law took effect in that state." data-tooltip-position="top center">View Note</span>
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or if `marketplace` is passed and a marketplace facilitator law does not apply in `to_state` as of the `transaction_date`." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
