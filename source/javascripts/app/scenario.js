@@ -3,7 +3,7 @@
 
   var scenarioPicker = {
     defaultOption: '<option>United States</option>',
-    customResponseLanguages: ['ruby', 'python'],
+    customResponseLanguages: ['ruby', 'python', 'go'],
 
     init: function() {
       var that = this;

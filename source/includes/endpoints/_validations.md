@@ -28,6 +28,10 @@ client.ValidateAddress();
 client.validateAddress();
 ```
 
+```go
+client.ValidateAddress()
+```
+
 ```shell
 POST https://api.taxjar.com/v2/addresses/validate
 ```
@@ -133,6 +137,35 @@ public class ValidateAddressExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.ValidateAddress(taxjar.ValidateAddressParams{
+        Country: "US",
+        State:   "AZ",
+        Zip:     "85297",
+        City:    "Gilbert",
+        Street:  "3301 South Greenfield Rd",
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Addresses)
+    }
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/addresses/validate \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -235,6 +268,33 @@ public class ValidateAddressExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.ValidateAddress(taxjar.ValidateAddressParams{
+        State:  "AZ",
+        City:   "Phoenix",
+        Street: "1109 9th",
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Addresses)
+    }
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/addresses/validate \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -323,6 +383,31 @@ public class ValidateAddressExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.ValidateAddress(taxjar.ValidateAddressParams{
+        Zip: "98122",
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Addresses)
+    }
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/addresses/validate \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -370,6 +455,20 @@ $ curl https://api.taxjar.com/v2/addresses/validate \
     'city': 'Gilbert'
   }>
 ]
+```
+
+```go
+taxjar.ValidateAddressResponse{
+    Addresses: []taxjar.Address{
+        {
+            Zip:     "85297-2176",
+            Street:  "3301 S Greenfield Rd",
+            State:   "AZ",
+            Country: "US",
+            City:    "Gilbert",
+        },
+    },
+}
 ```
 
 > Response Scenario: Multiple Address Matches
@@ -433,6 +532,27 @@ $ curl https://api.taxjar.com/v2/addresses/validate \
 ]
 ```
 
+```go
+taxjar.ValidateAddressResponse{
+    Addresses: []taxjar.Address{
+        {
+            Zip:     "85007-3646",
+            Street:  "1109 S 9th Ave",
+            State:   "AZ",
+            Country: "US",
+            City:    "Phoenix",
+        },
+        {
+            Zip:     "85006-2734",
+            Street:  "1109 N 9th St",
+            State:   "AZ",
+            Country: "US",
+            City:    "Phoenix",
+        },
+    },
+}
+```
+
 > Response Scenario: Zip-Only Address Validation
 
 ```json
@@ -468,6 +588,19 @@ $ curl https://api.taxjar.com/v2/addresses/validate \
     'city': 'Seattle'
   }>
 ]
+```
+
+```go
+taxjar.ValidateAddressResponse{
+    Addresses: []taxjar.Address{
+        {
+            Zip:     "98122",
+            State:   "WA",
+            Country: "US",
+            City:    "Seattle",
+        },
+    },
+}
 ```
 
 Validates a customer address and returns back a collection of address matches. **Address validation requires a [TaxJar Plus](https://www.taxjar.com/plus/) subscription.**
@@ -539,6 +672,10 @@ client.ValidateVat();
 
 ```java
 client.validateVat();
+```
+
+```go
+client.Validate()
 ```
 
 ```shell
@@ -622,6 +759,31 @@ public class ValidateExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.Validate(taxjar.ValidateParams{
+        VAT: "FR40303265045",
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Validation)
+    }
+}
+```
+
 ```shell
 $ curl -G https://api.taxjar.com/v2/validation \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -678,6 +840,24 @@ $ curl -G https://api.taxjar.com/v2/validation \
     'address': "11 RUE AMPERE\n26600 PONT DE L ISERE"
   }>
 }>
+```
+
+```go
+taxjar.ValidateResponse{
+    Validation: taxjar.Validation{
+        Valid:         true,
+        Exists:        true,
+        VIESAvailable: true,
+        VIESResponse: taxjar.VIESResponse{
+            CountryCode: "FR",
+            VATNumber:   "40303265045",
+            RequestDate: "2016-02-10",
+            Valid:       true,
+            Name:        "SA SODIMAS",
+            Address:     "11 RUE AMPERE\n26600 PONT DE L ISERE",
+        },
+    },
+}
 ```
 
 #### Request
