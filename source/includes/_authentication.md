@@ -43,6 +43,18 @@ public class AuthenticationExample {
 }
 ```
 
+```go
+package main
+
+import "github.com/taxjar/taxjar-go"
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+      APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+}
+```
+
 ```shell
 # Authorization headers must be passed for every request
 $ curl "API_ENDPOINT" \

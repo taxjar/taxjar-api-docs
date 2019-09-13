@@ -58,6 +58,23 @@ public class SandboxExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "os"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: os.Getenv("TAXJAR_SANDBOX_API_KEY"),
+        APIURL: taxjar.SandboxAPIURL,
+    })
+}
+```
+
 ```shell
 $ curl https://api.sandbox.taxjar.com/v2/categories \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"

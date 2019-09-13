@@ -32,6 +32,10 @@ client.Categories();
 client.categories();
 ```
 
+```go
+client.Categories()
+```
+
 ```shell
 GET https://api.taxjar.com/v2/categories
 ```
@@ -95,6 +99,29 @@ public class CategoryExample {
         }
     }
 
+}
+```
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.Categories()
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Categories)
+    }
 }
 ```
 
@@ -290,6 +317,28 @@ $ curl https://api.taxjar.com/v2/categories \
     'description': 'Drugs for human use without a prescription'
   }>
 ]
+```
+
+```go
+taxjar.CategoriesResponse{
+    Categories: []taxjar.Category{
+        {
+            Name:           "Digital Goods",
+            ProductTaxCode: "31000",
+            Description:    "Digital products transferred electronically, meaning obtained by the purchaser by means other than tangible storage media.",
+        },
+        {
+            Name:           "Clothing",
+            ProductTaxCode: "20010",
+            Description:    "All human wearing apparel suitable for general use",
+        },
+        {
+            Name:           "Non-Prescription",
+            ProductTaxCode: "51010",
+            Description:    "Drugs for human use without a prescription",
+        },
+    },
+}
 ```
 
 Lists all tax categories.

@@ -153,6 +153,56 @@ public class ErrorHandlingExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+
+    "github.com/pkg/errors"
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: os.Getenv("TAXJAR_API_KEY"),
+    })
+
+    res, err := client.CreateOrder(taxjar.CreateOrderParams{
+        TransactionDate: "2015/05/04",
+        ToCountry:       "US",
+        ToZip:           "90002",
+        ToState:         "CA",
+        Amount:          17.45,
+        Shipping:        1.5,
+        SalesTax:        0.95,
+    })
+    if err != nil {
+        fmt.Println(err) // taxjar: 406 Not Acceptable - transaction_id is missing
+    } else {
+        fmt.Println(res.Order)
+    }
+    // or extract more information by asserting to `*taxjar.Error`
+    if err := err.(*taxjar.Error); err != nil {
+        fmt.Println(err.Status) // 406
+        fmt.Println(err.Err) // Not Acceptable
+        fmt.Println(err.Detail) // transaction_id is missing
+        fmt.Printf("%+v", errors.Wrap(err, "")) // Stack trace:
+        // taxjar: 406 Not Acceptable - transaction_id is missing
+        //
+        // main.main
+        //         /Path/to/your/file.go:185
+        // runtime.main
+        //         /usr/local/go/src/runtime/proc.go:200
+        // runtime.goexit
+        //         /usr/local/go/src/runtime/asm_amd64.s:1337
+    } else {
+        fmt.Println(res.Order)
+    }
+}
+```
+
 The TaxJar API uses the following error codes:
 
 Code | Error Message
