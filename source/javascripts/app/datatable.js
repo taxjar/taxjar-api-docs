@@ -8,8 +8,6 @@
     pageLength: 30,
     order: [[ 1, 'asc' ]],
     lengthChange: false,
-    // scrollY: 1000,
-    // scrollCollapse: true,
     columnDefs: [
       { width: '25%', targets: 0 },
       { width: '15%', targets: 1 },
