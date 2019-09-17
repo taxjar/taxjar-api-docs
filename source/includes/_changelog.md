@@ -2,6 +2,12 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### September 2019
+
+#### 2019-09-17
+
+* <span class="badge badge--get">Accuracy</span> 86 tax categories for digital goods and software now available.
+
 ### August 2019
 
 #### 2019-08-22
