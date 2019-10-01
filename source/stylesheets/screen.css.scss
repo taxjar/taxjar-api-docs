@@ -803,6 +803,10 @@ a {
     @extend %icon-ok-sign;
   }
 
+  details {
+    cursor: pointer
+  }
+
   .search-highlight {
     padding: 2px;
     margin: -2px;
