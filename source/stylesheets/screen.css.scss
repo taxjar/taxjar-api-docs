@@ -247,8 +247,6 @@ a {
 
 .tocify-wrapper {
   @include transition(left ease-in-out 0.3s);
-  overflow-y: auto;
-  overflow-x: hidden;
   position: fixed;
   z-index: 30;
   top: 69px;
@@ -438,6 +436,20 @@ a {
     a:hover {
       text-decoration: underline;
     }
+  }
+
+  #docsearch {
+    top: -0.5rem;
+    left: 0.6rem;
+    border-radius: 5px;
+    width: 13.7rem;
+    height: 1.76rem;
+    text-indent: 0.55rem;
+  }
+
+  // green highlights in docsearch dropdown
+  .algolia-autocomplete .algolia-docsearch-suggestion--highlight {
+    color: $aside-success-bg;
   }
 
 }
