@@ -2,22 +2,6 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
-### October 2019
-
-#### 2019-10-01
-
-* <span class="badge badge--get">Accuracy</span> 5 tax categories for digital goods and software now available.
-<details><summary>Click to see new tax categories</summary>
-  <table>
-    <th>Code</th><th>Category</th>
-    <tr><td>43230000A1100</td><td>Software - Prewritten, tangible media</td></tr>
-    <tr><td>55111601A1100</td><td>Electronic software documentation or user manuals - Prewritten, tangible media</td></tr>
-    <tr><td>81111814A0000</td><td>Co location service</td></tr>
-    <tr><td>81112003A0000</td><td>Data center services</td></tr>
-    <tr><td>81112004A0000</td><td>Disaster recovery services</td></tr>
-  </table>
-</details>
-
 ### September 2019
 
 #### 2019-09-20
