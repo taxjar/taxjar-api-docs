@@ -1123,5 +1123,19 @@ a {
     width: 100%;
     margin: 0 0 1.5rem;
   }
-}
 
+  #docsearch-mobile {
+    top: -0.5rem;
+    border-radius: 5px;
+    width: 13rem;
+    height: 1.76rem;
+    text-indent: 0.55rem;
+    font-size: 0.93rem;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+  }
+
+  // green highlights in docsearch dropdown
+  .algolia-autocomplete .algolia-docsearch-suggestion--highlight {
+    color: $aside-success-bg;
+  }
+}
