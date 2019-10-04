@@ -5,6 +5,7 @@
 @import 'syntax';
 @import 'icon-font';
 @import 'drop-theme-taxjar';
+@import 'partials/datatable';
 @import 'partials/sidebar';
 @import 'pages/guides';
 
@@ -535,9 +536,10 @@ a {
   background-color: $lang-select-bg;
   width: 100%;
   font-weight: bold;
+
   a {
     display: block;
-    float:left;
+    float: left;
     color: $lang-select-text;
     text-decoration: none;
     padding: 0 10px;
@@ -799,6 +801,10 @@ a {
 
   aside.success:before {
     @extend %icon-ok-sign;
+  }
+
+  details {
+    cursor: pointer
   }
 
   .search-highlight {
@@ -1112,4 +1118,3 @@ a {
     margin: 0 0 1.5rem;
   }
 }
-
