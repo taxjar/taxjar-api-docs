@@ -34,7 +34,7 @@ In order to make requests to our [sales tax API](https://www.taxjar.com/smartcal
 
 We recommend using a `.env` file with a gem such as [dotenv](https://github.com/bkeepers/dotenv) to keep sensitive credentials like API tokens outside of your code.
 
-# Sales Tax Calculations
+## Sales Tax Calculations
 
 ```ruby
 require 'taxjar'
@@ -93,7 +93,7 @@ After calling `tax_for_order`, you'll get a response back. Check it out with [pr
 
 If you just need the rate for a given location, use the [/v2/rates](/api/reference/?ruby#get-show-tax-rates-for-a-location) endpoint. You can also take advantage of our [summarized rates endpoint](/api/reference/?ruby#get-summarize-tax-rates-for-all-regions) as a backup to store in your database.
 
-# Sales Tax Reporting
+## Sales Tax Reporting
 
 ```ruby
 require 'taxjar'
@@ -154,7 +154,7 @@ To get the full TaxJar experience you'll also want to set up sales tax reporting
 
 A successful response will return back the imported order transaction. Nifty!
 
-# Error Handling
+## Error Handling
 
 ```ruby
 require 'taxjar'
@@ -193,7 +193,7 @@ Taxjar::Error::TooManyRequests | Too Many Requests -- You're requesting too many
 Taxjar::Error::InternalServerError | Internal Server Error -- We had a problem with our server. Try again later.
 Taxjar::Error::ServiceUnavailable | Service Unavailable -- We're temporarily offline for maintenance. Try again later.
 
-# Resources & Help
+## Resources & Help
 
 If you have any questions about using our sales tax API for Ruby, please [contact us](https://www.taxjar.com/contact/) or tweet [@TaxJarDev](https://twitter.com/TaxJarDev). We'll help you out as soon as we can!
 

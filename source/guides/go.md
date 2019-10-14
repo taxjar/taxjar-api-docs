@@ -41,7 +41,7 @@ In order to make requests to our [sales tax API](https://www.taxjar.com/smartcal
 
 We recommend using an environment variable such as `TAXJAR_API_KEY` to keep sensitive credentials like API tokens outside of your code.
 
-# Sales Tax Calculations
+## Sales Tax Calculations
 
 ```go
 package main
@@ -123,7 +123,7 @@ After calling `TaxForOrder`, you'll get a response back. Check it out with `fmt.
 
 If you just need the rate for a given location, use the [/v2/rates](/api/reference/?go#get-show-tax-rates-for-a-location) endpoint. You can also take advantage of our [summarized rates endpoint](/api/reference/?go#get-summarize-tax-rates-for-all-regions) as a backup to store in your database.
 
-# Sales Tax Reporting
+## Sales Tax Reporting
 
 ```go
 package main
@@ -218,7 +218,7 @@ To get the full TaxJar experience you'll also want to set up sales tax reporting
 
 A successful response will return back the imported order transaction. Nifty!
 
-# Error Handling
+## Error Handling
 
 ```go
 package main
@@ -279,7 +279,7 @@ func main() {
 
 When invalid data is sent to TaxJar or we encounter an error, we'll return a [`Taxjar.Error`](https://godoc.org/github.com/taxjar/taxjar-go/#Error) as the second return value. To catch these errors, you can use the example to the right. See the API reference for a list of possible [error response codes](/api/reference/?go#errors).
 
-# Resources & Help
+## Resources & Help
 
 If you have any questions about using our sales tax API for Go, please [contact us](https://www.taxjar.com/contact/) or tweet [@TaxJarDev](https://twitter.com/TaxJarDev). We'll help you out as soon as we can!
 

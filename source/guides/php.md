@@ -46,7 +46,7 @@ In order to make requests to our [sales tax API](https://www.taxjar.com/smartcal
 
 We recommend using a `.env` file with a library such as [PHP dotenv](https://github.com/vlucas/phpdotenv) to keep sensitive credentials like API tokens outside of your code.
 
-# Sales Tax Calculations
+## Sales Tax Calculations
 
 ```php
 <?php
@@ -111,7 +111,7 @@ After calling `taxForOrder`, you'll get a response back. Check it out with your 
 
 If you just need the rate for a given location, use the [/v2/rates](/api/reference/?php#get-show-tax-rates-for-a-location) endpoint. You can also take advantage of our [summarized rates endpoint](/api/reference/?php#get-summarize-tax-rates-for-all-regions) as a backup to store in your database.
 
-# Sales Tax Reporting
+## Sales Tax Reporting
 
 ```php
 <?php
@@ -177,7 +177,7 @@ To get the full TaxJar experience you'll also want to set up sales tax reporting
 
 A successful response will return back the imported order transaction. Nifty!
 
-# Error Handling
+## Error Handling
 
 ```php
 <?php
@@ -222,7 +222,7 @@ Error Code | Meaning
 503 | Service Unavailable -- We're temporarily offline for maintenance. Try again later.
 
 
-# Resources & Help
+## Resources & Help
 
 If you have any questions about using our sales tax API for PHP, please [contact us](https://www.taxjar.com/contact/) or tweet [@TaxJarDev](https://twitter.com/TaxJarDev). We'll help you out as soon as we can!
 
