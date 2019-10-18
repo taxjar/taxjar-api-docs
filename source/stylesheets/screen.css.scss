@@ -6,6 +6,7 @@
 @import 'icon-font';
 @import 'drop-theme-taxjar';
 @import 'partials/datatable';
+@import 'partials/docsearch';
 @import 'partials/sidebar';
 @import 'pages/guides';
 
@@ -438,21 +439,6 @@ a {
       text-decoration: underline;
     }
   }
-
-  #docsearch {
-    top: -0.5rem;
-    left: 0.6rem;
-    border-radius: 5px;
-    width: 13.7rem;
-    height: 1.76rem;
-    text-indent: 0.55rem;
-  }
-
-  // green highlights in docsearch dropdown
-  .algolia-autocomplete .algolia-docsearch-suggestion--highlight {
-    color: $aside-success-bg;
-  }
-
 }
 
 .tocify-wrapper-footer {
@@ -1128,20 +1114,5 @@ a {
     display: block;
     width: 100%;
     margin: 0 0 1.5rem;
-  }
-
-  #docsearch-mobile {
-    top: -0.5rem;
-    border-radius: 5px;
-    width: 13rem;
-    height: 1.76rem;
-    text-indent: 0.55rem;
-    font-size: 0.93rem;
-    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, Sans-serif;
-  }
-
-  // green highlights in docsearch dropdown
-  .algolia-autocomplete .algolia-docsearch-suggestion--highlight {
-    color: $aside-success-bg;
   }
 }
