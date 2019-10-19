@@ -6,6 +6,7 @@
 @import 'icon-font';
 @import 'drop-theme-taxjar';
 @import 'partials/datatable';
+@import 'partials/docsearch';
 @import 'partials/sidebar';
 @import 'pages/guides';
 
@@ -248,8 +249,6 @@ a {
 
 .tocify-wrapper {
   @include transition(left ease-in-out 0.3s);
-  overflow-y: auto;
-  overflow-x: hidden;
   position: fixed;
   z-index: 30;
   top: 69px;
@@ -440,7 +439,6 @@ a {
       text-decoration: underline;
     }
   }
-
 }
 
 .tocify-wrapper-footer {
