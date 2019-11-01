@@ -28,6 +28,10 @@ client.NexusRegions();
 client.nexusRegions();
 ```
 
+```go
+client.NexusRegions()
+```
+
 ```shell
 GET https://api.taxjar.com/v2/nexus/regions
 ```
@@ -91,6 +95,29 @@ public class NexusRegionsExample {
         }
     }
 
+}
+```
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.NexusRegions()
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Regions)
+    }
 }
 ```
 
@@ -170,6 +197,31 @@ $ curl https://api.taxjar.com/v2/nexus/regions \
     'region': 'Washington'
   }>
 ]
+```
+
+```go
+taxjar.NexusRegionsResponse{
+    Regions: []taxjar.NexusRegion{
+        {
+            CountryCode: "US",
+            Country:     "United States",
+            RegionCode:  "CA",
+            Region:      "California",
+        },
+        {
+            CountryCode: "US",
+            Country:     "United States",
+            RegionCode:  "NY",
+            Region:      "New York",
+        },
+        {
+            CountryCode: "US",
+            Country:     "United States",
+            RegionCode:  "WA",
+            Region:      "Washington",
+        },
+    },
+}
 ```
 
 Lists existing nexus locations for a TaxJar account.

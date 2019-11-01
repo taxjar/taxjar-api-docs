@@ -2,6 +2,39 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### September 2019
+
+#### 2019-09-20
+
+* <span class="badge badge--get">Accuracy</span> 16 tax categories for digital goods and software now available.
+<details><summary>Click to see new tax categories</summary>
+  <table>
+    <th>Code</th><th>Category</th>
+    <tr><td>43230000A1200</td><td>Software - Prewritten, electronic delivery</td></tr>
+    <tr><td>43230000A1300</td><td>Software - Prewritten, load and leave delivery</td></tr>
+    <tr><td>43230000A1400</td><td>Software - Prewritten, delivered by digital keycode printed on tangible media</td></tr>
+    <tr><td>43230000A2100</td><td>Software - Custom, tangible media</td></tr>
+    <tr><td>43230000A2200</td><td>Software - Custom, electronic delivery</td></tr>
+    <tr><td>43230000A2300</td><td>Software - Custom, load and leave delivery</td></tr>
+    <tr><td>55111500A1210</td><td>Electronic publications and music - Delivered electronically with permanent rights of usage</td></tr>
+    <tr><td>55111500A1220</td><td>Electronic publications and music - Delivered electronically with less than permanent rights of usage</td></tr>
+    <tr><td>55111500A1500</td><td>Electronic publications and music - Streamed</td></tr>
+    <tr><td>55111601A1200</td><td>Electronic software documentation or user manuals - Prewritten, electronic delivery</td></tr>
+    <tr><td>55111601A1300</td><td>Electronic software documentation or user manuals - Prewritten, load and leave delivery</td></tr>
+    <tr><td>55111601A2100</td><td>Electronic software documentation or user manuals - Custom, tangible media</td></tr>
+    <tr><td>55111601A2200</td><td>Electronic software documentation or user manuals - Custom, electronic delivery</td></tr>
+    <tr><td>55111601A2300</td><td>Electronic software documentation or user manuals - Custom, load and leave delivery</td></tr>
+    <tr><td>81111805A0000</td><td>Proprietary or licensed systems maintenance or support</td></tr>
+    <tr><td>81162000A0000</td><td>Cloud-based software as a service (SaaS)</td></tr>
+  </table>
+</details>
+
+### August 2019
+
+#### 2019-08-22
+
+* <span class="badge badge--post">Feature</span> Order-level `exemption_type` param now accepts value `marketplace` to enable further support for marketplace exemptions.
+
 ### June 2019
 
 #### 2019-06-26

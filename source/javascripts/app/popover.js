@@ -13,7 +13,7 @@
         });
       });
 
-      $('h4[id="parameters"] + table td:contains("decimal")').each(function() {
+      $('h4[id="parameters"] + table td:contains("float")').each(function() {
         $(this).html('<span class="type-hint">' + $(this).text() + '</span>');
         new Drop({
           target: $(this).find('> span').get(0),

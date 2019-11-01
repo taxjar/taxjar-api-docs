@@ -17,7 +17,7 @@ under the License.
   'use strict';
 
   var languages = [];
-  var customResponseLanguages = ['ruby', 'python'];
+  var customResponseLanguages = ['ruby', 'python', 'go'];
 
   global.setupLanguages = setupLanguages;
   global.activateLanguage = activateLanguage;

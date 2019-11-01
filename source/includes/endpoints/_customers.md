@@ -30,6 +30,10 @@ client.ListCustomers();
 client.listCustomers();
 ```
 
+```go
+client.ListCustomers()
+```
+
 ```shell
 GET https://api.taxjar.com/v2/customers
 ```
@@ -98,6 +102,29 @@ public class ListCustomersExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.ListCustomers()
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Customers)
+    }
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/customers \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
@@ -119,6 +146,15 @@ $ curl https://api.taxjar.com/v2/customers \
     "123",
     "456"
   ]
+}
+```
+
+```go
+taxjar.ListCustomersResponse{
+  Customers: []string{
+    "123",
+    "456",
+  },
 }
 ```
 
@@ -158,6 +194,10 @@ client.ShowCustomer();
 
 ```java
 client.showCustomer();
+```
+
+```go
+client.ShowCustomer()
 ```
 
 ```shell
@@ -223,6 +263,29 @@ public class ShowCustomerExample {
         }
     }
 
+}
+```
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.ShowCustomer("123")
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Customer)
+    }
 }
 ```
 
@@ -301,6 +364,31 @@ $ curl https://api.taxjar.com/v2/customers/123 \
 }
 ```
 
+```go
+taxjar.ShowCustomerResponse{
+    Customer: taxjar.Customer{
+        CustomerID:    "123",
+        ExemptionType: "wholesale",
+        ExemptRegions: []taxjar.ExemptRegion{
+            {
+                Country: "US",
+                State:   "FL",
+            },
+            {
+                Country: "US",
+                State:   "PA",
+            },
+        },
+        Name:    "Dunder Mifflin Paper Company",
+        Country: "US",
+        State:   "PA",
+        Zip:     "18504",
+        City:    "Scranton",
+        Street:  "1725 Slough Avenue",
+    },
+}
+```
+
 Shows an existing customer created through the API.
 
 #### Request
@@ -358,6 +446,10 @@ client.CreateCustomer();
 
 ```java
 client.createCustomer();
+```
+
+```go
+client.CreateCustomer()
 ```
 
 ```shell
@@ -550,6 +642,48 @@ public class CreateCustomerExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.CreateCustomer(taxjar.CreateCustomerParams{
+        CustomerID:    "123",
+        ExemptionType: "wholesale",
+        Name:          "Dunder Mifflin Paper Company",
+        ExemptRegions: []taxjar.ExemptRegion{
+            {
+                Country: "US",
+                State:   "FL",
+            },
+            {
+                Country: "US",
+                State:   "PA",
+            },
+        },
+        Country: "US",
+        State:   "PA",
+        Zip:     "18504",
+        City:    "Scranton",
+        Street:  "1725 Slough Avenue",
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Customer)
+    }
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/customers \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -646,6 +780,31 @@ $ curl https://api.taxjar.com/v2/customers \
 }
 ```
 
+```go
+taxjar.CreateCustomerResponse{
+    Customer: taxjar.Customer{
+        CustomerID:    "123",
+        ExemptionType: "wholesale",
+        Name:          "Dunder Mifflin Paper Company",
+        ExemptRegions: []taxjar.ExemptRegion{
+            {
+                Country: "US",
+                State:   "FL",
+            },
+            {
+                Country: "US",
+                State:   "PA",
+            },
+        },
+        Country: "US",
+        State:   "PA",
+        Zip:     "18504",
+        City:    "Scranton",
+        Street:  "1725 Slough Avenue",
+    },
+}
+```
+
 Creates a new customer.
 
 #### Request
@@ -712,6 +871,10 @@ client.UpdateCustomer();
 
 ```java
 client.updateCustomer();
+```
+
+```go
+client.UpdateCustomer()
 ```
 
 ```shell
@@ -879,6 +1042,44 @@ public class UpdateCustomerExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.UpdateCustomer(taxjar.UpdateCustomerParams{
+        CustomerID:    "123",
+        ExemptionType: "wholesale",
+        Name:          "Sterling Cooper",
+        ExemptRegions: []taxjar.ExemptRegion{
+            {
+                Country: "US",
+                State:   "NY",
+            },
+        },
+        Country: "US",
+        State:   "NY",
+        Zip:     "10010",
+        City:    "New York",
+        Street:  "405 Madison Ave",
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Customer)
+    }
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/customers/123 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -961,6 +1162,27 @@ $ curl https://api.taxjar.com/v2/customers/123 \
 }
 ```
 
+```go
+taxjar.UpdateCustomerResponse{
+    Customer: taxjar.Customer{
+        CustomerID:    "123",
+        ExemptionType: "wholesale",
+        Name:          "Sterling Cooper",
+        ExemptRegions: []taxjar.ExemptRegion{
+            {
+                Country: "US",
+                State:   "NY",
+            },
+        },
+        Country: "US",
+        State:   "NY",
+        Zip:     "10010",
+        City:    "New York",
+        Street:  "405 Madison Ave",
+    },
+}
+```
+
 Updates an existing customer created through the API.
 
 #### Request
@@ -1029,6 +1251,10 @@ client.DeleteCustomer();
 client.deleteCustomer();
 ```
 
+```go
+client.DeleteCustomer()
+```
+
 ```shell
 DELETE https://api.taxjar.com/v2/customers/:customer_id
 ```
@@ -1092,6 +1318,29 @@ public class DeleteCustomerExample {
         }
     }
 
+}
+```
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.DeleteCustomer("123")
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Customer)
+    }
 }
 ```
 
@@ -1168,6 +1417,31 @@ $ curl https://api.taxjar.com/v2/customers/123 \
     "city": "Scranton",
     "street": "1725 Slough Avenue"
   }
+}
+```
+
+```go
+taxjar.DeleteCustomerResponse{
+    Customer: taxjar.Customer{
+        CustomerID:    "123",
+        ExemptionType: "wholesale",
+        Name:          "Dunder Mifflin Paper Company",
+        ExemptRegions: []taxjar.ExemptRegion{
+            {
+                Country: "US",
+                State:   "FL",
+            },
+            {
+                Country: "US",
+                State:   "PA",
+            },
+        },
+        Country: "US",
+        State:   "PA",
+        Zip:     "18504",
+        City:    "Scranton",
+        Street:  "1725 Slough Avenue",
+    },
 }
 ```
 

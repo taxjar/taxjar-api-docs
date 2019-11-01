@@ -39,7 +39,7 @@ In order to make requests to our [sales tax API](https://www.taxjar.com/smartcal
 
 We recommend placing the TaxJar API token inside your project's Web.config or App.config file to keep sensitive credentials outside of your code.
 
-# Sales Tax Calculations
+## Sales Tax Calculations
 
 ```csharp
 using Taxjar;
@@ -100,7 +100,7 @@ After calling `TaxForOrder`, you'll get a response back. Check it out with your 
 
 If you just need the rate for a given location, use the [/v2/rates](/api/reference/?csharp#get-show-tax-rates-for-a-location) endpoint. You can also take advantage of our [summarized rates endpoint](/api/reference/?csharp#get-summarize-tax-rates-for-all-regions) as a backup to store in your database.
 
-# Sales Tax Reporting
+## Sales Tax Reporting
 
 ```csharp
 using Taxjar;
@@ -175,7 +175,7 @@ To get the full TaxJar experience you'll also want to set up sales tax reporting
 
 A successful response will return back the imported order transaction. Nifty!
 
-# Error Handling
+## Error Handling
 
 ```csharp
 using Taxjar;
@@ -219,7 +219,7 @@ Error Code | Meaning
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarily offline for maintenance. Try again later.
 
-# Resources & Help
+## Resources & Help
 
 If you have any questions about using our sales tax API for C# / .NET, please [contact us](https://www.taxjar.com/contact/) or tweet [@TaxJarDev](https://twitter.com/TaxJarDev). We'll help you out as soon as we can!
 

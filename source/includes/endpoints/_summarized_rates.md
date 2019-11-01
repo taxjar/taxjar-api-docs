@@ -28,6 +28,10 @@ client.SummaryRates();
 client.summaryRates();
 ```
 
+```go
+client.SummaryRates()
+```
+
 ```shell
 GET https://api.taxjar.com/v2/summary_rates
 ```
@@ -91,6 +95,29 @@ public class SummarizedRatesExample {
         }
     }
 
+}
+```
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.SummaryRates()
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.SummaryRates)
+    }
 }
 ```
 
@@ -243,6 +270,55 @@ $ curl https://api.taxjar.com/v2/summary_rates \
     'country_code': 'UK'
   }>
 ]
+```
+
+```go
+taxjar.SummaryRatesResponse{
+    SummaryRates: []taxjar.SummaryRate{
+        {
+            CountryCode: "US",
+            Country:     "United States",
+            RegionCode:  "CA",
+            Region:      "California",
+            MinimumRate: taxjar.MinimumRate{
+                Label: "State Tax",
+                Rate:  0.065,
+            },
+            AverageRate: taxjar.AverageRate{
+                Label: "Tax",
+                Rate:  0.0827,
+            },
+        },
+        {
+            CountryCode: "CA",
+            Country:     "Canada",
+            RegionCode:  "BC",
+            Region:      "British Columbia",
+            MinimumRate: taxjar.MinimumRate{
+                Label: "GST",
+                Rate:  0.05,
+            },
+            AverageRate: taxjar.AverageRate{
+                Label: "PST",
+                Rate:  0.12,
+            },
+        },
+        {
+            CountryCode: "UK",
+            Country:     "United Kingdom",
+            RegionCode:  "",
+            Region:      "",
+            MinimumRate: taxjar.MinimumRate{
+                Label: "VAT",
+                Rate:  0.2,
+            },
+            AverageRate: taxjar.AverageRate{
+                Label: "VAT",
+                Rate:  0.2,
+            },
+        },
+    },
+}
 ```
 
 Retrieve minimum and average sales tax rates by region as a backup.

@@ -32,6 +32,10 @@ client.ListOrders();
 client.listOrders();
 ```
 
+```go
+client.ListOrders()
+```
+
 ```shell
 GET https://api.taxjar.com/v2/transactions/orders
 ```
@@ -118,6 +122,32 @@ public class ListOrdersExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.ListOrders(taxjar.ListOrdersParams{
+        FromTransactionDate: "2015/05/01",
+        ToTransactionDate:   "2015/05/31",
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Orders)
+    }
+}
+```
+
 ```shell
 $ curl -G https://api.taxjar.com/v2/transactions/orders \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -142,6 +172,12 @@ $ curl -G https://api.taxjar.com/v2/transactions/orders \
 
 ```python
 ['20', '21', '22']
+```
+
+```go
+taxjar.ListOrdersResponse{
+    Orders: []string{"20", "21", "22"}
+}
 ```
 
 Lists existing order transactions created through the API.
@@ -193,6 +229,10 @@ client.ShowOrder();
 
 ```java
 client.showOrder();
+```
+
+```go
+client.ShowOrder()
 ```
 
 ```shell
@@ -258,6 +298,29 @@ public class ShowOrderExample {
         }
     }
 
+}
+```
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.ShowOrder("123")
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Order)
+    }
 }
 ```
 
@@ -366,6 +429,43 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }>
 ```
 
+```go
+taxjar.ShowOrderResponse{
+    Order: taxjar.Order{
+        TransactionID:          "123",
+        UserID:                 11836,
+        TransactionDate:        "2015-05-14T00:00:00Z",
+        TransactionReferenceID: "",
+        Provider:               "api",
+        FromCountry:            "US",
+        FromZip:                "93107",
+        FromState:              "CA",
+        FromCity:               "SANTA BARBARA",
+        FromStreet:             "1281 State St",
+        ToCountry:              "US",
+        ToZip:                  "90002",
+        ToState:                "CA",
+        ToCity:                 "LOS ANGELES",
+        ToStreet:               "123 Palm Grove Ln",
+        Amount:                 17,
+        Shipping:               2,
+        SalesTax:               0.95,
+        LineItems: []taxjar.OrderLineItem{
+            {
+                ID:                "1",
+                Quantity:          1,
+                ProductIdentifier: "12-34243-0",
+                Description:       "Heavy Widget",
+                ProductTaxCode:    "",
+                UnitPrice:         15,
+                Discount:          0,
+                SalesTax:          0.95,
+            },
+        },
+    },
+}
+```
+
 Shows an existing order transaction created through the API.
 
 #### Request
@@ -391,7 +491,7 @@ transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`. A `null` value may be returned if the transaction does not have an exemption type.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or if `marketplace` is passed and a marketplace facilitator law does not apply in `to_state` as of the `transaction_date`." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -402,17 +502,17 @@ to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | Two-letter ISO state code where the order shipped to.
 to_city | string | City where the order shipped to.
 to_street | string | Street address where the order shipped to.
-amount | decimal | Total amount of the order with shipping, **excluding sales tax**.
-shipping | decimal | Total amount of shipping for the order.
-sales_tax | decimal | Total amount of sales tax collected for the order.
+amount | float | Total amount of the order with shipping, **excluding sales tax**.
+shipping | float | Total amount of shipping for the order.
+sales_tax | float | Total amount of sales tax collected for the order.
 line_items[][id] | string | Unique identifier of the given line item.
 line_items[][quantity] | integer | Quantity for the item.
 line_items[][product_identifier] | string | Product identifier for the item.
 line_items[][description] | string  | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | Product tax code for the item.
-line_items[][unit_price] | decimal | Unit price for the item in dollars.
-line_items[][discount] | decimal | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | decimal | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | Unit price for the item in dollars.
+line_items[][discount] | float | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--post">post</span> Create an order transaction
 
@@ -440,6 +540,10 @@ client.CreateOrder();
 
 ```java
 client.createOrder();
+```
+
+```go
+client.CreateOrder()
 ```
 
 ```shell
@@ -633,6 +737,49 @@ public class CreateOrderExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.CreateOrder(taxjar.CreateOrderParams{
+        TransactionID:   "123",
+        TransactionDate: "2015/05/14",
+        ToCountry:       "US",
+        ToZip:           "90002",
+        ToState:         "CA",
+        ToCity:          "Los Angeles",
+        ToStreet:        "123 Palm Grove Ln",
+        Amount:          16.5,
+        Shipping:        1.5,
+        SalesTax:        0.95,
+        LineItems: []taxjar.OrderLineItem{
+            {
+                Quantity:          1,
+                ProductIdentifier: "12-34243-9",
+                Description:       "Fuzzy Widget",
+                UnitPrice:         15,
+                SalesTax:          0.95,
+            },
+        },
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Order)
+    }
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/transactions/orders \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -760,6 +907,42 @@ $ curl https://api.taxjar.com/v2/transactions/orders \
 }>
 ```
 
+```go
+taxjar.CreateOrderResponse{
+    Order: taxjar.Order{
+        TransactionID:          "20",
+        UserID:                 11836,
+        TransactionDate:        "2015-05-14T00:00:00Z",
+        TransactionReferenceID: "",
+        Provider:               "api",
+        FromCountry:            "US",
+        FromZip:                "93101",
+        FromState:              "CA",
+        FromCity:               "SANTA BARBARA",
+        FromStreet:             "1218 State St",
+        ToCountry:              "US",
+        ToZip:                  "90002",
+        ToState:                "CA",
+        ToCity:                 "LOS ANGELES",
+        ToStreet:               "123 Palm Grove Ln",
+        Amount:                 16.5,
+        Shipping:               1.5,
+        SalesTax:               0.95,
+        LineItems: []taxjar.OrderLineItem{
+            {
+                ID:                "1",
+                Quantity:          1,
+                ProductIdentifier: "12-34243-9",
+                Description:       "Fuzzy Widget",
+                UnitPrice:         15,
+                Discount:          0,
+                SalesTax:          0.95,
+            },
+        },
+    },
+}
+```
+
 Creates a new order transaction.
 
 #### Request
@@ -783,19 +966,19 @@ to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | required | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | decimal | required | Total amount of the order with shipping, **excluding sales tax** in dollars.
-shipping | decimal | required | Total amount of shipping for the order in dollars.
-sales_tax | decimal | required | Total amount of sales tax collected for the order in dollars.
+amount | float | required | Total amount of the order with shipping, **excluding sales tax** in dollars.
+shipping | float | required | Total amount of shipping for the order in dollars.
+sales_tax | float | required | Total amount of sales tax collected for the order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
-exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
+exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, or `non_exempt`. <span class="usage-note" data-tooltip="If exemption_type is set to `wholesale`, `government`, or `other`, any order-level or line item `sales_tax` present in the order must be zero." data-tooltip-position="top center">View Note</span>
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | decimal | optional | Unit price for the item in dollars.
-line_items[][discount] | decimal | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | decimal | <span class="conditional" data-tooltip="If providing `line_items`, `sales_tax` is required." data-tooltip-position="top center">conditional</span> | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | optional | Unit price for the item in dollars.
+line_items[][discount] | float | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | <span class="conditional" data-tooltip="If providing `line_items`, `sales_tax` is required." data-tooltip-position="top center">conditional</span> | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -819,7 +1002,7 @@ transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`. A `null` value may be returned if the transaction does not have an exemption type.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or if `marketplace` is passed and a marketplace facilitator law does not apply in `to_state` as of the `transaction_date`." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -830,17 +1013,17 @@ to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | Two-letter ISO state code where the order shipped to.
 to_city | string | City where the order shipped to.
 to_street | string | Street address where the order shipped to.
-amount | decimal | Total amount of the order with shipping, **excluding sales tax**.
-shipping | decimal | Total amount of shipping for the order.
-sales_tax | decimal | Total amount of sales tax collected for the order.
+amount | float | Total amount of the order with shipping, **excluding sales tax**.
+shipping | float | Total amount of shipping for the order.
+sales_tax | float | Total amount of sales tax collected for the order.
 line_items[][id] | string | Unique identifier of the given line item.
 line_items[][quantity] | integer | Quantity for the item.
 line_items[][product_identifier] | string | Product identifier for the item.
 line_items[][description] | string  | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | Product tax code for the item.
-line_items[][unit_price] | decimal | Unit price for the item in dollars.
-line_items[][discount] | decimal | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | decimal | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | Unit price for the item in dollars.
+line_items[][discount] | float | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--put">put</span> Update an order transaction
 
@@ -868,6 +1051,10 @@ client.UpdateOrder();
 
 ```java
 client.updateOrder();
+```
+
+```go
+client.UpdateOrder()
 ```
 
 ```shell
@@ -1028,6 +1215,43 @@ public class UpdateOrderExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.UpdateOrder(taxjar.UpdateOrderParams{
+        TransactionID: "123",
+        Amount:        17,
+        Shipping:      2,
+        LineItems: []taxjar.OrderLineItem{
+            {
+                Quantity:          1,
+                ProductIdentifier: "12-34243-0",
+                Description:       "Heavy Widget",
+                UnitPrice:         15,
+                Discount:          0,
+                SalesTax:          0.95,
+            },
+        },
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Order)
+    }
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/transactions/orders/123 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -1149,6 +1373,42 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }>
 ```
 
+```go
+taxjar.UpdateOrderResponse{
+    Order: taxjar.Order{
+        TransactionID:          "123",
+        UserID:                 11836,
+        TransactionDate:        "2015-05-14T00:00:00Z",
+        TransactionReferenceID: "",
+        Provider:               "api",
+        FromCountry:            "US",
+        FromZip:                "93101",
+        FromState:              "CA",
+        FromCity:               "SANTA BARBARA",
+        FromStreet:             "1218 State St",
+        ToCountry:              "US",
+        ToZip:                  "90002",
+        ToState:                "CA",
+        ToCity:                 "LOS ANGELES",
+        ToStreet:               "123 Palm Grove Ln",
+        Amount:                 17.0,
+        Shipping:               2.0,
+        SalesTax:               0.95,
+        LineItems: []taxjar.OrderLineItem{
+            {
+                ID:                "1",
+                Quantity:          1,
+                ProductIdentifier: "12-34243-0",
+                Description:       "Heavy Widget",
+                UnitPrice:         15,
+                Discount:          0,
+                SalesTax:          0.95,
+            },
+        },
+    },
+}
+```
+
 Updates an existing order transaction created through the API.
 
 #### Request
@@ -1171,19 +1431,19 @@ to_zip | string | optional | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | optional | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | decimal | optional | Total amount of the order with shipping, **excluding sales tax** in dollars.
-shipping | decimal | optional | Total amount of shipping for the order in dollars.
-sales_tax | decimal | optional | Total amount of sales tax collected for the order in dollars.
+amount | float | optional | Total amount of the order with shipping, **excluding sales tax** in dollars.
+shipping | float | optional | Total amount of shipping for the order in dollars.
+sales_tax | float | optional | Total amount of sales tax collected for the order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
-exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
+exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, or `non_exempt`. <span class="usage-note" data-tooltip="If exemption_type is set to `wholesale`, `government`, or `other`, any order-level or line item `sales_tax` present in the order must be zero." data-tooltip-position="top center">View Note</span>
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | decimal | optional | Unit price for the item in dollars.
-line_items[][discount] | decimal | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | decimal | optional | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | optional | Unit price for the item in dollars.
+line_items[][discount] | float | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -1203,7 +1463,7 @@ transaction_id | string | Unique identifier of the given order transaction.
 user_id | integer | Unique identifier of the user who created the order transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`. A `null` value may be returned if the transaction does not have an exemption type.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or if `marketplace` is passed and a marketplace facilitator law does not apply in `to_state` as of the `transaction_date`." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -1214,17 +1474,17 @@ to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | Two-letter ISO state code where the order shipped to.
 to_city | string | City where the order shipped to.
 to_street | string | Street address where the order shipped to.
-amount | decimal | Total amount of the order with shipping, **excluding sales tax**.
-shipping | decimal | Total amount of shipping for the order.
-sales_tax | decimal | Total amount of sales tax collected for the order.
+amount | float | Total amount of the order with shipping, **excluding sales tax**.
+shipping | float | Total amount of shipping for the order.
+sales_tax | float | Total amount of sales tax collected for the order.
 line_items[][id] | string | Unique identifier of the given line item.
 line_items[][quantity] | integer | Quantity for the item.
 line_items[][product_identifier] | string | Product identifier for the item.
 line_items[][description] | string  | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | Product tax code for the item.
-line_items[][unit_price] | decimal | Unit price for the item in dollars.
-line_items[][discount] | decimal | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | decimal | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | Unit price for the item in dollars.
+line_items[][discount] | float | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--delete">delete</span> Delete an order transaction
 
@@ -1252,6 +1512,10 @@ client.DeleteOrder();
 
 ```java
 client.deleteOrder();
+```
+
+```go
+client.DeleteOrder()
 ```
 
 ```shell
@@ -1317,6 +1581,29 @@ public class DeleteOrderExample {
         }
     }
 
+}
+```
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.DeleteOrder("123")
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Order)
+    }
 }
 ```
 
@@ -1402,6 +1689,32 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
 }>
 ```
 
+```go
+taxjar.DeleteOrderResponse{
+    Order: taxjar.Order{
+        TransactionID:          "123",
+        UserID:                 10649,
+        TransactionDate:        "",
+        TransactionReferenceID: "",
+        Provider:               "api",
+        FromCountry:            "",
+        FromZip:                "",
+        FromState:              "",
+        FromCity:               "",
+        FromStreet:             "",
+        ToCountry:              "",
+        ToZip:                  "",
+        ToState:                "",
+        ToCity:                 "",
+        ToStreet:               "",
+        Amount:                 0,
+        Shipping:               0,
+        SalesTax:               0,
+        LineItems: []taxjar.OrderLineItem{},
+    },
+}
+```
+
 Deletes an existing order transaction created through the API.
 
 #### Request
@@ -1453,6 +1766,10 @@ client.ListRefunds();
 
 ```java
 client.listRefunds();
+```
+
+```go
+client.ListRefunds()
 ```
 
 ```shell
@@ -1542,6 +1859,32 @@ public class ListRefundsExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.ListRefunds(taxjar.ListRefundsParams{
+        FromTransactionDate: "2015/05/01",
+        ToTransactionDate:   "2015/05/31",
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Refunds)
+    }
+}
+```
+
 ```shell
 $ curl -G https://api.taxjar.com/v2/transactions/refunds \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -1566,6 +1909,12 @@ $ curl -G https://api.taxjar.com/v2/transactions/refunds \
 
 ```python
 ['203', '204', '205']
+```
+
+```go
+taxjar.ListRefundsResponse{
+    Refunds: []string{"203", "204", "205"},
+}
 ```
 
 Lists existing refund transactions created through the API.
@@ -1617,6 +1966,10 @@ client.ShowRefund();
 
 ```java
 client.showRefund();
+```
+
+```go
+client.ShowRefund()
 ```
 
 ```shell
@@ -1682,6 +2035,29 @@ public class ShowRefundExample {
         }
     }
 
+}
+```
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.ShowRefund("321")
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Refund)
+    }
 }
 ```
 
@@ -1791,6 +2167,43 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 }>
 ```
 
+```go
+taxjar.ShowRefundResponse{
+    Refund: taxjar.Refund{
+        TransactionID:          "321",
+        UserID:                 11836,
+        TransactionDate:        "2015-06-14T00:00:00Z",
+        TransactionReferenceID: "123",
+        Provider:               "api",
+        FromCountry:            "US",
+        FromZip:                "93107",
+        FromState:              "CA",
+        FromCity:               "SANTA BARBARA",
+        FromStreet:             "1218 State St",
+        ToCountry:              "US",
+        ToZip:                  "90002",
+        ToState:                "CA",
+        ToCity:                 "LOS ANGELES",
+        ToStreet:               "123 Palm Grove Ln",
+        Amount:                 -17.0,
+        Shipping:               -2.0,
+        SalesTax:               -0.95,
+        LineItems: []taxjar.RefundLineItem{
+            {
+                ID:                "1",
+                Quantity:          1,
+                ProductIdentifier: "12-34243-0",
+                ProductTaxCode:    "",
+                Description:       "Heavy Widget",
+                UnitPrice:         -15,
+                Discount:          0,
+                SalesTax:          -0.95,
+            },
+        },
+    },
+}
+```
+
 Shows an existing refund transaction created through the API.
 
 #### Request
@@ -1816,7 +2229,7 @@ transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`. A `null` value may be returned if the transaction does not have an exemption type.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or if `marketplace` is passed and a marketplace facilitator law does not apply in `to_state` as of the `transaction_date`." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -1827,17 +2240,17 @@ to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | Two-letter ISO state code where the order shipped to.
 to_city | string | City where the order shipped to.
 to_street | string | Street address where the order shipped to.
-amount | decimal | Total amount of the refunded order with shipping, **excluding sales tax**.
-shipping | decimal | Total amount of shipping for the refunded order.
-sales_tax | decimal | Total amount of sales tax collected for the refunded order.
+amount | float | Total amount of the refunded order with shipping, **excluding sales tax**.
+shipping | float | Total amount of shipping for the refunded order.
+sales_tax | float | Total amount of sales tax collected for the refunded order.
 line_items[][id] | string | Unique identifier of the given line item.
 line_items[][quantity] | integer | Quantity for the item.
 line_items[][product_identifier] | string | Product identifier for the item.
 line_items[][description] | string  | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | Product tax code for the item.
-line_items[][unit_price] | decimal | Unit price for the item in dollars.
-line_items[][discount] | decimal | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | decimal | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | Unit price for the item in dollars.
+line_items[][discount] | float | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--post">post</span> Create a refund transaction
 
@@ -1865,6 +2278,10 @@ client.CreateRefund();
 
 ```java
 client.createRefund();
+```
+
+```go
+client.CreateRefund()
 ```
 
 ```shell
@@ -2069,6 +2486,50 @@ public class CreateRefundExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.CreateRefund(taxjar.CreateRefundParams{
+        TransactionID:          "123",
+        TransactionDate:        "2015/05/14",
+        TransactionReferenceID: "123",
+        ToCountry:              "US",
+        ToZip:                  "90002",
+        ToState:                "CA",
+        ToCity:                 "Los Angeles",
+        ToStreet:               "123 Palm Grove Ln",
+        Amount:                 -16.5,
+        Shipping:               -1.5,
+        SalesTax:               -0.95,
+        LineItems: []taxjar.RefundLineItem{
+            {
+                Quantity:          1,
+                ProductIdentifier: "12-34243-9",
+                Description:       "Fuzzy Widget",
+                UnitPrice:         -15,
+                SalesTax:          -0.95,
+            },
+        },
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Refund)
+    }
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/transactions/refunds \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -2198,6 +2659,43 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
 }>
 ```
 
+```go
+taxjar.CreateRefundResponse{
+    Refund: taxjar.Refund{
+        TransactionID:          "321",
+        UserID:                 11836,
+        TransactionDate:        "2015-06-14T00:00:00Z",
+        TransactionReferenceID: "123",
+        Provider:               "api",
+        FromCountry:            "US",
+        FromZip:                "93107",
+        FromState:              "CA",
+        FromCity:               "SANTA BARBARA",
+        FromStreet:             "1218 State St",
+        ToCountry:              "US",
+        ToZip:                  "90002",
+        ToState:                "CA",
+        ToCity:                 "LOS ANGELES",
+        ToStreet:               "123 Palm Grove Ln",
+        Amount:                 -16.5,
+        Shipping:               -1.5,
+        SalesTax:               -0.95,
+        LineItems: []taxjar.RefundLineItem{
+            {
+                ID:                "1",
+                Quantity:          1,
+                ProductIdentifier: "12-34243-0",
+                ProductTaxCode:    "",
+                Description:       "Heavy Widget",
+                UnitPrice:         -15,
+                Discount:          0,
+                SalesTax:          -0.95,
+            },
+        },
+    },
+}
+```
+
 Creates a new refund transaction.
 
 #### Request
@@ -2222,19 +2720,19 @@ to_zip | string | required | Postal code where the order shipped to (5-Digit ZIP
 to_state | string | required | Two-letter ISO state code where the order shipped to.
 to_city | string | optional | City where the order shipped to.
 to_street | string | optional | Street address where the order shipped to.
-amount | decimal | required | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
-shipping | decimal | required | Total amount of shipping for the refunded order in dollars.
-sales_tax | decimal | required | Total amount of sales tax collected for the refunded order in dollars.
+amount | float | required | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
+shipping | float | required | Total amount of shipping for the refunded order in dollars.
+sales_tax | float | required | Total amount of sales tax collected for the refunded order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
-exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
+exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, or `non_exempt`. <span class="usage-note" data-tooltip="If exemption_type is set to `wholesale`, `government`, or `other`, any order-level or line item `sales_tax` present in the refund must be zero." data-tooltip-position="top center">View Note</span>
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | decimal | optional | Unit price for the item in dollars.
-line_items[][discount] | decimal | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | decimal | <span class="conditional" data-tooltip="If providing `line_items`, `sales_tax` is required." data-tooltip-position="top center">conditional</span> | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | optional | Unit price for the item in dollars.
+line_items[][discount] | float | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | <span class="conditional" data-tooltip="If providing `line_items`, `sales_tax` is required." data-tooltip-position="top center">conditional</span> | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -2258,7 +2756,7 @@ transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`. A `null` value may be returned if the transaction does not have an exemption type.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or if `marketplace` is passed and a marketplace facilitator law does not apply in `to_state` as of the `transaction_date`." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -2269,17 +2767,17 @@ to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | Two-letter ISO state code where the order shipped to.
 to_city | string | City where the order shipped to.
 to_street | string | Street address where the order shipped to.
-amount | decimal | Total amount of the refunded order with shipping, **excluding sales tax**.
-shipping | decimal | Total amount of shipping for the refunded order.
-sales_tax | decimal | Total amount of sales tax collected for the refunded order.
+amount | float | Total amount of the refunded order with shipping, **excluding sales tax**.
+shipping | float | Total amount of shipping for the refunded order.
+sales_tax | float | Total amount of sales tax collected for the refunded order.
 line_items[][id] | string | Unique identifier of the given line item.
 line_items[][quantity] | integer | Quantity for the item.
 line_items[][product_identifier] | string | Product identifier for the item.
 line_items[][description] | string  | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | Product tax code for the item.
-line_items[][unit_price] | decimal | Unit price for the item in dollars.
-line_items[][discount] | decimal | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | decimal | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | Unit price for the item in dollars.
+line_items[][discount] | float | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--put">put</span> Update a refund transaction
 
@@ -2307,6 +2805,10 @@ client.UpdateRefund();
 
 ```java
 client.updateRefund();
+```
+
+```go
+client.UpdateRefund()
 ```
 
 ```shell
@@ -2465,6 +2967,43 @@ public class UpdateRefundExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.UpdateRefund(taxjar.UpdateRefundParams{
+        TransactionID: "321",
+        Amount:        -17,
+        Shipping:      -2,
+        SalesTax:      -0.95,
+        LineItems: []taxjar.RefundLineItem{
+            {
+                Quantity:          1,
+                ProductIdentifier: "12-34243-0",
+                Description:       "Heavy Widget",
+                UnitPrice:         -15,
+                SalesTax:          -0.95,
+            },
+        },
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Refund)
+    }
+}
+```
+
 ```shell
 $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -2588,6 +3127,43 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 }>
 ```
 
+```go
+taxjar.UpdateRefundResponse{
+    Refund: taxjar.Refund{
+        TransactionID:          "321",
+        UserID:                 11836,
+        TransactionDate:        "2015-06-14T00:00:00Z",
+        TransactionReferenceID: "123",
+        Provider:               "api",
+        FromCountry:            "US",
+        FromZip:                "93107",
+        FromState:              "CA",
+        FromCity:               "SANTA BARBARA",
+        FromStreet:             "1218 State St",
+        ToCountry:              "US",
+        ToZip:                  "90002",
+        ToState:                "CA",
+        ToCity:                 "LOS ANGELES",
+        ToStreet:               "123 Palm Grove Ln",
+        Amount:                 -17.0,
+        Shipping:               -2.0,
+        SalesTax:               -0.95,
+        LineItems: []taxjar.RefundLineItem{
+            {
+                ID:                "1",
+                Quantity:          1,
+                ProductIdentifier: "12-34243-9",
+                ProductTaxCode:    "",
+                Description:       "Heavy Widget",
+                UnitPrice:         -15,
+                Discount:          0,
+                SalesTax:          -0.95,
+            },
+        },
+    },
+}
+```
+
 Updates an existing refund transaction created through the API.
 
 #### Request
@@ -2611,19 +3187,19 @@ to_zip | string | optional | Postal code where the refunded order shipped to (5-
 to_state | string | optional | Two-letter ISO state code where the refunded order shipped to.
 to_city | string | optional | City where the refunded order shipped to.
 to_street | string | optional | Street address where the refunded order shipped to.
-amount | decimal | optional | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
-shipping | decimal | optional | Total amount of shipping for the refunded order in dollars.
-sales_tax | decimal | optional | Total amount of sales tax collected for the refunded order in dollars.
+amount | float | optional | Total amount of the refunded order with shipping, **excluding sales tax** in dollars.
+shipping | float | optional | Total amount of shipping for the refunded order in dollars.
+sales_tax | float | optional | Total amount of sales tax collected for the refunded order in dollars.
 customer_id | string | optional | Unique identifier of the given customer for exemptions.
-exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`.
+exemption_type | string | optional | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, or `non_exempt`. <span class="usage-note" data-tooltip="If exemption_type is set to `wholesale`, `government`, or `other`, any order-level or line item `sales_tax` present in the refund must be zero." data-tooltip-position="top center">View Note</span>
 line_items[][id] | string | optional | Unique identifier of the given line item.
 line_items[][quantity] | integer | optional | Quantity for the item.
 line_items[][product_identifier] | string | optional | Product identifier for the item.
 line_items[][description] | string | optional | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | optional | Product tax code for the item. If omitted, the item will remain fully taxable.
-line_items[][unit_price] | decimal | optional | Unit price for the item in dollars.
-line_items[][discount] | decimal | optional | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | decimal | optional | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | optional | Unit price for the item in dollars.
+line_items[][discount] | float | optional | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | optional | Total sales tax collected (non-unit) for the item in dollars.
 
 #### Notes
 
@@ -2643,7 +3219,7 @@ transaction_id | string | Unique identifier of the given refund transaction.
 user_id | integer | Unique identifier of the user who created the refund transaction.
 transaction_date | datetime | The date/time the transaction was originally recorded.
 provider | string | Source of where the transaction was originally recorded.
-exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `other`, or `non_exempt`. A `null` value may be returned if the transaction does not have an exemption type.
+exemption_type | string | Type of exemption for the order: `wholesale`, `government`, `marketplace`, `other`, `non_exempt`, or `null`. <span class="usage-note" data-tooltip="A `null` value may be returned if the transaction does not have an exemption type or if `marketplace` is passed and a marketplace facilitator law does not apply in `to_state` as of the `transaction_date`." data-tooltip-position="top center">View Note</span>
 from_country | string | Two-letter ISO country code of the country where the order shipped from.
 from_zip | string | Postal code where the order shipped from (5-Digit ZIP or ZIP+4).
 from_state | string | Two-letter ISO state code where the order shipped from.
@@ -2654,17 +3230,17 @@ to_zip | string | Postal code where the order shipped to (5-Digit ZIP or ZIP+4).
 to_state | string | Two-letter ISO state code where the order shipped to.
 to_city | string | City where the order shipped to.
 to_street | string | Street address where the order shipped to.
-amount | decimal | Total amount of the refunded order with shipping, **excluding sales tax**.
-shipping | decimal | Total amount of shipping for the refunded order.
-sales_tax | decimal | Total amount of sales tax collected for the refunded order.
+amount | float | Total amount of the refunded order with shipping, **excluding sales tax**.
+shipping | float | Total amount of shipping for the refunded order.
+sales_tax | float | Total amount of sales tax collected for the refunded order.
 line_items[][id] | string | Unique identifier of the given line item.
 line_items[][quantity] | integer | Quantity for the item.
 line_items[][product_identifier] | string | Product identifier for the item.
 line_items[][description] | string  | Description of the line item (up to 255 characters).
 line_items[][product_tax_code] | string | Product tax code for the item.
-line_items[][unit_price] | decimal | Unit price for the item in dollars.
-line_items[][discount] | decimal | Total discount (non-unit) for the item in dollars.
-line_items[][sales_tax] | decimal | Total sales tax collected (non-unit) for the item in dollars.
+line_items[][unit_price] | float | Unit price for the item in dollars.
+line_items[][discount] | float | Total discount (non-unit) for the item in dollars.
+line_items[][sales_tax] | float | Total sales tax collected (non-unit) for the item in dollars.
 
 ### <span class="badge badge--delete">delete</span> Delete a refund transaction
 
@@ -2692,6 +3268,10 @@ client.DeleteRefund();
 
 ```java
 client.deleteRefund();
+```
+
+```go
+client.DeleteRefund()
 ```
 
 ```shell
@@ -2757,6 +3337,29 @@ public class DeleteOrderExample {
         }
     }
 
+}
+```
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.DeleteRefund("321")
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Refund)
+    }
 }
 ```
 
@@ -2840,6 +3443,32 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
   'to_state': None,
   'provider': 'api'
 }>
+```
+
+```go
+taxjar.DeleteRefundResponse{
+    Refund: taxjar.Refund{
+        TransactionID:          "321",
+        UserID:                 11836,
+        TransactionDate:        "",
+        TransactionReferenceID: "",
+        Provider:               "api",
+        FromCountry:            "",
+        FromZip:                "",
+        FromState:              "",
+        FromCity:               "",
+        FromStreet:             "",
+        ToCountry:              "",
+        ToZip:                  "",
+        ToState:                "",
+        ToCity:                 "",
+        ToStreet:               "",
+        Amount:                 0,
+        Shipping:               0,
+        SalesTax:               0,
+        LineItems: []taxjar.RefundLineItem{},
+    },
+}
 ```
 
 Deletes an existing refund transaction created through the API.

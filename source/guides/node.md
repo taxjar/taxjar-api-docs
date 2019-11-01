@@ -52,7 +52,7 @@ We recommend using a `.env` file with a package such as [dotenv](https://github.
 
 **Warning:** Never expose your API token in client-side JavaScript. This is insecure and could put your TaxJar account at risk.
 
-# Sales Tax Calculations
+## Sales Tax Calculations
 
 ```javascript
 const Taxjar = require('taxjar');
@@ -112,7 +112,7 @@ After calling `taxForOrder`, you'll get a response back. Check it out with `node
 
 If you just need the rate for a given location, use the [/v2/rates](/api/reference/?node#get-show-tax-rates-for-a-location) endpoint. You can also take advantage of our [summarized rates endpoint](/api/reference/?node#get-summarize-tax-rates-for-all-regions) as a backup to store in your database.
 
-# Sales Tax Reporting
+## Sales Tax Reporting
 
 ```javascript
 const Taxjar = require('taxjar');
@@ -190,7 +190,7 @@ To get the full TaxJar experience you'll also want to set up sales tax reporting
 
 A successful response will return back the imported order transaction. Nifty!
 
-# Error Handling
+## Error Handling
 
 ```javascript
 const Taxjar = require('taxjar');
@@ -231,7 +231,7 @@ Error Code | Meaning
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarily offline for maintenance. Try again later.
 
-# Resources & Help
+## Resources & Help
 
 If you have any questions about using our sales tax API for Node, please [contact us](https://www.taxjar.com/contact/) or tweet [@TaxJarDev](https://twitter.com/TaxJarDev). We'll help you out as soon as we can!
 

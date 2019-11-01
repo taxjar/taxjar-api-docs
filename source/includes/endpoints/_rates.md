@@ -28,6 +28,10 @@ client.RatesForLocation();
 client.ratesForLocation();
 ```
 
+```go
+client.RatesForLocation()
+```
+
 ```shell
 GET https://api.taxjar.com/v2/rates/:zip
 ```
@@ -193,6 +197,45 @@ public class RatesExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    // United States (ZIP+4)
+    res, err := client.RatesForLocation("90404-3370")
+
+    // United States (ZIP w/ Optional Params)
+    res, err := client.RatesForLocation("90404", taxjar.RatesForLocationParams{
+        City:    "Santa Monica",
+        State:   "CA",
+        Country: "US",
+    })
+
+    // United States (ZIP+4 w/ Street Address for Rooftop Accuracy)
+    res, err := client.RatesForLocation("05495-2086", taxjar.RatesForLocationParams{
+        Street:  "312 Hurricane Lane",
+        City:    "Williston",
+        State:   "VT",
+        Country: "US",
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Rate)
+    }
+}
+```
+
 ```shell
 # United States (ZIP+4)
 $ curl https://api.taxjar.com/v2/rates/90404-3370 \
@@ -302,6 +345,33 @@ public class CanadaRatesExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.RatesForLocation("V5K0A1", taxjar.RatesForLocationParams{
+        City:    "Vancouver",
+        State:   "BC",
+        Country: "CA",
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Rate)
+    }
+}
+```
+
 ```shell
 $ curl -G https://api.taxjar.com/v2/rates/V5K0A1 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -392,6 +462,32 @@ public class AustraliaRatesExample {
 }
 ```
 
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.RatesForLocation("2060", taxjar.RatesForLocationParams{
+        City:    "Sydney",
+        Country: "AU",
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Rate)
+    }
+}
+```
+
 ```shell
 $ curl -G https://api.taxjar.com/v2/rates/2060 \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
@@ -478,6 +574,32 @@ public class EuropeanUnionRatesExample {
         }
     }
 
+}
+```
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.RatesForLocation("00150", taxjar.RatesForLocationParams{
+        City:    "Helsinki",
+        Country: "FI",
+    })
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Rate)
+    }
 }
 ```
 
@@ -585,6 +707,40 @@ $ curl -G https://api.taxjar.com/v2/rates/00150 \
 }>
 ```
 
+```go
+taxjar.RatesForLocationResponse{
+    Rate: taxjar.Rate{
+        Zip:                  "90404",
+        State:                "CA",
+        StateRate:            0.065,
+        County:               "LOS ANGELES",
+        CountyRate:           0.01,
+        City:                 "SANTA MONICA",
+        CityRate:             0.005,
+        CombinedDistrictRate: 0.015,
+        CombinedRate:         0.095,
+        FreightTaxable:       false,
+    },
+}
+
+taxjar.RatesForLocationResponse{
+    Rate: taxjar.Rate{
+        Zip:                  "05495-2086",
+        Country:              "US",
+        CountryRate:          0,
+        State:                "VT",
+        StateRate:            0.06,
+        County:               "CHITTENDEN",
+        CountyRate:           0,
+        City:                 "WILLISTON",
+        CityRate:             0,
+        CombinedDistrictRate: 0.01,
+        CombinedRate:         0.07,
+        FreightTaxable:       true,
+    },
+}
+```
+
 > Response Scenario: Canada
 
 ```json
@@ -622,6 +778,19 @@ $ curl -G https://api.taxjar.com/v2/rates/00150 \
 }>
 ```
 
+```go
+taxjar.RatesForLocationResponse{
+    taxjar.Rate{
+        Zip:            "V5K0A1",
+        City:           "Vancouver",
+        State:          "BC",
+        Country:        "CA",
+        CombinedRate:   0.12,
+        FreightTaxable: true,
+    },
+}
+```
+
 > Response Scenario: Australia
 
 ```json
@@ -654,6 +823,18 @@ $ curl -G https://api.taxjar.com/v2/rates/00150 \
   'combined_rate': 0.1,
   'freight_taxable': True
 }>
+```
+
+```go
+taxjar.RatesForLocationResponse{
+    Rate: taxjar.Rate{
+        Zip:            "2060",
+        Country:        "AU",
+        CountryRate:    0.1,
+        CombinedRate:   0.1,
+        FreightTaxable: true,
+    },
+}
 ```
 
 > Response Scenario: European Union
@@ -699,6 +880,21 @@ $ curl -G https://api.taxjar.com/v2/rates/00150 \
 }>
 ```
 
+```go
+taxjar.RatesForLocationResponse{
+    Rate: taxjar.Rate{
+        Country:               "FI",
+        Name:                  "Finland",
+        StandardRate:          0.24,
+        ReducedRate:           "",
+        SuperReducedRate:      "",
+        ParkingRate:           "",
+        DistanceSaleThreshold: "",
+        FreightTaxable:        true,
+    },
+}
+```
+
 Shows the sales tax rates for a given location.
 
 **Please note this endpoint only returns the full combined rate for a given location.** It does not support nexus determination, sourcing based on a ship from and ship to address, shipping taxability, product exemptions, customer exemptions, or sales tax holidays. We recommend using our [taxes endpoint](#post-calculate-sales-tax-for-an-order) to accurately calculate sales tax for an order.
@@ -727,15 +923,15 @@ Parameter | Type | Description
 --------- | ------- | -----------
 zip | string | Postal code for given location.
 country | string | Country for given location if SST state. <span class="usage-note" data-tooltip="Streamlined sales tax project member states include: AR, GA, IN, IA, KS, KY, MI, MN, NE, NV, NJ, NC, ND, OK, RI, SD, UT, VT, WA, WV, WI, WY" data-tooltip-position="top center">View Note</span>
-country_rate | decimal | Country sales tax rate for given location if SST state. <span class="usage-note" data-tooltip="Streamlined sales tax project member states include: AR, GA, IN, IA, KS, KY, MI, MN, NE, NV, NJ, NC, ND, OK, RI, SD, UT, VT, WA, WV, WI, WY" data-tooltip-position="top center">View Note</span>
+country_rate | float | Country sales tax rate for given location if SST state. <span class="usage-note" data-tooltip="Streamlined sales tax project member states include: AR, GA, IN, IA, KS, KY, MI, MN, NE, NV, NJ, NC, ND, OK, RI, SD, UT, VT, WA, WV, WI, WY" data-tooltip-position="top center">View Note</span>
 state | string | Postal abbreviated state name for given location.
-state_rate | decimal | State sales tax rate for given location.
+state_rate | float | State sales tax rate for given location.
 county | string | County name for given location.
-county_rate | decimal | County sales tax rate for given location.
+county_rate | float | County sales tax rate for given location.
 city | string | City name for given location.
-city_rate | decimal | City sales tax rate for given location.
-combined_district_rate | decimal | Aggregate rate for all city and county sales tax districts effective at the location.
-combined_rate | decimal | Overall sales tax rate which includes state, county, city and district tax. This rate should be used to determine how much sales tax to collect for an order.
+city_rate | float | City sales tax rate for given location.
+combined_district_rate | float | Aggregate rate for all city and county sales tax districts effective at the location.
+combined_rate | float | Overall sales tax rate which includes state, county, city and district tax. This rate should be used to determine how much sales tax to collect for an order.
 freight_taxable | bool | Freight taxability for given location.
 
 <h4 id="ca-rate-attributes"><span class="flag-icon flag-icon-ca"></span>&nbsp; Canada Attributes</h4>
@@ -746,7 +942,7 @@ zip | string | Postal code for given location.
 city | string | City name for given location.
 state | string | Postal abbreviated state name for given location.
 country | string | Two-letter ISO country code for given location.
-combined_rate | decimal | Overall sales tax rate. This rate should be used to determine how much sales tax to collect for an order.
+combined_rate | float | Overall sales tax rate. This rate should be used to determine how much sales tax to collect for an order.
 freight_taxable | bool | Freight taxability for given location.
 
 <h4 id="au-rate-attributes"><span class="flag-icon flag-icon-au"></span>&nbsp; Australia Attributes</h4>
@@ -755,8 +951,8 @@ Parameter | Type | Description
 --------- | ------- | -----------
 zip | string | Postal code for given location.
 country | string | Two-letter ISO country code for given location.
-country_rate | decimal | Country sales tax rate for given location.
-combined_rate | decimal | Overall sales tax rate. This rate should be used to determine how much sales tax to collect for an order.
+country_rate | float | Country sales tax rate for given location.
+combined_rate | float | Overall sales tax rate. This rate should be used to determine how much sales tax to collect for an order.
 freight_taxable | bool | Freight taxability for given location.
 
 <h4 id="eu-rate-attributes"><span class="flag-icon flag-icon-eu"></span>&nbsp; European Union Attributes</h4>
@@ -765,9 +961,9 @@ Parameter | Type | Description
 --------- | ------- | -----------
 country | string | Two-letter ISO country code for given location.
 name | string | Country name for given location.
-standard_rate | decimal | [Standard rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
-reduced_rate | decimal | [Reduced rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
-super_reduced_rate | decimal | Super reduced rate for given location.
-parking_rate | decimal | Parking rate for given location.
-distance_sale_threshold | decimal | [Distance selling threshold](https://en.wikipedia.org/wiki/European_Union_value_added_tax#Distance_sales) for given location.
+standard_rate | float | [Standard rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
+reduced_rate | float | [Reduced rate](https://en.wikipedia.org/wiki/European_Union_value_added_tax#VAT_rates) for given location.
+super_reduced_rate | float | Super reduced rate for given location.
+parking_rate | float | Parking rate for given location.
+distance_sale_threshold | float | [Distance selling threshold](https://en.wikipedia.org/wiki/European_Union_value_added_tax#Distance_sales) for given location.
 freight_taxable | bool | Freight taxability for given location.

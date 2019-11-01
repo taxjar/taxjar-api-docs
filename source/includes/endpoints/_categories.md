@@ -32,6 +32,10 @@ client.Categories();
 client.categories();
 ```
 
+```go
+client.Categories()
+```
+
 ```shell
 GET https://api.taxjar.com/v2/categories
 ```
@@ -95,6 +99,29 @@ public class CategoryExample {
         }
     }
 
+}
+```
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/taxjar/taxjar-go"
+)
+
+func main() {
+    client := taxjar.NewClient(taxjar.Config{
+        APIKey: "9e0cd62a22f451701f29c3bde214",
+    })
+
+    res, err := client.Categories()
+    if err != nil {
+        fmt.Println(err)
+    } else {
+        fmt.Println(res.Categories)
+    }
 }
 ```
 
@@ -292,6 +319,28 @@ $ curl https://api.taxjar.com/v2/categories \
 ]
 ```
 
+```go
+taxjar.CategoriesResponse{
+    Categories: []taxjar.Category{
+        {
+            Name:           "Digital Goods",
+            ProductTaxCode: "31000",
+            Description:    "Digital products transferred electronically, meaning obtained by the purchaser by means other than tangible storage media.",
+        },
+        {
+            Name:           "Clothing",
+            ProductTaxCode: "20010",
+            Description:    "All human wearing apparel suitable for general use",
+        },
+        {
+            Name:           "Non-Prescription",
+            ProductTaxCode: "51010",
+            Description:    "Drugs for human use without a prescription",
+        },
+    },
+}
+```
+
 Lists all tax categories.
 
 #### Request
@@ -301,6 +350,8 @@ GET https://api.taxjar.com/v2/categories
 #### Response
 
 Returns a `categories` JSON object with an array of product categories and corresponding tax codes. The following categories are currently supported:
+
+<div class="datatable"></div>
 
 | Category | Code | Countries | Description |
 |---------------------------|-------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------------------------------------------------------------------------|
@@ -328,10 +379,26 @@ Returns a `categories` JSON object with an array of product categories and corre
 | Non-Prescription | 51010 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> | Drugs for human use without a prescription. |
 | Prescription | 51020 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-au" data-tooltip="Australia" data-tooltip-position="top center"></span> | Drugs for human use with a prescription. |
 | Books | 81100 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> | Books, printed. |
-| Textbooks | 81110 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Textbooks, printed. |
+| Textbook | 81110 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Textbooks, printed. |
 | Religious Books | 81120 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | Religious books and manuals, printed. |
 | Magazines & Subscriptions | 81300 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> | Periodicals, printed, sold by subscription. |
 | Magazine | 81310 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> <span class="flag-icon flag-icon-eu" data-tooltip="European Union" data-tooltip-position="top center"></span> | Periodicals, printed, sold individually. |
+| Software - Prewritten, electronic delivery | 43230000A1200 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Software - Prewritten & delivered electronically |
+| Software - Prewritten, load and leave delivery | 43230000A1300 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Software - Prewritten & delivered by load and leave |
+| Software - Prewritten, delivered by digital keycode printed on tangible media | 43230000A1400 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Software - Prewritten & delivered by digital keycode printed on tangible media |
+| Software - Custom, tangible media | 43230000A2100 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Software - Custom & delivered on tangible media |
+| Software - Custom, electronic delivery | 43230000A2200 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Software - Custom & delivered electronically |
+| Software - Custom, load and leave delivery | 43230000A2300 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Software - Custom & delivered by load & leave |
+| Electronic publications and music - Delivered electronically with permanent rights of usage | 55111500A1210 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Electronic publications and music - Delivered electronically with permanent rights of usage |
+| Electronic publications and music - Delivered electronically with less than permanent rights of usage | 55111500A1220 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Electronic publications and music - Delivered electronically with less than permanent rights of usage |
+| Electronic publications and music - Streamed | 55111500A1500 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Electronic publications and music - Streamed |
+| Electronic software documentation or user manuals - Prewritten, electronic delivery | 55111601A1200 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Electronic software documentation or user manuals - For prewritten software & delivered electronically |
+| Electronic software documentation or user manuals - Prewritten, load and leave delivery | 55111601A1300 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Electronic software documentation or user manuals - For prewritten software & delivered by load and leave |
+| Electronic software documentation or user manuals - Custom, tangible media | 55111601A2100 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Electronic software documentation or user manuals - For custom software & delivered on tangible media |
+| Electronic software documentation or user manuals - Custom, electronic delivery | 55111601A2200 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Electronic software documentation or user manuals - For custom software & delivered electronically |
+| Electronic software documentation or user manuals - Custom, load and leave delivery | 55111601A2300 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Electronic software documentation or user manuals - For custom software & delivered by load and leave |
+| Proprietary or licensed systems maintenance or support | 81111805A0000 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Proprietary or licensed systems maintenance or support |
+| Cloud-based software as a service (SaaS) | 81162000A0000 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Cloud-based software as a service (SaaS) |
 
 #### Attributes
 
