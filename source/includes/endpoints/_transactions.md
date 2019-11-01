@@ -2738,11 +2738,11 @@ line_items[][sales_tax] | float | <span class="conditional" data-tooltip="If pro
 
 - *Either an address on file or `from_` parameters are required to create refund transactions.*
 
+- *The `transaction_id` should only include alphanumeric characters, underscores, and dashes.*
+
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
 - _We recommend passing **negative** values for monetary amounts when creating or updating refund transactions. Values will be signed automatically regardless of what you send in._
-
-- *The `transaction_id` should only include alphanumeric characters, underscores, and dashes.*
 
 #### Response
 
