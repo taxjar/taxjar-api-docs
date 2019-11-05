@@ -631,7 +631,7 @@ Parameter | Type | Description
 --------- | ------- | -----------
 country | string | Two-letter ISO country code of the customer's address.
 state | string | Two-letter ISO state code of the customer's address.
-zip | string | Postal code of the customer's address (ZIP+4).
+zip | string | Postal code of the customer's address (ZIP+4). <span class="usage-note" data-tooltip="If an invalid zip code is entered, we will attempt to fix it so that more accurate data is being processed. For example, `501` (less than 5-digit zip code) will be corrected to `00501-0002`, depending on the specific address." data-tooltip-position="top center">View Note</span>
 city | string | City of the customer's address.
 street | string | Street address of the customer's address.
 
@@ -641,7 +641,7 @@ Parameter | Type | Description
 --------- | ------- | -----------
 country | string | Two-letter ISO country code of the customer's address.
 state | string | Two-letter ISO state code of the customer's address.
-zip | string | Postal code of the customer's address.
+zip | string | Postal code of the customer's address. <span class="usage-note" data-tooltip="If an invalid zip code is entered, we will attempt to fix it so that more accurate data is being processed. For example, `501` (less than 5-digit zip code) will be corrected to `00501`." data-tooltip-position="top center">View Note</span>
 city | string | City of the customer's address.
 
 ### <span class="badge badge--get">get</span> Validate a VAT number
