@@ -58,6 +58,10 @@ a {
   transition: all 120ms ease-out;
 }
 
+summary {
+  outline: none;
+}
+
 .logo {
   float: left;
   padding: 16px 20px;
