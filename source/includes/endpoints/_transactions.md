@@ -673,6 +673,7 @@ var order = client.CreateOrder(new {
   transaction_id = "123",
   transaction_date = "2015/05/04",
   to_country = "US",
+  to_state = "CA",
   to_zip = "90002",
   to_city = "Los Angeles",
   to_street = "123 Palm Grove Ln",
