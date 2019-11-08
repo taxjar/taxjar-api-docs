@@ -2,6 +2,25 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### November 2019
+
+#### 2019-11-06
+
+* <span class="badge badge--get">Accuracy</span> 8 tax categories for digital goods and software now available.
+<details><summary>Click to see new tax categories</summary>
+  <table>
+    <th>Code</th><th>Category</th>
+    <tr><td>81162100A0000</td><td>Cloud-based platform as a service (PaaS)</td></tr>
+    <tr><td>81162200A0000</td><td>Cloud-based infrastructure as a service (IaaS)</td></tr>
+    <tr><td>81161900A0000</td><td>Hardware as a service (HaaS)</td></tr>
+    <tr><td>81162300A0000</td><td>Cloud-based business process as a service</td></tr>
+    <tr><td>81162100A9000</td><td>Cloud-based platform as a service (PaaS) - Business Use</td></tr>
+    <tr><td>81162200A9000</td><td>Cloud-based infrastructure as a service (IaaS) - Business Use</td></tr>
+    <tr><td>81162300A9000</td><td>Cloud-based business process as a service - Business Use</td></tr>
+    <tr><td>81162000A9000</td><td>Cloud-based software as a service (SaaS) - Business Use</td></tr>
+  </table>
+</details>
+
 ### October 2019
 
 #### 2019-10-30
