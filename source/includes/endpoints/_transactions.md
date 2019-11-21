@@ -673,6 +673,7 @@ var order = client.CreateOrder(new {
   transaction_id = "123",
   transaction_date = "2015/05/04",
   to_country = "US",
+  to_state = "CA",
   to_zip = "90002",
   to_city = "Los Angeles",
   to_street = "123 Palm Grove Ln",
@@ -953,7 +954,7 @@ POST https://api.taxjar.com/v2/transactions/orders
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_id | string | required | Unique identifier of the given order transaction.
+transaction_id | string | required | Unique identifier of the given order transaction. <span class="usage-note" data-tooltip="The 'transaction_id' should only include alphanumeric characters, underscores, and dashes." data-tooltip-position="top center">View Note</span>
 transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
 provider | string | optional | Source of where the transaction was originally recorded. Defaults to "api". <span class="usage-note" data-tooltip="Use this parameter to exempt marketplace transactions or identify transactions across multiple channels. TaxJar currently supports marketplace exemptions for 'amazon', 'ebay', 'etsy', and 'walmart' transactions." data-tooltip-position="top center">View Note</span>
 from_country | string | optional | Two-letter ISO country code of the country where the order shipped from. <span class="usage-note" data-tooltip="Either an address on file or `from_` parameters are required to create order transactions." data-tooltip-position="top center">View Note</span>
@@ -983,6 +984,8 @@ line_items[][sales_tax] | float | <span class="conditional" data-tooltip="If pro
 #### Notes
 
 - *Either an address on file or `from_` parameters are required to create order transactions.*
+
+- *The `transaction_id` should only include alphanumeric characters, underscores, and dashes.*
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 
@@ -2704,7 +2707,7 @@ POST https://api.taxjar.com/v2/transactions/refunds
 
 Parameter | Type | Required | Description
 --------- | ------- | ------- | -----------
-transaction_id | string | required | Unique identifier of the given refund transaction.
+transaction_id | string | required | Unique identifier of the given refund transaction. <span class="usage-note" data-tooltip="The 'transaction_id' should only include alphanumeric characters, underscores, and dashes." data-tooltip-position="top center">View Note</span>
 transaction_reference_id | string | required | Unique identifier of the corresponding order transaction for the refund.
 transaction_date | datetime | required | The date/time the transaction was originally recorded. <span class="usage-note" data-tooltip="The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'." data-tooltip-position="top center">View Note</span>
 provider | string | optional | Source of where the transaction was originally recorded. Defaults to "api". <span class="usage-note" data-tooltip="Use this parameter to exempt marketplace transactions or identify transactions across multiple channels. TaxJar currently supports marketplace exemptions for 'amazon', 'ebay', 'etsy', and 'walmart' transactions." data-tooltip-position="top center">View Note</span>
@@ -2735,6 +2738,8 @@ line_items[][sales_tax] | float | <span class="conditional" data-tooltip="If pro
 #### Notes
 
 - *Either an address on file or `from_` parameters are required to create refund transactions.*
+
+- *The `transaction_id` should only include alphanumeric characters, underscores, and dashes.*
 
 - *The `transaction_date` may be a date '2015-05-25', an ISO UTC date/time '2015-05-25T13:05:45', or an ISO date/time with zone offset '2015-05-25T13:05:45-05:00'.*
 

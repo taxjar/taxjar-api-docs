@@ -2,6 +2,102 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### November 2019
+
+#### 2019-11-06
+
+* <span class="badge badge--get">Accuracy</span> 8 tax categories for digital goods and software now available.
+<details><summary>Click to see new tax categories</summary>
+  <table>
+    <th>Code</th><th>Category</th>
+    <tr><td>81162100A0000</td><td>Cloud-based platform as a service (PaaS)</td></tr>
+    <tr><td>81162200A0000</td><td>Cloud-based infrastructure as a service (IaaS)</td></tr>
+    <tr><td>81161900A0000</td><td>Hardware as a service (HaaS)</td></tr>
+    <tr><td>81162300A0000</td><td>Cloud-based business process as a service</td></tr>
+    <tr><td>81162100A9000</td><td>Cloud-based platform as a service (PaaS) - Business Use</td></tr>
+    <tr><td>81162200A9000</td><td>Cloud-based infrastructure as a service (IaaS) - Business Use</td></tr>
+    <tr><td>81162300A9000</td><td>Cloud-based business process as a service - Business Use</td></tr>
+    <tr><td>81162000A9000</td><td>Cloud-based software as a service (SaaS) - Business Use</td></tr>
+  </table>
+</details>
+
+### October 2019
+
+#### 2019-10-30
+
+* <span class="badge badge--get">Accuracy</span> 66 tax categories for digital goods and software now available.
+<details><summary>Click to see the new tax categories</summary>
+  <table>
+    <th>Code</th><th>Category</th>
+    <tr><td>43230000A1100</td><td>Software - Prewritten & delivered on tangible media</td></tr>
+    <tr><td>55111601A1100</td><td>Electronic software documentation or user manuals - For prewritten software & delivered on tangible media</td></tr>
+    <tr><td>81111814A0000</td><td>Co location service</td></tr>
+    <tr><td>81112003A0000</td><td>Data center services</td></tr>
+    <tr><td>81112004A0000</td><td>Disaster recovery services</td></tr>
+    <tr><td>81111501A0000</td><td>Mainframe software applications design</td></tr>
+    <tr><td>81111502A0000</td><td>Personal computer PC application design</td></tr>
+    <tr><td>81111503A0000</td><td>Systems integration design</td></tr>
+    <tr><td>81111504A0000</td><td>Application programming services</td></tr>
+    <tr><td>81111505A0000</td><td>Operating system programming services</td></tr>
+    <tr><td>81111506A0000</td><td>Client or server programming services</td></tr>
+    <tr><td>81111507A0000</td><td>ERP or database applications programming services</td></tr>
+    <tr><td>81111508A0000</td><td>Application implementation services</td></tr>
+    <tr><td>81111509A0000</td><td>Internet or intranet client application development services</td></tr>
+    <tr><td>81111510A0000</td><td>Internet or intranet server application development services</td></tr>
+    <tr><td>81111511A0000</td><td>System or application programming management service</td></tr>
+    <tr><td>81111512A0000</td><td>Computer graphics service</td></tr>
+    <tr><td>81111513A0000</td><td>Internet cloud storage service</td></tr>
+    <tr><td>81111600A0000</td><td>Computer programmers</td></tr>
+    <tr><td>81111701A0000</td><td>Wide area network communications design</td></tr>
+    <tr><td>81111702A0000</td><td>Local area network communications design</td></tr>
+    <tr><td>81111703A0000</td><td>Electronic data interchange EDI design</td></tr>
+    <tr><td>81111704A0000</td><td>Database design</td></tr>
+    <tr><td>81111705A0000</td><td>Systems architecture</td></tr>
+    <tr><td>81111706A0000</td><td>Network planning services</td></tr>
+    <tr><td>81111707A0000</td><td>Systems planning services</td></tr>
+    <tr><td>81111709A0000</td><td>Demining geographical or geospatial information system GIS</td></tr>
+    <tr><td>81111710A0000</td><td>Information management system for mine action IMSMA</td></tr>
+    <tr><td>81111801A0000</td><td>Computer or network or internet security</td></tr>
+    <tr><td>81111802A0000</td><td>Mainframe administration services</td></tr>
+    <tr><td>81111803A0000</td><td>Local area network LAN maintenance or support</td></tr>
+    <tr><td>81111804A0000</td><td>Wide area network WAN maintenance or support</td></tr>
+    <tr><td>81111806A0000</td><td>Database analysis service</td></tr>
+    <tr><td>81111808A0000</td><td>System analysis service</td></tr>
+    <tr><td>81111809A0000</td><td>System installation service</td></tr>
+    <tr><td>81111810A0000</td><td>Software coding service</td></tr>
+    <tr><td>81111811A0000</td><td>Technical support or help desk services</td></tr>
+    <tr><td>81111819A0000</td><td>Quality assurance services</td></tr>
+    <tr><td>81111820A0000</td><td>System usability services</td></tr>
+    <tr><td>81111901A0000</td><td>Database information retrieval</td></tr>
+    <tr><td>81111902A0000</td><td>Online database information retrieval service</td></tr>
+    <tr><td>81112001A0000</td><td>Online data processing service</td></tr>
+    <tr><td>81112002A0000</td><td>Data processing or preparation services</td></tr>
+    <tr><td>81112005A0000</td><td>Document scanning service</td></tr>
+    <tr><td>81112006A0000</td><td>Data storage service</td></tr>
+    <tr><td>81112007A0000</td><td>Content or data standardization services</td></tr>
+    <tr><td>81112009A0000</td><td>Content or data classification services</td></tr>
+    <tr><td>81112010A0000</td><td>Data conversion service</td></tr>
+    <tr><td>81112200A1110</td><td>Software maintenance and support - Mandatory maintenance and support charges for prewritten software including items delivered on tangible media</td></tr>
+    <tr><td>81112200A1121</td><td>Software maintenance and support - Optional maintenance and support charges for prewritten software including items delivered on tangible media (includes software updates/upgrades)</td></tr>
+    <tr><td>81112200A1122</td><td>Software maintenance and support - Optional maintenance and support charges for prewritten software including items delivered on tangible media (includes support services only - no updates/upgrades)</td></tr>
+    <tr><td>81112200A1210</td><td>Software maintenance and support - Mandatory maintenance and support charges for prewritten software including items delivered electronically</td></tr>
+    <tr><td>81112200A1221</td><td>Software maintenance and support - Optional maintenance and support charges for prewritten software including items delivered electronically (includes software updates/upgrades)</td></tr>
+    <tr><td>81112200A1222</td><td>Software maintenance and support - Optional maintenance and support charges for prewritten software including items delivered electronically (includes support services only - no updates/upgrades)</td></tr>
+    <tr><td>81112200A1310</td><td>Software maintenance and support - Mandatory maintenance and support charges for prewritten software including items delivered by load and leave</td></tr>
+    <tr><td>81112200A1321</td><td>Software maintenance and support - Optional maintenance and support charges for prewritten software including items delivered by load and leave (includes software updates/upgrades)</td></tr>
+    <tr><td>81112200A1322</td><td>Software maintenance and support - Optional maintenance and support charges for prewritten software including items delivered by load and leave (includes support services only - no updates/upgrades)</td></tr>
+    <tr><td>81112200A2110</td><td>Software maintenance and support - Mandatory maintenance and support charges for custom software including items delivered on tangible media</td></tr>
+    <tr><td>81112200A2121</td><td>Software maintenance and support - Optional maintenance and support charges for custom software including items delivered on tangible media (includes software updates/upgrades)</td></tr>
+    <tr><td>81112200A2122</td><td>Software maintenance and support - Optional maintenance and support charges for custom software including items delivered on tangible media (includes support services only - no updates/upgrades)</td></tr>
+    <tr><td>81112200A2210</td><td>Software maintenance and support - Mandatory maintenance and support charges for custom software including items delivered electronically</td></tr>
+    <tr><td>81112200A2221</td><td>Software maintenance and support - Optional maintenance and support charges for custom software including items delivered electronically (includes software updates/upgrades)</td></tr>
+    <tr><td>81112200A2222</td><td>Software maintenance and support - Optional maintenance and support charges for custom software including items delivered electronically (includes support services only - no updates/upgrades)</td></tr>
+    <tr><td>81112200A2310</td><td>Software maintenance and support - Mandatory maintenance and support charges for custom software including items delivered by load and leave</td></tr>
+    <tr><td>81112200A2321</td><td>Software maintenance and support - Optional maintenance and support charges for custom software including items delivered by load and leave (includes software updates/upgrades)</td></tr>
+    <tr><td>81112200A2322</td><td>Software maintenance and support - Optional maintenance and support charges for custom software including items delivered by load and leave (includes support services only - no updates/upgrades)</td></tr>
+  </table>
+</details>
+
 ### September 2019
 
 #### 2019-09-20

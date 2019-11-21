@@ -60,8 +60,9 @@ var tax = client.TaxForOrder(new {
     new {
       quantity = 1,
       unit_price = 15,
-      product_tax_code: "31000"
+      product_tax_code = "31000"
     }
+  }
 });
 
 tax.AmountToCollect
