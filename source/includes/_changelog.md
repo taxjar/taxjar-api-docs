@@ -2,6 +2,16 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### January 2020
+
+#### 2020-01-10
+
+* <span class="badge badge--get">Accuracy</span> Gift Cards tax category now available.
+<table>
+  <th>Code</th><th>Category</th>
+  <tr><td>14111803A0001</td><td>Gift Cards</td></tr>
+</table>
+
 ### November 2019
 
 #### 2019-11-06

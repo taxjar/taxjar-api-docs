@@ -473,6 +473,7 @@ Returns a `categories` JSON object with an array of product categories and corre
 | Cloud-based infrastructure as a service (IaaS) - Business Use | 81162200A9000 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Cloud-based infrastructure as a service (IaaS) - Business Use |
 | Cloud-based business process as a service - Business Use | 81162300A9000 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Cloud-based business process as a service - Business Use |
 | Cloud-based software as a service (SaaS) - Business Use | 81162000A9000 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Cloud-based software as a service (SaaS) - Business Use |
+| Gift Cards | 14111803A0001 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Gift Cards |
 
 #### Attributes
 
