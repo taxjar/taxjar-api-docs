@@ -4,6 +4,28 @@ Stay on top of new developer-facing features, accuracy improvements, and bug fix
 
 ### January 2020
 
+#### 2020-01-23
+
+* <span class="badge badge--get">Accuracy</span> 12 more tax categories for clothing now available.
+<details><summary>Click to see new tax categories</summary>
+  <table>
+    <th>Code</th><th>Category</th>
+    <tr><td>53101800A0001</td><td>Clothing - Fur Coat or Jacket</td></tr>
+    <tr><td>53102502A0001</td><td>Clothing - Fur Ear muffs or scarves</td></tr>
+    <tr><td>53102503A0001</td><td>Clothing - Fur Gloves</td></tr>
+    <tr><td>53102504A0001</td><td>Clothing - Fur Hat</td></tr>
+    <tr><td>53103100A0001</td><td>Clothing - Fur Vest</td></tr>
+    <tr><td>53101806A0001</td><td>Clothing - Fur Poncho or Cape</td></tr>
+    <tr><td>53101800A0002</td><td>Clothing - Synthetic Fur Coat or Jacket</td></tr>
+    <tr><td>53102502A0002</td><td>Clothing - Synthetic Fur Ear muffs or scarves</td></tr>
+    <tr><td>53102503A0002</td><td>Clothing - Synthetic Fur Gloves</td></tr>
+    <tr><td>53102504A0002</td><td>Clothing - Synthetic Fur Hat</td></tr>
+    <tr><td>53103100A0002</td><td>Clothing - Synthetic Fur Vest</td></tr>
+    <tr><td>53101806A0002</td><td>Clothing - Synthetic Fur Poncho or Cape</td></tr>
+  </table>
+</details>
+
+
 #### 2020-01-10
 
 * <span class="badge badge--get">Accuracy</span> Gift Cards tax category now available.

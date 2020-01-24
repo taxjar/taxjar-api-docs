@@ -653,6 +653,19 @@ Returns a `categories` JSON object with an array of product categories and corre
 | Clothing - Sequins for use in clothing | 60123900A0000 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Sequins for use in clothing |
 | Clothing - Belt Buckle | 53102501A0001 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Belt Buckle |
 | Clothing - Shoulder boards or epaulettes | 53102520A0000 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Shoulder boards or epaulettes |
+| Clothing - Fur Coat or Jacket | 53101800A0001 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Fur Coat or Jacket |
+| Clothing - Fur Ear muffs or scarves | 53102502A0001 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Fur Ear muffs or scarves |
+| Clothing - Fur Gloves | 53102503A0001 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Fur Gloves |
+| Clothing - Fur Hat | 53102504A0001 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Fur Hat |
+| Clothing - Fur Vest | 53103100A0001 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Fur Vest |
+| Clothing - Fur Poncho or Cape | 53101806A0001 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Fur Poncho or Cape |
+| Clothing - Synthetic Fur Coat or Jacket | 53101800A0002 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Synthetic Fur Coat or Jacket |
+| Clothing - Synthetic Fur Ear muffs or scarves | 53102502A0002 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Synthetic Fur Ear muffs or scarves |
+| Clothing - Synthetic Fur Gloves | 53102503A0002 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Synthetic Fur Gloves |
+| Clothing - Synthetic Fur Hat | 53102504A0002 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Synthetic Fur Hat |
+| Clothing - Synthetic Fur Vest | 53103100A0002 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Synthetic Fur Vest |
+| Clothing - Synthetic Fur Poncho or Cape | 53101806A0002 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Synthetic Fur Poncho or Cape |
+
 
 #### Attributes
 
