@@ -137,6 +137,7 @@ under the License.
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 
     <% if current_page.data.search %>
       <%= javascript_include_tag  "all" %>
@@ -163,22 +164,6 @@ under the License.
 
       ga('create', 'UA-32676850-1', 'auto');
       ga('send', 'pageview');
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-    <script>
-      docsearch({
-        appId: '7ZBSP80X0K',
-        apiKey: '2a9d77b7d7b611725a62fd9ffb522880',
-        indexName: 'developers.taxjar.com',
-        inputSelector: '#docsearch'
-      });
-      docsearch({
-        appId: '7ZBSP80X0K',
-        apiKey: '2a9d77b7d7b611725a62fd9ffb522880',
-        indexName: 'developers.taxjar.com',
-        inputSelector: '#docsearch-mobile'
-      });
     </script>
   </body>
 </html>
