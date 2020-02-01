@@ -909,8 +909,7 @@ customer = client.update_customer({
 import taxjar
 client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 
-customer = client.update_customer({
-  'customer_id': '123',
+customer = client.update_customer('123', {
   'exemption_type': 'wholesale',
   'name': 'Sterling Cooper',
   'exempt_regions': [
