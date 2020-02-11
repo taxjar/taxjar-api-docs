@@ -3,6 +3,19 @@ title: Sales Tax API Guides
 description: "Tips and tricks on how to use SmartCalcs, TaxJar's sales tax API."
 preferred_url: https://developers.taxjar.com/api/guides/
 toc_header: "API Guides"
+
+language_tabs:
+  - shell: cURL
+  - ruby: Ruby
+  - python: Python
+  - php: PHP
+  - javascript: Node
+  - csharp: .NET
+  - java: Java
+  - go: Go
+
+includes:
+  - security
 ---
 
 # Quickstart Guides
