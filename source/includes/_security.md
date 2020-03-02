@@ -3,11 +3,82 @@
 > TLS 1.2 Test Snippet
 
 ```ruby
-asdf
+require 'taxjar'
+client = Taxjar::Client.new(api_key: '[YOUR TAXJAR TOKEN]')
+
+begin
+  client.categories
+  puts 'TLS 1.2 supported, no upgrade required'
+rescue OpenSSL::SSL::SSLError
+  puts 'TLS 1.2 is not supported, you will need to upgrade'
+end
 ```
 
 ```python
-asdf
+import taxjar
+client = taxjar.Client(api_key='[YOUR TAXJAR TOKEN]')
+
+try:
+  client.categories()
+  print 'TLS 1.2 supported, no upgrade required'
+except requests.exceptions.SSLError:
+  print 'TLS 1.2 is not supported, you will need to upgrade'
+```
+
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+$client = TaxJar\Client::withApiKey('[YOUR TAXJAR TOKEN]');
+
+try {
+  $client->categories();
+  echo 'TLS 1.2 supported, no upgrade required'
+}
+catch (GuzzleHttp\Exception\RequestException $e) {
+  echo 'TLS 1.2 not supported, you will need to upgrade'
+}
+catch (Exception $e) {
+  echo 'Unknown error from TaxJar, please try again'
+}
+?>
+```
+
+```javascript
+const Taxjar = require('taxjar');
+
+const client = new Taxjar({
+  apiKey: '[YOUR TAXJAR TOKEN]'
+});
+
+client.categories().then(() => {
+  console.log('TLS 1.2 supported, no upgrade required');
+}).catch(e => {
+  if (e.error && e.error.code === 'ECONNRESET') {
+    console.log('TLS 1.2 not supported, you will need to upgrade');
+  } else {
+    console.log('Unknown error from TaxJar, please try again');
+  }
+});
+```
+
+```csharp
+// If you are using the TaxJar NuGet package and you have
+// version T.B.D or lower installed, you will need to update
+// the package. You can do this by running `Update-Package TaxJar`
+// in the Package Manager Console.
+```
+
+```java
+// Check your Java version with `java -version`.
+// If your version of Java is v1.8 or above, no change is needed.
+// If your version of Java is v1.7, ensure you have vT.B.D
+// of taxjar-java installed to enable TLS 1.2 support.
+```
+
+```go
+// All versions of Go already support TLS 1.2 by default,
+// so you will not need to make any changes.
 ```
 
 In order to secure customer data, TLS 1.2 is required for all requests to TaxJar. The TLS protocol is used to encrypt your servers’ communications with TaxJar, so it’s important that you use the latest version. (TLS 1.2 is much more secure than previous versions.)
