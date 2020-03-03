@@ -253,6 +253,8 @@ summary {
 
 .tocify-wrapper {
   @include transition(left ease-in-out 0.3s);
+  overflow-y: auto;
+  overflow-x: hidden;
   position: fixed;
   z-index: 30;
   top: 69px;

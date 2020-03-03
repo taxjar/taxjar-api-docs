@@ -2822,7 +2822,7 @@ PUT https://api.taxjar.com/v2/transactions/refunds/:transaction_id
 require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
-order = client.update_refund({
+refund = client.update_refund({
   :transaction_id => '321',
   :amount => -17,
   :shipping => -2,
@@ -2844,7 +2844,6 @@ import taxjar
 client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 
 refund = client.update_refund('321', {
-  'transaction_id': '321',
   'amount': -17,
   'shipping': -2,
   'sales_tax': -0.95,
