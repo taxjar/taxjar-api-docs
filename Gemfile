@@ -9,4 +9,4 @@ gem 'redcarpet', '~> 3.2.2'
 
 gem 's3_website'
 
-gem 'rake', '~> 10.4.2'
+gem 'rake', '~> 12.3.3'
