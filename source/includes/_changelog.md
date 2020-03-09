@@ -2,6 +2,17 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### March 2020
+
+#### 2020-03-09
+
+* <span class="badge badge--get">Accuracy</span> 2 more tax categories for digital goods and software now available.
+<table>
+  <th>Code</th><th>Category</th>
+  <tr><td>55111500A9210</td><td>Electronic content bundle - Delivered electronically with permanent rights of usage and streamed</td></tr>
+  <tr><td>55111500A9220</td><td>Electronic content bundle - Delivered electronically with less than permanent rights of usage and streamed</td></tr>
+</table>
+
 ### January 2020
 
 #### 2020-01-23

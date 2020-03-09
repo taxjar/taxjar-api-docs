@@ -665,7 +665,8 @@ Returns a `categories` JSON object with an array of product categories and corre
 | Clothing - Synthetic Fur Hat | 53102504A0002 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Synthetic Fur Hat |
 | Clothing - Synthetic Fur Vest | 53103100A0002 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Synthetic Fur Vest |
 | Clothing - Synthetic Fur Poncho or Cape | 53101806A0002 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Clothing - Synthetic Fur Poncho or Cape |
-
+| Electronic content bundle - Delivered electronically with permanent rights of usage and streamed | 55111500A9210 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Electronic content bundle - Delivered electronically with permanent rights of usage and streamed |
+| Electronic content bundle - Delivered electronically with less than permanent rights of usage and streamed | 55111500A9220 | <span class="flag-icon flag-icon-us" data-tooltip="United States" data-tooltip-position="top center"></span> | \*(PLUS ONLY)\* Electronic content bundle - Delivered electronically with less than permanent rights of usage and streamed |
 
 #### Attributes
 
