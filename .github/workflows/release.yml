@@ -1,0 +1,29 @@
+name: release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby 2.7.x
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.3.3'
+    - name: Build static website with Middleman and deploy to S3
+      env:
+        S3_ID: ${{ secrets.S3_ID }}
+        S3_SECRET: ${{ secrets.S3_SECRET }}
+        S3_BUCKET: ${{ secrets.S3_BUCKET }}
+        CF_DISTRIBUTION_ID: ${{ secrets.CF_DISTRIBUTION_ID }}
+      run: |
+        gem install bundler -v '~> 1.1'
+        bundle install
+        middleman build
+        s3_website push
