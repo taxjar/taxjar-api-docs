@@ -23,7 +23,7 @@ jobs:
         S3_BUCKET: ${{ secrets.S3_BUCKET }}
         CF_DISTRIBUTION_ID: ${{ secrets.CF_DISTRIBUTION_ID }}
       run: |
-        gem install bundler
+        gem install bundler -v '~> 1.1'
         bundle install
         middleman build
         s3_website push
