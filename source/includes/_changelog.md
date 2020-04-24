@@ -2,6 +2,86 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### April 2020
+
+#### 2020-04-22
+
+* <span class="badge badge--get">Accuracy</span> 69 tax categories for food & beverages now available.
+<details><summary>Click to see new tax categories</summary>
+  <table>
+    <th>Code</th><th>Category</th>
+    <tr><td>50000000A0000</td><td>Food and Beverage - Food and Food Ingredients for Home Consumption</td></tr>
+    <tr><td>50181700A0000</td><td>Food and Beverage - Cooking Ingredients</td></tr>
+    <tr><td>50171500A0000</td><td>Food and Beverage - Cooking spices</td></tr>
+    <tr><td>90100000A0001</td><td>Food and Beverage - Foods for Immediate Consumption</td></tr>
+    <tr><td>50110000A0000</td><td>Food and Beverage - Meat and meat products</td></tr>
+    <tr><td>50112000A0000</td><td>Food and Beverage - Meat Sticks, Meat Jerky</td></tr>
+    <tr><td>50121500A0000</td><td>Food and Beverage - Fish and seafood</td></tr>
+    <tr><td>50400000A0000</td><td>Food and Beverage - Vegetables</td></tr>
+    <tr><td>50300000A0000</td><td>Food and Beverage - Fruit</td></tr>
+    <tr><td>50320000A0000</td><td>Food and Beverage - Dried fruit, unsweetened</td></tr>
+    <tr><td>50101716A0000</td><td>Food and Beverage - Nuts and seeds</td></tr>
+    <tr><td>50101716A0001</td><td>Food and Beverage - Processed Nuts and Seeds</td></tr>
+    <tr><td>50180000A0000</td><td>Food and Beverage - Bread and Flour Products</td></tr>
+    <tr><td>50192401A0000</td><td>Food and Beverage - Jams and Jellies</td></tr>
+    <tr><td>50221200A0000</td><td>Food and Beverage - Grains, Rice, Cereal</td></tr>
+    <tr><td>50131600A0000</td><td>Food and Beverage - Eggs and egg products</td></tr>
+    <tr><td>50480000A9000</td><td>Food and Beverage - Nut Butters</td></tr>
+    <tr><td>50151500A0000</td><td>Food and Beverage - Butter, Margarine, Shortening and Cooking Oils</td></tr>
+    <tr><td>50161509A0000</td><td>Food and Beverage - Honey, Maple Syrup</td></tr>
+    <tr><td>50131800A0000</td><td>Food and Beverage - Cheese</td></tr>
+    <tr><td>50131800A0001</td><td>Food and Beverage - Yogurt</td></tr>
+    <tr><td>50192303A0000</td><td>Food and Beverage - Ice Cream, packaged</td></tr>
+    <tr><td>50192304A0000</td><td>Food and Beverage - Ice Cream, sold in container less than one pint</td></tr>
+    <tr><td>50161511A0000</td><td>Food and Beverage - Cocoa and Cocoa products</td></tr>
+    <tr><td>50161800A0000</td><td>Food and Beverage - Candy</td></tr>
+    <tr><td>50161800A0001</td><td>Food and Beverage - Candy containing flour as an ingredient</td></tr>
+    <tr><td>50161900A0000</td><td>Food and Beverage - Sugar and Sugar Substitutes</td></tr>
+    <tr><td>50192100A0000</td><td>Food and Beverage - Snack Foods</td></tr>
+    <tr><td>50192404A0000</td><td>Food and Beverage - Jello and pudding mixes</td></tr>
+    <tr><td>42231800A0000</td><td>Food and Beverage - Baby foods and formulas</td></tr>
+    <tr><td>50501500A0000</td><td>Food and Beverage - Vitamins and Supplements</td></tr>
+    <tr><td>50501500A0001</td><td>Food and Beverage - Vitamins and Supplements - labeled with nutritional facts</td></tr>
+    <tr><td>50202302A0000</td><td>Food and Beverage - Ice cubes</td></tr>
+    <tr><td>50202301A0000</td><td>Bottled Water</td></tr>
+    <tr><td>50202301A0001</td><td>Bottled Water - Flavored</td></tr>
+    <tr><td>50202301A0004</td><td>Bottled Water - Carbonated - Flavored</td></tr>
+    <tr><td>50202301A0003</td><td>Bottled Water - Carbonated Naturally</td></tr>
+    <tr><td>50202301A0002</td><td>Bottled Water - Carbonated Artificially</td></tr>
+    <tr><td>50202306A0000</td><td>Soft Drinks - Carbonated - No fruit or vegetable juice</td></tr>
+    <tr><td>50202306A0001</td><td>Soft Drinks - Carbonated - 1-9% fruit juice</td></tr>
+    <tr><td>50202306A0002</td><td>Soft Drinks - Carbonated - 1 -9% vegetable juice</td></tr>
+    <tr><td>50202306A0003</td><td>Soft Drinks - Carbonated - 10-24% fruit juice</td></tr>
+    <tr><td>50202306A0004</td><td>Soft Drinks - Carbonated - 10-24% vegetable juice</td></tr>
+    <tr><td>50202306A0005</td><td>Soft Drinks - Carbonated - 25-50% fruit juice</td></tr>
+    <tr><td>50202306A0006</td><td>Soft Drinks - Carbonated - 25-50% vegetable juice</td></tr>
+    <tr><td>50202306A0007</td><td>Soft Drinks - Carbonated - 51-69% fruit juice</td></tr>
+    <tr><td>50202306A0008</td><td>Soft Drinks - Carbonated - 51-69% vegetable juice</td></tr>
+    <tr><td>50202306A0009</td><td>Soft Drinks - Carbonated - 70-99% fruit juice</td></tr>
+    <tr><td>50202306A0010</td><td>Soft Drinks - Carbonated - 70-99% vegetable juice</td></tr>
+    <tr><td>50202306A0011</td><td>Soft Drinks - Carbonated - 100% fruit or vegetable juice</td></tr>
+    <tr><td>50202304A0001</td><td>Soft Drinks - Non-Carbonated - No fruit or vegetable juice</td></tr>
+    <tr><td>50202304A0002</td><td>Soft Drinks - Non-Carbonated - 1-9% fruit juice</td></tr>
+    <tr><td>50202304A0003</td><td>Soft Drinks - Non-Carbonated - 1 -9% vegetable juice</td></tr>
+    <tr><td>50202304A0004</td><td>Soft Drinks - Non-Carbonated - 10-24% fruit juice</td></tr>
+    <tr><td>50202304A0005</td><td>Soft Drinks - Non-Carbonated - 10-24% vegetable juice</td></tr>
+    <tr><td>50202304A0006</td><td>Soft Drinks - Non-Carbonated - 25-50% fruit juice</td></tr>
+    <tr><td>50202304A0007</td><td>Soft Drinks - Non-Carbonated - 25-50% vegetable juice</td></tr>
+    <tr><td>50202304A0008</td><td>Soft Drinks - Non-Carbonated - 51-69% fruit juice</td></tr>
+    <tr><td>50202304A0009</td><td>Soft Drinks - Non-Carbonated - 51-69% vegetable juice</td></tr>
+    <tr><td>50202304A0010</td><td>Soft Drinks - Non-Carbonated - 70-99% fruit juice</td></tr>
+    <tr><td>50202304A0011</td><td>Soft Drinks - Non-Carbonated - 70-99% vegetable juice</td></tr>
+    <tr><td>50202304A0000</td><td>Soft Drinks - Non-Carbonated - 100% fruit or vegetable juice</td></tr>
+    <tr><td>50131700A0000</td><td>Food and Beverage - Milk and milk products</td></tr>
+    <tr><td>50151515A9000</td><td>Food and Beverage - Milk Substitutes</td></tr>
+    <tr><td>50201700A0000</td><td>Food and Beverage - Coffee, coffee substitutes and tea</td></tr>
+    <tr><td>50202201A0000</td><td>Food and Beverage - Alcoholic beverages - Beer/Malt Beverages</td></tr>
+    <tr><td>50202203A0000</td><td>Food and Beverage - Wine</td></tr>
+    <tr><td>50202206A0000</td><td>Food and Beverage - Alcoholic beverages - Spirits</td></tr>
+    <tr><td>50202300A0001</td><td>Food and Beverage - Non-Alcoholic Beer, Wine</td></tr>
+  </table>
+</details>
+
 ### March 2020
 
 #### 2020-03-09
