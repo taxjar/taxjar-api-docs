@@ -13,9 +13,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby 2.7.x
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '2.7'
+        ruby-version: '2.3.3'
     - name: Build static website with Middleman and deploy to S3
       env:
         S3_ID: ${{ secrets.S3_ID }}
