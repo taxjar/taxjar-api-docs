@@ -63,10 +63,15 @@ client.categories().then(() => {
 ```
 
 ```csharp
-// If you are using the TaxJar NuGet package and you have
-// version T.B.D or lower installed, you will need to update
-// the package. You can do this by running `Update-Package TaxJar`
-// in the Package Manager Console.
+// If you are using the TaxJar NuGet package and you are targeting
+// .NET Framework 4.5, you will need to include the following
+// snippet within your application to enable TLS 1.2:
+
+#if NET45
+    ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol | SecurityProtocolType.Tls12;
+#endif
+
+// For more information on enabling TLS 1.2 support see: https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls
 ```
 
 ```java
