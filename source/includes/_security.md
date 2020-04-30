@@ -77,7 +77,7 @@ client.categories().then(() => {
 ```java
 // Check your Java version with `java -version`.
 // If your version of Java is v1.8 or above, no change is needed.
-// If your version of Java is v1.7, ensure you have vT.B.D
+// If your version of Java is v1.7, ensure you have v4.0.0
 // of taxjar-java installed to enable TLS 1.2 support.
 ```
 
