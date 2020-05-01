@@ -19,7 +19,7 @@
           target: $(this).find('> span').get(0),
           classes: 'drop-theme-taxjar-popovers',
           content: 'When passing monetary values to our API, we will convert them to high-precision decimals. ' +
-                   'SmartCalcs performs arbitrary-precision decimal arithmetic for accurately calculating sales tax.',
+                   'The TaxJar API performs arbitrary-precision decimal arithmetic for accurately calculating sales tax.',
           position: 'top center',
           openOn: 'hover'
         });

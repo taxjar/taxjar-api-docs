@@ -1,6 +1,6 @@
 ---
 title: Sales Tax API Guide for Node
-description: "How to use SmartCalcs with our official Node client."
+description: "How to use the TaxJar API with our official Node client."
 preferred_url: https://developers.taxjar.com/api/guides/node/
 ---
 
@@ -46,7 +46,7 @@ const client = new Taxjar({
 });
 ```
 
-In order to make requests to our [sales tax API](https://www.taxjar.com/smartcalcs/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
+In order to make requests to our [sales tax API](https://www.taxjar.com/api/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
 
 We recommend using a `.env` file with a package such as [dotenv](https://github.com/motdotla/dotenv) to keep sensitive credentials like API tokens outside of your code.
 
@@ -236,6 +236,6 @@ Error Code | Meaning
 If you have any questions about using our sales tax API for Node, please [contact us](https://www.taxjar.com/contact/) or tweet [@TaxJarDev](https://twitter.com/TaxJarDev). We'll help you out as soon as we can!
 
 - [Node Sales Tax API Reference](/api/reference/?node)
-- [General SmartCalcs FAQs](https://support.taxjar.com/knowledge_base/categories/smartcalcs)
+- [General TaxJar API FAQs](https://support.taxjar.com/category/233-taxjar-api)
 - [taxjar-node on GitHub](https://github.com/taxjar/taxjar-node)
 - [taxjar-node on NPM](https://npmjs.org/package/taxjar)

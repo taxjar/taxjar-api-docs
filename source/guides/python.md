@@ -1,6 +1,6 @@
 ---
 title: Sales Tax API Guide for Python
-description: "How to use SmartCalcs with our official Python client."
+description: "How to use the TaxJar API with our official Python client."
 preferred_url: https://developers.taxjar.com/api/guides/python/
 ---
 
@@ -24,7 +24,7 @@ client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214') # Useful for quic
 client = taxjar.Client(api_key=os.environ.get('TAXJAR_API_KEY')) # Recommended
 ```
 
-In order to make requests to our [sales tax API](https://www.taxjar.com/smartcalcs/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
+In order to make requests to our [sales tax API](https://www.taxjar.com/api/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
 
 We recommend using a `.env` file with a package such as [python-dotenv](https://github.com/theskumar/python-dotenv) to keep sensitive credentials like API tokens outside of your code.
 
@@ -191,6 +191,6 @@ Error Code | Meaning
 If you have any questions about using our sales tax API for Python, please [contact us](https://www.taxjar.com/contact/) or tweet [@TaxJarDev](https://twitter.com/TaxJarDev). We'll help you out as soon as we can!
 
 - [Python Sales Tax API Reference](/api/reference/?python)
-- [General SmartCalcs FAQs](https://support.taxjar.com/knowledge_base/categories/smartcalcs)
+- [General TaxJar API FAQs](https://support.taxjar.com/category/233-taxjar-api)
 - [taxjar-python on GitHub](https://github.com/taxjar/taxjar-python)
 - [taxjar-python on PyPI](https://pypi.python.org/pypi/taxjar)
