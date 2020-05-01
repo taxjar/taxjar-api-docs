@@ -1,6 +1,6 @@
 # Rate Limiting
 
-We limit API requests to 20,000 per minute for [TaxJar Professional](https://www.taxjar.com/request-demo/) plans. Our [TaxJar Premium](https://www.taxjar.com/request-demo/) plans include an increased limit of 100,000 per minute.
+We limit API requests to 10,000 per minute for [TaxJar Professional](https://www.taxjar.com/request-demo/) plans. Our [TaxJar Premium](https://www.taxjar.com/request-demo/) plans include an increased limit of 25,000 per minute.
 
 If you're exceeding this rate and encountering 429 errors, review the following:
 
