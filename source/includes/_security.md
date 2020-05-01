@@ -86,7 +86,7 @@ client.categories().then(() => {
 // so you will not need to make any changes.
 ```
 
-In order to secure customer data, TLS 1.2 is required for all requests to TaxJar. The TLS protocol is used to encrypt your servers’ communications with TaxJar, so it’s important that you use the latest version. (TLS 1.2 is much more secure than previous versions.)
+In order to secure customer data, TLS 1.2 is required for all requests to TaxJar as of July 1, 2020. The TLS protocol is used to encrypt your servers’ communications with TaxJar, so it’s important that you use the latest version. (TLS 1.2 is much more secure than previous versions.)
 
 To test if your server is using TLS 1.2, run the code snippet for the language of your choice:
 
