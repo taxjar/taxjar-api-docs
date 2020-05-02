@@ -1,6 +1,6 @@
 ---
 title: Sales Tax API Guide for C# / .NET
-description: "How to use SmartCalcs with our official C# / .NET client."
+description: "How to use the TaxJar API with our official C# / .NET client."
 preferred_url: https://developers.taxjar.com/api/guides/csharp/
 ---
 
@@ -35,7 +35,7 @@ var client = new TaxjarApi();
 var client = new TaxjarApi("[Your TaxJar API Key]");
 ```
 
-In order to make requests to our [sales tax API](https://www.taxjar.com/smartcalcs/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
+In order to make requests to our [sales tax API](https://www.taxjar.com/api/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
 
 We recommend placing the TaxJar API token inside your project's Web.config or App.config file to keep sensitive credentials outside of your code.
 
@@ -225,6 +225,6 @@ Error Code | Meaning
 If you have any questions about using our sales tax API for C# / .NET, please [contact us](https://www.taxjar.com/contact/) or tweet [@TaxJarDev](https://twitter.com/TaxJarDev). We'll help you out as soon as we can!
 
 - [C# / .NET Sales Tax API Reference](/api/reference/?csharp)
-- [General SmartCalcs FAQs](https://support.taxjar.com/knowledge_base/categories/smartcalcs)
+- [General TaxJar API FAQs](https://support.taxjar.com/category/233-taxjar-api)
 - [taxjar.net on GitHub](https://github.com/taxjar/taxjar.net)
 - [taxjar.net on NuGet](https://www.nuget.org/packages/TaxJar/)

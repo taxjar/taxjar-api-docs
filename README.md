@@ -1,6 +1,6 @@
 # TaxJar API Docs
 
-SmartCalcs API documentation for TaxJar, powered by [Middleman](https://github.com/middleman/middleman).
+TaxJar API documentation, powered by [Middleman](https://github.com/middleman/middleman).
 
 ## Getting Started
 

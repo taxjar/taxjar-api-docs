@@ -1,6 +1,6 @@
 ---
 title: Sales Tax API Guide for Java
-description: "How to use SmartCalcs with our official Java client."
+description: "How to use the TaxJar API with our official Java client."
 preferred_url: https://developers.taxjar.com/api/guides/java/
 ---
 
@@ -45,7 +45,7 @@ public class AuthenticationExample {
 }
 ```
 
-In order to make requests to our [sales tax API](https://www.taxjar.com/smartcalcs/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
+In order to make requests to our [sales tax API](https://www.taxjar.com/api/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
 
 We recommend using an environment variable for the TaxJar API token to keep sensitive credentials outside of your code.
 
@@ -283,6 +283,6 @@ Error Code | Meaning
 If you have any questions about using our sales tax API for Java, please [contact us](https://www.taxjar.com/contact/) or tweet [@TaxJarDev](https://twitter.com/TaxJarDev). We'll help you out as soon as we can!
 
 - [Java Sales Tax API Reference](/api/reference/?java)
-- [General SmartCalcs FAQs](https://support.taxjar.com/knowledge_base/categories/smartcalcs)
+- [General TaxJar API FAQs](https://support.taxjar.com/category/233-taxjar-api)
 - [taxjar-java on GitHub](https://github.com/taxjar/taxjar-java)
 - [taxjar-java on The Central Repository](https://search.maven.org/#artifactdetails%7Ccom.taxjar%7Ctaxjar-java%7C1.0.0%7Cjar)

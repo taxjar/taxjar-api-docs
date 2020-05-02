@@ -1,6 +1,6 @@
 ---
 title: Sales Tax API Guide for PHP
-description: "How to use SmartCalcs with our official PHP client."
+description: "How to use the TaxJar API with our official PHP client."
 preferred_url: https://developers.taxjar.com/api/guides/php/
 ---
 
@@ -42,7 +42,7 @@ Using Composer's [autoloading](https://getcomposer.org/doc/01-basic-usage.md#aut
 
 ### Passing Your API Token
 
-In order to make requests to our [sales tax API](https://www.taxjar.com/smartcalcs/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
+In order to make requests to our [sales tax API](https://www.taxjar.com/api/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
 
 We recommend using a `.env` file with a library such as [PHP dotenv](https://github.com/vlucas/phpdotenv) to keep sensitive credentials like API tokens outside of your code.
 
@@ -227,6 +227,6 @@ Error Code | Meaning
 If you have any questions about using our sales tax API for PHP, please [contact us](https://www.taxjar.com/contact/) or tweet [@TaxJarDev](https://twitter.com/TaxJarDev). We'll help you out as soon as we can!
 
 - [PHP Sales Tax API Reference](/api/reference/?php)
-- [General SmartCalcs FAQs](https://support.taxjar.com/knowledge_base/categories/smartcalcs)
+- [General TaxJar API FAQs](https://support.taxjar.com/category/233-taxjar-api)
 - [taxjar/taxjar-php on GitHub](https://github.com/taxjar/taxjar-php)
 - [taxjar/taxjar-php on Packagist](https://packagist.org/packages/taxjar/taxjar-php)

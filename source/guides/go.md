@@ -1,6 +1,6 @@
 ---
 title: Sales Tax API Guide for Go
-description: "How to use SmartCalcs with our official Go client."
+description: "How to use the TaxJar API with our official Go client."
 preferred_url: https://developers.taxjar.com/api/guides/go/
 ---
 
@@ -37,7 +37,7 @@ func main() {
 }
 ```
 
-In order to make requests to our [sales tax API](https://www.taxjar.com/smartcalcs/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
+In order to make requests to our [sales tax API](https://www.taxjar.com/api/) and get data back, you'll need to pass your TaxJar API token. If you don't already have a TaxJar account, [sign up to get your token](https://app.taxjar.com/api_sign_up/).
 
 We recommend using an environment variable such as `TAXJAR_API_KEY` to keep sensitive credentials like API tokens outside of your code.
 
@@ -284,6 +284,6 @@ When invalid data is sent to TaxJar or we encounter an error, we'll return a [`T
 If you have any questions about using our sales tax API for Go, please [contact us](https://www.taxjar.com/contact/) or tweet [@TaxJarDev](https://twitter.com/TaxJarDev). We'll help you out as soon as we can!
 
 - [Go Sales Tax API Reference](/api/reference/?go)
-- [General SmartCalcs FAQs](https://support.taxjar.com/knowledge_base/categories/smartcalcs)
+- [General TaxJar API FAQs](https://support.taxjar.com/category/233-taxjar-api)
 - [taxjar-go on GitHub](https://github.com/taxjar/taxjar-go)
 - [taxjar-go on GoDoc](https://godoc.org/github.com/taxjar/taxjar-go)

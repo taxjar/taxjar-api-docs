@@ -508,7 +508,7 @@ Stay on top of new developer-facing features, accuracy improvements, and bug fix
 
 #### 2018-08-05
 
-* <span class="badge badge--put">Platform</span> Updated DNS records. SmartCalcs will now redirect traffic from HTTP to HTTPS via 301 redirect. Double slashes in URLs are no longer supported (e.g. "//v2/taxes").
+* <span class="badge badge--put">Platform</span> Updated DNS records. The TaxJar API will now redirect traffic from HTTP to HTTPS via 301 redirect. Double slashes in URLs are no longer supported (e.g. "//v2/taxes").
 
 #### 2018-08-02
 
