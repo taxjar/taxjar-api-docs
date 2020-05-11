@@ -59,7 +59,11 @@ module.exports = (async () => {
       name: name.trim(),
       product_tax_code: product_tax_code.trim(),
       description: description.replace('*(PLUS ONLY)*', '').trim(),
-    })).sort(byName);
+    })).concat([
+      {name: 'Band-aids purchased while skydiving', product_tax_code: 'abc123def456z', description: 'Band-aids purchased while skydiving - must fall from at least 18,000 feet'},
+      {name: 'Other random thing 2', product_tax_code: 'abc123def4562', description: 'Other random thing 2'},
+      {name: 'Other random thing 3', product_tax_code: 'abc123def4562', description: 'Other random thing 3'}, {name: 'Other random thing 4', product_tax_code: 'abc123def4562', description: 'Other random thing 4'}, {name: 'Other random thing 5', product_tax_code: 'abc123def4562', description: 'Other random thing 5'}, {name: 'Other random thing 6', product_tax_code: 'abc123def4562', description: 'Other random thing 6'},
+    ]).sort(byName);
 
   /**
    * The product tax categories included in `apiCats`, but not included in `docCats`
