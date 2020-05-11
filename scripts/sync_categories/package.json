@@ -1,0 +1,36 @@
+{
+  "name": "sync_categories",
+  "version": "1.0.0",
+  "description": "Synchronizes product tax codes between the TaxJar API and the TaxJar API Reference",
+  "main": "index.js",
+  "author": "Scott Rudiger <scott.rudiger@taxjar.com>",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taxjar/taxjar-api-docs.git",
+    "directory": "scripts/sync_categories"
+  },
+  "eslintConfig": {
+    "extends": "@scottrudiger",
+    "rules": {
+      "camelcase": "off",
+      "no-console": "off"
+    }
+  },
+  "dependencies": {
+    "boxen": "^4.2.0",
+    "chalk": "^4.0.0",
+    "cheerio": "^1.0.0-rc.3",
+    "diff": "^4.0.2",
+    "fs-extra": "^9.0.0",
+    "lodash.chunk": "^4.2.0",
+    "lodash.differenceby": "^4.8.0",
+    "node-fetch": "^2.6.0",
+    "taxjar": "^3.2.0"
+  },
+  "devDependencies": {
+    "@scottrudiger/eslint-config": "^0.8.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.2"
+  }
+}

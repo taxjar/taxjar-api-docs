@@ -18,6 +18,9 @@ tmp
 build/
 .cache
 
+# JavaScript-related
+node_modules
+
 # YARD artifacts
 .yardoc
 _yardoc

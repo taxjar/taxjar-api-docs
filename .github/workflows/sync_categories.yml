@@ -1,0 +1,49 @@
+name: sync_categories
+
+on:
+  schedule:
+    - cron: '0 23 * * *' # 11 PM UTC, 3 or 4 PM Pacific (depending on daylight savings)
+
+jobs:
+  diff:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - name: Install dependencies
+        run:  cd scripts/sync_categories && npm ci
+      - name: Sync categories on developers.taxjar.com/api/reference with categories from api.taxjar.com/v2/categories
+        env:
+          TAXJAR_API_TOKEN: ${{ secrets.TAXJAR_API_TOKEN }}
+          FORCE_COLOR: 3
+          TZ: America/Los_Angeles
+        run: |
+          node scripts/sync_categories/index.js 2> /dev/null
+          CATS_DIFF=$(FORCE_COLOR=0 node scripts/sync_categories)
+          CATS_DIFF="${CATS_DIFF//$'\n'/'%0A'}"
+          echo ::set-env name=CATS_DIFF::$CATS_DIFF
+          echo ::set-env name=PR_DATE::$(date +"%b %e, %Y")
+      - name: Open automated PR for product tax code updates
+        uses: peter-evans/create-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Synchronize Product Tax Codes
+          title: Sync Product Tax Codes as of ${{ env.PR_DATE }}
+          body: |
+            <h3><strong>Context</strong></h3>
+
+            This is an automated PR opened to synchronize the product tax codes listed on [developers.taxjar.com/api/reference](https://developers.taxjar.com/api/reference/#get-list-tax-categories) with the product tax codes returned from the TaxJar API via api.taxjar.com/v2/categories.
+
+            <h3><strong>What changed?</strong></h3>
+
+            ```diff
+            ${{ env.CATS_DIFF }}
+            ```
+          labels: categories
+          reviewers: ScottRudiger, fastdivision, ryanreeves-taxjar, dallendalton
+          branch: automated-ptc-update
+      - name: "Pull request opened at:"
+        run: echo "https://github.com/taxjar/taxjar-api-docs/pull/${{ env.PULL_REQUEST_NUMBER }}"
