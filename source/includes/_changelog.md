@@ -2,23 +2,6 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
-### May 2020
-
-#### 2020-05-11
-
-* <span class="badge badge--get">Accuracy</span> 6 new tax categories now available.
-<details><summary>Click to see new tax categories</summary>
-  <table>
-    <th>Code</th><th>Category</th>
-    <tr><td>abc123def456z</td><td>Band-aids purchased while skydiving</td></tr>
-    <tr><td>abc123def4562</td><td>Other random thing 2</td></tr>
-    <tr><td>abc123def4562</td><td>Other random thing 3</td></tr>
-    <tr><td>abc123def4562</td><td>Other random thing 4</td></tr>
-    <tr><td>abc123def4562</td><td>Other random thing 5</td></tr>
-    <tr><td>abc123def4562</td><td>Other random thing 6</td></tr>
-  </table>
-</details>
-
 ### April 2020
 
 #### 2020-04-22
