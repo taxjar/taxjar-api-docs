@@ -2,6 +2,40 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### May 2020
+
+#### 2020-05-12
+
+* <span class="badge badge--get">Accuracy</span> 23 new tax categories now available.
+<details><summary>Click to see new tax categories</summary>
+  <table>
+    <th>Code</th><th>Category</th>
+    <tr><td>50201708A0002</td><td>Bottled coffee - containing milk or milk substitute</td></tr>
+    <tr><td>50201708A0001</td><td>Bottled coffee - no milk - sweetened</td></tr>
+    <tr><td>50201708A0000</td><td>Bottled coffee - no milk - unsweetened</td></tr>
+    <tr><td>50201712A0002</td><td>Bottled tea - carbonated  - sweetened</td></tr>
+    <tr><td>50201712A0001</td><td>Bottled tea - carbonated - unsweetened</td></tr>
+    <tr><td>50201712A0003</td><td>Bottled tea - non-carbonated  - sweetened</td></tr>
+    <tr><td>50201712A0000</td><td>Bottled tea - non-carbonated - unsweetened</td></tr>
+    <tr><td>50202309A0001</td><td>Energy Beverages - Carbonated - with Supplement Facts Label</td></tr>
+    <tr><td>50202309A0000</td><td>Energy Beverages - Non-Carbonated - with Supplement Facts Label</td></tr>
+    <tr><td>50221202A0001</td><td>Food and Beverage - Granola Bars, Cereal Bars, Energy Bars, Protein Bars containing flour</td></tr>
+    <tr><td>50221202A0002</td><td>Food and Beverage - Granola Bars, Cereal Bars, Energy Bars, Protein Bars containing no flour</td></tr>
+    <tr><td>50193400A0000</td><td>Food/TPP Bundle - with Food 90% or more</td></tr>
+    <tr><td>50193400A0001</td><td>Food/TPP Bundle - with Food 90% or more - Food is all Candy</td></tr>
+    <tr><td>50193400A0002</td><td>Food/TPP Bundle - with Food between 50% and 75%</td></tr>
+    <tr><td>50193400A0003</td><td>Food/TPP Bundle - with Food between 50% and 75% - Food is all Candy</td></tr>
+    <tr><td>50193400A0004</td><td>Food/TPP Bundle - with Food between 76% and 89%</td></tr>
+    <tr><td>50193400A0005</td><td>Food/TPP Bundle - with Food between 76% and 89% - Food is all Candy</td></tr>
+    <tr><td>50193400A0006</td><td>Food/TPP Bundle - with Food less than 50%</td></tr>
+    <tr><td>50501703A0001</td><td>Nutritional Supplement/protein drinks, shakes - contains milk</td></tr>
+    <tr><td>50501703A0000</td><td>Nutritional Supplement/protein drinks, shakes - contains no milk</td></tr>
+    <tr><td>50202311A0001</td><td>Powdered Drink Mixes - to be mixed with milk</td></tr>
+    <tr><td>50202311A0000</td><td>Powdered Drink Mixes - to be mixed with water</td></tr>
+    <tr><td>50501703A0002</td><td>Protein Powder</td></tr>
+  </table>
+</details>
+
 ### April 2020
 
 #### 2020-04-22
