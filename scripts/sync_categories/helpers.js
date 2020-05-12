@@ -85,7 +85,7 @@ const box = str => yellow(boxen(str.toString(), {
  * @returns {void}
  */
 const failBuild = err => {
-  console.error(red(err.stack));
+  console.log(red(err.stack));
   process.exitCode = 1;
 };
 
