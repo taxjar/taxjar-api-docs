@@ -322,7 +322,7 @@ Our Magento sales tax extensions currently support Magento 1.7.x - 1.9.x and Mag
 
 ## NetSuite
 
-Our NetSuite integration requires a [TaxJar Plus](https://www.taxjar.com/plus/) subscription and your NetSuite account must have SuiteTax enabled.
+Our NetSuite integration requires a [TaxJar Professional](https://www.taxjar.com/request-demo/) or higher subscription and your NetSuite account must have SuiteTax enabled.
 
 - Learn how to install and configure the integration with our [NetSuite Guide](https://www.taxjar.com/guides/integrations/netsuite/)
 

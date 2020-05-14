@@ -80,7 +80,7 @@ $ curl https://api.sandbox.taxjar.com/v2/categories \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214"
 ```
 
-TaxJar provides a sandbox environment for automated testing and development on all [TaxJar Plus](https://www.taxjar.com/plus/) plans. After generating a sandbox API token, point your API client to the sandbox environment:
+TaxJar provides a sandbox environment for automated testing and development on all [TaxJar Professional](https://www.taxjar.com/request-demo/) or higher plans. After generating a sandbox API token, point your API client to the sandbox environment:
 
 `https://api.sandbox.taxjar.com`
 

@@ -488,7 +488,7 @@ Stay on top of new developer-facing features, accuracy improvements, and bug fix
 
 #### 2019-03-15
 
-* <span class="badge badge--post">Feature</span> Address validation endpoint for [TaxJar Plus](https://www.taxjar.com/plus/) customers now available.
+* <span class="badge badge--post">Feature</span> Address validation endpoint for [TaxJar Professional](https://www.taxjar.com/request-demo/) or higher plans now available.
 
 ### December 2018
 
