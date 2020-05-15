@@ -68,7 +68,7 @@ $ curl "API_ENDPOINT" \
 
 > Make sure to replace `9e0cd62a22f451701f29c3bde214` with your API key.
 
-TaxJar uses API keys to allow access to the API. If you're new to TaxJar, you'll need to [sign up for an account](https://app.taxjar.com/api_sign_up/basic/) to get your API key. Otherwise, [log in](https://app.taxjar.com) and go to *Account > API Access* to generate a new API token.
+TaxJar uses API keys to allow access to the API. If you're new to TaxJar, you'll need to [sign up for an account](https://app.taxjar.com/api_sign_up/) to get your API key. Otherwise, [log in](https://app.taxjar.com) and go to *Account > API Access* to generate a new API token.
 
 TaxJar expects the API key to be included in all API requests to the server using a header like the following:
 
