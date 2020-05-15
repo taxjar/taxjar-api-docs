@@ -65,4 +65,4 @@ We currently provide API clients for the following languages:
 - <img class="client-icon" src="../images/clients/java-logo.svg" width="16"> [Java Sales Tax API](https://github.com/taxjar/taxjar-java) *via Maven & Gradle as `com.taxjar:taxjar-java`*
 - <img class="client-icon" src="../images/clients/go-logo.svg" width="16"> [Go Sales Tax API](https://github.com/taxjar/taxjar-go) *as `taxjar` from `github.com/taxjar/taxjar-go`*
 
-Before getting started, you'll need to [sign up for TaxJar](https://app.taxjar.com/api_sign_up/basic/) and get an API key. If you have any questions or would like to request support for a new client language, feel free to [contact us](mailto:support@taxjar.com).
+Before getting started, you'll need to [sign up for TaxJar](https://app.taxjar.com/api_sign_up/) and get an API key. If you have any questions or would like to request support for a new client language, feel free to [contact us](mailto:support@taxjar.com).
