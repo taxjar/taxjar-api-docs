@@ -2,6 +2,14 @@
 
 > TLS 1.2 Test Snippet
 
+```shell
+# Run the following command and ensure that your system is using
+# cURL version 7.34.0 or higher
+curl --version
+# Additionally, check that your OpenSSL version is 1.0.1 or higher with
+openssl version -a
+```
+
 ```ruby
 require 'taxjar'
 client = Taxjar::Client.new(api_key: '[YOUR TAXJAR TOKEN]')
