@@ -2,6 +2,131 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### June 2020
+
+#### 2020-06-10
+
+* <span class="badge badge--get">Accuracy</span> 106 new tax categories now available.
+<details><summary>Click to see new tax categories</summary>
+  <table>
+    <th>Code</th><th>Category</th>
+    <tr><td>40101701A0000</td><td>Air conditioners - Energy Star</td></tr>
+    <tr><td>26111702A0000</td><td>Alkaline Batteries</td></tr>
+    <tr><td>46101600A0001</td><td>Ammunition</td></tr>
+    <tr><td>49181602A0002</td><td>Archery Accessories</td></tr>
+    <tr><td>46101801A0001</td><td>Archery Cases</td></tr>
+    <tr><td>49181602A0001</td><td>Archery Equipment</td></tr>
+    <tr><td>24121512A0000</td><td>Artificial Ice</td></tr>
+    <tr><td>27112005A0000</td><td>Axes/Hatchets</td></tr>
+    <tr><td>52101507A0000</td><td>Bath Mats/rugs</td></tr>
+    <tr><td>52121700A0000</td><td>Bath towels</td></tr>
+    <tr><td>30181702A0001</td><td>Bathroom Faucets - WaterSense</td></tr>
+    <tr><td>52121500A0000</td><td>Bedding</td></tr>
+    <tr><td>40102004A0001</td><td>Boilers - Energy Star</td></tr>
+    <tr><td>53121603A0001</td><td>Bookbags/Backpacks - Student</td></tr>
+    <tr><td>44101807A0000</td><td>Calculators</td></tr>
+    <tr><td>52151605A0001</td><td>Can opener - manual</td></tr>
+    <tr><td>39112604A0001</td><td>Candles</td></tr>
+    <tr><td>46191509A0001</td><td>Carbon Monoxide Detectors</td></tr>
+    <tr><td>40101609A0000</td><td>Ceiling fans - Energy Star</td></tr>
+    <tr><td>27112038A0001</td><td>Chainsaw accessories</td></tr>
+    <tr><td>52141602A0000</td><td>Clothes drying machine - Energy Star</td></tr>
+    <tr><td>52141601A0000</td><td>Clothes Washing Machine - Energy Star</td></tr>
+    <tr><td>39101619A0001</td><td>Compact Fluorescent Light Bulbs - Energy Star</td></tr>
+    <tr><td>26111711A0001</td><td>Computer Batteries</td></tr>
+    <tr><td>43202222A0001</td><td>Computer Cables</td></tr>
+    <tr><td>43201800A0001</td><td>Computer Drives</td></tr>
+    <tr><td>43211706A0000</td><td>Computer Keyboards</td></tr>
+    <tr><td>43211719A0000</td><td>Computer Microphones</td></tr>
+    <tr><td>43211900A0000</td><td>Computer Monitor/Displays</td></tr>
+    <tr><td>43211708A0000</td><td>Computer Mouse/Pointing Devices</td></tr>
+    <tr><td>43212100A0001</td><td>Computer Printer</td></tr>
+    <tr><td>43211607A0000</td><td>Computer Speakers</td></tr>
+    <tr><td>43202000A0000</td><td>Computer Storage Media</td></tr>
+    <tr><td>53131619A0001</td><td>Cosmetics - Beautifying</td></tr>
+    <tr><td>56101804A0001</td><td>Crib bumpers/liners</td></tr>
+    <tr><td>44112004A0001</td><td>Daily Planners</td></tr>
+    <tr><td>40101902A0000</td><td>Dehumidifier - Energy Star</td></tr>
+    <tr><td>55101526A0001</td><td>Dictionaries/Thesauruses</td></tr>
+    <tr><td>52121601A0000</td><td>Dish towels</td></tr>
+    <tr><td>52141505A0000</td><td>Dishwashers - Energy Star</td></tr>
+    <tr><td>43211602A0000</td><td>Docking Stations</td></tr>
+    <tr><td>31201501A0000</td><td>Duct Tape</td></tr>
+    <tr><td>43211519A0000</td><td>E-Book Readers</td></tr>
+    <tr><td>30191501A0001</td><td>Emergency/rescue ladder</td></tr>
+    <tr><td>46191601A0000</td><td>Fire Extinguishers</td></tr>
+    <tr><td>46101506A0001</td><td>Firearm Accessories</td></tr>
+    <tr><td>46101500A0001</td><td>Firearms</td></tr>
+    <tr><td>52152002A0001</td><td>Food Storage Cooler</td></tr>
+    <tr><td>52141506A0000</td><td>Freezers- Energy Star</td></tr>
+    <tr><td>40101805A0000</td><td>Furnaces - Energy Star</td></tr>
+    <tr><td>27112038A0000</td><td>Garden chainsaw</td></tr>
+    <tr><td>60104414A0001</td><td>Globes - Student</td></tr>
+    <tr><td>44101808A0001</td><td>Graphing Calculators</td></tr>
+    <tr><td>31162108A0000</td><td>Ground Anchor Systems and Tie-down Kits</td></tr>
+    <tr><td>46101801A0000</td><td>Gun Cases</td></tr>
+    <tr><td>52161514A0000</td><td>Headphones/Earbuds</td></tr>
+    <tr><td>46181902A0001</td><td>Hearing Protection Earmuffs</td></tr>
+    <tr><td>40101806A0000</td><td>Heat Pumps - Energy Star</td></tr>
+    <tr><td>39101612A0001</td><td>Incandescent Light Bulbs - Energy Star</td></tr>
+    <tr><td>21102503A0001</td><td>Irrigation Controls - WaterSense</td></tr>
+    <tr><td>11121700A0001</td><td>Landscape Soil, Mulch, Compost - Residential</td></tr>
+    <tr><td>39101628A0001</td><td>LED Bulbs - Energy Star</td></tr>
+    <tr><td>60103410A0001</td><td>Maps - Student</td></tr>
+    <tr><td>43191501A0001</td><td>Mobile Phone Batteries</td></tr>
+    <tr><td>43191501A0002</td><td>Mobile Phone Charging Device/cord</td></tr>
+    <tr><td>43222628A0000</td><td>Modems</td></tr>
+    <tr><td>43201513A0000</td><td>Motherboards</td></tr>
+    <tr><td>60130000A0001</td><td>Musical instruments - Student</td></tr>
+    <tr><td>46171501A0001</td><td>Padlocks - Student</td></tr>
+    <tr><td>43211500A0001</td><td>Personal Computers</td></tr>
+    <tr><td>43211603A0000</td><td>Port Replicators</td></tr>
+    <tr><td>24111808A0001</td><td>Portable Fuel Container</td></tr>
+    <tr><td>26111604A0001</td><td>Portable Generator</td></tr>
+    <tr><td>39111610A0000</td><td>Portable Light Sources</td></tr>
+    <tr><td>43191510A0000</td><td>Portable Radios</td></tr>
+    <tr><td>26121636A0000</td><td>Power cords</td></tr>
+    <tr><td>44103105A0000</td><td>Printer Ink</td></tr>
+    <tr><td>14111507A0000</td><td>Printer Paper</td></tr>
+    <tr><td>41112209A0001</td><td>Programmable Wall Thermostat - Energy Star</td></tr>
+    <tr><td>44122106A0000</td><td>Push pins/tacks</td></tr>
+    <tr><td>52141501A0000</td><td>Refrigerators - Energy Star</td></tr>
+    <tr><td>31151500A0000</td><td>Ropes and Cords</td></tr>
+    <tr><td>43222609A0000</td><td>Routers</td></tr>
+    <tr><td>43211711A0000</td><td>Scanners</td></tr>
+    <tr><td>60121200A0001</td><td>School Art Supplies</td></tr>
+    <tr><td>44121600A0001</td><td>School Supplies</td></tr>
+    <tr><td>55101514A0000</td><td>Sheet music - Student</td></tr>
+    <tr><td>30181607A0000</td><td>Shower Curtain or Liner</td></tr>
+    <tr><td>30181801A0000</td><td>Showerheads - WaterSense</td></tr>
+    <tr><td>46191501A0000</td><td>Smoke Detectors</td></tr>
+    <tr><td>43230000A1102</td><td>Software - Prewritten, Electronic delivery - Non-recreational</td></tr>
+    <tr><td>43230000A1101</td><td>Software - Prewritten, tangible media - Non-recreational</td></tr>
+    <tr><td>43201502A0000</td><td>Sound Cards</td></tr>
+    <tr><td>21101803A0001</td><td>Spray Water Sprinkler Bodies - WaterSense</td></tr>
+    <tr><td>44121615A0000</td><td>Staplers/Staples</td></tr>
+    <tr><td>30151801A0001</td><td>Storm shutters/window protection devices</td></tr>
+    <tr><td>24141506A0000</td><td>Tarpaulins and Weatherproof Sheeting</td></tr>
+    <tr><td>30181505A0000</td><td>Toilets - WaterSense</td></tr>
+    <tr><td>30181506A0000</td><td>Urinals - WaterSense</td></tr>
+    <tr><td>43201401A0000</td><td>Video/Graphics Card</td></tr>
+    <tr><td>21102500A0001</td><td>Water Conserving Products</td></tr>
+    <tr><td>40101825A0000</td><td>Water heater - Energy Star</td></tr>
+    <tr><td>24111810A0001</td><td>Water storage container</td></tr>
+    <tr><td>45121520A0000</td><td>Web Camera</td></tr>
+  </table>
+</details>
+
+#### 2020-06-09
+
+* <span class="badge badge--get">Accuracy</span> 2 new tax categories now available.
+
+<table>
+  <th>Code</th><th>Category</th>
+  <tr><td>43230000A9201</td><td>Software - Custom, electronic delivery - Business Use</td></tr>
+  <tr><td>43230000A9200</td><td>Software - Prewritten, electronic delivery - Business Use</td></tr>
+</table>
+
 ### May 2020
 
 #### 2020-05-12
