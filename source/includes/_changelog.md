@@ -6,7 +6,7 @@ Stay on top of new developer-facing features, accuracy improvements, and bug fix
 
 #### 2020-06-10
 
-* <span class="badge badge--get">Accuracy</span> 106 new tax categories now available.
+* <span class="badge badge--get">Accuracy</span> 104 new tax categories now available.
 <details><summary>Click to see new tax categories</summary>
   <table>
     <th>Code</th><th>Category</th>
