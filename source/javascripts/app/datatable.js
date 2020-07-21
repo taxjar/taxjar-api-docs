@@ -10,7 +10,7 @@
           'Content-Type': 'application/json',
           Authorization: 'Bearer ' + global.apiToken
         }
-      }).always(handleErr(callback), addFlags(callback))
+      }).always(addFlags(callback))
     },
     deferRender: true,
     columns: [
@@ -57,15 +57,6 @@
           return category;
         })
       });
-    };
-  };
-
-  function handleErr(callback) {
-    return function (res) {
-      if (res.status != 200) {
-        // TODO: add retry mechanism
-        // TODO: pull in honeybadger
-      }
     };
   };
 
