@@ -2,7 +2,7 @@
   'use strict';
 
   var table = $('.datatable').next('table').DataTable({
-    ajax: function(_, callback) {
+    ajax: function (_, callback) {
       $.ajax({
         url: 'https://api.taxjar.com/v2/categories',
         type: 'GET',
@@ -10,7 +10,7 @@
           'Content-Type': 'application/json',
           Authorization: 'Bearer ' + global.apiToken
         }
-      }).always(addFlags(callback))
+      }).done(addFlags(callback));
     },
     deferRender: true,
     columns: [
@@ -38,7 +38,7 @@
     }
   });
 
-  table.on('page.dt', function() {
+  table.on('page.dt', function () {
     $([document.documentElement, document.body]).animate({
       // Note: '#get-list-tax-categories' scrolls too far up on mobile so using '#request'
       scrollTop: $('#request').offset().top
