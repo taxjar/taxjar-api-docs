@@ -1,15 +1,26 @@
 (function (global) {
   'use strict';
 
-  var table = $('.datatable').next('table').DataTable({
+  var table = $('.datatable').next('table');
+
+  $('.datatable').next('table').DataTable({
     ajax: function (_, callback) {
-      $.ajax({
+      return $.ajax({
         url: 'https://api.taxjar.com/v2/categories',
         headers: {
           'Content-Type': 'application/json',
           Authorization: 'Bearer ' + global.apiToken
-        }
-      }).done(addFlags(callback));
+        },
+      }).done(function addFlags (res) {
+        return callback({
+          data: res.categories.map(function (category) {
+            category.flags = flagList[category.product_tax_code] || flagList.default;
+            return category;
+          })
+        });
+      }).fail(function () {
+        return callback({data: []});
+      });
     },
     deferRender: true,
     columns: [
@@ -33,7 +44,8 @@
     language: {
       search: '',
       searchPlaceholder: 'Search categories...',
-      zeroRecords: 'No matching categories found'
+      zeroRecords: 'No matching categories found',
+      emptyTable: '🔁Something went wrong!\nPlease reload the page.'
     }
   });
 
@@ -46,17 +58,6 @@
 
   var flagList = {
     default: '<span class="flag-icon flag-icon-us drop-theme-taxjar-popovers drop-target" data-tooltip="United States" data-tooltip-position="top center"></span>'
-  };
-
-  function addFlags (callback) {
-    return function (res) {
-      callback({
-        data: res.categories.map(function (category) {
-          category.flags = flagList[category.product_tax_code] || flagList.default;
-          return category;
-        })
-      });
-    };
   };
 
 })(window);
