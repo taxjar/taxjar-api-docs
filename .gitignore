@@ -1,7 +1,6 @@
 *.gem
 *.rbc
 .ruby-gemset
-.ruby-version
 .bundle
 .config
 .env
