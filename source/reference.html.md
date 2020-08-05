@@ -19,22 +19,22 @@ toc_footers:
   - <a href='https://www.taxjar.com/api/docs/'>v1 Documentation</a>
 
 includes:
-  - authentication
-  - billing
-  - countries
-  - sales_tax_api
-  - endpoints/categories
-  - endpoints/taxes
-  - endpoints/transactions
-  - endpoints/customers
-  - endpoints/rates
-  - endpoints/nexus
-  - endpoints/validations
-  - endpoints/summarized_rates
-  - sandbox
-  - rate-limiting
-  - errors
-  - changelog
+  - authentication.html.md
+  - billing.md
+  - countries.html.md
+  - sales_tax_api.md
+  - endpoints/categories.html.md
+  - endpoints/taxes.md
+  - endpoints/transactions.md
+  - endpoints/customers.html.md
+  - endpoints/rates.html.md
+  - endpoints/nexus.html.md
+  - endpoints/validations.md
+  - endpoints/summarized_rates.md
+  - sandbox.md
+  - rate-limiting.md
+  - errors.md
+  - changelog.html.md
 
 search: false
 ---
