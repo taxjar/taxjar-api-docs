@@ -2,6 +2,112 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### July 2020
+
+#### 2020-07-14
+
+* <span class="badge badge--get">Accuracy</span> 95 new tax categories now available.
+<details><summary>Click to see new tax categories</summary>
+  <table>
+    <th>Code</th><th>Category</th>
+    <tr><td>51241400A0001</td><td>Acne Treatments</td></tr>
+    <tr><td>52161548A0000</td><td>Audio Turntables</td></tr>
+    <tr><td>51241900A0001</td><td>Baby Oil</td></tr>
+    <tr><td>53131649A0001</td><td>Baby Powder</td></tr>
+    <tr><td>53131624A0000</td><td>Baby Wipes/Cleansing Wipes</td></tr>
+    <tr><td>46181704A0003</td><td>Bicycle Helmets - Adult</td></tr>
+    <tr><td>46181704A0002</td><td>Bicycle Helmets - Youth</td></tr>
+    <tr><td>53131509A0000</td><td>Breath Spray/dissolvable strips</td></tr>
+    <tr><td>53121701A0000</td><td>Briefcases</td></tr>
+    <tr><td>53131612A0001</td><td>Bubble Bath, Bath Salts/Oils/Crystals</td></tr>
+    <tr><td>46181501A0002</td><td>Clothing - Aprons - Household/Kitchen</td></tr>
+    <tr><td>53102515A0000</td><td>Clothing - Button covers</td></tr>
+    <tr><td>53102305A0001</td><td>Clothing - Cloth Diapers</td></tr>
+    <tr><td>53102500A0001</td><td>Clothing - Hair Accessories</td></tr>
+    <tr><td>53102513A0000</td><td>Clothing - Headbands</td></tr>
+    <tr><td>53103100A0003</td><td>Clothing - Hunting Vests</td></tr>
+    <tr><td>53102717A0001</td><td>Clothing - Martial Arts Attire</td></tr>
+    <tr><td>53102514A0000</td><td>Clothing - Pocket protectors</td></tr>
+    <tr><td>46182208A0000</td><td>Clothing - Shoe Inserts/Insoles</td></tr>
+    <tr><td>53102607A0000</td><td>Clothing - Sleep or eye mask</td></tr>
+    <tr><td>53102505A0000</td><td>Clothing - Umbrellas</td></tr>
+    <tr><td>53102500A0002</td><td>Clothing - Wigs, Hairpieces, Hair extensions</td></tr>
+    <tr><td>42142100A0003</td><td>Cold or Hot Therapy Packs - Disposable</td></tr>
+    <tr><td>42142100A0004</td><td>Cold or Hot Therapy Packs - Disposable - Medicated</td></tr>
+    <tr><td>42142100A0002</td><td>Cold or Hot Therapy Packs - Reusable</td></tr>
+    <tr><td>53131628A0002</td><td>Conditioner - Hair</td></tr>
+    <tr><td>42142914A0000</td><td>Contact Lens Disinfecting Solutions</td></tr>
+    <tr><td>42142914A0002</td><td>Contact Lens Lubricating Solutions - For eyes</td></tr>
+    <tr><td>42142914A0001</td><td>Contact Lens Lubricating Solutions - For lens</td></tr>
+    <tr><td>42142913A0000</td><td>Contact Lenses with Prescription</td></tr>
+    <tr><td>42142900A0002</td><td>Corrective Lenses without Prescription</td></tr>
+    <tr><td>42142900A0001</td><td>Corrective Lenses, Eyeglasses with Prescription</td></tr>
+    <tr><td>42141500A0001</td><td>Cotton Balls/Swabs - Sterile</td></tr>
+    <tr><td>42141500A0002</td><td>Cotton Balls/Swabs - Unsterile</td></tr>
+    <tr><td>53131504A0000</td><td>Dental Floss/picks</td></tr>
+    <tr><td>53131510A0000</td><td>Denture creams/adhesives</td></tr>
+    <tr><td>53131606A0001</td><td>Deodorant - Natural or no active ingredients</td></tr>
+    <tr><td>53131606A0000</td><td>Deodorant/Antiperspirant</td></tr>
+    <tr><td>51241859A0001</td><td>Diaper Cream</td></tr>
+    <tr><td>45121504A0000</td><td>Digital Cameras</td></tr>
+    <tr><td>52161543A0000</td><td>Digital Music Players</td></tr>
+    <tr><td>52161549A0000</td><td>Digital Picture Frames</td></tr>
+    <tr><td>42132203A0000</td><td>Disposable Gloves</td></tr>
+    <tr><td>51241000A0001</td><td>Ear Drops - Medicated</td></tr>
+    <tr><td>53131615A0001</td><td>Feminine Cleansing Solutions</td></tr>
+    <tr><td>53131615A0002</td><td>Feminine Cleansing Solutions - Medicated</td></tr>
+    <tr><td>51302300A0001</td><td>Feminine Yeast Treatments</td></tr>
+    <tr><td>42172001A0001</td><td>First Aid Kits - 50% or less medicinal items</td></tr>
+    <tr><td>42172001A0002</td><td>First Aid Kits - 51% or more medicinal items</td></tr>
+    <tr><td>51182001A0001</td><td>Hair Loss Products</td></tr>
+    <tr><td>53131623A0000</td><td>Hair Removal Products</td></tr>
+    <tr><td>53131626A0000</td><td>Hand Sanitizers</td></tr>
+    <tr><td>53121600A0000</td><td>Handbags, Purses</td></tr>
+    <tr><td>26111710A0001</td><td>Hearing Aid Batteries with Prescription</td></tr>
+    <tr><td>26111710A0002</td><td>Hearing Aid Batteries without Prescription</td></tr>
+    <tr><td>42211705A0000</td><td>Hearing Aids with Prescription</td></tr>
+    <tr><td>42211705A0001</td><td>Hearing Aids without Prescription</td></tr>
+    <tr><td>42142100A0001</td><td>Heating Pads</td></tr>
+    <tr><td>51473503A0000</td><td>Hydrogen Peroxide</td></tr>
+    <tr><td>51471901A0000</td><td>Isopropyl (Rubbing) Alcohol</td></tr>
+    <tr><td>54100000A0000</td><td>Jewelry</td></tr>
+    <tr><td>53131630A0000</td><td>Lip Balm</td></tr>
+    <tr><td>53131630A0001</td><td>Lip Balm - Medicated</td></tr>
+    <tr><td>53121500A0000</td><td>Luggage</td></tr>
+    <tr><td>42131713A0001</td><td>Medical Masks</td></tr>
+    <tr><td>42182200A0001</td><td>Medical Thermometers - Disposable</td></tr>
+    <tr><td>42182200A0002</td><td>Medical Thermometers - Reusable</td></tr>
+    <tr><td>43191501A0000</td><td>Mobile Phones</td></tr>
+    <tr><td>53131501A0001</td><td>Mouthwash - Cosmetic</td></tr>
+    <tr><td>53131501A0000</td><td>Mouthwash - Therapeutic</td></tr>
+    <tr><td>42312402A0001</td><td>Nasal Breathing Strips</td></tr>
+    <tr><td>51030</td><td>Over-the-Counter Drugs via Prescription</td></tr>
+    <tr><td>53131641A0000</td><td>Petroleum Jelly</td></tr>
+    <tr><td>53131628A0000</td><td>Shampoo</td></tr>
+    <tr><td>53131628A0001</td><td>Shampoo - medicated (anti-dandruff)</td></tr>
+    <tr><td>53131611A0000</td><td>Shaving Creams</td></tr>
+    <tr><td>51241200A0002</td><td>Skin Care Products</td></tr>
+    <tr><td>51241200A0001</td><td>Skin Care Products- Medicated</td></tr>
+    <tr><td>51143218A0000</td><td>Smoking Cessation Products</td></tr>
+    <tr><td>53131608A0001</td><td>Soaps - Antibacterial</td></tr>
+    <tr><td>42142905A0001</td><td>Sunglasses - Non-Rx</td></tr>
+    <tr><td>53131609A0000</td><td>Sunscreen</td></tr>
+    <tr><td>53131615A0000</td><td>Tampons, menstrual cups, pads, liners</td></tr>
+    <tr><td>42151506A0000</td><td>Teeth Whitening Kits</td></tr>
+    <tr><td>14111704A0000</td><td>Toilet Paper</td></tr>
+    <tr><td>53131503A0000</td><td>Toothbrushes</td></tr>
+    <tr><td>53131502A0000</td><td>Toothpaste</td></tr>
+    <tr><td>45121515A0000</td><td>Video Cameras</td></tr>
+    <tr><td>52161557A0000</td><td>Video Gaming Console - Fixed</td></tr>
+    <tr><td>52161558A0000</td><td>Video Gaming Console - Portable</td></tr>
+    <tr><td>53121600A0001</td><td>Wallets</td></tr>
+    <tr><td>54111500A0000</td><td>Watches</td></tr>
+    <tr><td>54111500A0001</td><td>Watches - Smart</td></tr>
+    <tr><td>42311500A0001</td><td>Wound Care Supplies - Bandages, Dressings, Gauze</td></tr>
+    <tr><td>42311514A0000</td><td>Wound Care Supplies - Bandages, Dressings, Gauze - Medicated</td></tr>
+  </table>
+</details>
+
 ### June 2020
 
 #### 2020-06-10
