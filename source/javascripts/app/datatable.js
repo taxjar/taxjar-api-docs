@@ -38,14 +38,14 @@
     columnDefs: [
       { width: '25%', targets: 0 },
       { width: '15%', targets: 1 },
-      { width: '10%', targets: 2 },
+      { width: '10%', targets: 2, className: 'dt-center' },
       { width: '50%', targets: 3, className: 'category-desc' }
     ],
     language: {
       search: '',
       searchPlaceholder: 'Search categories...',
       zeroRecords: 'No matching categories found',
-      emptyTable: '🔁Something went wrong!\nPlease reload the page.'
+      emptyTable: '🔁&nbsp;&nbsp;Something went wrong!\nPlease reload the page.'
     }
   });
 
@@ -57,7 +57,7 @@
   });
 
   var flagList = {
-    default: '<span class="flag-icon flag-icon-us drop-theme-taxjar-popovers drop-target" data-tooltip="United States" data-tooltip-position="top center"></span>'
+    default: '<span class="flag-icon flag-icon-us"></span>'
   };
 
 })(window);
