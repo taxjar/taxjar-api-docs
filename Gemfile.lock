@@ -96,7 +96,7 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    redcarpet (3.2.3)
+    redcarpet (3.5.1)
     rouge (1.8.0)
     s3_website (2.11.0)
       colored (= 1.2)
@@ -135,7 +135,7 @@ DEPENDENCIES
   middleman-gh-pages (~> 0.0.3)
   middleman-syntax (~> 2.0.0)
   rake (~> 12.3.3)
-  redcarpet (~> 3.2.2)
+  redcarpet (~> 3.5.1)
   rouge (~> 1.8.0)
   s3_website
 
