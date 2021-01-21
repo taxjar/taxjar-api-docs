@@ -2,6 +2,12 @@
 
 Stay on top of new developer-facing features, accuracy improvements, and bug fixes for our sales tax API. Have a request? Encounter an issue? [We'd love to hear your feedback.](mailto:support@taxjar.com)
 
+### January 2021
+
+#### 2021-01-21
+
+* <span class="badge badge--post">Feature</span> TaxJar API version "2020-08-07" introduced. Provides increased validations on order and refund transaction POST requests. Verifies math between `'line_items[]'` details and `'shipping'` to equal the sum of `'amount'`.
+
 ### July 2020
 
 #### 2020-07-14

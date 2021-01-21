@@ -20,6 +20,7 @@ toc_footers:
 
 includes:
   - authentication
+  - api_version
   - billing
   - countries
   - sales_tax_api
