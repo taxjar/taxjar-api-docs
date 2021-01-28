@@ -103,5 +103,5 @@ TaxJar has introduced API versioning to deliver enhanced validations and feature
 For more details, see the [API Changelog](https://developers.taxjar.com/api/reference/#changelog).
 
 <aside class="notice">
-Effective July 1, 2021, all TaxJar accounts will default to version '2020-08-07'.
+Effective July 1, 2021, all new TaxJar accounts will default to version '2020-08-07'.
 </aside>
