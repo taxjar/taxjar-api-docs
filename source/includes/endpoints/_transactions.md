@@ -338,6 +338,11 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
     "user_id": 10649,
     "transaction_date": "2015-05-14T00:00:00Z",
     "provider": "api",
+    "from_country": "US",
+    "from_zip": "92093",
+    "from_state": "CA",
+    "from_city": "La Jolla",
+    "from_street": "9500 Gilman Drive",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
@@ -559,6 +564,11 @@ client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 order = client.create_order({
   :transaction_id => '123',
   :transaction_date => '2015/05/14',
+  :from_country => 'US',
+  :from_zip => '92093',
+  :from_state => 'CA',
+  :from_city => 'La Jolla',
+  :from_street => '9500 Gilman Drive',
   :to_country => 'US',
   :to_zip => '90002',
   :to_state => 'CA',
@@ -586,6 +596,11 @@ client = taxjar.Client(api_key='9e0cd62a22f451701f29c3bde214')
 order = client.create_order({
   'transaction_id': '123',
   'transaction_date': '2015/05/14',
+  'from_country': 'US',
+  'from_zip': '92093',
+  'from_state': 'CA',
+  'from_city': 'La Jolla',
+  'from_street': '9500 Gilman Drive',
   'to_country': 'US',
   'to_zip': '90002',
   'to_state': 'CA',
@@ -616,6 +631,11 @@ const client = new Taxjar({
 client.createOrder({
   transaction_id: '123',
   transaction_date: '2015/05/14',
+  from_country: 'US',
+  from_zip: '92093',
+  from_state: 'CA',
+  from_city: 'La Jolla',
+  from_street: '9500 Gilman Drive',
   to_country: 'US',
   to_zip: '90002',
   to_state: 'CA',
@@ -645,6 +665,11 @@ $client = TaxJar\Client::withApiKey("9e0cd62a22f451701f29c3bde214");
 $order = $client->createOrder([
   'transaction_id' => '123',
   'transaction_date' => '2015/05/14',
+  'from_country' => 'US',
+  'from_zip' => '92093',
+  'from_state' => 'CA',
+  'from_city' => 'La Jolla',
+  'from_street' => '9500 Gilman Drive',
   'to_country' => 'US',
   'to_zip' => '90002',
   'to_state' => 'CA',
@@ -672,6 +697,11 @@ var client = new TaxjarApi("9e0cd62a22f451701f29c3bde214");
 var order = client.CreateOrder(new {
   transaction_id = "123",
   transaction_date = "2015/05/04",
+  from_country: "US",
+  from_zip: "92093",
+  from_state: "CA",
+  from_city: "La Jolla",
+  from_street: "9500 Gilman Drive",
   to_country = "US",
   to_state = "CA",
   to_zip = "90002",
@@ -710,6 +740,11 @@ public class CreateOrderExample {
             Map<String, Object> params = new HashMap<>();
             params.put("transaction_id", "123");
             params.put("transaction_date", "2015/05/04");
+            params.put("from_country", "US");
+            params.put("from_zip", "92093");
+            params.put("from_state": "CA");
+            params.put("from_city": "La Jolla");
+            params.put("from_street": "9500 Gilman Drive");
             params.put("to_country", "US");
             params.put("to_zip", "90002");
             params.put("to_city", "Los Angeles");
@@ -755,6 +790,11 @@ func main() {
     res, err := client.CreateOrder(taxjar.CreateOrderParams{
         TransactionID:   "123",
         TransactionDate: "2015/05/14",
+        FromCountry:     "US",
+        FromZip:         "92093",
+        FromState:       "CA",
+        FromCity:        "La Jolla",
+        FromStreet:      "9500 Gilman Drive",
         ToCountry:       "US",
         ToZip:           "90002",
         ToState:         "CA",
@@ -788,6 +828,11 @@ $ curl https://api.taxjar.com/v2/transactions/orders \
   -d '{
     "transaction_id": "123",
     "transaction_date": "2015/05/14",
+    "from_country": "US",
+    "from_zip": "92093",
+    "from_state": "CA",
+    "from_city": "La Jolla",
+    "from_street": "9500 Gilman Drive",
     "to_street": "123 Palm Grove Ln",
     "to_city": "Los Angeles",
     "to_state": "CA",
@@ -817,6 +862,11 @@ $ curl https://api.taxjar.com/v2/transactions/orders \
     "user_id": 10649,
     "transaction_date": "2015-05-14T00:00:00Z",
     "provider": "api",
+    "from_country": "US",
+    "from_zip": "92093",
+    "from_state": "CA",
+    "from_city": "La Jolla",
+    "from_street": "9500 Gilman Drive",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
@@ -889,22 +939,23 @@ $ curl https://api.taxjar.com/v2/transactions/orders \
     'quantity': 1
   }>],
   'user_id': 11836,
-  'to_zip': '90002',
-  'from_street': '1218 State St',
-  'from_city': 'SANTA BARBARA',
-  'from_zip': '93101',
-  'to_country': 'US',
-  'shipping': 1.5,
+  'transaction_id': '20',
+  'transaction_reference_id': None,
+  'transaction_date': '2015-05-14T00:00:00Z',
+  'provider': 'api'
   'from_country': 'US',
+  'from_zip': '93101',
+  'from_state': 'CA',
+  'from_city': 'SANTA BARBARA',
+  'from_street': '1218 State St',
+  'to_country': 'US',
+  'to_zip': '90002',
+  'to_state': 'CA',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
-  'transaction_date': '2015-05-14T00:00:00Z',
-  'transaction_reference_id': None,
-  'sales_tax': 0.95,
   'amount': 16.5,
-  'transaction_id': '20',
-  'to_state': 'CA',
-  'provider': 'api'
+  'shipping': 1.5,
+  'sales_tax': 0.95,
 }>
 ```
 
@@ -1283,6 +1334,11 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
     "user_id": 10649,
     "transaction_date": "2015-05-14T00:00:00Z",
     "provider": "api",
+    "from_country": "US",
+    "from_zip": "92093",
+    "from_state": "CA",
+    "from_city": "La Jolla",
+    "from_street": "9500 Gilman Drive",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
@@ -1343,34 +1399,34 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
 
 ```python
 <TaxJarOrder {
-  'from_state': 'CA',
-  'line_items': [<TaxJarLineItem {
-    'description': 'Heavy Widget',
-    'unit_price': 15,
-    'discount': 0,
-    'product_identifier': '12-34243-0',
-    'sales_tax': 0.95,
-    'product_tax_code': None,
-    'id': 0,
-    'quantity': 1
-  }>,
   'user_id': 11836,
-  'to_zip': '90002',
-  'from_street': '1218 State St',
-  'from_city': 'SANTA BARBARA',
-  'from_zip': '93101',
-  'to_country': 'US',
-  'shipping': 2,
+  'transaction_id': '123',
+  'transaction_reference_id': None,
+  'transaction_date': '2015-05-14T00:00:00Z',
+  'provider': 'api'
   'from_country': 'US',
+  'from_zip': '93101',
+  'from_state': 'CA',
+  'from_city': 'SANTA BARBARA',
+  'from_street': '1218 State St',
+  'to_country': 'US',
+  'to_zip': '90002',
+  'to_state': 'CA',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
-  'transaction_date': '2015-05-14T00:00:00Z',
-  'transaction_reference_id': None,
+  'shipping': 2,
   'sales_tax': 0.95,
   'amount': 17,
-  'transaction_id': '123',
-  'to_state': 'CA',
-  'provider': 'api'
+  'line_items': [<TaxJarLineItem {
+    'id': 0,
+    'quantity': 1
+    'unit_price': 15,
+    'description': 'Heavy Widget',
+    'product_identifier': '12-34243-0',
+    'product_tax_code': None,
+    'discount': 0,
+    'sales_tax': 0.95,
+  }>,
 }>
 ```
 
@@ -1668,25 +1724,25 @@ $ curl https://api.taxjar.com/v2/transactions/orders/123 \
 
 ```python
 <TaxJarOrder {
-  'from_state': None,
-  'line_items': [],
   'user_id': 10649,
-  'to_zip': None,
-  'from_street': None,
-  'from_city': None,
-  'from_zip': None,
-  'to_country': None,
-  'shipping': None,
-  'from_country': None,
-  'to_city': None,
-  'to_street': None,
-  'transaction_date': None,
-  'transaction_reference_id': None,
-  'sales_tax': None,
-  'amount': None,
   'transaction_id': '123',
-  'to_state': None,
+  'transaction_reference_id': None,
+  'transaction_date': None,
   'provider': 'api'
+  'from_country': None,
+  'from_zip': None,
+  'from_state': None,
+  'from_city': None,
+  'from_street': None,
+  'to_country': None,
+  'to_city': None,
+  'to_zip': None,
+  'to_state': None,
+  'to_street': None,
+  'amount': None,
+  'shipping': None,
+  'sales_tax': None,
+  'line_items': [],
 }>
 ```
 
@@ -2077,6 +2133,11 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     "transaction_date": "2015-05-14T00:00:00Z",
     "transaction_reference_id": "123",
     "provider": "api",
+    "from_country": "US",
+    "from_zip": "92093",
+    "from_state": "CA",
+    "from_city": "La Jolla",
+    "from_street": "9500 Gilman Drive",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
@@ -2137,7 +2198,24 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 
 ```python
 <TaxJarRefund {
+  'user_id': 11836,
+  'transaction_id': '321',
+  'transaction_reference_id': '123',
+  'transaction_date': '2015-06-14T00:00:00Z',
+  'provider': 'api',
+  'from_country': 'US',
+  'from_zip': 93107,
   'from_state': 'CA',
+  'from_city': 'SANTA BARBARA',
+  'from_street': '1218 State St',
+  'to_country': 'US',
+  'to_zip': '90002',
+  'to_state': 'CA',
+  'to_city': 'LOS ANGELES',
+  'to_street': '123 Palm Grove Ln',
+  'amount': -17,
+  'shipping': -2,
+  'sales_tax': -0.95,
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
     'unit_price': -15,
@@ -2147,24 +2225,7 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
-  }>],
-  'user_id': 11836,
-  'to_zip': '90002',
-  'from_street': '1218 State St',
-  'from_city': 'SANTA BARBARA',
-  'from_zip': 93107,
-  'to_country': 'US',
-  'shipping': -2,
-  'from_country': 'US',
-  'to_city': 'LOS ANGELES',
-  'to_street': '123 Palm Grove Ln',
-  'transaction_date': '2015-06-14T00:00:00Z',
-  'transaction_reference_id': '123',
-  'sales_tax': -0.95,
-  'amount': -17,
-  'transaction_id': '321',
-  'to_state': 'CA',
-  'provider': 'api'
+  }>]
 }>
 ```
 
@@ -2299,6 +2360,11 @@ order = client.create_refund({
   :transaction_id => '123',
   :transaction_date => '2015/05/14',
   :transaction_reference_id => '123',
+  :from_country => 'US',
+  :from_zip => '92093',
+  :from_state => 'CA',
+  :from_city => 'La Jolla',
+  :from_street => '9500 Gilman Drive',
   :to_country => 'US',
   :to_zip => '90002',
   :to_state => 'CA',
@@ -2363,6 +2429,11 @@ client.createRefund({
   transaction_id: '123',
   transaction_date: '2015/05/14',
   transaction_reference_id: '123',
+  from_country: 'US',
+  from_zip: '92093',
+  from_state: 'CA',
+  from_city: 'La Jolla',
+  from_street: '9500 Gilman Drive',
   to_country: 'US',
   to_zip: '90002',
   to_state: 'CA',
@@ -2393,6 +2464,11 @@ $refund = $client->createRefund([
   'transaction_id' => '321',
   'transaction_date' => '2015/05/14',
   'transaction_reference_id' => '123',
+  'from_country' => 'US',
+  'from_zip' => '92093',
+  'from_state' => 'CA',
+  'from_city' => 'La Jolla',
+  'from_street' => '9500 Gilman Drive',
   'to_country' => 'US',
   'to_zip' => '90002',
   'to_state' => 'CA',
@@ -2422,8 +2498,14 @@ var refund = client.CreateRefund(new
   transaction_id = "321",
   transaction_date = "2015/05/04",
   transaction_reference_id = "123",
+  from_country = "US",
+  from_zip = "92093",
+  from_state = "CA",
+  from_city = "La Jolla",
+  from_street = "9500 Gilman Drive",
   to_country = "US",
   to_zip = "90002",
+  to_state = "CA",
   to_city = "Los Angeles",
   to_street = "123 Palm Grove Ln",
   amount = -16.5,
@@ -2459,8 +2541,14 @@ public class CreateRefundExample {
             Map<String, Object> params = new HashMap<>();
             params.put("transaction_id", "321");
             params.put("transaction_date", "2015/05/04");
+            params.put("from_country", "US");
+            params.put("from_zip", "92093");
+            params.put("from_state", "CA");
+            params.put("from_city", "La Jolla");
+            params.put("from_street", "9500 Gilman Drive");
             params.put("to_country", "US");
             params.put("to_zip", "90002");
+            params.put("to_state", "CA");
             params.put("to_city", "Los Angeles");
             params.put("to_street", "123 Palm Grove Ln");
             params.put("amount", -16.5);
@@ -2505,6 +2593,11 @@ func main() {
         TransactionID:          "123",
         TransactionDate:        "2015/05/14",
         TransactionReferenceID: "123",
+        FromCountry:            "US",
+        FromZip:                "92093",
+        FromState:              "CA",
+        FromCity:               "La Jolla",
+        FromStreet:             "9500 Gilman Drive",
         ToCountry:              "US",
         ToZip:                  "90002",
         ToState:                "CA",
@@ -2539,6 +2632,11 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
     "transaction_id": "123",
     "transaction_date": "2015/05/14",
     "transaction_reference_id": "123",
+    "from_country": "US",
+    "from_zip": "92093",
+    "from_state": "CA",
+    "from_city": "La Jolla",
+    "from_street": "9500 Gilman Drive",
     "to_street": "123 Palm Grove Ln",
     "to_city": "Los Angeles",
     "to_state": "CA",
@@ -2569,6 +2667,11 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
     "transaction_date": "2015-05-14T00:00:00Z",
     "transaction_reference_id": "123",
     "provider": "api",
+    "from_country": "US",
+    "from_zip": "92093",
+    "from_state": "CA",
+    "from_city": "La Jolla",
+    "from_street": "9500 Gilman Drive",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
@@ -2629,7 +2732,24 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
 
 ```python
 <TaxJarRefund {
+  'user_id': 11836,
+  'transaction_id': '321',
+  'transaction_reference_id': '123',
+  'transaction_date': '2015-06-14T00:00:00Z',
+  'provider': 'api',
+  'from_country': 'US',
+  'from_zip': 93107,
   'from_state': 'CA',
+  'from_city': 'SANTA BARBARA',
+  'from_street': '1218 State St',
+  'to_country': 'US',
+  'to_zip': '90002',
+  'to_state': 'CA',
+  'to_city': 'LOS ANGELES',
+  'to_street': '123 Palm Grove Ln',
+  'amount': -16.5,
+  'shipping': -1.5,
+  'sales_tax': -0.95,
   'line_items': [<TaxJarLineItem {
     'description': 'Heavy Widget',
     'unit_price': -15,
@@ -2639,24 +2759,7 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
     'product_tax_code': None,
     'id': 0,
     'quantity': 1
-  }>],
-  'user_id': 11836,
-  'to_zip': '90002',
-  'from_street': '1218 State St',
-  'from_city': 'SANTA BARBARA',
-  'from_zip': 93107,
-  'to_country': 'US',
-  'shipping': -1.5,
-  'from_country': 'US',
-  'to_city': 'LOS ANGELES',
-  'to_street': '123 Palm Grove Ln',
-  'transaction_date': '2015-06-14T00:00:00Z',
-  'transaction_reference_id': '123',
-  'sales_tax': -0.95,
-  'amount': -16.5,
-  'transaction_id': '321',
-  'to_state': 'CA',
-  'provider': 'api'
+  }>]
 }>
 ```
 
@@ -3036,6 +3139,11 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
     "transaction_date": "2015-05-14T00:00:00Z",
     "transaction_reference_id": "123",
     "provider": "api",
+    "from_country": "US",
+    "from_zip": 93107,
+    "from_state": "CA",
+    "from_city": "SANTA BARBARA",
+    "from_street": "1218 State St",
     "to_country": "US",
     "to_zip": "90002",
     "to_state": "CA",
@@ -3096,34 +3204,34 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 
 ```python
 <TaxJarRefund {
-  'from_state': 'CA',
-  'line_items': [<TaxJarLineItem {
-    'description': 'Heavy Widget',
-    'unit_price': -15,
-    'discount': 0,
-    'product_identifier': '12-34243-9',
-    'sales_tax': -0.95,
-    'product_tax_code': None,
-    'id': 0,
-    'quantity': 1
-  }>],
   'user_id': 1,
-  'to_zip': '90002',
-  'from_street': '1218 State St',
-  'from_city': 'SANTA BARBARA',
-  'from_zip': 93107,
-  'to_country': 'US',
-  'shipping': -2,
+  'transaction_id': '321',
+  'transaction_reference_id': '123',
+  'transaction_date': '2016-03-10T00:00:00.000Z',
+  'provider': 'api'
   'from_country': 'US',
+  'from_zip': '93107',
+  'from_state': 'CA',
+  'from_city': 'SANTA BARBARA',
+  'from_street': '1218 State St',
+  'to_country': 'US',
+  'to_zip': '90002',
+  'to_state': 'CA',
   'to_city': 'LOS ANGELES',
   'to_street': '123 Palm Grove Ln',
-  'transaction_date': '2016-03-10T00:00:00.000Z',
-  'transaction_reference_id': '123',
-  'sales_tax': -0.95,
   'amount': -17,
-  'transaction_id': '321',
-  'to_state': 'CA',
-  'provider': 'api'
+  'shipping': -2,
+  'sales_tax': -0.95,
+  'line_items': [<TaxJarLineItem {
+    'id': 0,
+    'quantity': 1,
+    'unit_price': -15,
+    'description': 'Heavy Widget',
+    'product_identifier': '12-34243-9',
+    'product_tax_code': None,
+    'discount': 0,
+    'sales_tax': -0.95
+  }>],
 }>
 ```
 
@@ -3399,10 +3507,10 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 
 ```ruby
 #<Taxjar::Refund:0x00000a @attrs={
-  :transaction_id => "321",
   :user_id => 11836,
-  :transaction_date => nil,
+  :transaction_id => "321",
   :transaction_reference_id => nil,
+  :transaction_date => nil,
   :provider => "api",
   :from_country => nil,
   :from_zip => nil,
@@ -3423,25 +3531,25 @@ $ curl https://api.taxjar.com/v2/transactions/refunds/321 \
 
 ```python
 <TaxJarRefund {
-  'from_state': None,
-  'line_items': [],
   'user_id': 11836,
-  'to_zip': None,
-  'from_street': None,
-  'from_city': None,
-  'from_zip': None,
-  'to_country': None,
-  'shipping': None,
+  'transaction_id': '321',
+  'transaction_reference_id': None,
+  'transaction_date': None,
+  'provider': 'api'
   'from_country': None,
+  'from_zip': None,
+  'from_state': None,
+  'from_city': None,
+  'from_street': None,
+  'to_country': None,
+  'to_zip': None,
+  'to_state': None,
   'to_city': None,
   'to_street': None,
-  'transaction_date': None,
-  'transaction_reference_id': None,
-  'sales_tax': None,
   'amount': None,
-  'transaction_id': '321',
-  'to_state': None,
-  'provider': 'api'
+  'shipping': None,
+  'sales_tax': None,
+  'line_items': [],
 }>
 ```
 
