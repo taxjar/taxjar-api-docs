@@ -16,6 +16,11 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '2.3.3'
+    - name: Set up Java 8
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '8'
     - name: Build static website with Middleman and deploy to S3
       env:
         S3_ID: ${{ secrets.S3_ID }}
