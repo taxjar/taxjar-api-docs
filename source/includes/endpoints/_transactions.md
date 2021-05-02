@@ -2296,7 +2296,7 @@ require "taxjar"
 client = Taxjar::Client.new(api_key: "9e0cd62a22f451701f29c3bde214")
 
 order = client.create_refund({
-  :transaction_id => '123',
+  :transaction_id => '321',
   :transaction_date => '2015/05/14',
   :transaction_reference_id => '123',
   :to_country => 'US',
@@ -2360,7 +2360,7 @@ const client = new Taxjar({
 });
 
 client.createRefund({
-  transaction_id: '123',
+  transaction_id: '321',
   transaction_date: '2015/05/14',
   transaction_reference_id: '123',
   to_country: 'US',
@@ -2536,7 +2536,7 @@ $ curl https://api.taxjar.com/v2/transactions/refunds \
   -H "Authorization: Bearer 9e0cd62a22f451701f29c3bde214" \
   -H "Content-Type: application/json" \
   -d '{
-    "transaction_id": "123",
+    "transaction_id": "321",
     "transaction_date": "2015/05/14",
     "transaction_reference_id": "123",
     "to_street": "123 Palm Grove Ln",
