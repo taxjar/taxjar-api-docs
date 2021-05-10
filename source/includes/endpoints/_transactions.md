@@ -2502,7 +2502,7 @@ func main() {
     })
 
     res, err := client.CreateRefund(taxjar.CreateRefundParams{
-        TransactionID:          "123",
+        TransactionID:          "321",
         TransactionDate:        "2015/05/14",
         TransactionReferenceID: "123",
         ToCountry:              "US",
