@@ -30,6 +30,11 @@ under the License.
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
 
+@font-face {
+  font-family: "reckless-regular";
+  src:font-url("Reckless-Regular.woff") format('woff');
+}
+
 html, body {
   color: $main-text;
   padding: 0;
@@ -40,6 +45,7 @@ html, body {
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
+  font-family: "reckless-regular";
 }
 
 header {
@@ -64,7 +70,7 @@ summary {
 
 .logo {
   float: left;
-  padding: 16px 20px;
+  padding: 4px 20px;
 }
 
 .logo span {
