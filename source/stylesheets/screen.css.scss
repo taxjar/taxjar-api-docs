@@ -125,7 +125,7 @@ summary {
 .menu nav li a {
   display: block;
   padding: 6px 15px;
-  color: #333;
+  color: #1A1A1A;
   text-decoration: none;
 
   &.btn {
@@ -134,46 +134,44 @@ summary {
 }
 
 .menu nav li .active {
-  color: #3FAE2A;
+  color: #22C855;
 }
 
 .menu nav li a:hover {
-  color: #3FAE2A;
+  color: #22C855;
 }
 
 .btn {
   display: inline-block;
-  @extend %secondary-font;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, Sans-serif;
   font-size: 14px;
   padding: 7px 15px;
-  color: #333;
+  color: #1A1A1A;
   text-decoration: none;
   line-height: 20px;
-  border: 1px solid #d9d9d9;
-  border-radius: 5px;
+  border: 1px solid #1a1a1a;
+  border-radius: 7px;
   font-weight: bold;
   text-transform: uppercase;
 
   &:hover {
-    color: #3FAE2A;
-    border-color: #3FAE2A;
+    color: #1A1A1A !important;
+    box-sizing: border-box;
+    border-radius: 7px;
+    border: 2px solid #22C855;
   }
 }
 
 .btn.cta {
-  color: #fff;
-  background: linear-gradient(#22C855, darken(#22C855, 3%));
-  border: 1px solid #0E5222;
-  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  color: #1A1A1A;
+  border: 1px solid #1A1A1A;
 
   &:hover {
-    color: #fff;
-    background: linear-gradient(#1BA044, #168036);
+    color: #1A1A1A;
+    box-sizing: border-box;
+    border-radius: 7px;
+    border: 2px solid #22C855;
   }
-}
-
-.btn.cta:hover {
-  color: #fff;
 }
 
 .menu input {
