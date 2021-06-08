@@ -149,7 +149,7 @@ summary {
 
 .btn {
   display: inline-block;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+  font-family: "matter-regular", "Montserrat", "Helvetica Neue", Helvetica, Arial, Sans-serif;
   font-size: 14px;
   padding: 7px 15px;
   color: #1A1A1A;
@@ -229,7 +229,7 @@ summary {
   // }
 
   &.badge--get {
-    background: #3fae2a;
+    background: #22C855;
   }
 
   &.badge--post {
@@ -349,7 +349,7 @@ summary {
   }
 
   h6 {
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+    font-family: "matter-regular", "Montserrat", "Helvetica Neue", Helvetica, Arial, Sans-serif;
     font-size: 0.8rem;
     font-weight: normal;
     text-transform: uppercase;
@@ -360,6 +360,7 @@ summary {
   }
 
   .tocify-item {
+    font-family: "matter-regular", "Montserrat", "Helvetica Neue", Helvetica, Arial, Sans-serif;
     margin: 0 10px;
     border-radius: 3px;
   }
@@ -442,6 +443,7 @@ summary {
   }
 
   .toc-footer {
+    font-family: "matter-regular", "Montserrat", "Helvetica Neue", Helvetica, Arial, Sans-serif;
     padding: 1em 0;
     margin: 1em 10px 0;
     border-top: 1px solid $nav-footer-border-color;
@@ -491,7 +493,7 @@ summary {
     text-decoration: none;
 
     &:hover {
-      color: #3FAE2A;
+      color: #22C855;
     }
   }
 }
@@ -996,7 +998,7 @@ summary {
     vertical-align: -1px;
 
     &:focus {
-      border-color: #3FAE2A;
+      border-color: #22C855;
       box-shadow: 0 0 0 3px rgba(63, 174, 42, 0.35);
       outline: none;
     }
