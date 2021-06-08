@@ -35,6 +35,11 @@ under the License.
   src:font-url("Reckless-Regular.woff") format('woff');
 }
 
+@font-face {
+  font-family: "matter-regular";
+  src: font-url("Matter-Regular.woff") format('woff');
+}
+
 html, body {
   color: $main-text;
   padding: 0;
@@ -113,6 +118,7 @@ summary {
 }
 
 .menu nav li {
+  font-family: "matter-regular", "Helvetica Neue", Helvetica, Arial, Sans-serif;
   display: inline-block;
   padding: 0 10px 0 0;
   list-style: none;
