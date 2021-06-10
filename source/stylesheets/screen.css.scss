@@ -50,7 +50,15 @@ html, body {
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
-  font-family: "reckless-regular";
+  font-family: "matter-regular", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "reckless-regular", "Montserrat", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+}
+
+p, span {
+  font-family: "matter-regular", "Montserrat", "Helvetica Neue", Helvetica, Arial, Sans-serif;
 }
 
 header {
@@ -74,6 +82,8 @@ summary {
 }
 
 .logo {
+  font-family: "matter-regular", "Montserrat", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+  text-transform: uppercase;
   float: left;
   padding: 4px 20px;
 }
@@ -82,10 +92,12 @@ summary {
   position: absolute;
   top: 10px;
   left: 158px;
-  margin-top: 13px;
-  font-size: 18px;
+  margin-left: 15px;
+  margin-right: 35px;
+  margin-top: 15px;
+  font-size: 20px;
   font-weight: 300;
-  color: #999;
+  color: #1A1A1A;
 }
 
 .logo .short {
@@ -94,7 +106,7 @@ summary {
 
 .menu--main {
   float: left;
-  margin: 0 0 0 110px;
+  margin: 0 0 0 150px;
   padding: 0 0 0 10px;
   border-left: 1px solid #f7f7f7;
 }
@@ -155,28 +167,30 @@ summary {
   color: #1A1A1A;
   text-decoration: none;
   line-height: 20px;
-  border: 1px solid #1a1a1a;
+  background-color: #22C855;
+  border: 1px solid #22C855;
   border-radius: 7px;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: capitalize;
 
   &:hover {
-    color: #1A1A1A !important;
+    color: #22C855 !important;
+    background-color: #1A1A1A;
     box-sizing: border-box;
     border-radius: 7px;
-    border: 2px solid #22C855;
+    border: 2px solid #1A1A1A;
   }
 }
 
 .btn.cta {
   color: #1A1A1A;
-  border: 1px solid #1A1A1A;
+  border: 1px solid #22C855;
 
   &:hover {
-    color: #1A1A1A;
+    color: #22C855;
     box-sizing: border-box;
     border-radius: 7px;
-    border: 2px solid #22C855;
+    border: 2px solid #1A1A1A;
   }
 }
 
@@ -1085,6 +1099,14 @@ summary {
     padding-top: 2em;
     background-color: $code-bg;
   }
+}
+
+span.logo-divider {
+  font-family: "Montserrat";
+  margin: 4px 22px 0 -7px;
+  color: #22C855;
+  font-size: 32px;
+  font-weight: lighter;
 }
 
 @media (max-width: 1446px) {
