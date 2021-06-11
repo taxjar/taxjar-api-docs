@@ -3,7 +3,7 @@
 
 .drop-element {
   position: absolute;
-  display: none; 
+  display: none;
   z-index: 10;
 }
   .drop-element.drop-open {
@@ -109,7 +109,7 @@
       border-right-color: #ebebeb; }
 
 .drop-element.drop-theme-taxjar-popovers .drop-content {
-  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+  font-family: "matter-regular", "Helvetica Neue", Helvetica, Arial, Sans-serif;
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   max-width: 300px;
