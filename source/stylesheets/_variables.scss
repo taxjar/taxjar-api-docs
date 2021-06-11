@@ -69,17 +69,17 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 // FONTS
 ////////////////////
 %default-font {
-  font-family: "matter-regular", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+  font-family: "matter", "Helvetica Neue", Helvetica, Arial, Sans-serif;
   font-size: 15px;
 }
 
 %secondary-font {
-  font-family: "matter-regular", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+  font-family: "matter", "Helvetica Neue", Helvetica, Arial, Sans-serif;
 }
 
 %header-font {
   @extend %default-font;
-  font-family: "reckless-regular", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+  font-family: "reckless", "Helvetica Neue", Helvetica, Arial, Sans-serif;
   font-weight: bold;
 }
 
