@@ -30,6 +30,48 @@ under the License.
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
 
+@font-face {
+  font-family: "reckless";
+  src:font-url("Reckless-Regular.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "reckless";
+  src:font-url("Reckless-Bold.woff") format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "reckless";
+  src:font-url("Reckless-RegularItalic.woff") format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "matter";
+  src: font-url("Matter-Regular.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "matter";
+  src: font-url("Matter-Bold.woff") format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "matter";
+  src: font-url("Matter-RegularItalic.woff") format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
 html, body {
   color: $main-text;
   padding: 0;
@@ -40,6 +82,11 @@ html, body {
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
+  font-family: "matter", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "reckless", "Helvetica Neue", Helvetica, Arial, Sans-serif;
 }
 
 header {
@@ -63,18 +110,22 @@ summary {
 }
 
 .logo {
+  font-family: "matter", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+  text-transform: uppercase;
   float: left;
-  padding: 16px 20px;
+  padding: 4px 20px;
 }
 
 .logo span {
   position: absolute;
   top: 10px;
   left: 158px;
-  margin-top: 13px;
-  font-size: 18px;
+  margin-left: 15px;
+  margin-right: 35px;
+  margin-top: 15px;
+  font-size: 20px;
   font-weight: 300;
-  color: #999;
+  color: #1A1A1A;
 }
 
 .logo .short {
@@ -83,7 +134,7 @@ summary {
 
 .menu--main {
   float: left;
-  margin: 0 0 0 110px;
+  margin: 0 0 0 150px;
   padding: 0 0 0 10px;
   border-left: 1px solid #f7f7f7;
 }
@@ -107,6 +158,7 @@ summary {
 }
 
 .menu nav li {
+  font-family: "matter", "Helvetica Neue", Helvetica, Arial, Sans-serif;
   display: inline-block;
   padding: 0 10px 0 0;
   list-style: none;
@@ -119,7 +171,7 @@ summary {
 .menu nav li a {
   display: block;
   padding: 6px 15px;
-  color: #333;
+  color: #1A1A1A;
   text-decoration: none;
 
   &.btn {
@@ -128,46 +180,46 @@ summary {
 }
 
 .menu nav li .active {
-  color: #3FAE2A;
+  color: #22C855;
 }
 
 .menu nav li a:hover {
-  color: #3FAE2A;
+  color: #22C855;
 }
 
 .btn {
   display: inline-block;
-  @extend %secondary-font;
+  font-family: "matter", "Helvetica Neue", Helvetica, Arial, Sans-serif;
   font-size: 14px;
   padding: 7px 15px;
-  color: #333;
+  color: #1A1A1A;
   text-decoration: none;
   line-height: 20px;
-  border: 1px solid #d9d9d9;
-  border-radius: 5px;
+  background-color: #22C855;
+  border: 1px solid #22C855;
+  border-radius: 7px;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: capitalize;
 
   &:hover {
-    color: #3FAE2A;
-    border-color: #3FAE2A;
+    color: #22C855 !important;
+    background-color: #1A1A1A;
+    box-sizing: border-box;
+    border-radius: 7px;
+    border: 1px solid #1A1A1A;
   }
 }
 
 .btn.cta {
-  color: #fff;
-  background: linear-gradient(#f39c12, darken(#f39c12, 3%));
-  border: 1px solid #CE8512;
-  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  color: #1A1A1A;
+  border: 1px solid #22C855;
 
   &:hover {
-    color: #fff;
-    background: linear-gradient(#f5ac39, #ea940c);
+    color: #22C855;
+    box-sizing: border-box;
+    border-radius: 7px;
+    border: 1px solid #1A1A1A;
   }
-}
-
-.btn.cta:hover {
-  color: #fff;
 }
 
 .menu input {
@@ -219,7 +271,7 @@ summary {
   // }
 
   &.badge--get {
-    background: #3fae2a;
+    background: #22C855;
   }
 
   &.badge--post {
@@ -339,7 +391,7 @@ summary {
   }
 
   h6 {
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+    font-family: "matter", "Helvetica Neue", Helvetica, Arial, Sans-serif;
     font-size: 0.8rem;
     font-weight: normal;
     text-transform: uppercase;
@@ -350,6 +402,7 @@ summary {
   }
 
   .tocify-item {
+    font-family: "matter", "Helvetica Neue", Helvetica, Arial, Sans-serif;
     margin: 0 10px;
     border-radius: 3px;
   }
@@ -432,6 +485,7 @@ summary {
   }
 
   .toc-footer {
+    font-family: "matter", "Helvetica Neue", Helvetica, Arial, Sans-serif;
     padding: 1em 0;
     margin: 1em 10px 0;
     border-top: 1px solid $nav-footer-border-color;
@@ -481,7 +535,7 @@ summary {
     text-decoration: none;
 
     &:hover {
-      color: #3FAE2A;
+      color: #22C855;
     }
   }
 }
@@ -665,6 +719,10 @@ summary {
     letter-spacing: 1px;
   }
 
+  h4 {
+    font-family: "matter", "Helvetica Neue", Helvetica, Arial, Sans-serif;
+  }
+  
   hr {
     margin: 2em 0;
     border-top: 2px solid $examples-bg;
@@ -986,7 +1044,7 @@ summary {
     vertical-align: -1px;
 
     &:focus {
-      border-color: #3FAE2A;
+      border-color: #22C855;
       box-shadow: 0 0 0 3px rgba(63, 174, 42, 0.35);
       outline: none;
     }
@@ -1073,6 +1131,14 @@ summary {
     padding-top: 2em;
     background-color: $code-bg;
   }
+}
+
+span.logo-divider {
+  font-family: Sans-serif;
+  margin: 4px 22px 0 -7px;
+  color: #22C855;
+  font-size: 32px;
+  font-weight: lighter;
 }
 
 @media (max-width: 1446px) {
