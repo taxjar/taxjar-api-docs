@@ -170,6 +170,7 @@ summary {
 
 .menu nav li a {
   display: block;
+  font-size: 14px;
   padding: 6px 15px;
   color: #1A1A1A;
   text-decoration: none;
@@ -722,7 +723,7 @@ summary {
   h4 {
     font-family: "matter", "Helvetica Neue", Helvetica, Arial, Sans-serif;
   }
-  
+
   hr {
     margin: 2em 0;
     border-top: 2px solid $examples-bg;
